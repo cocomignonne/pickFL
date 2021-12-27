@@ -31,7 +31,7 @@
 
 </head>
 <body>
-    <!-- ======= Top Bar ======= -->
+   <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
@@ -50,17 +50,13 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="main">PickFL</a></h1>
+            <h1 class="logo me-auto"><a href="mainM">PickFL</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="#services">꽃다발</a></li>
-                    <li><a class="nav-link scrollto " href="#portfolio">나만의 꽃다발</a></li>
-                    <li><a class="nav-link scrollto" href="#team">오늘의 꽃</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">리뷰</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">마이페이지</a></li>
+                	<li><pre>                                                                                            </pre></li>
                     <li>
                     	<%if(request.getSession().getAttribute("loginUser") == null){%>
 						<a class="getstarted scrollto" href="login">로그인</a>
@@ -68,7 +64,6 @@
                				<a class="getstarted scrollto" href="logout">${loginUser.name} / 로그아웃</a>
                				<%} %>
                		</li>
-
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

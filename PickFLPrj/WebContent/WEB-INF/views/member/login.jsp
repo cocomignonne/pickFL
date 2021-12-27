@@ -12,6 +12,9 @@
 	<link rel="stylesheet" href="assets/css/util.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/login.css">
+
+    <link href="assets/css/mainPage.css" rel="stylesheet">
+
 	
 	<style>
 	#login_btn{
@@ -24,41 +27,37 @@
 <title>PickFL-Login</title>
 </head>
 <body>
+
+    <%@ include file="../common/header.jsp" %>
+
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
 					<span class="login100-form-title p-b-60">
 						Login
 					</span>
-					
-						<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-								<label for="username"><input class="input100" type="text" name="username" id="username" placeholder="ID" required /></label>
-								<span class="focus-input100"></span>
+
+					<form action="login" method="post">
+						<div class="wrap-input100 validate-input m-b-16" data-validate = "UserId is required">
+								<input class="input100" type="text" name="id" id="userId" placeholder="ID" required />
 						</div>
 							<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-								<label for="password"><input class="input100" type="password" name="password" id="password" placeholder="pw" required /></label>
-								<span class="focus-input100"></span>
+								<input class="input100" type="password" name="pwd" id="userPwd" placeholder="Pwd" required />
 							</div>
 						<div class="container-login100-form-btn m-t-17">
-							<a href="" class="login100-form-btn" type="submit" id="login_btn">Login</a>
+							<input class="login100-form-btn" type="submit" value="Login">
 						</div>
 					
-					<form id="securedLoginForm" name="securedLoginForm" method="post">
-						<input type="hidden" name="securedUsername" id="securedUsername" value="" />
-						<input type="hidden" name="securedPassword" id="securedPassword" value="" />
 					</form>
-					
+					<br>
 					<div class="sign">
-					
-					<form method="post">
-					<br/>
-						<span class="txt1"><a class="txt1" href="">Sign up</a>          
+						<span class="txt1"><a class="txt1" href="join">Sign up</a>          
 						<a class="txt2" href=''> PW</a>
 						<a class="txt2" href=''>forget? ID /</a>
-					</form>
-					
 					</div>
-					
 			</div>
 		</div>
+
+    <%@ include file="../common/footer.jsp" %>
+
 </body>
 </html>

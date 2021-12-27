@@ -252,7 +252,9 @@
             </div>
         </section><!-- End TIP VIDEO Section -->
 
-        <i class="bi bi-cart-check"></i>
+
+        <a href="cart"><i class="bi bi-cart-check"></i></a>
+
         <i class="bi bi-chat-dots"></i>
 
     </main><!-- End #main -->
