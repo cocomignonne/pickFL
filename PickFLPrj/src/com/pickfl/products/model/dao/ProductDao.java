@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.pickfl.common.JdbcTemplate.*;
+import static com.pickfl.common.JDBCTemplate.*;
 import com.pickfl.products.model.vo.ProductVo;
 
 public class ProductDao {
