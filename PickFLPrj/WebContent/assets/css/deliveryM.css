@@ -1,0 +1,69 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #444444;
+}
+
+a {
+    text-decoration: none;
+    color: #5cb874;
+}
+
+a:hover {
+    color: #80c792;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+}
+
+
+
+#delivery-m-box {
+    text-align: center;
+    margin: auto;
+}
+#delivery-m-box span {
+    font-size: 2.5em;
+    font-weight: bolder;
+    color: rgba(87, 104, 96, 0.808);
+}
+
+#delivery-m-tb {
+    margin: auto;
+    border: 1px solid black;
+    margin-top: 40px;
+}
+#delivery-m-tb tr, #delivery-m-tb td, #delivery-m-tb th {
+    border: 2px solid rgba(87, 104, 96, 0.808);
+}
+#delivery-m-tb th {
+    font-size: 1.25em;
+}
+
+td label {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+td label input {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+#delivery-status {
+    width: 20%;
+}
+#mem-no, #order-no {
+    width: 40%;
+}
+
+#submit, #reset {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 70px;
+    height: 45px;
+    font-size: large;
+    font-weight: 800;
+    color: rgba(42, 51, 47, 0.993);
+    border: 1px solid rgba(87, 104, 96, 0.808);
+    background-color: rgba(87, 104, 96, 0.555);
+}
