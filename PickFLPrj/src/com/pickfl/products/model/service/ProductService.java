@@ -3,7 +3,7 @@ package com.pickfl.products.model.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static com.pickfl.common.JdbcTemplate.*;
+import static com.pickfl.common.JDBCTemplate.*;
 
 import com.pickfl.products.model.dao.ProductDao;
 import com.pickfl.products.model.vo.ProductVo;
