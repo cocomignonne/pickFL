@@ -1,4 +1,4 @@
-package com.kh.main.controller;
+package com.pickfl.inquery.controller;
 
 import java.io.IOException;
 
@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/main")
-public class MainPageController extends HttpServlet {
+@WebServlet("/inqueryWrite")
+public class InqueryWriteController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/mainPage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/inquery/inqueryWrite.jsp").forward(req, resp);
 	}
 }

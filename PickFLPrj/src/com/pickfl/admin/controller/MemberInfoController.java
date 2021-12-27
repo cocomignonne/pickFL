@@ -1,4 +1,4 @@
-package com.kh.admin.controller;
+package com.pickfl.admin.controller;
 
 import java.io.IOException;
 
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/deliveryM")
-public class DeliveryMController extends HttpServlet {
+@WebServlet("/memberInfo")
+public class MemberInfoController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/admin/deliveryM.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/memberInfo.jsp").forward(req, resp);
 	}
 }

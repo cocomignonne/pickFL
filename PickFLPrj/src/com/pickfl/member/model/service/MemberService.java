@@ -1,13 +1,9 @@
 package com.pickfl.member.model.service;
 
-import static com.pickfl.common.JDBCTemplate.close;
-import static com.pickfl.common.JDBCTemplate.commit;
-import static com.pickfl.common.JDBCTemplate.getConnection;
-import static com.pickfl.common.JDBCTemplate.rollback;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import static com.pickfl.common.JdbcTemplate.*;
 import com.pickfl.member.model.dao.MemberDao;
 import com.pickfl.member.model.vo.MemberVo;
 
