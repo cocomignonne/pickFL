@@ -32,6 +32,18 @@ public class ProductVo {
 		this.product_size = product_size;
 		this.product_image = product_image;
 	}
+	
+	
+
+
+
+	public ProductVo(int product_no, String product_name, int product_price, int product_stock, String product_image) {
+		this.product_no = product_no;
+		this.product_name = product_name;
+		this.product_price = product_price;
+		this.product_stock = product_stock;
+		this.product_image = product_image;
+	}
 
 
 

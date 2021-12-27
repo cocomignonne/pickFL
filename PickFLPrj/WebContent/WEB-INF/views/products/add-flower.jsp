@@ -127,7 +127,7 @@
                               <div class="col-sm-2 align-self-center title">상품이미지</div>
                               <div class="col-sm-10">
                                   <div class="input-group">
-                                      <input type="file" class="form-control" name="image" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                      <input type="file" class="form-control" name="image" id="inputImg" aria-label="Upload">
                                      <!--  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">첨부파일</button> -->
                                   </div>
                               </div>
@@ -135,7 +135,7 @@
                           <div class="row mb-3">
   
                               <div class="col-sm">
-                                  <img class="thumbnail rounded m-lg-3" src="" alt="">
+                                  <img class="thumbnail rounded m-lg-3" id="img">
                               </div>
                           </div>
                           
@@ -176,6 +176,7 @@
 			}
 		})
 	})
+ 	
  </script>
 </body>
 

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.pickfl.common.JDBCTemplate.*;
 import com.pickfl.products.model.vo.ProductVo;
@@ -58,6 +60,34 @@ public class ProductDao {
 		}
 		
 		return result;
+	}
+
+	public List<ProductVo> selectProductAll(Connection conn) throws SQLException {
+		
+		String sql = "SELECT * FROM PRODUCT";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		try {			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int productNo = rs.getInt("PRODUCT_NO");
+				String productName = rs.getString("PRODUCT_NAME");
+				int productPrice = rs.getInt("PRODUCT_PRICE");
+				int productStock = rs.getInt("PRODUCT_STOCK");
+				String image = rs.getString("PRODUCT_IMAGE");
+				
+				list.add(new ProductVo(productNo, productName, productPrice, productStock, image));
+			}
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return list;
 	}
 
 }

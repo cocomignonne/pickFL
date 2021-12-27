@@ -73,12 +73,13 @@ public class AddProductController extends HttpServlet{
 		
 		int result = new ProductService().add(p);
 		
-		if(result > 0) {
-			System.out.println("등록 완료");
-		}else {
-			System.out.println("등록 실패");
-			
+		if ( result > 0) {
+			req.getRequestDispatcher("/WEB-INF/views/products/product-manage.jsp").forward(req, resp);
+		} else {
+			resp.sendRedirect("/add-flower");
 		}
+		
+		
 		
 	}
 }
