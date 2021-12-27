@@ -64,8 +64,11 @@
                       <form action="add-flower" method="post" enctype="multipart/form-data">
                           <div class="row mb-3">
                               <label for="pname" class="col-sm-2 col-form-label title">상품명</label>
-                              <div class="col-sm-10">
+                              <div class="col-sm-7">
                                 <input type="text" class="form-control" id="pname" name="pname" placeholder="상품명을 입력해 주세요">
+                              </div>
+                              <div class="col-sm-3 align-self-center">
+                              	<span id="isNameDup" class="d-none" style="color: red;">이미 존재하는 상품명입니다.</span>
                               </div>
                           </div>
                           <div class="row mb-3">
@@ -125,7 +128,7 @@
                               <div class="col-sm-10">
                                   <div class="input-group">
                                       <input type="file" class="form-control" name="image" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                      <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">첨부파일</button>
+                                     <!--  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">첨부파일</button> -->
                                   </div>
                               </div>
                           </div>
@@ -152,15 +155,21 @@
  <%@include file="/WEB-INF/views/common/footer.jsp" %>
  
  <script>
- $("#submit").on('click', function(){
+ $("#pname").keyup(function(){
 		$.ajax({
-			url : '/pickFL/productDupCheck',
+			url : '/PickFL/productDupCheck',
 			method : 'get',
 			data : {
-				id : $("#pname").val()
+				product_name : $("#pname").val()
 			},
+			dataType : "json",
 			success : function(data){
-				alert(data);
+					if(data.result == '1'){
+						$("#isNameDup").toggleClass("d-none", false);
+					} else {
+						$("#isNameDup").toggleClass("d-none", true);
+					}
+					console.log("ajax success");
 				},
 			error : function(err){
 				alert('fail');

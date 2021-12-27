@@ -34,7 +34,19 @@ public class ProductService {
 
 	public int dupCheck(String product_name) {
 		
-		return 0;
+		Connection conn = getConnection();
+		int result = 0;
+		try {
+			result = selectProductByName(conn, product_name);
+		} catch (SQLException e) {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+	private int selectProductByName(Connection conn, String product_name) throws SQLException {
+		return new ProductDao().selectByName(conn, product_name);
 	}
 
 }

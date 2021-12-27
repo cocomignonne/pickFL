@@ -2,6 +2,7 @@ package com.pickfl.products.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static com.pickfl.common.JdbcTemplate.*;
@@ -31,6 +32,29 @@ public class ProductDao {
 		result = pstmt.executeUpdate();
 		} finally {			
 			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int selectByName(Connection conn, String product_name) throws SQLException {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		ResultSet rs = null;
+		String sql = "SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_NAME = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, product_name);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			result = rs.getInt(1);
+			
+		} finally {
+			close(pstmt);
+			close(rs);
 		}
 		
 		return result;
