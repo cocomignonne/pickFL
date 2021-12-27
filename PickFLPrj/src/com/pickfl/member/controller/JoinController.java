@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.pickfl.member.model.service.MemberService;
 import com.pickfl.member.model.vo.MemberVo;
 
+
 @WebServlet("/join")
 public class JoinController extends HttpServlet {
 	@Override
@@ -47,4 +48,5 @@ public class JoinController extends HttpServlet {
 			req.getRequestDispatcher("WEB-INF/views/common/successPage.jsp").forward(req, resp);
 		}
 	}
+
 }

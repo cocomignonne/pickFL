@@ -47,11 +47,11 @@
             <div id="signIn-form">
 
                 <form class="row g-3" action="join" method="post">
-
                     <div class="col-sm-3 a">
                         <span class="form-control">아이디</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
+
 
                         <input type="text" name="id" class="form-control" id="userId" required maxlength="12" placeholder="아이디를 입력하세요." onfocusout="validate()">
                         <div id="idHelpBlock" class="form-text">
@@ -127,6 +127,7 @@
                     </div>
                     <div class="col-md-6 col-sm-6 a">
                         <input type="text" name="emailNum" class="form-control" id="emailNum" required placeholder="인증번호를 입력해주세요.">
+
                         <div id="emailNumError" class="form-text">
                         </div>
                     </div>
@@ -139,6 +140,7 @@
                         <span class="form-control">생년 월 일</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
+
                     	<input type="text" name="birth" class="form-control" id="birth" maxlength="6" required placeholder="생년월일을 적어주세요. ex)950101" onfocusout="validate()">
                         <div id="birthError" class="form-text">
 
@@ -178,7 +180,6 @@
                     
                     <input type="submit" value="회원가입" onclick="return validate()">
                     <input type="button" value="취소" onclick="location.href='main'">
-
     
                 </form>
             </div>
@@ -190,8 +191,7 @@
     <%@ include file="../common/footer.jsp" %>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     
-    
-    
+
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
