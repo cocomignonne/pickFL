@@ -1,0 +1,11 @@
+.inquirywritefrom{margin-left:10%; padding:20px;}
+.h4id{float:right;padding-right:5%; font-size:15px;}
+.h4body{padding-left:3%}
+.tablehead{display:table; width:85%; border-bottom: 2px solid #444444;}
+.tableid{display:table; width:85%; color: rgb(219, 203, 203); margin-bottom:-35px;}
+.spacebar{word-spacing: 5px;}
+.tablebody{display:table; width:85%; border-bottom: 2px solid #eff1f1; padding-bottom:25px;}
+.file{text-align: right; padding:10px;}
+
+.textform{width: 100%; height: 40px; padding: 10px; border: solid 2px #f0f2f2; border-radius: 5px; box-sizing: border-box;}
+.textareaform{width: 100%; height: 200px; padding: 10px; box-sizing: border-box; border: solid 2px #f0f2f2; border-radius: 5px; resize: none;}

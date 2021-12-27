@@ -1,0 +1,40 @@
+input[type="submit"]{font-family:FontAwesome;}
+@import url('https://fonts.googleapis.com/css2?family=Dokdo&family=Roboto+Mono&display=swap');
+
+header{
+border: 0px solid #000000; margin: 0 auto; padding-top: 20px; padding-right:8%;
+height: 90px; background-color: #303030; color: #ffffff; text-align:right; font-size: 25pt; font-family: 'Roboto Condensed', sans-serif;
+}
+
+.left_bx{float: left; width:201px;height:900px;background:right top #f9fafa; z-index:2; margin-top:40px;}
+
+.left_bx .qeustion{text-decoration:none; display:block;height:43px;padding-left:22px;background:center no-repeat #4e545d;color:#fff;font-size:14px;line-height:43px}
+
+.left_bx .my_menu{margin-left:5px; width:190px; position:relative;height:44px;border-bottom:1px solid #ebebeb;background:#f0f2f2;font-size:0;z-index:3; padding:0}
+
+.left_bx .my_menu li{position:relative;height:44px;border-bottom:1px solid #ebebeb;background:#f0f2f2;font-size:0}
+
+.left_bx .my_menu li a{display:block; text-decoration:none; padding-left:35px;color:#4e545d;font-size:14px;line-height:44px}
+
+.bodymargin{margin:15px; margin-left:225px; margin-bottom:40px;}
+
+.question{margin-left:15px; background-color:#8080c0; height: 30px; font-size:14pt;}
+
+.inquiryline{padding-top:5px; background-color: #444444; margin-top:15px;margin-bottom:30px;}
+
+.inquirytable{width: 97%; column-span: 1; margin:10px;}
+
+.inquiry_head{display:table; height:25px; border:0 none; padding:10px; padding-left: 30px; text-align: right;}
+.inquiry_head2{display:table; border:0 none; padding:10px; padding-left: 80%;}
+
+.inquiry_line{border-top: 1px solid #444444; display:table-cell;  resize: none; padding-top:18px; padding-bottom:60px; font-family: "Nanum Gothic", sans-serif; font-size:10pt;}
+.inquiry_body{display:table-cell;  resize: none; padding-top:18px; padding-bottom:60px; font-family: "Nanum Gothic", sans-serif; font-size:10pt;}
+
+
+.img_icon{width: 15px; height: 15px;}
+
+.h2class{margin:40px;text-align:right}
+
+#inquiry{
+    display:block;
+}
