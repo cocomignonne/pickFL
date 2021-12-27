@@ -1,9 +1,10 @@
 package com.pickfl.member.model.service;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 
-import static com.pickfl.common.JdbcTemplate.*;
+import static com.pickfl.common.JDBCTemplate.*;
 import com.pickfl.member.model.dao.MemberDao;
 import com.pickfl.member.model.vo.MemberVo;
 

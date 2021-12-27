@@ -2,6 +2,7 @@ package com.pickfl.member.model.dao;
 
 import java.sql.Connection;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +10,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.pickfl.common.JdbcTemplate.*;
+import static com.pickfl.common.JDBCTemplate.*;
 import com.pickfl.member.model.vo.MemberVo;
 
 public class MemberDao {
