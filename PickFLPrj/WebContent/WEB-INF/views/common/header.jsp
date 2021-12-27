@@ -57,11 +57,18 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto" href="#services">꽃다발</a></li>
-                    <li><a class="nav-link scrollto " href="own-flower">나만의 꽃다발</a></li>
+                    <li><a class="nav-link scrollto " href="#portfolio">나만의 꽃다발</a></li>
                     <li><a class="nav-link scrollto" href="#team">오늘의 꽃</a></li>
-                    <li><a class="nav-link scrollto" href="review">리뷰</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">리뷰</a></li>
                     <li><a class="nav-link scrollto" href="#contact">마이페이지</a></li>
-                    <li><a class="getstarted scrollto" href="#about">로그인</a></li>
+                    <li>
+                    	<%if(request.getSession().getAttribute("loginUser") == null){%>
+						<a class="getstarted scrollto" href="login">로그인</a>
+               			<%} else{%>
+               				<a class="getstarted scrollto" href="logout">${loginUser.name} / 로그아웃</a>
+               				<%} %>
+               		</li>
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

@@ -26,7 +26,6 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
     <link href="assets/css/mainPage.css" rel="stylesheet">
 
 </head>
@@ -252,7 +251,9 @@
             </div>
         </section><!-- End TIP VIDEO Section -->
 
-        <i class="bi bi-cart-check"></i>
+
+        <a href="cart"><i class="bi bi-cart-check"></i></a>
+
         <i class="bi bi-chat-dots"></i>
 
     </main><!-- End #main -->

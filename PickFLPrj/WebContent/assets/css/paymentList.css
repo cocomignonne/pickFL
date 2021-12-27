@@ -1,0 +1,241 @@
+/* body 모든 태그에 margin, padding 0을 줘야 하기 편한듯!? */
+body * {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid ; */
+    box-sizing: border-box;
+}
+#wrap { 
+    width: 1000px;
+    height: 1000px;
+    margin: auto;
+}
+
+header {
+    height: 25%;
+}
+#header_contents {
+    height: 80%;
+}
+/* header_contents 안에 있는 모든 div 태그 선택 (동일한 코드은 모아두자)*/
+#header_contents > div {
+    height: 100%;
+    float: left;
+}
+#header_content1 {
+    width: 15%;
+}
+#header_content2 {
+    width: 55%;
+}
+#header_content3 {
+    width: 30%;
+}
+
+#menu {
+    height: 20%;
+}
+
+
+
+
+section {
+    height: 75%;
+}
+#container1_2 li, #container1_3 li, #container1_4 li{ padding-left: 50px; }
+#container1_2 h4, #container1_3 h4, #container1_4 h4 { padding-left: 50px; color: #008000; }
+/* contents 안에 있는 article 모든 태그 선택 (동일한 코드은 모아두자)*/
+#contents > article {
+    height: 100%;
+    float: left;
+}
+/* a태그 줄 없애기,  li태그 블릿 없애기*/
+#content1 li, #content1 a {
+    text-decoration: none;
+    list-style: none;
+    color: gray;
+}
+#content1 {
+    width: 25%;
+}
+
+/* 1. 3조(고객의 이름이 위치하는 장소) */
+#content1_1 {
+    /* color: #008000; (고객 이름도 초록으로 넣을지 고민)  */
+    padding-left: 50px;
+    height: 60px;
+}
+#content1_1 h2 {
+    height: 100%;
+    padding-top: 15px;
+}
+
+/* 2. 나의 꽃밭 */
+#container1_2 h4 {
+    height: 40px;
+    padding-top: 10px;
+}
+#container1_2 ul {
+    height: 140px;
+}
+#container1_2 li {
+    height: 40px;
+    padding-top: 10px;
+}
+
+/* 3. 나의 계정설정 */
+#container1_3 h4 {
+    height: 40px;
+    padding-top: 10px;
+}
+#container1_3 ul {
+    height: 100px;
+}
+#container1_3 li {
+    height: 40px;
+    padding-top: 10px;
+}
+
+/* 4. 고객센터 */
+#container1_4 h4 {
+    height: 40px;
+    padding-top: 10px;
+}
+#container1_4 ul {
+    height: 100%;
+}
+#container1_4 li {
+    height: 40px;
+    padding-top: 10px;
+}
+
+/* li hover */
+ul.hover > li:hover{
+    font-size: 20px;
+}
+
+
+
+
+#content2 {
+    width: 75%;
+}
+#content2_backgroundColor{
+    background-color: yellowgreen;
+}
+#content2_p{
+    text-align: right;
+    padding: 30px;
+    font-size: 30px;
+    color: white;
+}
+#content2_2{
+    width: 100%;
+    font-size: 8px;
+}
+.content2_2_tr{
+    height: 45px;
+}
+.content2_2_td{
+    padding-left: 1vw;
+}
+
+
+
+#my_order {
+    height: 300px;
+    margin-top: 50px;
+}
+
+/* 최근 주문 */
+#my_tit {
+    width: 100px;
+}
+
+#my_order_tbl {
+    margin-top: 10px;
+}
+#my_order_tit {
+    width: 100%;
+    background-color: #ffffff;
+}
+#my_tbl {
+    text-align: center;
+    height: 100%;
+}
+#date, #history, #num, #amount {
+    width: 100px;
+    display:inline-block;
+    display:inline;
+    margin-right: 120px;
+}
+#history {
+    margin-left: 20px;
+}
+
+#text_1 {
+    border: 1px solid ;
+    margin-top: 10px;
+}
+#text_2 {
+    border: 1px solid gray;
+    height: -2px;
+    margin-top: 10px;
+}
+
+/* 최근 주문내역이 없습니다. */
+#text_3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#text_4 {
+    border: 1px solid gray;
+    height: -2px;
+    margin-top: 20px;
+}
+
+
+/* 나의 찜목록 */
+#my_best1{
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 나의 찜목록 */
+#my_best2 {
+    border: 1px solid gray;
+    height: -2px;
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
