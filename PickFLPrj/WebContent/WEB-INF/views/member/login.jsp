@@ -12,7 +12,9 @@
 	<link rel="stylesheet" href="assets/css/util.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/login.css">
+
     <link href="assets/css/mainPage.css" rel="stylesheet">
+
 	
 	<style>
 	#login_btn{
@@ -33,6 +35,7 @@
 					<span class="login100-form-title p-b-60">
 						Login
 					</span>
+
 					<form action="login" method="post">
 						<div class="wrap-input100 validate-input m-b-16" data-validate = "UserId is required">
 								<input class="input100" type="text" name="id" id="userId" placeholder="ID" required />
@@ -55,5 +58,6 @@
 		</div>
 
     <%@ include file="../common/footer.jsp" %>
+
 </body>
 </html>

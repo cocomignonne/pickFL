@@ -29,6 +29,7 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/mainPage.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/join.css">
+
     <!-- jQuerty-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -44,11 +45,14 @@
                 <span>회원 가입</span>
             </div>
             <div id="signIn-form">
+
                 <form class="row g-3" action="join" method="post">
+
                     <div class="col-sm-3 a">
                         <span class="form-control">아이디</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
+
                         <input type="text" name="id" class="form-control" id="userId" required maxlength="12" placeholder="아이디를 입력하세요." onfocusout="validate()">
                         <div id="idHelpBlock" class="form-text">
                             영문, 숫자만을 모두 포함해서  6~12자리
@@ -56,6 +60,7 @@
                     </div>
                     <div class="col-sm-3 a">
                         <button type="button" class="btn btn-success" id="idDupCheck">중복확인</button>
+
                     </div>
                     
                     
@@ -64,7 +69,9 @@
                         <span class="form-control">비밀번호</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
+
                         <input type="password" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요."  onfocusout="validate()">
+
                         <div id="passwordHelpBlock" class="form-text">
                             영문, 숫자, 특수문자(#, $, % 중 선택) 모두를 포함해서 8~16자리
                         </div>
@@ -89,7 +96,9 @@
                         <span class="form-control">이름</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
+
                         <input type="text" name="name" class="form-control" id="userName" required placeholder="이름을 입력하세요." onfocusout="validate()">
+
                         <div id="nameError" class="form-text">
                         </div>
                     </div>
@@ -102,12 +111,16 @@
                         <span class="form-control">이메일</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
+
                         <input type="email" name="email" class="form-control" id="email" required placeholder="이메일을 입력하세요." onfocusout="validate()">
+
                         <div id="emailError" class="form-text">
                         </div>
                     </div>
                     <div class="col-sm-3 a">
+
                         <button type="button" class="btn btn-success">인증번호 받기</button>
+
                     </div>
                     
                     <div class="col-sm-3 a">
@@ -119,6 +132,7 @@
                     </div>
                     <div class="col-sm-3 a">
                         <button type="button" class="btn btn-success" id="emailNumCheck">확인</button>
+
                     </div>
     
                     <div class="col-sm-3 a">
@@ -127,12 +141,14 @@
                     <div class="col-md-6 col-sm-6 a">
                     	<input type="text" name="birth" class="form-control" id="birth" maxlength="6" required placeholder="생년월일을 적어주세요. ex)950101" onfocusout="validate()">
                         <div id="birthError" class="form-text">
+
                         </div>
                     </div>
                     <div class="col-sm-3 a">
                     </div>
     
                     <div class="mb-3">
+
                         <span style="font-size: larger;">이용 약관 동의</span> <br><br>
   						<textarea rows="10" cols="100" style="font-size: small; color: grey">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
  회원가입
@@ -162,6 +178,7 @@
                     
                     <input type="submit" value="회원가입" onclick="return validate()">
                     <input type="button" value="취소" onclick="location.href='main'">
+
     
                 </form>
             </div>
@@ -175,6 +192,7 @@
     
     
     
+
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -183,6 +201,7 @@
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
+
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script type="text/javascript" src="assets/js/join.js?ver=12"></script>
 
@@ -190,3 +209,4 @@
 </body>
 
 </html>
+

@@ -68,6 +68,7 @@
                				<a class="getstarted scrollto" href="logout">${loginUser.name} / 로그아웃</a>
                				<%} %>
                		</li>
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

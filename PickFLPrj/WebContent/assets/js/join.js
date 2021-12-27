@@ -1,3 +1,4 @@
+
 var idCheck = 0;
 var emailCheck = 0;
 let idDupCheck = document.getElementById('idDupCheck');
