@@ -82,9 +82,9 @@
 		                   </tr>
 		               </thead>
 		               <c:forEach items="${productList}" var="p">
-			               <tr onClick="location.href='/manage-product-detail?no=${p.product_no}'">
+			               <tr onClick="getParam(${p.product_no})">
 			                   <td>${p.product_no}</td>
-			                   <td><img src="${p.product_image}"></td>
+			                   <td><img src="image?fileName=${p.product_image}"></td>
 			                   <td>${p.product_name}</td>
 			                   <td>${p.product_price}</td>
 			                   <td>${p.product_stock}</td>
@@ -110,6 +110,12 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/join.js"></script>
+    
+    <script type="text/javascript">
+    	function getParam(no){
+    		location.href = 'manage-product-detail?no=' + no;
+    	}
+    </script>
 
 </body>
 

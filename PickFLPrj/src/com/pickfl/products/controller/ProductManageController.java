@@ -1,5 +1,6 @@
 package com.pickfl.products.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class ProductManageController extends HttpServlet{
 		
 		List<ProductVo> productList = new ProductService().search(searchName);
 		
+		String filePath = req.getServletContext().getRealPath("/upload") + File.separator;
+		req.setAttribute("filePath", filePath);
 		req.setAttribute("productList", productList);
 		
 		req.getRequestDispatcher("/WEB-INF/views/products/product-manage.jsp").forward(req, resp);

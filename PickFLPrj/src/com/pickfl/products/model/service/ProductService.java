@@ -79,4 +79,18 @@ public class ProductService {
 		return new ProductDao().selectProductAll(conn);
 	}
 
+	public ProductVo selectProductByNo(int product_no) {
+		
+		Connection conn = getConnection();
+		ProductVo p = null;
+		try {
+			p = new ProductDao().selectByNo(conn, product_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {			
+			close(conn);
+		}
+		return p;
+	}
+
 }

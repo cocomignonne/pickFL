@@ -90,4 +90,38 @@ public class ProductDao {
 		return list;
 	}
 
+	public ProductVo selectByNo(Connection conn, int product_no) throws SQLException {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_NO = ?";
+		ProductVo p = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, product_no);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String productName = rs.getString("PRODUCT_NAME");
+				int productPrice = rs.getInt("PRODUCT_PRICE");
+				int productStock = rs.getInt("PRODUCT_STOCK");
+				String flower_lang = rs.getString("FLOWER_LANG");
+				String simple = rs.getString("PRODUCT_SIMPLE");
+				String detail = rs.getString("PRODUCT_DETAIL");
+				String color = rs.getString("PRODUCT_COLOR");
+				String size = rs.getString("PRODUCT_SIZE");
+				String image = rs.getString("PRODUCT_IMAGE");
+				
+				p = new ProductVo(productName, productPrice, productStock, flower_lang, simple, detail, color, size, image);
+			}
+			
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return p;
+	}
+
 }
