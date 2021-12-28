@@ -1,0 +1,46 @@
+/* body 모든 태그에 margin, padding 0을 줘야 하기 편한듯!? */
+body * {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid ; */
+    box-sizing: border-box;
+}
+
+#div-wrap{
+	width: 100%;
+}
+
+#select{
+	width:130px;
+	display: inline-block;
+}
+
+#text{
+	width:50%;
+	display: inline-block;
+}
+
+#content {
+    width: 100%;
+    display: inline-block;
+}
+#content_backgroundColor{
+    background-color: yellowgreen;
+}
+#content_p{
+    text-align: right;
+    padding: 30px;
+    font-size: 30px;
+    color: white;
+}
+#table{
+    width: 100%;
+    margin-top: 30px;
+    font-size: 8px;
+}
+.table_tr{
+    height: 45px;
+}
+.table_td{
+    padding-left: 1vw;
+}

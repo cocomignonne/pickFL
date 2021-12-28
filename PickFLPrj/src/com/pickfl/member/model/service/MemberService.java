@@ -15,7 +15,6 @@ public class MemberService {
 	
 //	회원가입
 	public int join(MemberVo m) {
-
 		
 		// DB Connection 가져오기 (DB에 접근은 dao)
 		Connection conn = getConnection();
