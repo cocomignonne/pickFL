@@ -9,10 +9,27 @@ public class MemberVo {
 	private String pwd;
 	private String name;
 	private String email;
+	private String emailHash;
+	private boolean emailChecked;
 	private String birth;
 	private Timestamp joinDate;
 	private String role;
 	
+	public MemberVo() {
+		
+	}
+
+	public MemberVo(int memberNo, String id, String pwd, String name, String email, String emailHash,
+			boolean emailChecked) {
+		super();
+		this.memberNo = memberNo;
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.email = email;
+		this.emailHash = emailHash;
+		this.emailChecked = emailChecked;
+	}
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -44,6 +61,20 @@ public class MemberVo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getEmailHash() {
+		return emailHash;
+	}
+	public void setEmailHash(String emailHash) {
+		this.emailHash = emailHash;
+	}
+	public boolean isEmailChecked() {
+		return emailChecked;
+	}
+	public void setEmailChecked(boolean emailChecked) {
+		this.emailChecked = emailChecked;
+	}
+	
 	public String getBirth() {
 		return birth;
 	}

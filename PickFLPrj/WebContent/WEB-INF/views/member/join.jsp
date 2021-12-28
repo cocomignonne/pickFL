@@ -46,7 +46,7 @@
             </div>
             <div id="signIn-form">
 
-                <form class="row g-3" action="join" method="post">
+                <form class="row g-3" action="join" method="post" name="insertform">
                     <div class="col-sm-3 a">
                         <span class="form-control">아이디</span>
                     </div>
@@ -106,10 +106,10 @@
                     </div>
     
 
-
                     <div class="col-sm-3 a">
                         <span class="form-control">이메일</span>
                     </div>
+
                     <div class="col-md-6 col-sm-6 a">
 
                         <input type="email" name="email" class="form-control" id="email" required placeholder="이메일을 입력하세요." onfocusout="validate()">
@@ -119,20 +119,7 @@
                     </div>
                     <div class="col-sm-3 a">
 
-                        <button type="button" class="btn btn-success">인증번호 받기</button>
-
-                    </div>
-                    
-                    <div class="col-sm-3 a">
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
-                        <input type="text" name="emailNum" class="form-control" id="emailNum" required placeholder="인증번호를 입력해주세요.">
-
-                        <div id="emailNumError" class="form-text">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 a">
-                        <button type="button" class="btn btn-success" id="emailNumCheck">확인</button>
+                        <input type="button" class="btn btn-success" id="sendEmailBtn" onclick="emailcheck(insertform.email.value)" value="인증번호 받기"></input>
 
                     </div>
     
@@ -180,7 +167,6 @@
                     
                     <input type="submit" value="회원가입" onclick="return validate()">
                     <input type="button" value="취소" onclick="location.href='main'">
-    
                 </form>
             </div>
         </div>
