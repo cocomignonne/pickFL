@@ -20,11 +20,11 @@ public class ProductManageDetailController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		int product_no = Integer.parseInt(req.getParameter("no"));
-		System.out.println(product_no);
 		ProductVo p =  new ProductService().selectProductByNo(product_no);
 		
 		String filePath = req.getServletContext().getRealPath("/upload") + File.separator;
 		
+		req.setAttribute("no", product_no);
 		req.setAttribute("filePath", filePath);
 		req.setAttribute("p", p);
 

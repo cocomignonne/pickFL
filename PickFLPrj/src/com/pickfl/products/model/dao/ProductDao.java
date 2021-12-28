@@ -103,6 +103,7 @@ public class ProductDao {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				int productNo = rs.getInt("PRODUCT_NO");
 				String productName = rs.getString("PRODUCT_NAME");
 				int productPrice = rs.getInt("PRODUCT_PRICE");
 				int productStock = rs.getInt("PRODUCT_STOCK");
@@ -113,7 +114,7 @@ public class ProductDao {
 				String size = rs.getString("PRODUCT_SIZE");
 				String image = rs.getString("PRODUCT_IMAGE");
 				
-				p = new ProductVo(productName, productPrice, productStock, flower_lang, simple, detail, color, size, image);
+				p = new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image);
 			}
 			
 		} finally {
@@ -122,6 +123,24 @@ public class ProductDao {
 		}
 		
 		return p;
+	}
+
+	public int deleteProduct(Connection conn, int product_no) throws SQLException {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = "DELETE FROM PRODUCT WHERE PRODUCT_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, product_no);
+			result = pstmt.executeUpdate();
+
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

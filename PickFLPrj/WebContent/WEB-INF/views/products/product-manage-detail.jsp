@@ -120,8 +120,8 @@
                               	</a>
                               </div>
                               <div class="col-sm">
-                              	<a href="remove-product">
-                              		<button type="button" class="btn btn-danger" > 삭제하기 </button>
+                              	<a href="delete-product?no=${no}">
+                              		<button type="button" class="btn btn-danger"> 삭제하기 </button>
                               	</a>
                               </div>
                           </div>
@@ -129,6 +129,7 @@
                   </div>
           </section>
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+
 </body>
 
 </html>

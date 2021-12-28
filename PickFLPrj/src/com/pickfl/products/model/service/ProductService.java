@@ -28,8 +28,6 @@ public class ProductService {
 		} finally {
 			close(conn);
 		}
-		
-		close(conn);
 		return result;
 	}
 
@@ -91,6 +89,24 @@ public class ProductService {
 			close(conn);
 		}
 		return p;
+	}
+
+	public int deleteProduct(int product_no) {
+		
+		Connection conn = getConnection();
+		int result = 0;
+		try {
+			result = new ProductDao().deleteProduct(conn, product_no);
+			if(result > 0 ) commit(conn);
+			else rollback(conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {			
+			close(conn);
+		}
+		
+		return result;
 	}
 
 }
