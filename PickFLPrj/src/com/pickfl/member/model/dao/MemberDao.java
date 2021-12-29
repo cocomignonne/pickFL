@@ -66,6 +66,34 @@ public class MemberDao {
 			
 		return result;
 	}
+	
+	
+//	이메일 중복확인
+	public int selectMemberEmail(Connection conn, String email) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = "SELECT COUNT(*) FROM MEMBER WHERE MEMBER_EMAIL = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			rs.next();
+			result = rs.getInt(1);
+			System.out.println(result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+			
+		return result;
+	}
 
 //	로그인
 	public MemberVo selectMember(Connection conn, MemberVo m) {
