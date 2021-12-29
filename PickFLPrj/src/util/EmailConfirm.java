@@ -41,7 +41,7 @@ public class EmailConfirm{
 			Session mailSession 
 	           = Session.getDefaultInstance(props,new javax.mail.Authenticator(){
 				    protected PasswordAuthentication getPasswordAuthentication(){
-					    return new PasswordAuthentication("skekkjim@naver.com", "ssibal130116");
+					    return new PasswordAuthentication("skekkjim@naver.com", "비밀번호");
 				}
 			});
 			
