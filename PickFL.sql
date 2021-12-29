@@ -26,20 +26,20 @@ CREATE TABLE PRODUCT (
 );
 
 CREATE TABLE QUESTION (
-    Q_NO     NUMBER PRIMARY KEY UNIQUE,
-    MEMBER_NO NUMBER NOT NULL UNIQUE,
+    Q_NO     NUMBER PRIMARY KEY,
+    M_ID    VARCHAR2(15) NOT NULL,
     Q_TITLE  VARCHAR2(200) NOT NULL,
     Q_CONTENT   VARCHAR2(3000) NOT NULL,
-    Q_CREAT  TIMESTAMP,
+    Q_CREATE  TIMESTAMP,
     Q_RESPONSE CHAR(1) DEFAULT 'N' CHECK(Q_RESPONSE IN ('Y','N')),
     Q_DELETED  CHAR(1) DEFAULT 'N' CHECK(Q_DELETED IN ('Y','N'))
 );
 
 CREATE TABLE QUESTION_RESPONSE(
-    R_NO    NUMBER PRIMARY KEY  UNIQUE,
+    R_NO    NUMBER PRIMARY KEY,
     Q_NO    NUMBER NOT NULL UNIQUE,
-    MEMBER_NO NUMBER NOT NULL,
-    ADMIN_NO    NUMBER NOT NULL,
+    M_ID    VARCHAR2(15) NOT NULL,
+    ADMIN_ID VARCHAR2(15) NOT NULL,
     R_CONTENT   VARCHAR2(3000) NOT NULL,
     R_CREATE    TIMESTAMP,
     R_DELETED CHAR(1) DEFAULT 'N' CHECK(R_DELETED IN ('Y','N'))
@@ -78,4 +78,12 @@ DROP SEQUENCE SEQ_QUESTION_RESPONSE;
 
 insert into member values(1, 'os2864', 'ws2864', '황인준', 'os2864@naver.com', '970514', sysdate, 'A', 'N');
 insert into member values(2, 'ws2864', 'os2864', '황인준2', 'os2864@naver.com', '970514', sysdate, 'A', 'N');
+insert into question values(1,'asdasd', 'asdadas','asdasdasdasd',sysdate, 'Y', 'N');
+insert into question values(2,'asdasd2', 'asdadas2','asdasdasdasd2',sysdate, 'Y', 'Y');
+insert into question values(3,'asdasd3', 'asdadas3','asdasdasdasd3',sysdate, 'N', 'Y');
 
+
+select count(*) as c from question;
+SELECT COUNT(*) AS C FROM QUESTION WHERE Q_RESPONSE IN ('Y','N') and q_deleted='Y' ;
+
+commit;

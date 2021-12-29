@@ -15,34 +15,20 @@ import com.pickfl.inquery.model.service.*;
 @WebServlet("/inquerysearch")
 public class InquerySearchController extends HttpServlet{
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String user = "asdasd";
 		String type = req.getParameter("searchType");
-		String value = req.getParameter("searchValue");
+		String page = req.getParameter("currentPage");
 		
-		String currentPage = req.getParameter("currentPage");
-		if(currentPage == null)
-			currentPage = "1";
+		InquerySearchVo vo = new InquerySearchVo(user, type, page);
 		
-		int maxPage = 0;
-		int maxcount = new InqueryService().maxcount();
-		if(maxcount % 7 == 0) {
-			maxPage = maxcount/7;
-		}
-		if(maxcount %7 !=0){
-			maxPage = maxcount/7 +1;
-		}
+		req.setAttribute("InquerySearchVo", vo);
 		
-		req.setAttribute("maxPage", maxPage);
-		int startPage = Integer.parseInt(currentPage) -2;
-		if(startPage<=0) startPage = 1;
-		req.setAttribute("startPage", startPage);
-		req.setAttribute("endPage", startPage +7);
+		List<InquerySearchVo> inqueryList = new InquerySearchService().search(vo);
+
 		
-		List<InqueryVo> memberList = new InqueryService().search(type, value, currentPage);
+		req.setAttribute("inqueryList", inqueryList);
 		
-		req.setAttribute("memberList", memberList);
-		
-		req.getRequestDispatcher("/WEB-INF/views/inquery/inquery.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/inquery/inquerySearch.jsp").forward(req, resp);
 	}
 }

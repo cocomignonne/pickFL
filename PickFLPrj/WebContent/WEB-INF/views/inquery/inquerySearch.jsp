@@ -15,13 +15,12 @@
 </head>
 <body>
 	<div id="div-wrap">
-		<form action="inquerysearch" method="post" id="search">
+		<form action="inquerysearch" method="get" id="search">
 			<select name="searchType" class="form-control" id="select">
 				<option value="all">전체</option>
-				<option value="response">답변확인</option>
-				<option value="noresponse">답변부재</option>
+				<option value="Y">답변확인</option>
+				<option value="N">답변부재</option>
 			</select>
-			<input type="text" name="searchValue" class="form-control" id="text">
 			<input type="submit" value="검색" class="btn btn-outline-secondary" id="button">
 		</form>
 
@@ -39,22 +38,23 @@
 						<td class="table_td">${i.qTitle}</td>
 						<td class="table_td">${i.createDate}</td>
 						<td class="table_td">${i.qResponse}</td>
+						
 					</tr>
-				</c:forEach>
+					</c:forEach>
                 </table>
             </article>
-			
-			<div>
-	        	<ul class="pagination">
-	        	<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-	        	<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
-					<c:if test="${i <= maxPage}">
-						<li class="page-item"><a class="page-link" href=""search?currentPage=${i}"">${i}</a></li>				
-					</c:if>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				</c:forEach>
-	       		</ul>
-    		</div>
+            
+				<div>
+		        	<ul class="pagination">
+		        	<li class="page-item"><a class="page-link" href="search?currentPage=${p}-7">Previous</a></li>
+		        	<c:forEach  var="p" begin="${startPage}" end="${endPage}" step="1">
+						<c:if test="${p <= maxPage}">
+							<li class="page-item"><a class="page-link" href="search?currentPage=${p}">${p}</a></li>				
+						</c:if>
+					<li class="page-item"><a class="page-link" href="search?currentPage=${p}+7">Next</a></li>
+					</c:forEach>
+		       		</ul>
+	    		</div>
 
 	</div>
 </body>
