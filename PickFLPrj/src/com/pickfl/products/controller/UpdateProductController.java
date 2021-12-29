@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,26 +16,30 @@ import javax.servlet.http.Part;
 import com.pickfl.products.model.service.ProductService;
 import com.pickfl.products.model.vo.ProductVo;
 
-@MultipartConfig(
-		maxFileSize = 1024 * 1024 * 5,
-		maxRequestSize = 1024 * 1024 * 5 * 5
-)
-@WebServlet("/add-flower")
-public class AddProductController extends HttpServlet{
-
+@WebServlet("/update-product")
+public class UpdateProductController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int product_no = Integer.parseInt(req.getParameter("no"));
+		ProductVo p =  new ProductService().selectProductByNo(product_no);
+		
+		String filePath = req.getServletContext().getRealPath("/upload") + File.separator;
+		
+		req.setAttribute("no", product_no);
+		req.setAttribute("filePath", filePath);
+		req.setAttribute("p", p);
 
-		req.getRequestDispatcher("/WEB-INF/views/products/add-flower.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/products/update-flower.jsp").forward(req, resp);
+		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		System.out.println(req.getParameter("no"));
 		
-		req.setCharacterEncoding("UTF-8");
-		
+//		int product_no = Integer.parseInt(req.getParameter("no"));
 		String product_name = req.getParameter("pname");
-		String price = req.getParameter("price");
 		int product_price = Integer.parseInt(req.getParameter("price"));
 		int product_stock = Integer.parseInt(req.getParameter("stock"));
 		String flower_lang = req.getParameter("flang");
@@ -70,17 +73,9 @@ public class AddProductController extends HttpServlet{
 			fos.close();
 		}
 		
-		ProductVo p = new ProductVo(product_name, product_price, product_stock, flower_lang, product_simple, product_detail, product_color, product_size, product_image);
-		
-		int result = new ProductService().add(p);
-		
-		if ( result > 0) {
-			resp.sendRedirect("manage-product");
-		} else {
-			resp.sendRedirect("add-flower");
-		}
-		
-		
+//		ProductVo p = new ProductVo(product_no, product_name, product_price, product_stock, flower_lang, product_simple, product_detail, product_color, product_size, product_image);
+//		System.out.println(p);
 		
 	}
+
 }

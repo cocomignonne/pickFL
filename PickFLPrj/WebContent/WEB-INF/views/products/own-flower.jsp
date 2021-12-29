@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,13 +139,13 @@
             <div>
               <div class="d-flex align-items-center">
                 <div class="me-auto">색상별 검색</div>
-                <div class="mx-3 circle" style="background-color: red;"></div>
-                <div class="mx-3 circle" style="background-color: orange;"></div>
-                <div class="mx-3 circle" style="background-color: gold;"></div>
-                <div class="mx-3 circle" style="background-color: seagreen;"></div>
-                <div class="mx-3 circle" style="background-color: cornflowerblue;"></div>
-                <div class="mx-3 circle" style="background-color: rebeccapurple;"></div>
-                <div class="mx-3 circle" style="background-color: grey;"></div>
+                <div class="mx-3 circle" style="background-color: red;" onClick=sendColor('red')></div>
+                <div class="mx-3 circle" style="background-color: orange;" onClick=sendColor('orange')></div>
+                <div class="mx-3 circle" style="background-color: gold;" onClick=sendColor('yello')></div>
+                <div class="mx-3 circle" style="background-color: seagreen;" onClick=sendColor('green')></div>
+                <div class="mx-3 circle" style="background-color: cornflowerblue;" onClick=sendColor('blue')></div>
+                <div class="mx-3 circle" style="background-color: rebeccapurple;" onClick=sendColor('purple')></div>
+                <div class="mx-3 circle" style="background-color: grey;" onClick=sendColor('white')></div>
               </div>
             </div>
           </div>
@@ -153,92 +154,33 @@
           <div class="col-md-3"></div>
           <div class="col-md-5">
             <div>
-              <div class="d-flex align-items-center">
-                <div class="me-auto">이름으로 검색</div>
-                <div class="input-group input-group-sm m-3">
-                  <input type="text" class="form-control" placeholder="이름을 입력하세요" aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
-                </div>
-              </div>
+            	<form action="own-flower" method="get">
+	              <div class="d-flex align-items-center">
+	                <div class="me-auto">이름으로 검색</div>
+	                <div class="input-group input-group-sm m-3">
+	                  <input type="text" class="form-control" name="searchName" placeholder="이름을 입력하세요">
+	                  <button class="btn btn-outline-secondary" type="sumbit">검색</button>
+	                </div>
+	              </div>
+            	</form>
             </div>
           </div>
         </div>
       </div>
       <div class="container">
         <div class="row row-cols-1 row-cols-md-4 g-4">
+        <c:forEach items="${productList}" var="p">        
           <div class="col">
-            <div class="card">
-              <a href="own-flower-detail"><img src="img/flower1.jpg" class="card-img-top" alt="..."></a>
+            <div class="card" onClick=getParam(${p.product_no})>
+              <img src="image?fileName=${p.product_image}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">꽃1</h5>
-                <p class="card-text">간단설명</p>
-                <div>2,500원</div>
+                <h5 class="card-title">${p.product_name}</h5>
+                <p class="card-text">${p.product_simple}</p>
+                <div>${p.product_price}원</div>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card">
-              <a href="#"><img src="img/flower2.jpg" class="card-img-top" alt="..."></a>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <a href="#"><img src="img/flower3.jpg" class="card-img-top" alt="..."></a>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <a href="#"><img src="img/flower4.jpg" class="card-img-top" alt="..."></a>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <a href="#"><img src="img/flower1.jpg" class="card-img-top" alt="..."></a>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <a href="#"><img src="img/flower2.jpg" class="card-img-top" alt="..."></a>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <a href="#"><img src="img/flower3.jpg" class="card-img-top" alt="..."></a>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <a href="#"><img src="img/flower4.jpg" class="card-img-top" alt="..."></a>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-            </div>
-          </div>
+        </c:forEach>
         </div>
       </div>
       
@@ -261,6 +203,27 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+	<script type="text/javascript">
+		function sendColor(color){
+			var form = document.createElement('form');
+			form.setAttribute('method', 'post');
+			form.setAttribute('action', 'http://localhost:8989/PickFL/own-flower');
+			document.charset = 'utf-8';
+			
+			newInput = document.createElement('input');
+			newInput.setAttribute('type', 'hidden');
+			newInput.setAttribute('name', 'product_color');
+			newInput.setAttribute('value', color);
+			form.appendChild(newInput);
+			document.body.appendChild(form);
+			form.submit();
+		}
+    	
+	
+		function getParam(no){
+    		location.href = 'own-flower-detail?no=' + no;
+    	}
+    </script>
 </body>
 
 </html>

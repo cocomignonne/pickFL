@@ -19,9 +19,39 @@ public class ProductVo {
 	
 	
 	
+	public ProductVo(int product_no, String product_name, int product_price, int product_stock, String flower_lang,
+			String product_simple, String product_detail, String product_color, String product_size,
+			String product_image) {
+		this.product_no = product_no;
+		this.product_name = product_name;
+		this.product_price = product_price;
+		this.product_stock = product_stock;
+		this.flower_lang = flower_lang;
+		this.product_simple = product_simple;
+		this.product_detail = product_detail;
+		this.product_color = product_color;
+		this.product_size = product_size;
+		this.product_image = product_image;
+	}
+	
+	
+	
+
+
+	public ProductVo(int product_no, String product_name, int product_price, int product_stock, String product_image) {
+		this.product_no = product_no;
+		this.product_name = product_name;
+		this.product_price = product_price;
+		this.product_stock = product_stock;
+		this.product_image = product_image;
+	}
+
+
+
 	public ProductVo(String product_name, int product_price, int product_stock, String flower_lang,
 			String product_simple, String product_detail, String product_color, String product_size,
 			String product_image) {
+		super();
 		this.product_name = product_name;
 		this.product_price = product_price;
 		this.product_stock = product_stock;
@@ -94,6 +124,16 @@ public class ProductVo {
 	}
 	public void setProduct_image(String product_image) {
 		this.product_image = product_image;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ProductVo [product_no=" + product_no + ", product_name=" + product_name + ", product_price="
+				+ product_price + ", product_stock=" + product_stock + ", flower_lang=" + flower_lang
+				+ ", product_simple=" + product_simple + ", product_detail=" + product_detail + ", product_color="
+				+ product_color + ", product_size=" + product_size + ", product_image=" + product_image + "]";
 	}
 	
 	
