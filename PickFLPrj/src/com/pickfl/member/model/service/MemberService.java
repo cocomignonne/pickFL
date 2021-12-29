@@ -62,10 +62,26 @@ public class MemberService {
 		return new MemberDao().selectMemberId(conn, id);
 	}
 
+	
+//	이메일 중복학인
+	public int dupEmailCheck(String email) {
+		Connection conn = getConnection();
+		
+		int result = selectMemberByEmail(conn, email);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	private int selectMemberByEmail(Connection conn, String email) {
+		return new MemberDao().selectMemberEmail(conn, email);
+	}
+
+//		id를가지고 비번 조회
 	public MemberVo login(MemberVo m) {
 		Connection conn = getConnection();
 		
-//		id를가지고 비번 조회
 		MemberVo selectedMember = selectMember(conn, m);
 		
 		close(conn);

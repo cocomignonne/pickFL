@@ -60,7 +60,6 @@
                     </div>
                     <div class="col-sm-3 a">
                         <button type="button" class="btn btn-success" id="idDupCheck">중복확인</button>
-
                     </div>
                     
                     
@@ -83,7 +82,7 @@
                         <span class="form-control">비밀번호 확인</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                        <input type="password" name="userPwd2" class="form-control" id="userPwd2" required maxlength="16" placeholder="비밀번호를 입력하세요.">
+                        <input type="password" name="userPwd2" class="form-control" id="userPwd2" required maxlength="16" placeholder="비밀번호를 입력하세요." onfocusout="validate()">
                         <div id="pwdCheckError" class="form-text">
                         </div>
                     </div>
@@ -99,7 +98,7 @@
 
                         <input type="text" name="name" class="form-control" id="userName" required placeholder="이름을 입력하세요." onfocusout="validate()">
 
-                        <div id="nameError" class="form-text">
+                        <div id="nameRegError" class="form-text">
                         </div>
                     </div>
                     <div class="col-sm-3 a">
@@ -114,11 +113,12 @@
 
                         <input type="email" name="email" class="form-control" id="email" required placeholder="이메일을 입력하세요." onfocusout="validate()">
 
-                        <div id="emailError" class="form-text">
+                        <div id="emailRegError" class="form-text">
                         </div>
                     </div>
                     <div class="col-sm-3 a">
 
+                        <button type="button" class="btn btn-success" id="emailDupCheck">중복확인</button>
                         <input type="button" class="btn btn-success" id="sendEmailBtn" onclick="emailcheck(insertform.email.value)" value="인증번호 받기"></input>
 
                     </div>
@@ -129,7 +129,7 @@
                     <div class="col-md-6 col-sm-6 a">
 
                     	<input type="text" name="birth" class="form-control" id="birth" maxlength="6" required placeholder="생년월일을 적어주세요. ex)950101" onfocusout="validate()">
-                        <div id="birthError" class="form-text">
+                        <div id="birthRegError" class="form-text">
 
                         </div>
                     </div>

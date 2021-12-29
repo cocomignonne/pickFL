@@ -1,23 +1,23 @@
-
-var idCheck = 0;
-var emailCheck = 0;
-let idDupCheck = document.getElementById('idDupCheck');
-let sendEmailBtn = document.getElementById('sendEmailBtn');
 let idRegError = document.getElementById('idHelpBlock');
 let pwdRegError = document.getElementById('passwordHelpBlock');
-let pwdCheckError = document.getElementById('pwdCheckError');
-let emailErrorVal = document.getElementById('emailError').value;
-let nameError = document.getElementById('nameError');
-let emailError = document.getElementById('emailError');
-let emailNumError = document.getElementById('emailNumError');
-let birthError = document.getElementById('birthError');
+let emailDupCheck = document.getElementById('emailDupCheck');
+let sendEmailBtn = document.getElementById('sendEmailBtn');
+let idCheck = 0;
+let emaildupCheck = 0;
+let emailnumCheck = 0;
+
+
 
 idDupCheck.addEventListener('click', () => {
 	idCheck = 1;
 })
 
+/*emailDupCheck.addEventListener('click', () => {
+	emaildupCheck = 1;
+})*/
+
 sendEmailBtn.addEventListener('click', () => {
-	emailCheck = 1;
+	emailnumCheck = 1;
 })
 
 
@@ -39,6 +39,30 @@ sendEmailBtn.addEventListener('click', () => {
 					idCheck = 1;
 				}
 				
+			},
+			error : function (error) {
+				alert("통신실패");
+			}
+		})
+	})
+
+ $("#emailDupCheck").on('click', function () {
+		$.ajax({
+			url : '/PickFL/emailDupCheck',
+			type : 'get',
+			data : { 
+				email : $("#email").val()
+			} ,
+			success : function(data) {
+				alert(data);
+				if(data.charAt(0) === '중'){
+					emailRegError.innerHTML = '<span style="color: red;">이미 있는 이메일입니다.</span>';
+					emaildupCheck = 0;
+				} else {
+					emailRegError.innerHTML = '<span style="color: green;">사용가능한 이메일입니다.</span>';
+					emaildupCheck = 1;
+				}
+				
 				},
 			error : function (error) {
 				alert("통신실패");
@@ -48,7 +72,7 @@ sendEmailBtn.addEventListener('click', () => {
 
 function emailcheck(email) {
 	var length = email.length;
-	if(length!=0){
+	if(emaildupCheck == 1 && length!=0){
 	var url = "emailcheck?email="+email;
 	window.open(url,"emailCheck", "statusbar = no, toolbar=no, location=no, menubar=no, scrollbars=no, resizable=no, width=500, height=300")
 	}
@@ -58,12 +82,14 @@ function confirmemail(emailconfirm_value, authNum){
 	//값이없거나 인증코드불일치
 	if(!emailconfirm_value || emailconfirm_value != authNum){
 		alert("인증번호가 맞지않습니다.");
+		emailnumCheck = 0;
 		self.close();
 	} else if(emailconfirm_value == authNum) { // 일치하는 경우
 		alert("인증번호가 일치합니다.");
 		emailconfirm_value = "";
 		self.close();
 		opener.document.insertform.emailconfirm_value.value = 1;
+		emailnumCheck = 1;
 	}
 }
 
@@ -72,10 +98,16 @@ function validate() {
             let userId = document.getElementById('userId');
             let userPwd1 = document.getElementById('userPwd1');
             let userPwd2 = document.getElementById('userPwd2');
-            let email = document.getElementById('email');
             let userName = document.getElementById('userName');
+            let email = document.getElementById('email');
 			let birth = document.getElementById('birth');
 			let agree = document.getElementById('agree');
+			
+			let idDupCheck = document.getElementById('idDupCheck');
+			let pwdCheckError = document.getElementById('pwdCheckError');
+			let nameRegError = document.getElementById('nameRegError');
+			let emailRegError = document.getElementById('emailRegError');
+			let birthRegError = document.getElementById('birthRegError');
 
             if(!(/^[A-Za-z][A-Za-z\d]{5,12}$/.test(userId.value))){
                 idRegError.innerHTML = '<span style="color: red;">유효한 아이디를 입력하세요.</span>';
@@ -101,24 +133,24 @@ function validate() {
 			}
 
             if(!(/^[가-힣]{2,}$/.test(userName.value))) {
-                nameError.innerHTML = '<span style="color: red;">유효한 이름을 입력하세요.</span>';
+                nameRegError.innerHTML = '<span style="color: red;">유효한 이름을 입력하세요.</span>';
                 return false;
             }else {
-				nameError.innerHTML = '<span style="color: green;">유효한 이름입니다.</span>';
+				nameRegError.innerHTML = '<span style="color: green;">유효한 이름입니다.</span>';
 			}
 
             if(!(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/.test(email.value))){
-                emailError.innerHTML = '<span style="color: red;">유효한 이메일을 입력하세요.</span>';
+                emailRegError.innerHTML = '<span style="color: red;">유효한 이메일을 입력하세요.</span>';
                 return false;
             }else {
-				emailError.innerHTML = '<span style="color: green;">유효한 이메일입니다.</span>';
+				emailRegError.innerHTML = '<span style="color: green;">유효한 이메일입니다.</span>';
 			}
 
             if(!(/^[0-9]{6,6}$/.test(birth.value))){
-                birthError.innerHTML = '<span style="color: red;">유효한 생년월일을 입력하세요.</span>';
+                birthRegError.innerHTML = '<span style="color: red;">유효한 생년월일을 입력하세요.</span>';
                 return false;
             }else {
-				birthError.innerHTML = '<span style="color: green;">유효한 생년월일입니다.</span>';
+				birthRegError.innerHTML = '<span style="color: green;">유효한 생년월일입니다.</span>';
 			}
 	
 			if (idCheck === 0) {
@@ -126,7 +158,12 @@ function validate() {
 				return false;
 			}
 	
-			if (emailCheck === 0) {
+			if (emaildupCheck === 0) {
+				alert('이메일 중복확인을 해주세요.');
+				return false;
+			}
+	
+			if (emailnumCheck === 0) {
 				alert('이메일 인증을 해주세요.');
 				return false;
 			}
