@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,10 @@ import javax.servlet.http.Part;
 import com.pickfl.products.model.service.ProductService;
 import com.pickfl.products.model.vo.ProductVo;
 
+@MultipartConfig(
+		maxFileSize = 1024 * 1024 * 5,
+		maxRequestSize = 1024 * 1024 * 5 * 5
+)
 @WebServlet("/update-product")
 public class UpdateProductController extends HttpServlet{
 	@Override
@@ -35,10 +40,8 @@ public class UpdateProductController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		System.out.println(req.getParameter("no"));
 		
-//		int product_no = Integer.parseInt(req.getParameter("no"));
+		int product_no = Integer.parseInt(req.getParameter("no"));
 		String product_name = req.getParameter("pname");
 		int product_price = Integer.parseInt(req.getParameter("price"));
 		int product_stock = Integer.parseInt(req.getParameter("stock"));
@@ -52,30 +55,37 @@ public class UpdateProductController extends HttpServlet{
 		
 		Part part = req.getPart("image");
 		if(part != null) {
-			String originName = part.getSubmittedFileName();
-			InputStream fis = part.getInputStream();
-			
-			String changedName = "" + UUID.randomUUID();
-			String ext = originName.substring(originName.lastIndexOf("."), originName.length());
-			String realPath = req.getServletContext().getRealPath("/upload");
-			product_image = changedName + ext;
-			String filePath = realPath + File.separator + product_image;
-			
-			FileOutputStream fos = new FileOutputStream(filePath);
-			
-			byte[] buf = new byte[1024];
-			int size = 0;
-			while((size = fis.read(buf)) != -1) {
-				fos.write(buf, 0, size);
+			if(part.getSize() != 0) {				
+				String originName = part.getSubmittedFileName();
+				InputStream fis = part.getInputStream();
+				
+				String changedName = "" + UUID.randomUUID();
+				String ext = originName.substring(originName.lastIndexOf("."), originName.length());
+				String realPath = req.getServletContext().getRealPath("/upload");
+				product_image = changedName + ext;
+				String filePath = realPath + File.separator + product_image;
+				
+				FileOutputStream fos = new FileOutputStream(filePath);
+				
+				byte[] buf = new byte[1024];
+				int size = 0;
+				while((size = fis.read(buf)) != -1) {
+					fos.write(buf, 0, size);
+				}
+				
+				fis.close();
+				fos.close();
 			}
-			
-			fis.close();
-			fos.close();
 		}
 		
-//		ProductVo p = new ProductVo(product_no, product_name, product_price, product_stock, flower_lang, product_simple, product_detail, product_color, product_size, product_image);
-//		System.out.println(p);
-		
+		ProductVo p = new ProductVo(product_no, product_name, product_price, product_stock, flower_lang, product_simple, product_detail, product_color, product_size, product_image);
+		int result = new ProductService().updateProduct(p);
+		if(result > 0) {
+			resp.sendRedirect(resp.encodeRedirectURL("http://localhost:8989/PickFL/manage-product-detail?no="+product_no));
+			
+		} else {
+			resp.sendRedirect(req.getRequestURI());
+		}
 	}
 
 }
