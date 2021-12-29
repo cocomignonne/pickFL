@@ -3,7 +3,6 @@ package com.pickfl.member.model.vo;
 import java.sql.Timestamp;
 
 public class MemberVo {
-	
 	private int memberNo;
 	private String id;
 	private String pwd;
