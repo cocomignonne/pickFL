@@ -110,7 +110,7 @@
                           
                           <div class="row">
                               <div class="col-sm">
-                              	<a href="update-product">
+                              	<a href="update-product?no=${no}">
 	                                <button type="button" class="btn btn-success"> 수정하기 </button>
                               	</a>
                               </div>

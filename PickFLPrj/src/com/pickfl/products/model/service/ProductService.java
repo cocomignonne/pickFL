@@ -58,19 +58,24 @@ public class ProductService {
 				productList = selectProductAll(conn);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}finally {
+				close(conn);
 			}
 		}else {
-			productList = selectProduct(conn, searchName);
+			try {
+				productList = selectProduct(conn, searchName);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(conn);
+			}
 		}
-		
-		close(conn);
 		
 		return productList;
 	}
 
-	private List<ProductVo> selectProduct(Connection conn, String searchName) {
-		// TODO Auto-generated method stub
-		return null;
+	private List<ProductVo> selectProduct(Connection conn, String searchName) throws SQLException {
+		return new ProductDao().searchByName(conn, searchName);
 	}
 
 	private List<ProductVo> selectProductAll(Connection conn) throws SQLException {
@@ -107,6 +112,24 @@ public class ProductService {
 		}
 		
 		return result;
+	}
+
+	public List<ProductVo> searchByColor(String product_color) {
+		
+		Connection conn = getConnection();
+		
+		List<ProductVo> productList = null;
+
+		try {
+			productList = new ProductDao().selectByColor(conn, product_color);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+
+		return productList;
+
 	}
 
 }

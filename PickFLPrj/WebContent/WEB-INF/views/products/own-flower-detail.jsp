@@ -46,15 +46,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="img/flower1.jpg" alt="">
+                    <img src="image?fileName=${p.product_image}" alt="">
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-5">
                     <form action="">
                         <div id="contents">
-                            <div id="simple">간단설명</div>
-                            <h2><b>이건 무슨 꽃일까</b></h2>
-                            <h3>2,500원</h3>
+                            <div id="simple">${p.product_simple}</div>
+                            <h2><b>${p.product_name}</b></h2>
+                            <h3>${p.product_price}원</h3>
                             <label><span>수량 : </span><input type="number" name="" id="" min="1" max="20" value="1"></label>
                             <div>가격 : </div>
                             <input type="submit" class="btn btn-success" value="담기"></input> 
