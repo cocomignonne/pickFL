@@ -62,55 +62,55 @@
                           <div class="row mb-3">
                               <label for="pname" class="col-sm-2 col-form-label title">상품명</label>
                               <div class="col-sm-10">
-                                이름모를꽃
+                                ${p.product_name}
                               </div>
                           </div>
                           <div class="row mb-3">
                               <label for="price" class="col-sm-2 col-form-label title">상품가격</label>
                               <div class="col-sm-4">
-                                2,500 원
+                                ${p.product_price} 원
                               </div>
                               <label for="stock" class="col-sm-2 col-form-label title">상품재고</label>
                               <div class="col-sm-4">
-                                300 개
+                                ${p.product_stock} 개
                               </div>
                           </div>
                           <div class="row mb-3">
                             <label for="flang" class="col-sm-2 col-form-label title">꽃말</label>
                             <div class="col-sm-4">
-                              희망
+                              ${p.flower_lang}
                             </div>
                             <label for="simple" class="col-sm-2 col-form-label title">간단정보</label>
                             <div class="col-sm-4">
-                              1월의 꽃
+                              ${p.product_simple}
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rcontent" class="col-sm-2 col-form-label title">상세정보</label>
                             <div class="col-sm-10">
-                                바이며, 열락의 앞이 얼음과 가슴에 곳이 약동하다. 끓는 생생하며, 보이는 그들은 피가 전인 곧 칼이다. 피가 원대하고, 낙원을 운다. 청춘의 피고, 없으면, 피다. 천하를 전인 곳이 피어나기 칼이다.
+                                ${p.product_detail}
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rcontent" class="col-sm-2 col-form-label title">색상</label>
                             <div class="col-sm-4">
-                                무채색
+                                ${p.product_color}
                             </div>
                             <label for="rcontent" class="col-sm-2 col-form-label title">크기</label>
                             <div class="col-sm-4">
-                                M
+                                ${p.product_size}
                             </div>
                         </div>
                           <div class="row mb-3">
                               <div class="col-sm-2 align-self-center title">상품이미지</div>
                               <div class="col-sm-10">
-                                  <img class="thumbnail rounded m-lg-3" src="img/flower1.jpg" alt="">
+                                  <img class="thumbnail rounded m-lg-3" src="image?fileName=${p.product_image}" alt="">
                               </div>
                           </div>
                           
                           <div class="row">
                               <div class="col-sm">
-                              	<a href="update-product">
+                              	<a href="update-product?no=${no}">
 	                                <button type="button" class="btn btn-success"> 수정하기 </button>
                               	</a>
                               </div>
@@ -120,7 +120,7 @@
                               	</a>
                               </div>
                               <div class="col-sm">
-                              	<a href="remove-product">
+                              	<a href="delete-product?no=${no}">
                               		<button type="button" class="btn btn-danger" > 삭제하기 </button>
                               	</a>
                               </div>
@@ -129,6 +129,16 @@
                   </div>
           </section>
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+	
+	<script>
+		function product_delete() {
+	        if (confirm("삭제하시겠습니까?")) {
+	            document.form1.action = "${path}/shop/product/delete.do";
+	            document.form1.submit();
+	        }
+	    }
+	</script>
+
 </body>
 
 </html>

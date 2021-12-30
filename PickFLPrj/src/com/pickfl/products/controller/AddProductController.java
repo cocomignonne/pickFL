@@ -44,7 +44,7 @@ public class AddProductController extends HttpServlet{
 		String product_detail = req.getParameter("detail");
 		String product_color = req.getParameter("color");
 		String product_size = req.getParameter("size");
-		String filePath = "";
+		String product_image="";
 		
 		
 		Part part = req.getPart("image");
@@ -55,7 +55,8 @@ public class AddProductController extends HttpServlet{
 			String changedName = "" + UUID.randomUUID();
 			String ext = originName.substring(originName.lastIndexOf("."), originName.length());
 			String realPath = req.getServletContext().getRealPath("/upload");
-			filePath = realPath + File.separator + changedName + ext;
+			product_image = changedName + ext;
+			String filePath = realPath + File.separator + product_image;
 			
 			FileOutputStream fos = new FileOutputStream(filePath);
 			
@@ -69,16 +70,17 @@ public class AddProductController extends HttpServlet{
 			fos.close();
 		}
 		
-		ProductVo p = new ProductVo(product_name, product_price, product_stock, flower_lang, product_simple, product_detail, product_color, product_size, filePath);
+		ProductVo p = new ProductVo(product_name, product_price, product_stock, flower_lang, product_simple, product_detail, product_color, product_size, product_image);
 		
 		int result = new ProductService().add(p);
 		
-		if(result > 0) {
-			System.out.println("등록 완료");
-		}else {
-			System.out.println("등록 실패");
-			
+		if ( result > 0) {
+			resp.sendRedirect("manage-product");
+		} else {
+			resp.sendRedirect("add-flower");
 		}
+		
+		
 		
 	}
 }

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PickFL Login</title>
+    <title>PickFL forgotPWD</title>
 	<link rel="stylesheet" href="assets/css/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 	<link rel="stylesheet" href="assets/css/util.css">
@@ -17,19 +17,13 @@
 
 	
 	<style>
-	#login_btn{
-		text-decoration:none;
-	}
-    #securedLoginForm{
-        display: none;
-    }
     .txt1, .txt2 {
     	font-size: large;
     	font-weight: bold;
     	color: #72947ae5;
     }
 	</style>
-<title>PickFL-Login</title>
+<title>PickFL forgotPWD</title>
 </head>
 <body>
 
@@ -38,32 +32,37 @@
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
 					<span class="login100-form-title p-b-60">
-						Login
+						Forgot PWD?
 					</span>
 
-					<form action="login" method="post">
-						<div class="wrap-input100 validate-input m-b-16" data-validate = "UserId is required">
-								<input class="input100" type="text" name="id" id="userId" placeholder="ID" required />
+					<form action="selectPwd" method="post" name="insertform">
+						<div class="wrap-input100 validate-input m-b-16">
+								<input class="input100" type="text" name="name" id="userName" placeholder="이름" required />
+								
 						</div>
-							<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-								<input class="input100" type="password" name="pwd" id="userPwd" placeholder="Pwd" required />
-							</div>
+						
+						<div class="wrap-input100 validate-input m-b-16">
+							<input class="input100" type="text" name="id" id="userId" placeholder="아이디" required />
+						</div>
+						
+						<div class="wrap-input100 validate-input m-b-16">
+							<input class="input100" type="text" name="email" id="email" placeholder="이메일" required />
+						</div>
+						
 						<div class="container-login100-form-btn m-t-17">
-							<input class="login100-form-btn" type="submit" value="Login">
+							<input type="button" class="login100-form-btn2" onclick="emailcheck(insertform.email.value)" value="이메일인증"></input>
+						</div>
+							
+						<div class="container-login100-form-btn m-t-17">
+							<input class="login100-form-btn" type="submit" value="비밀번호 찾기" >
 						</div>
 					
 					</form>
-					<br>
-					<div class="sign">
-						<span class="txt1"><a class="txt1" href="join">Sign up</a>          
-						<a class="txt2" href='selectPwd'> PW</a>
-						<a class="txt2" href='selectId'>forget? ID /</a>
-						</span>
-					</div>
 			</div>
 		</div>
 
     <%@ include file="../common/footer.jsp" %>
+    <script type="text/javascript" src="assets/js/selectPWD.js?ver=123"></script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>이벤트 리스너로 장바구니 수량 변경 및 자동 합계 구하기</title>
+	<title>Cart</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/cart.css" >
 	<script type="text/javascript" src="assets/js/cart.js"></script> 

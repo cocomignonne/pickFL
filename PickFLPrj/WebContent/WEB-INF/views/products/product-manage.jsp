@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,36 +45,53 @@
 	
     <section>
        <div>
-           <h2>상품 관리</h2>
-           <h3>상품 목록</h3>
-           <a href="add-flower"><input type="button" class="btn btn-success" value="꽃 등록"></a>
-           <a href="#"><input type="button" class="btn btn-success" value="소품 등록"></a>
-           <table class="table">
-               <thead>
-                   <tr>
-                       <th scope="col">상품번호</td>
-                       <th scope="col">이미지</td>
-                       <th scope="col">상품명</td>
-                       <th scope="col">상품가격</td>
-                       <th scope="col">재고</td>
-                   </tr>
-               </thead>
-               <tr onClick="location.href='manage-product-detail'">
-                   <td>1</td>
-                   <td><img src="img/flower1.jpg" alt=""></td>
-                   <td>이름모를꽃</td>
-                   <td>2,500</td>
-                   <td>300</td>
-               </tr>
-               </thead>
-               <tr>
-                   <td>2</td>
-                   <td><img src="img/flower1.jpg" alt=""></td>
-                   <td>이름모를꽃</td>
-                   <td>2,500</td>
-                   <td>300</td>
-               </tr>
-           </table>
+           <div class="container">
+               <div class="row">
+                   <p class="text-center fs-1 mb-5">상품 관리</p>           
+               </div>
+               <form action="/searchByName">
+	               <div class="row mb-4">
+	                   <div class="col-sm-4">
+	                       <h3>상품 목록</h3>
+	                   </div>
+	                   <div class="col-sm-5">
+	                       <div class="input-group mb-3">
+	                          <input type="text" class="form-control" name="searchName" placeholder="상품명 검색">
+	                          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
+	                        </div>
+	                   </div>
+	                   <div class="col-sm-3 text-end">
+	                       <a href="add-flower">
+	                           <input type="button" class="btn btn-success" value="꽃 등록">
+	                        </a>
+	                       <a href="#">
+	                           <input type="button" class="btn btn-success" value="소품 등록">
+	                       </a>
+	                   </div>
+	               </div>
+               </form>
+                   <!-- table --> 
+		           <table class="table">
+		               <thead>
+		                   <tr>
+		                       <th scope="col">상품번호</td>
+		                       <th scope="col">이미지</td>
+		                       <th scope="col">상품명</td>
+		                       <th scope="col">상품가격</td>
+		                       <th scope="col">재고</td>
+		                   </tr>
+		               </thead>
+		               <c:forEach items="${productList}" var="p">
+			               <tr onClick="getParam(${p.product_no})">
+			                   <td>${p.product_no}</td>
+			                   <td><img src="image?fileName=${p.product_image}"></td>
+			                   <td>${p.product_name}</td>
+			                   <td>${p.product_price}</td>
+			                   <td>${p.product_stock}</td>
+			               </tr>
+		               </c:forEach>
+		           </table>
+           </div>
        </div>
     </section>
 
@@ -92,6 +110,12 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/join.js"></script>
+    
+    <script type="text/javascript">
+    	function getParam(no){
+    		location.href = 'manage-product-detail?no=' + no;
+    	}
+    </script>
 
 </body>
 
