@@ -2,6 +2,8 @@ let idRegError = document.getElementById('idHelpBlock');
 let pwdRegError = document.getElementById('passwordHelpBlock');
 let emailDupCheck = document.getElementById('emailDupCheck');
 let sendEmailBtn = document.getElementById('sendEmailBtn');
+let userId = document.getElementById('userId');
+let email = document.getElementById('email');
 let idCheck = 0;
 let emaildupCheck = 0;
 let emailnumCheck = 0;
@@ -23,9 +25,17 @@ sendEmailBtn.addEventListener('click', () => {
 
 
  $("#idDupCheck").on('click', function () {
+		var method = '';
+		
+		if(!userId.value){
+			alert("아이디를 입력해주세요");
+		} else {
+			method = 'get';
+		}
+	
 		$.ajax({
 			url : '/PickFL/idDupCheck',
-			type : 'get',
+			type : method,
 			data : { 
 				id : $("#userId").val()
 			} ,
@@ -41,15 +51,23 @@ sendEmailBtn.addEventListener('click', () => {
 				
 			},
 			error : function (error) {
-				alert("통신실패");
+				console.log("통신 실패");
 			}
 		})
 	})
 
  $("#emailDupCheck").on('click', function () {
+		var method = '';
+		
+		if(!email.value){
+			alert("이메일을 입력해주세요");
+		} else {
+			method = 'get';
+		}
+	
 		$.ajax({
 			url : '/PickFL/emailDupCheck',
-			type : 'get',
+			type : method,
 			data : { 
 				email : $("#email").val()
 			} ,
@@ -65,7 +83,7 @@ sendEmailBtn.addEventListener('click', () => {
 				
 				},
 			error : function (error) {
-				alert("통신실패");
+				console.log("통신 실패");
 			}
 		})
 	})
@@ -95,11 +113,9 @@ function confirmemail(emailconfirm_value, authNum){
 
 	
 function validate() {
-            let userId = document.getElementById('userId');
             let userPwd1 = document.getElementById('userPwd1');
             let userPwd2 = document.getElementById('userPwd2');
             let userName = document.getElementById('userName');
-            let email = document.getElementById('email');
 			let birth = document.getElementById('birth');
 			let agree = document.getElementById('agree');
 			

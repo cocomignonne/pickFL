@@ -1,5 +1,13 @@
+<%@page import="java.util.List"%>
+<%@page import="com.pickfl.deliveryM.model.vo.DeliveryMVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+    
+<%
+	List<DeliveryMVo> dataList = (List<DeliveryMVo>)request.getAttribute("data");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,15 +36,20 @@
 
     <!-- Template Main CSS File -->
     <link rel="stylesheet" href="assets/css/deliveryM.css">
-
+	<style type="text/css">
+	.orderNo, .memberNo {
+		border: none;
+		text-align: center;
+	}
+	</style>
 </head>
 
 <body>
 
-    <%@ include file="../common/header.jsp" %>
+    <%@ include file="../common/headerM.jsp" %>
 
     <section>
-        <form id="delivery-m-box">
+        <form id="delivery-m-box" action="deliveryM" method="post">
             <span>배송 관리</span>
             <table id="delivery-m-tb">
                 <tr>
@@ -44,82 +57,25 @@
                     <th id="mem-no">회원 번호</th>
                     <th id="delivery-status">배송 상태</th>
                 </tr>
-                
-                <tr>
-                    <td>${m.orderNo}</td>
-                    <td>${m.memberNo}</td>
-                    <td>
-                    	<input type="button" value="배송상태">
-                    	<select name="delivery-status">
-        					<option selected>-----</option>
-        					<option value="before">배송 준비</option>
-        					<option value="ing">배송 중</option>
-        					<option value="finish">배송 완료</option>
-        				</select>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>${m.orderNo}</td>
-                    <td>${m.memberNo}</td>
-                    <td>
-                    	<input type="button" value="배송상태">
-                    	<select name="delivery-status">
-        					<option selected>-----</option>
-        					<option value="before">배송 준비</option>
-        					<option value="ing">배송 중</option>
-        					<option value="finish">배송 완료</option>
-        				</select>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>${m.orderNo}</td>
-                    <td>${m.memberNo}</td>
-                    <td>
-                    	<input type="button" value="배송상태">
-                    	<select name="delivery-status">
-        					<option selected>-----</option>
-        					<option value="before">배송 준비</option>
-        					<option value="ing">배송 중</option>
-        					<option value="finish">배송 완료</option>
-        				</select>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>${m.orderNo}</td>
-                    <td>${m.memberNo}</td>
-                    <td>
-                    	<input type="button" value="배송상태">
-                    	<select name="delivery-status">
-        					<option selected>-----</option>
-        					<option value="before">배송 준비</option>
-        					<option value="ing">배송 중</option>
-        					<option value="finish">배송 완료</option>
-        				</select>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>${m.orderNo}</td>
-                    <td>${m.memberNo}</td>
-                    <td>
-                    	<input type="button" value="배송상태">
-                    	<select name="delivery-status">
-        					<option selected>-----</option>
-        					<option value="before">배송 준비</option>
-        					<option value="ing">배송 중</option>
-        					<option value="finish">배송 완료</option>
-        				</select>
-                    </td>
-                </tr>
-                
-                
+                <c:forEach items="${data}" var="d">
+					<tr>
+						<td><input type="text" class="orderNo" name="orderNo" value=${d.orderNo}></td>
+						<td><input type="text" class="memberNo" name="memberNo" value=${d.memberNo}></td>
+                    	<td>
+                    		<input type="button" name="delivery-status" value=${d.deliveryState}>
+                    		<select name="delivery-status-change">
+        						<option selected>결제완료</option>
+        						<option value="배송준비">배송준비</option>
+        						<option value="배송중">배송중</option>
+        						<option value="배송완료">배송완료</option>
+        					</select>
+                    	</td>
+					</tr>
+				</c:forEach>
             </table>
             <br><br>
             <input type="submit" id="submit" value="저장">
-            <input type="reset" id="reset" value="취소">
+            <input type="reset" id="reset" onclick="location.href='mainM'" value="취소">
         </form>
     </section>
 

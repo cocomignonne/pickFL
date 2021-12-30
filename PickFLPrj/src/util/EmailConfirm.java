@@ -20,7 +20,7 @@ public class EmailConfirm{
 		String from = "skekkjim@naver.com"; // 보내는 사람 계정
 		String authNum = EmailConfirm.authNum(); // 인증번호 난수
 		String content = "인증번호는 " + authNum + "입니다."; // 이메일내용
-		
+		System.out.println(authNum);
 		
 		//SMPT이용을 위해 설정해주는 설정값들
 		try{
@@ -41,7 +41,7 @@ public class EmailConfirm{
 			Session mailSession 
 	           = Session.getDefaultInstance(props,new javax.mail.Authenticator(){
 				    protected PasswordAuthentication getPasswordAuthentication(){
-					    return new PasswordAuthentication("skekkjim@naver.com", "비밀번호");
+					    return new PasswordAuthentication("skekkjim@naver.com", "비번");
 				}
 			});
 			
