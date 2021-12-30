@@ -132,4 +132,23 @@ public class ProductService {
 
 	}
 
+	public int updateProduct(ProductVo p) {
+		
+		Connection conn = getConnection();
+		int result = 0;
+		
+		try {
+			result = new ProductDao().updateProduct(conn, p);
+			if(result > 0 ) commit(conn);
+			else rollback(conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {			
+			close(conn);
+		}
+		
+		return result;
+	}
+
 }

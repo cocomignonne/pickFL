@@ -121,7 +121,7 @@
                               </div>
                               <div class="col-sm">
                               	<a href="delete-product?no=${no}">
-                              		<button type="button" class="btn btn-danger"> 삭제하기 </button>
+                              		<button type="button" class="btn btn-danger" > 삭제하기 </button>
                               	</a>
                               </div>
                           </div>
@@ -129,6 +129,15 @@
                   </div>
           </section>
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+	
+	<script>
+		function product_delete() {
+	        if (confirm("삭제하시겠습니까?")) {
+	            document.form1.action = "${path}/shop/product/delete.do";
+	            document.form1.submit();
+	        }
+	    }
+	</script>
 
 </body>
 

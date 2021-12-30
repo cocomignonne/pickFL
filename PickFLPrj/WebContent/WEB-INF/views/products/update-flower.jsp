@@ -131,7 +131,7 @@
                               <div class="col-sm-2 align-self-center title">상품이미지</div>
                               <div class="col-sm-10">
                                   <div class="input-group">
-                                      <input type="file" class="form-control" name="image" id="inputImg" value="${p.product_image}" aria-label="Upload">
+                                      <input type="file" class="form-control" name="image" id="inputImg" aria-label="Upload">
                                   </div>
                               </div>
                           </div>

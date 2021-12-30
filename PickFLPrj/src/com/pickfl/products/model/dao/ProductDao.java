@@ -217,4 +217,51 @@ public class ProductDao {
 		return list;
 	}
 
+	public int updateProduct(Connection conn, ProductVo p) throws SQLException {
+		String sql = "";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		if(p.getProduct_image().equals("")) {
+			sql = "UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_PRICE = ?, PRODUCT_STOCK = ?, FLOWER_LANG = ?, PRODUCT_SIMPLE = ?, PRODUCT_DETAIL = ?, PRODUCT_COLOR = ?, PRODUCT_SIZE = ? WHERE PRODUCT_NO = ?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, p.getProduct_name());
+				pstmt.setInt(2, p.getProduct_price());
+				pstmt.setInt(3, p.getProduct_stock());
+				pstmt.setString(4, p.getFlower_lang());
+				pstmt.setString(5, p.getProduct_simple());
+				pstmt.setString(6, p.getProduct_detail());
+				pstmt.setString(7, p.getProduct_color());
+				pstmt.setString(8, p.getProduct_size());
+				pstmt.setInt(9, p.getProduct_no());
+				
+				result = pstmt.executeUpdate();
+			} finally {			
+				close(pstmt);
+			}
+		}else {			
+			sql = "UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_PRICE = ?, PRODUCT_STOCK = ?, FLOWER_LANG = ?, PRODUCT_SIMPLE = ?, PRODUCT_DETAIL = ?, PRODUCT_COLOR = ?, PRODUCT_SIZE = ?, PRODUCT_IMAGE = ? WHERE PRODUCT_NO = ?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, p.getProduct_name());
+				pstmt.setInt(2, p.getProduct_price());
+				pstmt.setInt(3, p.getProduct_stock());
+				pstmt.setString(4, p.getFlower_lang());
+				pstmt.setString(5, p.getProduct_simple());
+				pstmt.setString(6, p.getProduct_detail());
+				pstmt.setString(7, p.getProduct_color());
+				pstmt.setString(8, p.getProduct_size());
+				pstmt.setString(9, p.getProduct_image());
+				pstmt.setInt(10, p.getProduct_no());
+				
+				result = pstmt.executeUpdate();
+			} finally {			
+				close(pstmt);
+			}
+		}
+		
+		return result;
+	}
+
 }
