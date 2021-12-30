@@ -13,7 +13,15 @@ public class ReviewController extends HttpServlet{
 
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-			req.getRequestDispatcher("/WEB-INF/views/review/review.jsp").forward(req, resp);
+			String reviewNo = req.getParameter("reviewNo");
+			
+			if(reviewNo == null) {				
+				req.getRequestDispatcher("/WEB-INF/views/review/review-list.jsp").forward(req, resp);
+			}else {
+				int no = Integer.parseInt(reviewNo);
+				req.setAttribute("no", no);
+				
+				req.getRequestDispatcher("/WEB-INF/views/review/review.jsp").forward(req, resp);
+			}
 		}
 }
