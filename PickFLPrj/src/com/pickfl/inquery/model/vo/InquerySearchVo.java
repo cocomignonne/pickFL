@@ -12,13 +12,6 @@ public class InquerySearchVo {
 	private int maxPage;
 	private int endPage;
 	
-	private int qNum;
-	private Timestamp createDate;
-	private String qTitle;
-	private String qContent;
-	private String qDeleted;
-	private String qResponse;
-	
 	public InquerySearchVo(String user, String type, String page) {
 		this.user = user;
 		this.type = type;
@@ -40,7 +33,7 @@ public class InquerySearchVo {
 		else 
 			maxcount = new InquerySearchService().memberCountPage(user, type);
 		
-		System.out.println("maxcount : " + maxcount);
+		System.out.println("inquery maxcount : " + maxcount);
 		return maxcount;
 	}
 	
@@ -55,7 +48,7 @@ public class InquerySearchVo {
 		return maxPage;
 	}
 	
-	private int currentPage(String curr, int maxPage) {
+	public int currentPage(String curr, int maxPage) {
 		int currentPage;
 		if(curr == null)
 			curr = "1";
@@ -64,6 +57,8 @@ public class InquerySearchVo {
 		
 		if(currentPage > maxPage){
 			currentPage = maxPage;
+		}else if(currentPage < 1) {
+			currentPage = 1;
 		}
 		
 		return currentPage;
@@ -91,42 +86,5 @@ public class InquerySearchVo {
 	
 	public String getType() {
 		return type;
-	}
-	
-	public int getqNum() {
-		return qNum;
-	}
-	public void setqNum(int qNum) {
-		this.qNum = qNum;
-	}
-	public Timestamp getCreateDate() {
-		return createDate;
-	}
-	public void setCreateDate(Timestamp createDate) {
-		this.createDate = createDate;
-	}
-	public String getqTitle() {
-		return qTitle;
-	}
-	public void setqTitle(String qTitle) {
-		this.qTitle = qTitle;
-	}
-	public String getqContent() {
-		return qContent;
-	}
-	public void setqContent(String qContent) {
-		this.qContent = qContent;
-	}
-	public String getqDeleted() {
-		return qDeleted;
-	}
-	public void setqDeleted(String qDeleted) {
-		this.qDeleted = qDeleted;
-	}
-	public String getqResponse() {
-		return qResponse;
-	}
-	public void setqResponse(String qResponse) {
-		this.qResponse = qResponse;
 	}
 }

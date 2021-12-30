@@ -1,10 +1,10 @@
 CREATE TABLE MEMBER(
-MEMBER_NO NUMBER NOT NULL PRIMARY KEY,
+MEMBER_NO NUMBER PRIMARY KEY,
 MEMBER_ID VARCHAR2(15) NOT NULL UNIQUE,
 MEMBER_PWD VARCHAR2(30) NOT NULL,
 MEMBER_NAME VARCHAR2(20) NOT NULL,
-MEMBER_EMAIL VARCHAR2(30) NOT NULL,
-MEMBER_BIRTH  VARCHAR2(20) NOT NULL,
+MEMBER_EMAIL VARCHAR2(30) NOT NULL UNIQUE,
+MEMBER_BIRTH  VARCHAR2(20),
 MEMBER_JOIN_DATE TIMESTAMP,
 MEMBER_ROLE CHAR(1) DEFAULT 'C' CHECK(MEMBER_ROLE IN ('C','A')),
 MEMBER_QUIT_YN CHAR(1) DEFAULT 'N' CHECK(MEMBER_QUIT_YN IN ('Y','N'))
@@ -81,9 +81,12 @@ insert into member values(2, 'ws2864', 'os2864', '황인준2', 'os2864@naver.com
 insert into question values(1,'asdasd', 'asdadas','asdasdasdasd',sysdate, 'Y', 'N');
 insert into question values(2,'asdasd2', 'asdadas2','asdasdasdasd2',sysdate, 'Y', 'Y');
 insert into question values(3,'asdasd3', 'asdadas3','asdasdasdasd3',sysdate, 'N', 'Y');
-
+insert into question values(4,'asdasd', 'asdadas','asdasdasdasd',sysdate, 'Y', 'N');
+insert into question values(5,'asdasd', 'asdadas','asdasdasdasd',sysdate, 'N', 'N');
 
 select count(*) as c from question;
 SELECT COUNT(*) AS C FROM QUESTION WHERE Q_RESPONSE IN ('Y','N') and q_deleted='Y' ;
 
+INSERT INTO MEMBER(MEMBER_NO, MEMBER_ID, MEMBER_PWD, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ROLE)
+VALUES (SEQ_MEMBER.NEXTVAL, 'admin3', 'rhksflwk3%', '게시글관리자', 'admin3@naver.com','A');
 commit;

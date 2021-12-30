@@ -11,7 +11,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script>
+	function inquery
+</script>
 </head>
 <body>
 	<div id="div-wrap">
@@ -43,19 +45,18 @@
 					</c:forEach>
                 </table>
             </article>
-            
+          
 				<div>
 		        	<ul class="pagination">
-		        	<li class="page-item"><a class="page-link" href="search?currentPage=${p}-7">Previous</a></li>
-		        	<c:forEach  var="p" begin="${startPage}" end="${endPage}" step="1">
-						<c:if test="${p <= maxPage}">
-							<li class="page-item"><a class="page-link" href="search?currentPage=${p}">${p}</a></li>				
+		        	<li class="page-item"><a class="page-link" href="inquerysearch?currentPage=${InquerySearchVo.currentPage-7}&searchType=${InquerySearchVo.type}">Previous</a></li>
+		        	<c:forEach var="p" begin="${InquerySearchVo.currentPage}" end="${InquerySearchVo.endPage}" step="1">
+						<c:if test="${p <= InquerySearchVo.maxPage}">
+							<li class="page-item"><a class="page-link" href="inquerysearch?currentPage=${p}&searchType=${InquerySearchVo.type}">${p}</a></li>				
 						</c:if>
-					<li class="page-item"><a class="page-link" href="search?currentPage=${p}+7">Next</a></li>
 					</c:forEach>
+					<li class="page-item"><a class="page-link" href="inquerysearch?currentPage=${InquerySearchVo.currentPage+7}&searchType=${InquerySearchVo.type}">Next</a></li>
 		       		</ul>
 	    		</div>
-
 	</div>
 </body>
 </html>

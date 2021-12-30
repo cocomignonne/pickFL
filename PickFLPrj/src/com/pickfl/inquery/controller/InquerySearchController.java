@@ -24,11 +24,10 @@ public class InquerySearchController extends HttpServlet{
 		
 		req.setAttribute("InquerySearchVo", vo);
 		
-		List<InquerySearchVo> inqueryList = new InquerySearchService().search(vo);
+		List<InqueryVo> inqueryList = new InquerySearchService().search(vo);
 
-		
 		req.setAttribute("inqueryList", inqueryList);
 		
-		req.getRequestDispatcher("/WEB-INF/views/inquery/inquerySearch.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/inquery/inquery.jsp").forward(req, resp);
 	}
 }
