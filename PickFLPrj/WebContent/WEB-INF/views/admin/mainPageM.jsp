@@ -70,7 +70,7 @@
 
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon-box iconbox-yellow">
-                        <h1><a href="">보류</a></h1>
+                        <h1><a href="deliveryM">배송 관리</a></h1>
                         <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                     </div>
                 </div>

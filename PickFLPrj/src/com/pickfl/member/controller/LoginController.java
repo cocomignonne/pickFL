@@ -27,11 +27,11 @@ public class LoginController extends HttpServlet{
 		System.out.println(id);
 		System.out.println(pwd);
 		
-		MemberVo m = new MemberVo();
-		m.setId(id);
-		m.setPwd(pwd);
+		MemberVo loginMem = new MemberVo();
+		loginMem.setId(id);
+		loginMem.setPwd(pwd);
 		
-		MemberVo loginUser = new MemberService().login(m);
+		MemberVo loginUser = new MemberService().login(loginMem);
 		
 		if(loginUser != null) {
 			req.getSession().setAttribute("loginUser", loginUser);

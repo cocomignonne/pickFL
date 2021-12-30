@@ -17,12 +17,10 @@ public class IdDupCheckController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		int result = new MemberService().dupCheck(id);
-		System.out.println(id);
-		
+
 		if (result > 0) { 
 			resp.setContentType("text/html; charset=UTF-8");
 			resp.getWriter().print("중복된 아이디입니다.");
-			System.out.println("중복");
 		} else {
 			resp.setContentType("text/html; charset=UTF-8");
 			resp.getWriter().print("사용가능한 아이디입니다.");
