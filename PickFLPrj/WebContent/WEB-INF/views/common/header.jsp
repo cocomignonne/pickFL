@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -60,7 +59,8 @@
                     <li><a class="nav-link scrollto " href="#portfolio">나만의 꽃다발</a></li>
                     <li><a class="nav-link scrollto" href="#team">오늘의 꽃</a></li>
                     <li><a class="nav-link scrollto" href="#contact">리뷰</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">마이페이지</a></li>
+                    <li><a class="nav-link scrollto" href="inquery">마이페이지</a></li>
+                    
                     <li>
                     	<%if(request.getSession().getAttribute("loginUser") == null){%>
 						<a class="getstarted scrollto" href="login">로그인</a>

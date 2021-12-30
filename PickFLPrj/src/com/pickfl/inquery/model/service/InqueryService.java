@@ -10,4 +10,13 @@ import static com.pickfl.common.JDBCTemplate.*;
 
 public class InqueryService {
 
+	public void InqueryWrite(InqueryVo vo) {
+		Connection conn = getConnection();
+		inqueryInsert(conn, vo);
+		close(conn);
+	}
+
+	private void inqueryInsert(Connection conn, InqueryVo vo) {
+		new InqueryDao().insertInquery(conn, vo);
+	}
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pickfl.inquery.model.vo.InquerySearchVo;
+import com.pickfl.inquery.model.vo.InqueryVo;
 
 public class InquerySearchDao {
 	public int allMemberPage(Connection conn, String user, String type) {
@@ -79,7 +80,7 @@ public class InquerySearchDao {
 		return result;
 	}
 
-	public List<InquerySearchVo> selectInqueryList(Connection conn, InquerySearchVo vo) {
+	public List<InqueryVo> selectInqueryList(Connection conn, InquerySearchVo vo) {
 		int endNo = vo.getCurrentPage() * 7;
 		int startNo = endNo - 6;
 		
@@ -92,8 +93,8 @@ public class InquerySearchDao {
 				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE M_ID = ? AND Q_RESPONSE = ? AND Q_DELETED = 'N')"
 				+ "WHERE RNUM BETWEEN ? AND ?";
 		
-		List<InquerySearchVo> list = new ArrayList<InquerySearchVo>();
-		InquerySearchVo vo2;
+		List<InqueryVo> list = new ArrayList<InqueryVo>();
+		InqueryVo vo2;
 		
 		try {
 			if(vo.getType().equals("all")) {
@@ -105,7 +106,7 @@ public class InquerySearchDao {
 				
 				
 				while(rs.next()) {
-					vo2 = new InquerySearchVo();
+					vo2 = new InqueryVo();
 					vo2.setqNum(rs.getInt("Q_NO"));
 					vo2.setqTitle(rs.getString("Q_TITLE"));
 					vo2.setqContent(rs.getString("Q_CONTENT"));
@@ -124,7 +125,7 @@ public class InquerySearchDao {
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
-					vo2 = new InquerySearchVo();
+					vo2 = new InqueryVo();
 					vo2.setqNum(rs.getInt("Q_NO"));
 					vo2.setqTitle(rs.getString("Q_TITLE"));
 					vo2.setqContent(rs.getString("Q_CONTENT"));

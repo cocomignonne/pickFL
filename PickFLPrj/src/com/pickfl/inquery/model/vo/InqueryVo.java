@@ -6,10 +6,11 @@ public class InqueryVo {
 	
 	private int qNum;
 	private Timestamp createDate;
+	private String user;
 	private String qTitle;
 	private String qContent;
-	private char qDeleted;
-	private char qResponse;
+	private String qDeleted;
+	private String qResponse;
 	
 	public int getqNum() {
 		return qNum;
@@ -23,6 +24,12 @@ public class InqueryVo {
 	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
 	public String getqTitle() {
 		return qTitle;
 	}
@@ -35,17 +42,18 @@ public class InqueryVo {
 	public void setqContent(String qContent) {
 		this.qContent = qContent;
 	}
-	public char getqDeleted() {
+	public String getqDeleted() {
 		return qDeleted;
 	}
-	public void setqDeleted(char qDeleted) {
+	public void setqDeleted(String qDeleted) {
 		this.qDeleted = qDeleted;
 	}
-	public char getqResponse() {
+	public String getqResponse() {
 		return qResponse;
 	}
-	public void setqResponse(char qResponse) {
+	public void setqResponse(String qResponse) {
 		this.qResponse = qResponse;
 	}
+	
 	
 }

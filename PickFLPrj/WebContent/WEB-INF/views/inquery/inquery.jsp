@@ -15,13 +15,6 @@
     	window.name="inquiryContent"
         window.open("inqueryContnet", "inquirycontent", "height = 700, width = 650");
     }
-    function showOrHide(id){    // 작동안됨;
-        var box = document.getElementById(id);
-        if(box.getAttribute('display')!='block')// display 상태가 block이 아니라면 block로 설정 == show
-            box.setAttribute('display', 'block');
-        else// block라면 none로 설정 == hide
-            box.setAttribute('display', 'none');
-    }
 </script>
 </head>
 <body>

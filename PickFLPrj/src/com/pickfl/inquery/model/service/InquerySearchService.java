@@ -9,19 +9,20 @@ import java.util.List;
 
 import com.pickfl.inquery.model.dao.InquerySearchDao;
 import com.pickfl.inquery.model.vo.InquerySearchVo;
+import com.pickfl.inquery.model.vo.InqueryVo;
 
 
 public class InquerySearchService {
-	public List<InquerySearchVo> search(InquerySearchVo vo) {
+	public List<InqueryVo> search(InquerySearchVo vo) {
 		Connection conn = getConnection();
-		List<InquerySearchVo> list;
+		List<InqueryVo> list;
 		list = selectInquerySearch(conn, vo);
 		close(conn);
 		
 		return list;
 	}
 
-	private List<InquerySearchVo> selectInquerySearch(Connection conn, InquerySearchVo vo) {
+	private List<InqueryVo> selectInquerySearch(Connection conn, InquerySearchVo vo) {
 		return new InquerySearchDao().selectInqueryList(conn,vo);
 	}
 
