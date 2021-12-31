@@ -47,47 +47,26 @@
        <div>
            <div class="container">
                <div class="row">
-                   <p class="text-center fs-1 mb-5">상품 관리</p>           
+                   <p class="text-center fs-1 mb-5">REVIEW</p>           
                </div>
-               <form action="manage-product">
-	               <div class="row mb-4">
-	                   <div class="col-sm-4">
-	                       <h3>상품 목록</h3>
-	                   </div>
-	                   <div class="col-sm-5">
-	                       <div class="input-group mb-3">
-	                          <input type="text" class="form-control" name="searchName" placeholder="상품명 검색">
-	                          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
-	                        </div>
-	                   </div>
-	                   <div class="col-sm-3 text-end">
-	                       <a href="add-flower">
-	                           <input type="button" class="btn btn-success" value="꽃 등록">
-	                        </a>
-	                       <a href="#">
-	                           <input type="button" class="btn btn-success" value="소품 등록">
-	                       </a>
-	                   </div>
-	               </div>
-               </form>
                    <!-- table --> 
 		           <table class="table">
 		               <thead>
 		                   <tr>
-		                       <th scope="col">상품번호</td>
-		                       <th scope="col">이미지</td>
-		                       <th scope="col">상품명</td>
-		                       <th scope="col">상품가격</td>
-		                       <th scope="col">재고</td>
+		                       <th scope="col">리뷰번호</td>
+		                       <!-- <th scope="col">리뷰사진</td> -->
+		                       <th scope="col">리뷰제목</td>
+		                       <th scope="col">별점</td>
+		                       <th scope="col">작성일</td>
 		                   </tr>
 		               </thead>
-		               <c:forEach items="${productList}" var="p">
-			               <tr onClick="getParam(${p.product_no})">
-			                   <td>${p.product_no}</td>
-			                   <td><img src="image?fileName=${p.product_image}"></td>
-			                   <td>${p.product_name}</td>
-			                   <td>${p.product_price}</td>
-			                   <td>${p.product_stock}</td>
+		               <c:forEach items="${reviewList}" var="r">
+			               <tr onClick="getParam(${r.reviewNo})">
+			                   <td>${r.reviewNo}</td>
+			                   <%-- <td><img src="image?fileName=${p.product_image}"></td> --%>
+			                   <td>${r.reviewTitle}</td>
+			                   <td>${r.star}</td>
+			                   <td>${r.reviewDate}</td>
 			               </tr>
 		               </c:forEach>
 		           </table>
@@ -113,7 +92,7 @@
     
     <script type="text/javascript">
     	function getParam(no){
-    		location.href = 'manage-product-detail?no=' + no;
+    		location.href = 'review?reviewNo=' + no;
     	}
     </script>
 

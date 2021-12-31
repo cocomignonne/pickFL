@@ -56,9 +56,9 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto" href="#services">꽃다발</a></li>
-                    <li><a class="nav-link scrollto " href="#portfolio">나만의 꽃다발</a></li>
+                    <li><a class="nav-link scrollto " href="own-flower">나만의 꽃다발</a></li>
                     <li><a class="nav-link scrollto" href="#team">오늘의 꽃</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">리뷰</a></li>
+                    <li><a class="nav-link scrollto" href="review">리뷰</a></li>
                     <li><a class="nav-link scrollto" href="inquery">마이페이지</a></li>
                     
                     <li>
