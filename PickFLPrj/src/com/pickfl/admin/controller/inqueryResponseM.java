@@ -1,4 +1,4 @@
-package com.pickfl.inquery.controller;
+package com.pickfl.admin.controller;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.pickfl.inquery.model.service.InqueryService;
 import com.pickfl.inquery.model.vo.InqueryVo;
 
-@WebServlet("/inquerycontent")
-public class InqueryContentController extends HttpServlet{
+@WebServlet("/inqueryresponseM")
+public class inqueryResponseM extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String num = req.getParameter("qNum");

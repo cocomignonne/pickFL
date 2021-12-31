@@ -8,22 +8,22 @@
 <link rel="stylesheet" href="assets/css/inquery.css">
 <script>
     function inquiryWrite(){
-        window.name="inquiryWrite";
-        window.open("inqueryWrite", "inquirywrite", "height = 700, width = 650");
+    	window.name="inquiryWrite";
+        window.open("inqueryWrite", "InqueryWrite", "height = 700, width = 650");
     }
 </script>
 </head>
 <body>
 <header>
-	<span class="head_a"> 문의 하기</span>
+    문의 하기
 </header>
     <div class="left_bx">
-            <a href="inquery.jsp" class="qeustion" id="onlineConsult">내문의내역</a>
+            <a href="inquery.jsp" class="qeustion" id="onlineConsult">문의조회</a>
             <ul class="left_menu">
                 </ul>
             <ul class="my_menu"> 
                 <li>
-                    <a href="" onclick="inquiryWrite()">문의하기</a>
+                    <a href="" onclick="inqueryWrite()">문의하기</a>
                 </li>
                 <li>
                     <a href="main">HOME</a>
@@ -31,9 +31,9 @@
             </ul>
     </div>
     <div class="bodymargin">
-    <h2 class="h2class">My 문의 사항 내역</h2>
+    <h2 class="h2class">회원 문의사항 내역</h2>
     
-     <%@ include file="inquerySearch.jsp" %>
+     <%@ include file="inquerySearchM.jsp" %>
      
     </div>
 </body>
