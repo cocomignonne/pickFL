@@ -8,6 +8,10 @@
 <%
 	List<DeliveryMVo> dataList = (List<DeliveryMVo>)request.getAttribute("data");
 %>
+<%@page import="javax.script.Invocable" %>
+<%@page import="javax.script.ScriptEngine" %>
+<%@page import="javax.script.ScriptEngineManager" %>
+<%@page import="javax.script.ScriptException" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +41,7 @@
     <!-- Template Main CSS File -->
     <link rel="stylesheet" href="assets/css/deliveryM.css">
 	<style type="text/css">
-	.orderNo, .memberNo {
+	#orderNo, #memberNo {
 		border: none;
 		text-align: center;
 	}
@@ -49,20 +53,22 @@
     <%@ include file="../common/headerM.jsp" %>
 
     <section>
-        <form id="delivery-m-box" action="deliveryM" method="post">
             <span>배송 관리</span>
             <table id="delivery-m-tb">
                 <tr>
                     <th id="order-no">주문 번호</th>
                     <th id="mem-no">회원 번호</th>
                     <th id="delivery-status">배송 상태</th>
+                    <th id="save-status">상태 저장</th>
                 </tr>
-                <c:forEach items="${data}" var="d">
+                
+                <c:forEach items="${data}" var="d" >
 					<tr>
-						<td><input type="text" class="orderNo" name="orderNo" value=${d.orderNo}></td>
-						<td><input type="text" class="memberNo" name="memberNo" value=${d.memberNo}></td>
+        				<form id="delivery-m-box" action="deliveryM" method="post">
+						<td><input type="text" id="orderNo" name="orderNo" value=${d.orderNo}></td>
+						<td><input type="text" id="memberNo" name="memberNo" value=${d.memberNo}></td>
                     	<td>
-                    		<input type="button" name="delivery-status" value=${d.deliveryState}>
+                    		<input type="button" id="delivery-status" name="delivery-status" value=${d.deliveryState}>
                     		<select name="delivery-status-change">
         						<option selected>결제완료</option>
         						<option value="배송준비">배송준비</option>
@@ -70,13 +76,14 @@
         						<option value="배송완료">배송완료</option>
         					</select>
                     	</td>
+				        <td><input type="submit" id="submit" value="저장" onclick="getSiblingVal(${d.orderNo})"></td>
+				        </form>
 					</tr>
 				</c:forEach>
+				
             </table>
             <br><br>
-            <input type="submit" id="submit" value="저장">
-            <input type="reset" id="reset" onclick="location.href='mainM'" value="취소">
-        </form>
+            <input type="button" onclick="location.href='mainM'" value="Back">
     </section>
 
     </main><!-- End #main -->
@@ -94,7 +101,27 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+	<script type="text/javascript">
+		function getSiblingVal(a) {
+			
+			let o = document.getElementById('orderNo').value;
+			let m = document.getElementById('memberNo').value;
+			let dc = document.getElementById('delivery-status-change').value;
+			
+			o = $('#submit').prev().prev().prev().prev().val();
+			m = $('#submit').prev().prev().prev().val();
+			dc = $('#submit').prev().val();
+			
+			
+			
 
+			<%session.setAttribute("orderNo", request.getParameter("orderNo"));%>
+			<%session.setAttribute("memberNo", request.getParameter("memberNo"));%>
+			<%session.setAttribute("delivery-status-change", request.getParameter("delivery-status-change"));%>
+			
+			<%System.out.println(session.getAttribute("orderNo"));%>
+		}
+	</script>
 </body>
 
 </html>

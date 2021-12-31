@@ -148,7 +148,10 @@ section {
         width: 25%;
         color: #0000aa;
     }
-
+	
+	#chekk {
+		color: #72947ae5 !important;
+	}
     .basketdiv2 .point {
         width: 25%;
     }
