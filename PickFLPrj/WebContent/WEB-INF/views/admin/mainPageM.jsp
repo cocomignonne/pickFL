@@ -56,7 +56,7 @@
 
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
                     <div class="icon-box iconbox-red">
-                        <h1><a href="">상품 관리</a></h1>
+                        <h1><a href="manage-product">상품 관리</a></h1>
                         <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
                     </div>
                 </div>

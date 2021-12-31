@@ -36,6 +36,8 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -50,13 +52,14 @@
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-5">
-                    <form action="">
+                    <form action="cart">
                         <div id="contents">
                             <div id="simple">${p.product_simple}</div>
                             <h2><b>${p.product_name}</b></h2>
-                            <h3>${p.product_price}원</h3>
-                            <label><span>수량 : </span><input type="number" name="" id="" min="1" max="20" value="1"></label>
-                            <div>가격 : </div>
+                            <input type="hidden" name="product" value="${p}">
+                            <h3> <span id="price">${p.product_price}</span>원</h3>
+                            <label><span>수량 : </span><input type="number" name="order-num" id="num" min="1" max="20" value="1"></label>
+                            <div>가격 : <span name="order-price" id="result">${p.product_price}</span>원 </div>
                             <input type="submit" class="btn btn-success" value="담기"></input> 
                         </div>
                     </form>
@@ -85,7 +88,15 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+	<script type="text/javascript">
+		$("#num").change(function(){
+			var num = $("#num").val();
+			var price = '${p.product_price}';
+			var result = num * price;
+			$("#result").text(result);
+			
+		});
+	</script>
 </body>
 
 </html>

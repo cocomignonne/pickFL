@@ -49,7 +49,7 @@
                <div class="row">
                    <p class="text-center fs-1 mb-5">상품 관리</p>           
                </div>
-               <form action="/searchByName">
+               <form action="manage-product">
 	               <div class="row mb-4">
 	                   <div class="col-sm-4">
 	                       <h3>상품 목록</h3>

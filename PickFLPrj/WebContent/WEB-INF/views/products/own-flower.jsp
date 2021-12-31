@@ -129,7 +129,7 @@
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-1">
-            <div class="float-md-start"><a href="#"><h5>꽃</h5></a></div>
+            <div class="float-md-start"><a href="own-flower"><h5>꽃</h5></a></div>
             <div class="float-md-end"><a href="#"><h5>장식</h5></a></div>
           </div>
         </div>

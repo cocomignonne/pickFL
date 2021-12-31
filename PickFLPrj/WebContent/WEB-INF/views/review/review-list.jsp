@@ -47,28 +47,28 @@
        <div>
            <div class="container">
                <div class="row">
-                   <p class="text-center fs-1 mb-5">상품 관리</p>           
+                   <p class="text-center fs-1 mb-5">REVIEW</p>           
                </div>
                    <!-- table --> 
 		           <table class="table">
 		               <thead>
 		                   <tr>
 		                       <th scope="col">리뷰번호</td>
-		                       <th scope="col">리뷰사진</td>
+		                       <!-- <th scope="col">리뷰사진</td> -->
 		                       <th scope="col">리뷰제목</td>
 		                       <th scope="col">별점</td>
 		                       <th scope="col">작성일</td>
 		                   </tr>
 		               </thead>
-<%-- 		               <c:forEach items="${reviewList}" var="r">
-			               <tr onClick="getParam(${p.product_no})">
-			                   <td>${p.product_no}</td>
-			                   <td><img src="image?fileName=${p.product_image}"></td>
-			                   <td>${p.product_name}</td>
-			                   <td>${p.product_price}</td>
-			                   <td>${p.product_stock}</td>
+		               <c:forEach items="${reviewList}" var="r">
+			               <tr onClick="getParam(${r.reviewNo})">
+			                   <td>${r.reviewNo}</td>
+			                   <%-- <td><img src="image?fileName=${p.product_image}"></td> --%>
+			                   <td>${r.reviewTitle}</td>
+			                   <td>${r.star}</td>
+			                   <td>${r.reviewDate}</td>
 			               </tr>
-		               </c:forEach> --%>
+		               </c:forEach>
 		           </table>
            </div>
        </div>
@@ -92,7 +92,7 @@
     
     <script type="text/javascript">
     	function getParam(no){
-    		location.href = 'manage-product-detail?no=' + no;
+    		location.href = 'review?reviewNo=' + no;
     	}
     </script>
 

@@ -27,7 +27,7 @@ public class ProductManageDetailController extends HttpServlet{
 		req.setAttribute("no", product_no);
 		req.setAttribute("filePath", filePath);
 		req.setAttribute("p", p);
-
+		
 		req.getRequestDispatcher("/WEB-INF/views/products/product-manage-detail.jsp").forward(req, resp);
 	}
 
