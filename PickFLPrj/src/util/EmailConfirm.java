@@ -16,7 +16,7 @@ public class EmailConfirm{
 	public String connectEmail(String email){
 		String to1 = email; // 인증위해 사용자가 입력한 이메일주소
 		String host="smtp.naver.com"; // smtp 서버
-		String subject = "PickFL 인증정보 전달 메일입니다."; // 보내는 제목
+		String subject = "PickFL 인증정보 전달 메일입니다."; //제목
 		String fromName = "PickFL"; //보내는 이름
 		String from = "skekkjim@naver.com"; // 보내는 사람 계정
 		String authNum = EmailConfirm.authNum(); // 인증번호 난수
@@ -42,7 +42,7 @@ public class EmailConfirm{
 			Session mailSession 
 	           = Session.getDefaultInstance(props,new javax.mail.Authenticator(){
 				    protected PasswordAuthentication getPasswordAuthentication(){
-					    return new PasswordAuthentication("skekkjim@naver.com", "비번");
+					    return new PasswordAuthentication("skekkjim@naver.com", "roqkfwk1#");
 				}
 			});
 			

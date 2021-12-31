@@ -17,11 +17,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway", sans-serif;
 }
 
-
-
 #delivery-m-box {
     text-align: center;
     margin: auto;
+    width: 60% !important;
 }
 #delivery-m-box span {
     font-size: 2.5em;
@@ -49,13 +48,9 @@ td label input {
     margin-left: 7px;
     margin-right: 7px;
 }
-#delivery-status {
-    width: 20%;
-}
 #mem-no, #order-no {
     width: 40%;
 }
-
 #submit, #reset {
     margin-left: 10px;
     margin-right: 10px;

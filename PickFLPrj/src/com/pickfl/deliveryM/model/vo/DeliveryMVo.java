@@ -24,4 +24,5 @@ public class DeliveryMVo {
 		this.deliveryState = deliveryState;
 	}
 	
+	
 }

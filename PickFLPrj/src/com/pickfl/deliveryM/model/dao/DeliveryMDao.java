@@ -52,18 +52,22 @@ public class DeliveryMDao {
 	
 //	배송상태 변경
 
-	public int updateDSQuery(Connection conn, DeliveryMVo ds) {
-
-			String sql = "UPDATE ORDERLIST SET DELIVERY_STATE = ? WHERE ORDER_NO = ?";
+	public int updateDSQuery(Connection conn, DeliveryMVo ds, List<DeliveryMVo> selectInfoList) {
 			PreparedStatement pstmt = null;
 
+			String sql = "UPDATE ORDERLIST SET DELIVERY_STATE = ? WHERE ORDER_NO = ? AND MEMBER_NO = ?";
+
 			int result = 0;
+			
+			System.out.println(ds.getDeliveryState());
+			System.out.println(ds.getOrderNo());
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
 
 				pstmt.setString(1, ds.getDeliveryState());
-				pstmt.setInt(2, ds.getOrderNo());;
+				pstmt.setInt(2, ds.getOrderNo());
+				pstmt.setInt(3, ds.getMemberNo());
 
 				result = pstmt.executeUpdate();
 
@@ -82,5 +86,39 @@ public class DeliveryMDao {
 			
 			return result;
 		}
+
+	public List<DeliveryMVo> selectInfo(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DeliveryMVo mvoDs = null;
+		
+		List<DeliveryMVo> selectInfoList = new ArrayList<DeliveryMVo>();
+		String query = "SELECT * FROM ORDERLIST";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				mvoDs = new DeliveryMVo();
+				int memberNo = rs.getInt("MEMBER_NO");
+				int orderNo = rs.getInt("ORDER_NO");
+				String deliveryState = rs.getString("DELIVERY_STATE");
+				
+				mvoDs.setMemberNo(memberNo);
+				mvoDs.setOrderNo(orderNo);
+				mvoDs.setDeliveryState(deliveryState);
+				
+			System.out.println(rs.getInt("ORDER_NO"));
+			
+				selectInfoList.add(mvoDs);
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return selectInfoList;
+	}
 }
 

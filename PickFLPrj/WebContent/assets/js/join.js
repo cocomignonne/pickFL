@@ -14,9 +14,6 @@ idDupCheck.addEventListener('click', () => {
 	idCheck = 1;
 })
 
-/*emailDupCheck.addEventListener('click', () => {
-	emaildupCheck = 1;
-})*/
 
 sendEmailBtn.addEventListener('click', () => {
 	emailnumCheck = 1;
@@ -100,14 +97,12 @@ function confirmemail(emailconfirm_value, authNum){
 	//값이없거나 인증코드불일치
 	if(!emailconfirm_value || emailconfirm_value != authNum){
 		alert("인증번호가 맞지않습니다.");
-		emailnumCheck = 0;
 		self.close();
 	} else if(emailconfirm_value == authNum) { // 일치하는 경우
 		alert("인증번호가 일치합니다.");
 		emailconfirm_value = "";
 		self.close();
 		opener.document.insertform.emailconfirm_value.value = 1;
-		emailnumCheck = 1;
 	}
 }
 
@@ -179,7 +174,7 @@ function validate() {
 				return false;
 			}
 	
-			if (emailnumCheck === 0) {
+			if (emailRegError.innerText.charAt(6) === '맞') {
 				alert('이메일 인증을 해주세요.');
 				return false;
 			}
