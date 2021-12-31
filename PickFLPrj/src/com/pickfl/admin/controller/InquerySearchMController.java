@@ -1,4 +1,4 @@
-package com.pickfl.inquery.controller;
+package com.pickfl.admin.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,15 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.pickfl.inquery.model.vo.*;
-import com.pickfl.inquery.model.dao.*;
-import com.pickfl.inquery.model.service.*;
 
-@WebServlet("/inquerysearch")
-public class InquerySearchController extends HttpServlet{
+import com.pickfl.inquery.model.service.InquerySearchMService;
+import com.pickfl.inquery.model.vo.InqueryVo;
+import com.pickfl.inquery.model.vo.InquerySearchVo;
+
+
+@WebServlet("/inquerysearchM")
+public class InquerySearchMController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String user = "asdasd";
+		String user = "admin3";
 		String type = req.getParameter("searchType");
 		String page = req.getParameter("currentPage");
 		
@@ -24,13 +26,10 @@ public class InquerySearchController extends HttpServlet{
 		
 		req.setAttribute("InquerySearchVo", vo);
 		
-		List<InqueryVo> inqueryList = new InquerySearchService().search(vo);
+		List<InqueryVo> inqueryList = new InquerySearchMService().search(vo);
 
 		req.setAttribute("inqueryList", inqueryList);
 		
-		if(user.equals("admin3"))
-			req.getRequestDispatcher("/WEB-INF/views/admin/inqueryM.jsp").forward(req, resp);
-		else
-			req.getRequestDispatcher("/WEB-INF/views/inquery/inquery.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/inqueryM.jsp").forward(req, resp);
 	}
 }

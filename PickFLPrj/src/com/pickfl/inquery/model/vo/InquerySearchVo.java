@@ -28,7 +28,12 @@ public class InquerySearchVo {
 
 	private int maxCount(String user, String type) {
 		int maxcount;
-		if(user.equals("admin"))
+		
+		if(type == null) {
+			return maxcount=1;
+		}
+		
+		if(user.equals("admin3"))
 			maxcount = new InquerySearchService().maxCountPage(type);
 		else 
 			maxcount = new InquerySearchService().memberCountPage(user, type);

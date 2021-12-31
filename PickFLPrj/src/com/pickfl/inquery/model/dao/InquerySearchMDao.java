@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pickfl.inquery.model.vo.InquerySearchVo;
 import com.pickfl.inquery.model.vo.InqueryVo;
+import com.pickfl.inquery.model.vo.InquerySearchVo;
 
-public class InquerySearchDao {
+public class InquerySearchMDao {
 	public int allMemberPage(Connection conn, String user, String type) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -52,8 +52,7 @@ public class InquerySearchDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT COUNT(*) AS C FROM QUESTION";
-		String sql2 = "SELECT COUNT(*) AS C FROM QUESTION WHERE Q_DELETED = Y";
-		String sql3 = "SELECT COUNT(*) AS C FROM QUESTION WHERE Q_RESPONSE = ?";
+		String sql2 = "SELECT COUNT(*) AS C FROM QUESTION WHERE Q_RESPONSE = ?";
 		int result = 0;
 		
 		try {
@@ -64,7 +63,7 @@ public class InquerySearchDao {
 				rs.next();
 				result = Integer.parseInt(rs.getString("C"));
 			}else {
-				pstmt= conn.prepareStatement(sql3);
+				pstmt= conn.prepareStatement(sql2);
 				pstmt.setString(1,type);
 				rs = pstmt.executeQuery();
 				
@@ -81,17 +80,20 @@ public class InquerySearchDao {
 		return result;
 	}
 
-	public List<InqueryVo> selectInqueryList(Connection conn, InquerySearchVo vo) {
+	public List<InqueryVo> selectInqueryMList(Connection conn, InquerySearchVo vo) {
 		int endNo = vo.getCurrentPage() * 7;
 		int startNo = endNo - 6;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM"
-				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE M_ID = ? AND Q_DELETED = 'N')"
+				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE Q_DELETED = 'N')"
 				+ "WHERE RNUM BETWEEN ? AND ?";
 		String sql2 = "SELECT * FROM"
-				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE M_ID = ? AND Q_RESPONSE = ? AND Q_DELETED = 'N')"
+				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE Q_RESPONSE = ? AND Q_DELETED = 'N')"
+				+ "WHERE RNUM BETWEEN ? AND ?";
+		String sql3 = "SELECT * FROM"
+				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE Q_DELETED = 'Y')"
 				+ "WHERE RNUM BETWEEN ? AND ?";
 		
 		List<InqueryVo> list = new ArrayList<InqueryVo>();
@@ -100,9 +102,8 @@ public class InquerySearchDao {
 		try {
 			if(vo.getType().equals("all")) {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1,vo.getUser());
-				pstmt.setInt(2, startNo);
-				pstmt.setInt(3, endNo);
+				pstmt.setInt(1, startNo);
+				pstmt.setInt(2, endNo);
 				rs = pstmt.executeQuery();
 				
 				
@@ -113,16 +114,34 @@ public class InquerySearchDao {
 					vo2.setqContent(rs.getString("Q_CONTENT"));
 					vo2.setCreateDate(rs.getTimestamp("Q_CREATE"));
 					vo2.setqResponse(rs.getString("Q_RESPONSE"));
+					vo2.setUser(rs.getString("M_ID"));
+					
+					list.add(vo2);
+				}
+			}else if(vo.getType().equals("NN")){
+				pstmt = conn.prepareStatement(sql3);
+				pstmt.setInt(1, startNo);
+				pstmt.setInt(2, endNo);
+				rs = pstmt.executeQuery();
+				
+				
+				while(rs.next()) {
+					vo2 = new InqueryVo();
+					vo2.setqNum(rs.getInt("Q_NO"));
+					vo2.setqTitle(rs.getString("Q_TITLE"));
+					vo2.setqContent(rs.getString("Q_CONTENT"));
+					vo2.setCreateDate(rs.getTimestamp("Q_CREATE"));
+					vo2.setqResponse(rs.getString("Q_RESPONSE"));
+					vo2.setUser(rs.getString("M_ID"));
 					
 					list.add(vo2);
 				}
 			}
 			else {
 				pstmt = conn.prepareStatement(sql2);
-				pstmt.setString(1,vo.getUser());
-				pstmt.setString(2,vo.getType());
-				pstmt.setInt(3, startNo);
-				pstmt.setInt(4, endNo);
+				pstmt.setString(1,vo.getType());
+				pstmt.setInt(2, startNo);
+				pstmt.setInt(3, endNo);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
@@ -132,6 +151,7 @@ public class InquerySearchDao {
 					vo2.setqContent(rs.getString("Q_CONTENT"));
 					vo2.setCreateDate(rs.getTimestamp("Q_CREATE"));
 					vo2.setqResponse(rs.getString("Q_RESPONSE"));
+					vo2.setUser(rs.getString("M_ID"));
 					
 					list.add(vo2);
 				}

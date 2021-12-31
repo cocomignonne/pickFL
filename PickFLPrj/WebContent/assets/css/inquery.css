@@ -2,9 +2,11 @@ input[type="submit"]{font-family:FontAwesome;}
 @import url('https://fonts.googleapis.com/css2?family=Dokdo&family=Roboto+Mono&display=swap');
 
 header{
-border: 0px solid #000000; margin: 0 auto; padding-top: 20px; padding-right:8%;
-height: 90px; background-color: #303030; color: #ffffff; text-align:right; font-size: 25pt; font-family: 'Roboto Condensed', sans-serif;
+border: 0px solid rgb(128, 255, 128); margin: 0 auto; padding-top: 20px; padding-right:8%;
+height: 90px; background-color: #8080c0; color: #ffffff; text-align:right; font-size: 25pt; font-family: 'Roboto Condensed', sans-serif;
 }
+
+.head_a{ padding-top:60px; margin-right: 40px;}
 
 .left_bx{float: left; width:201px;height:900px;background:right top #f9fafa; z-index:2; margin-top:40px;}
 

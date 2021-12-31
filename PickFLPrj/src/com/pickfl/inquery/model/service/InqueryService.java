@@ -19,4 +19,15 @@ public class InqueryService {
 	private void inqueryInsert(Connection conn, InqueryVo vo) {
 		new InqueryDao().insertInquery(conn, vo);
 	}
+
+	public InqueryVo searchContent(InqueryVo vo) {
+		Connection conn = getConnection();
+		vo = inqueryContent(conn,vo);
+		close(conn);
+		return vo;
+	}
+
+	private InqueryVo inqueryContent(Connection conn, InqueryVo vo) {
+		return new InqueryDao().searchInquery(conn, vo);
+	}
 }
