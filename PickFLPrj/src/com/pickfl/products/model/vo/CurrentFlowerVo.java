@@ -14,6 +14,13 @@ public class CurrentFlowerVo {
 		this.orderNum = orderNum;
 		this.productPrice = productPrice;
 	}
+	
+	public CurrentFlowerVo(String productName, int orderNum, int productPrice) {
+		this.productName = productName;
+		this.orderNum = orderNum;
+		this.productPrice = productPrice;
+	}
+
 	public int getMemberNo() {
 		return memberNo;
 	}

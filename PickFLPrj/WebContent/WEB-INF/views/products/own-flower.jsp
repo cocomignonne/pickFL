@@ -196,19 +196,19 @@
 		  	<form action="">
 			    <table class="table">
 			    	<tr>
-			    		<td>1</td>
 			    		<td>선택한 꽃</td>
 			    		<td>수량</td>
 			    		<td>가격</td>
 			    		<td></td>
 			    	</tr>
-			    	<tr>
-			    		<td>1</td>
-			    		<td>수선화</td>
-			    		<td>2</td>
-			    		<td>2500</td>
-			    		<td> <button>삭제</button> </td>
-			    	</tr>
+			    	<c:forEach items="${list}" var="l">
+				    	<tr>
+				    		<td>${l.productName}</td>
+				    		<td>${l.orderNum}</td>
+				    		<td>${l.productPrice}</td>
+				    		<td> <button>삭제</button> </td>
+				    	</tr>
+			    	</c:forEach>
 		    	</table>
 		  	</form>
 		    
