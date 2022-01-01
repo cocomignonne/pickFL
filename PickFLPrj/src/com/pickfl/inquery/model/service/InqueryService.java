@@ -30,4 +30,15 @@ public class InqueryService {
 	private InqueryVo inqueryContent(Connection conn, InqueryVo vo) {
 		return new InqueryDao().searchInquery(conn, vo);
 	}
+
+	public String ResponseContent(InqueryVo vo) {
+		Connection conn = getConnection();
+		String response = searchResponse(conn, vo);
+		close(conn);
+		return response;
+	}
+
+	private String searchResponse(Connection conn, InqueryVo vo) {
+		return new InqueryDao().searchResponse(conn, vo);
+	}
 }

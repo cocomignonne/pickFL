@@ -21,8 +21,12 @@ public class InqueryContentController extends HttpServlet{
 		vo.setqNum(Integer.parseInt(num));
 		
 		vo = new InqueryService().searchContent(vo);
+		if(vo.getqResponse().equals("Y")) {
+			String content = new InqueryService().ResponseContent(vo);
+			vo.setResponseContent(content);
+		}
 		req.setAttribute("vo", vo);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/inqueryResponseM.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/inquery/inqueryContent.jsp").forward(req, resp);
 	}
 }

@@ -59,4 +59,30 @@ public class InqueryDao {
 		return vo;
 	}
 
+	public String searchResponse(Connection conn, InqueryVo vo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM QUESTION_RESPONSE"
+				+ " WHERE Q_NO = ?";
+		String resultContent = "";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getqNum());
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			resultContent = rs.getString("R_CONTENT");
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return resultContent;
+	}
+
 }
