@@ -27,15 +27,10 @@
                     </tr>
                 </table>
                 
-                <table class="inquirytable">
-                	<tr class="inquiry_head2">
-                		<th>답변제목<!-- 답변제목과 답변자의 id출력 --></th>
-                	</tr>
-                </table>
                 <hr>
                 <table class="inquirytable">
                 	<tr class="inquiry_body">
-                		<td><img src="assets/img/arrow2.png" class="img_icon"/> &nbsp; 답변 내용 :</td>
+                		<td><img src="assets/img/arrow2.png" class="img_icon"/> &nbsp; ${vo.responseContent}</td>
                 	</tr>
                 </table>
             </div>

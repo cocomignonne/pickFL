@@ -11,6 +11,7 @@ public class InqueryVo {
 	private String qContent;
 	private String qDeleted;
 	private String qResponse;
+	private String responseContent="";
 	
 	public int getqNum() {
 		return qNum;
@@ -53,6 +54,12 @@ public class InqueryVo {
 	}
 	public void setqResponse(String qResponse) {
 		this.qResponse = qResponse;
+	}
+	public String getResponseContent() {
+		return responseContent;
+	}
+	public void setResponseContent(String responseContent) {
+		this.responseContent = responseContent;
 	}
 	
 	

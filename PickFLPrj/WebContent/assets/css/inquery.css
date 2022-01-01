@@ -41,4 +41,7 @@ height: 90px; background-color: #8080c0; color: #ffffff; text-align:right; font-
     display:block;
 }
 
-
+.divbutton{
+	float:right;
+	margin-right:10%;
+}
