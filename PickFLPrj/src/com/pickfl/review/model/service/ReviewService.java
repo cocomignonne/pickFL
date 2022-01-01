@@ -29,7 +29,7 @@ public class ReviewService {
 
 	public ReviewVo selectByNo(int no) {
 		ReviewVo r = null;
-		Connection conn = null;
+		Connection conn = getConnection();
 		
 		try {
 			r = new ReviewDao().selectByNo(conn, no);
@@ -44,7 +44,7 @@ public class ReviewService {
 
 	public String getMemberId(int orderNo) {
 		String result = "";
-		Connection conn = null;
+		Connection conn = getConnection();
 		
 		try {
 			result = new OrderDao().getMemberId(conn, orderNo);

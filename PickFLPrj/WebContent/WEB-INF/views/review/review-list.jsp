@@ -50,7 +50,7 @@
                    <p class="text-center fs-1 mb-5">REVIEW</p>           
                </div>
                    <!-- table --> 
-		           <table class="table">
+		           <table class="table table-hover">
 		               <thead>
 		                   <tr>
 		                       <th scope="col">리뷰번호</td>
@@ -65,7 +65,25 @@
 			                   <td>${r.reviewNo}</td>
 			                   <%-- <td><img src="image?fileName=${p.product_image}"></td> --%>
 			                   <td>${r.reviewTitle}</td>
-			                   <td>${r.star}</td>
+			                   <td>
+				                   <span>
+	                        	<c:if test="${r.star == 1}">                        	
+	                        		⭐✩✩✩✩
+	                        	</c:if>
+	                        	<c:if test="${r.star == 2}">                        	
+	                        		⭐⭐✩✩✩
+	                        	</c:if>
+	                        	<c:if test="${r.star == 3}">                        	
+	                        		⭐⭐⭐✩✩
+	                        	</c:if>
+	                        	<c:if test="${r.star == 4}">                        	
+	                        		⭐⭐⭐⭐✩
+	                        	</c:if>
+	                        	<c:if test="${r.star == 5}">                        	
+	                        		⭐⭐⭐⭐⭐
+	                        	</c:if>
+	                        	</span> 
+			                   </td>
 			                   <td>${r.reviewDate}</td>
 			               </tr>
 		               </c:forEach>
