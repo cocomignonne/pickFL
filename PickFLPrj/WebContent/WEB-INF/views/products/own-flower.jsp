@@ -184,13 +184,45 @@
         </div>
       </div>
       
+      
+      <button class="back-to-top d-flex align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-archive"></button>
+
+		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+		  <div class="offcanvas-header">
+		    <h5 id="offcanvasRightLabel">현재 꽃다발</h5>
+		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		  </div>
+		  <div class="offcanvas-body">
+		  	<form action="">
+			    <table class="table">
+			    	<tr>
+			    		<td>1</td>
+			    		<td>선택한 꽃</td>
+			    		<td>수량</td>
+			    		<td>가격</td>
+			    		<td></td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>수선화</td>
+			    		<td>2</td>
+			    		<td>2500</td>
+			    		<td> <button>삭제</button> </td>
+			    	</tr>
+		    	</table>
+		  	</form>
+		    
+		    <button class="btn-success"> Pick! </button>
+		    
+		  </div><!-- offcanvas-body end -->
+		</div>
     </section>
 
   </main><!-- End #main -->
   
   <%@include file="/WEB-INF/views/common/footer.jsp" %>
 
- 
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-archive"></i></i></a> -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->

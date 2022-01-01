@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,23 +69,33 @@
                     <div class="row mb-3">
                         <label for="rtitle" class="col-sm-2 col-form-label title">제목</label>
                         <div class="col-sm-8"> ${r.reviewTitle}</div>
-                        <div class="col-sm-2 align-self-center" style="text-align: right;">별점 ⭐⭐⭐⭐⭐</div>
+                        <div class="col-sm-2 align-self-center" style="text-align: right;">
+                        별점 <span>
+                        	<c:if test="${r.star == 1}">                        	
+                        		⭐✩✩✩✩
+                        	</c:if>
+                        	<c:if test="${r.star == 2}">                        	
+                        		⭐⭐✩✩✩
+                        	</c:if>
+                        	<c:if test="${r.star == 3}">                        	
+                        		⭐⭐⭐✩✩
+                        	</c:if>
+                        	<c:if test="${r.star == 4}">                        	
+                        		⭐⭐⭐⭐✩
+                        	</c:if>
+                        	<c:if test="${r.star == 5}">                        	
+                        		⭐⭐⭐⭐⭐
+                        	</c:if>
+                        	</span> 
+                        </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="rcontent" class="col-sm-2 col-form-label title">내용</label>
+                        <label for="rcontent" class="col-sm-2 col-form-label title" >내용</label>
                         <div class="col-sm-10">
                         ${r.reviewContent}
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-2 align-self-center title">첨부파일</div>
-                        <div class="col-sm-10">
-                            <div class="input-group">
-                                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="row mb-3">
 
                         <div class="col-sm">
@@ -99,7 +110,9 @@
                             <input type="submit" class="btn btn-success " value="등록하기">
                         </div>
                         <div class="col-sm">
-                            <input type="reset" class="btn btn-outline-dark" value="취소하기">
+                        	<a href="review">
+	                            <input type="button" class="btn btn-outline-dark" value="목록으로">
+                        	</a>
                         </div>
                     </div>
                 </div>

@@ -52,11 +52,13 @@
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-5">
-                    <form action="cart">
+                    <form action="current-flower">
                         <div id="contents">
                             <div id="simple">${p.product_simple}</div>
                             <h2><b>${p.product_name}</b></h2>
-                            <input type="hidden" name="product" value="${p}">
+                            <input type="hidden" name="pno" value="${p.product_no}">
+                            <input type="hidden" name="pname" value="${p.product_name}">
+                            <input type="hidden" name="price" value="${p.product_price}">
                             <h3> <span id="price">${p.product_price}</span>원</h3>
                             <label><span>수량 : </span><input type="number" name="order-num" id="num" min="1" max="20" value="1"></label>
                             <div>가격 : <span name="order-price" id="result">${p.product_price}</span>원 </div>

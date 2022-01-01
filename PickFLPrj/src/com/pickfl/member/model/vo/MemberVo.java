@@ -92,5 +92,11 @@ public class MemberVo {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "MemberVo [memberNo=" + memberNo + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email
+				+ ", emailHash=" + emailHash + ", emailChecked=" + emailChecked + ", birth=" + birth + ", joinDate="
+				+ joinDate + ", role=" + role + "]";
+	}
 }
