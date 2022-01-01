@@ -133,12 +133,14 @@ public class MemberDao {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
+				int memberNo = rs.getInt("MEMBER_NO");
 				String id = rs.getString("MEMBER_ID");
 				String pwd = rs.getString("MEMBER_PWD");
 				String name = rs.getString("MEMBER_NAME");
 				
 				selectedMember = new MemberVo();
 				
+				selectedMember.setMemberNo(memberNo);
 				selectedMember.setId(id);
 				selectedMember.setPwd(pwd);
 				selectedMember.setName(name);
