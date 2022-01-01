@@ -117,9 +117,6 @@
 				        
 	<script type="text/javascript">
 		function getSiblingVal(t) {
-			console.log(t);	     
-			console.log(t.value);
-			console.log(t.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.childNodes[3].value);	     
 			
 	        let orderNo = t.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.childNodes[1];
 	        let memberNo = t.parentNode.previousElementSibling.previousElementSibling.childNodes[1];
