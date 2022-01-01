@@ -2,7 +2,6 @@ package com.pickfl.admin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.pickfl.deliveryM.model.service.DeliveryMService;
@@ -28,25 +28,30 @@ public class DeliveryMController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		/*
+		 * HttpSession session = req.getSession();
+		 * 
+		 * String deliveryStateChange = (String)
+		 * session.getAttribute("delivery-status-changeVal"); String orderNo = (String)
+		 * session.getAttribute("orderNoVal"); String memberNo = (String)
+		 * session.getAttribute("memberNoVal");
+		 * 
+		 * System.out.println(deliveryStateChange); System.out.println(orderNo);
+		 * System.out.println(memberNo);
+		 */
+		String orderNo = req.getParameter("orderNoVal");
+		String memberNo = req.getParameter("memberNoVal");
+		String deliveryStatusChange = req.getParameter("deliveryStatusChangeVal");
 		
-		 HttpSession session = req.getSession(); 
-		 String deliveryStateChange = (String)req.getSession().getAttribute("delivery-status-change"); 
-		 int orderNo = (int)req.getSession().getAttribute("orderNo"); 
-		 int memberNo = (int)req.getSession().getAttribute("memberNo");
-		 
-//		 System.out.println(deliveryState);
-		
-//		 String deliveryStateChange = req.getParameter("delivery-status-change"); 
-//		 int orderNo = Integer.parseInt(req.getParameter("orderNo")); 
-//		 int memberNo = Integer.parseInt(req.getParameter("memberNo"));
-		 
-		 System.out.println(deliveryStateChange);
+		System.out.println(orderNo);
+		System.out.println(memberNo);
+		System.out.println(deliveryStatusChange);
 		
 		DeliveryMVo ds = new DeliveryMVo();
 		
-		ds.setMemberNo(memberNo);
-		ds.setOrderNo(orderNo);
-		ds.setDeliveryState(deliveryStateChange);
+		ds.setMemberNo(Integer.parseInt(memberNo));
+		ds.setOrderNo(Integer.parseInt(orderNo));
+		ds.setDeliveryState(deliveryStatusChange);
 		
 		
 		int result = new DeliveryMService().updateDS(ds);
@@ -59,7 +64,6 @@ public class DeliveryMController extends HttpServlet {
 			out.println("<script>alert('배송상태가 변경되었습니다.'); location.href='deliveryM';</script>");
 			 
 			out.flush();
-			session.invalidate();
 		}else {
 			resp.setContentType("text/html; charset=UTF-8");
 			 
@@ -68,7 +72,6 @@ public class DeliveryMController extends HttpServlet {
 			out.println("<script>alert('배송상태가 변경되지 않았습니다.'); location.href='deliveryM';</script>");
 			 
 			out.flush();
-			session.invalidate();
 		}
 		
 	}

@@ -6,6 +6,8 @@
 	<meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<title>Cart</title>
+	
+    <link href="assets/img/favicon.png" rel="icon">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/cart.css" >
 	<script type="text/javascript" src="assets/js/cart.js"></script> 
@@ -130,7 +132,7 @@
             <div id="goorder" class="">
                 <div class="clear"></div>
                 <div class="buttongroup center-align cmd">
-                    <a href="javascript:void(0);">선택한 상품 주문</a>
+                    <a href="order">선택한 상품 주문</a>
                 </div>
             </div>
         </form>

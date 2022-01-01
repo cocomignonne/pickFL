@@ -8,10 +8,6 @@
 <%
 	List<DeliveryMVo> dataList = (List<DeliveryMVo>)request.getAttribute("data");
 %>
-<%@page import="javax.script.Invocable" %>
-<%@page import="javax.script.ScriptEngine" %>
-<%@page import="javax.script.ScriptEngineManager" %>
-<%@page import="javax.script.ScriptException" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,11 +37,15 @@
     <!-- Template Main CSS File -->
     <link rel="stylesheet" href="assets/css/deliveryM.css">
 	<style type="text/css">
-	#orderNo, #memberNo {
+	#orderNo, #memberNo, #delivery-status-changeVal, #orderNoVal, #memberNoVal {
 		border: none;
 		text-align: center;
 	}
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+
+	
 </head>
 
 <body>
@@ -53,6 +53,7 @@
     <%@ include file="../common/headerM.jsp" %>
 
     <section>
+        <div id="delivery-m-box" >
             <span>배송 관리</span>
             <table id="delivery-m-tb">
                 <tr>
@@ -64,26 +65,37 @@
                 
                 <c:forEach items="${data}" var="d" >
 					<tr>
-        				<form id="delivery-m-box" action="deliveryM" method="post">
-						<td><input type="text" id="orderNo" name="orderNo" value=${d.orderNo}></td>
-						<td><input type="text" id="memberNo" name="memberNo" value=${d.memberNo}></td>
-                    	<td>
-                    		<input type="button" id="delivery-status" name="delivery-status" value=${d.deliveryState}>
-                    		<select name="delivery-status-change">
-        						<option selected>결제완료</option>
-        						<option value="배송준비">배송준비</option>
-        						<option value="배송중">배송중</option>
-        						<option value="배송완료">배송완료</option>
-        					</select>
-                    	</td>
-				        <td><input type="submit" id="submit" value="저장" onclick="getSiblingVal(${d.orderNo})"></td>
-				        </form>
+                		<form action="deliveryM" method="post" name="deliveryStatusM">
+							<td>
+								<input type="text" id="orderNo" name="orderNo" value="${d.orderNo}">
+								<input type="hidden" id="orderNoVal" name="orderNoVal" value="">
+							</td>
+						
+							<td>
+								<input type="text" id="memberNo" name="memberNo" value="${d.memberNo}">
+								<input type="hidden" id="memberNoVal" name="memberNoVal" value="">
+							</td>
+						
+                    		<td>
+                    			<input type="button" id="deliveryStatus" name="deliveryStatus" value="${d.deliveryState}">
+								<input type="hidden" id="deliveryStatusChangeVal" name="deliveryStatusChangeVal" value="">
+                    			<select name="deliveryStatusChange">
+        							<option selected>결제완료</option>
+        							<option value="배송준비">배송준비</option>
+        							<option value="배송중">배송중</option>
+        							<option value="배송완료">배송완료</option>
+        						</select>
+                    		</td>
+                    		
+				        	<td>
+				        		<input type="button" id="submit" value="등록" onclick="getSiblingVal(this);">
+				        		<input type="submit" id="submit" value="저장">
+				        	</td>
+						</form>
 					</tr>
 				</c:forEach>
 				
             </table>
-            <br><br>
-            <input type="button" onclick="location.href='mainM'" value="Back">
     </section>
 
     </main><!-- End #main -->
@@ -92,6 +104,7 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -101,26 +114,39 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+				        
 	<script type="text/javascript">
-		function getSiblingVal(a) {
+		function getSiblingVal(t) {
 			
-			let o = document.getElementById('orderNo').value;
-			let m = document.getElementById('memberNo').value;
-			let dc = document.getElementById('delivery-status-change').value;
+	        let orderNo = t.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.childNodes[1];
+	        let memberNo = t.parentNode.previousElementSibling.previousElementSibling.childNodes[1];
+	        let deliveryStatusChange = t.parentNode.previousElementSibling.childNodes[5];
 			
-			o = $('#submit').prev().prev().prev().prev().val();
-			m = $('#submit').prev().prev().prev().val();
-			dc = $('#submit').prev().val();
+			console.log(orderNo);	        
+			console.log(memberNo);	        
+			console.log(deliveryStatusChange);	        
+	        
+	        let orderNoVal = t.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.childNodes[3];
+	        let memberNoVal = t.parentNode.previousElementSibling.previousElementSibling.childNodes[3];
+	        let deliveryStatusChangeVal = t.parentNode.previousElementSibling.childNodes[3];
 			
+			console.log(orderNoVal);	        
+			console.log(memberNoVal);	        
+			console.log(deliveryStatusChangeVal);	 
 			
-			
-
-			<%session.setAttribute("orderNo", request.getParameter("orderNo"));%>
-			<%session.setAttribute("memberNo", request.getParameter("memberNo"));%>
-			<%session.setAttribute("delivery-status-change", request.getParameter("delivery-status-change"));%>
-			
-			<%System.out.println(session.getAttribute("orderNo"));%>
+	        orderNoVal.value = orderNo.value;
+	        memberNoVal.value = memberNo.value;
+	        deliveryStatusChangeVal.value = deliveryStatusChange.value;
+	        
+			console.log(orderNoVal.value);	        
+			console.log(memberNoVal.value);	        
+			console.log(deliveryStatusChangeVal.value);	 
 		}
+		
+		
+		
+		
+		
 	</script>
 </body>
 

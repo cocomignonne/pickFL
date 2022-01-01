@@ -54,7 +54,7 @@
 						</div>
 							
 						<div class="container-login100-form-btn m-t-17">
-							<input class="login100-form-btn" type="submit" value="비밀번호 찾기" >
+							<input class="login100-form-btn" onclick="return emailNumCheck()" type="submit" value="비밀번호 찾기" >
 						</div>
 					
 					</form>
