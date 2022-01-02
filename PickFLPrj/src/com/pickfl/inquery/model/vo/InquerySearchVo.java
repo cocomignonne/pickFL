@@ -10,6 +10,7 @@ public class InquerySearchVo {
 	private int currentPage;
 	private int maxCount;
 	private int maxPage;
+	private int startPage;
 	private int endPage;
 	
 	public InquerySearchVo(String user, String type, String page) {
@@ -18,8 +19,8 @@ public class InquerySearchVo {
 		this.maxCount = maxCount(user, type);
 		this.maxPage = maxPage(maxCount);
 		this.currentPage = currentPage(page,maxPage);
-		this.endPage = currentPage+6;
-		
+		this.startPage = currentPage/7 +1;
+		this.endPage = startPage+6;
 	}
 
 	public InquerySearchVo() {
@@ -91,5 +92,9 @@ public class InquerySearchVo {
 	
 	public String getType() {
 		return type;
+	}
+	
+	public int getStartPage() {
+		return startPage;
 	}
 }
