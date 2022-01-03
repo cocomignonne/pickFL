@@ -1,3 +1,4 @@
+<%@page import="com.pickfl.member.model.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,6 +33,8 @@
 
     <!-- jQuerty-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	
 
 </head>
 
@@ -40,85 +43,166 @@
     <%@ include file="../common/header.jsp" %>
 
     <section>
-        <div id="signInPage">
-            <div id="signIn-Text">
+        <div id="orderPage">
+            <div id="order-Text">
                 <span>주문 하기</span>
             </div>
-            <div id="signIn-form">
+            <div id="order-form">
 
-                <form class="row g-3" action="join" method="post" name="insertform">
                     <div class="col-sm-3 a">
-                        <span class="form-control">수령인</span>
+                        <span class="form-control" style="font-size: 27px; color: #72947ae5;"><u><b>주문자 정보</b></u></span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                        <input type="text" name="id" class="form-control" id="userId" required maxlength="12" placeholder="아이디를 입력하세요." onfocusout="validate()">
-                    </div>
-                    <div class="col-sm-3 a">
-                        <button type="button" class="btn btn-success" id="idDupCheck">중복확인</button>
-                    </div>
-                    
-                    
-                    
-                    <div class="col-sm-3 a">
-                        <span class="form-control">배송 주소</span>
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
-                        <input type="password" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요."  onfocusout="validate()">
                     </div>
                     <div class="col-sm-3 a">
                     </div>
                     
                     
                     <div class="col-sm-3 a">
-                        <span class="form-control">비밀번호 확인</span>
+                        <span class="form-control" style="font-size: large;">아이디</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                        <input type="password" name="userPwd2" class="form-control" id="userPwd2" required maxlength="16" placeholder="비밀번호를 입력하세요." onfocusout="validate()">
+                        <input type="text" name="id" class="form-control" value="${loginUser.getId()}">
                     </div>
                     <div class="col-sm-3 a">
                     </div>
-
-
-
-                    <div class="col-sm-3 a">
-                        <span class="form-control">이름</span>
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
-                        <input type="text" name="name" class="form-control" id="userName" required placeholder="이름을 입력하세요." onfocusout="validate()">
-                    </div>
-                    <div class="col-sm-3 a">
-                    </div>
-    
-
-                    <div class="col-sm-3 a">
-                        <span class="form-control">이메일</span>
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
-                        <input type="email" name="email" class="form-control" id="email" required placeholder="이메일을 입력하세요." onfocusout="validate()">
-                    </div>
-                    <div class="col-sm-3 a">
-                        <input type="button" class="btn btn-success" id="sendEmailBtn" onclick="emailcheck(insertform.email.value)" value="인증번호 받기"></input>
-                    </div>
-    
-    
-                    <div class="col-sm-3 a">
-                        <span class="form-control">생년 월 일</span>
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
-                    	<input type="text" name="birth" class="form-control" id="birth" maxlength="6" required placeholder="생년월일을 적어주세요. ex)950101" onfocusout="validate()">
-                    </div>
-                    <div class="col-sm-3 a">
-                    </div>
-                    <div class="mb-3">
-
-                        <span style="font-size: larger;">이용 약관 동의</span> <br><br>
-  						<textarea rows="10" cols="100" style="font-size: small; color: grey">가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
-  						</textarea> <br>
-  						<input type="checkbox" name="agree" id="agree"> 개인정보 수집 및 이용에 동의합니다.
-    					</div>
                     
-                    <input type="submit" value="회원가입" onclick="return validate()">
-                    <input type="button" value="취소" onclick="location.href='main'">
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: large;">이름</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <input type="text" name="name" class="form-control" value="${loginUser.getName()}">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: large;">이메일</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <input type="text" name="id" class="form-control"  value="${loginUser.getEmail()}">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+					
+                    <br><br>
+                    <hr>
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                <form class="row g-3" action="order" method="post" name="orderform">
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: 27px; color: #72947ae5;"><u><b>수령 정보</b></u></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: large;">수령인 이름</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <input type="text" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요."  onfocusout="validate()">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: large;">수령인 핸드폰 번호</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <input type="text" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요."  onfocusout="validate()">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    <br>
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: large;">주소</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    	<input type="text" name="postcode" id="postcode" class="form-control" required placeholder="우편번호">
+                        <input type="text" name="address" id="address" class="form-control" required placeholder="주소를 입력하세요.">
+                        <input type="text" name="detailAddress" id="detailAddress" class="form-control" required placeholder="상세 주소를 입력하세요.">
+                    </div>
+                    <div class="col-sm-3 a">
+						<input type="button" class="btn btn-success" onclick="execDaumPostcode()" value="우편번호 찾기">
+                    </div>
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b>합계 금액 : </b></u></span>
+                    </div>
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b> 46800원</b></u></span>
+                    </div>
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    	<span style="font-size: 20px; text-align: right; margin-left: 66%;"><input type="checkbox" value="usePoint""><b>적립금 사용 : </b></span>
+                    </div>
+                    <div class="col-sm-3 a">
+                    	<input type="text" style="border: 1px solid lightgrey;" placeholder="  5000원 이상 사용 가능">
+                    </div>
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <span class="form-control" style="font-size: 20px; text-align: right;"><b>적립금 : </b></span>
+                    </div>
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: 20px; text-align: right;"><b> 468원</b></span>
+                    </div>
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    	<div style="text-align: center;">
+		                    <input type="submit" class="btnsss1" value="주문하기">
+		                    <input type="button" class="btnsss2" value="취소" onclick="location.href='main'">
+                    	</div>
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    
                 </form>
             </div>
         </div>
@@ -139,10 +223,37 @@
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-
     <script type="text/javascript" src="assets/js/main.js"></script>
-    <script type="text/javascript" src="assets/js/join.js?ver=12"></script>
+   
+	<!-- POSTCODE API -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+    	function execDaumPostcode() {
+        	new daum.Postcode({
+            	oncomplete: function(data) {
+                	// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+                	// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                	// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                	var addr = ''; // 주소 변수
+                	var extraAddr = ''; // 참고항목 변수
+
+                	//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                	if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                	    addr = data.roadAddress;
+                	} else { // 사용자가 지번 주소를 선택했을 경우(J)
+                	    addr = data.jibunAddress;
+                	}
+
+                	// 우편번호와 주소 정보를 해당 필드에 넣는다.
+                	document.getElementById('postcode').value = data.zonecode;
+                	document.getElementById("address").value = addr;
+                	// 커서를 상세주소 필드로 이동한다.
+                	document.getElementById("detailAddress").focus();
+            	}
+        	}).open();
+    	}
+	</script>
 
 </body>
 

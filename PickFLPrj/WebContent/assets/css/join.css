@@ -20,14 +20,15 @@ section {
     float: left;
     width: 100%;
 }
-#signInPage {
+#orderPage {
     width: 70%;
     height: 100%;
     display: flexbox;
     margin: auto;
+    margin-left: 20%;
     border: none;
 }
-#signInPage span {
+#orderPage span {
     border: none;
     background-color: rgba(209, 219, 212, 0.103);
 }
@@ -39,6 +40,7 @@ section {
     height: 15%;
     text-align: center;
     margin-bottom: 50px;
+    margin-left: -10%;
 }
 #signIn-Text span {
     font-size: 3em;
@@ -46,6 +48,38 @@ section {
     color: rgba(87, 104, 96, 0.808);
 }
 #signIn-form {
+    width: 80%;
+    height: 85%;
+    margin-left: 10%;
+}
+#signInPage {
+    width: 70%;
+    height: 100%;
+    display: flexbox;
+    margin: auto;
+    margin-left: 20%;
+    border: none;
+}
+#signInPage span {
+    border: none;
+    background-color: rgba(209, 219, 212, 0.103);
+}
+.g-3 {
+    width: 100%;
+    
+}
+#order-Text {
+    height: 15%;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-left: -10%;
+}
+#order-Text span {
+    font-size: 3em;
+    font-weight: bold;
+    color: rgba(87, 104, 96, 0.808);
+}
+#order-form {
     width: 80%;
     height: 85%;
     margin-left: 10%;
@@ -61,4 +95,71 @@ section {
 	width: 100%;
 }
 
+#postcode {
+	height: 38%;
+	width: 35%;
+	border: 0.8px solid lightgrey;
+}
 
+
+
+.btnsss1 {
+  font-family: Ubuntu-Bold;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 29%;
+  height: 42px;
+
+  background-color: #72947ae5;
+  margin-top: 10px;
+  border-radius: 3px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  float: left;
+}
+
+.btnsss2 {
+  font-family: Ubuntu-Bold;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 29%;
+  height: 42px;
+
+  background-color: #72947ae5;
+  margin-left: 10%;
+  margin-top: 10px;
+  border-radius: 3px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  float: left;
+}

@@ -4,37 +4,30 @@ import java.sql.Timestamp;
 
 public class MemberVo {
 	private int memberNo;
+	private int gradeNo;
 	private String id;
 	private String pwd;
 	private String name;
 	private String email;
-	private String emailHash;
-	private boolean emailChecked;
 	private String birth;
 	private Timestamp joinDate;
+	private String quitYN;
 	private String role;
+	private int point;
 	
-	public MemberVo() {
-		
-	}
-
-	public MemberVo(int memberNo, String id, String pwd, String name, String email, String emailHash,
-			boolean emailChecked) {
-		super();
-		this.memberNo = memberNo;
-		this.id = id;
-		this.pwd = pwd;
-		this.name = name;
-		this.email = email;
-		this.emailHash = emailHash;
-		this.emailChecked = emailChecked;
-	}
+	
 	
 	public int getMemberNo() {
 		return memberNo;
 	}
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
+	}
+	public int getGradeNo() {
+		return gradeNo;
+	}
+	public void setGradeNo(int gradeNo) {
+		this.gradeNo = gradeNo;
 	}
 	public String getId() {
 		return id;
@@ -60,20 +53,6 @@ public class MemberVo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getEmailHash() {
-		return emailHash;
-	}
-	public void setEmailHash(String emailHash) {
-		this.emailHash = emailHash;
-	}
-	public boolean isEmailChecked() {
-		return emailChecked;
-	}
-	public void setEmailChecked(boolean emailChecked) {
-		this.emailChecked = emailChecked;
-	}
-	
 	public String getBirth() {
 		return birth;
 	}
@@ -86,17 +65,24 @@ public class MemberVo {
 	public void setJoinDate(Timestamp joinDate) {
 		this.joinDate = joinDate;
 	}
+	public String getQuitYN() {
+		return quitYN;
+	}
+	public void setQuitYN(String quitYN) {
+		this.quitYN = quitYN;
+	}
 	public String getRole() {
 		return role;
 	}
 	public void setRole(String role) {
 		this.role = role;
 	}
-
-	@Override
-	public String toString() {
-		return "MemberVo [memberNo=" + memberNo + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email
-				+ ", emailHash=" + emailHash + ", emailChecked=" + emailChecked + ", birth=" + birth + ", joinDate="
-				+ joinDate + ", role=" + role + "]";
+	public int getPoint() {
+		return point;
 	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	
+	
 }

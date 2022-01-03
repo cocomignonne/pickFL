@@ -114,7 +114,6 @@ function validate() {
 			let birth = document.getElementById('birth');
 			let agree = document.getElementById('agree');
 			
-			let idDupCheck = document.getElementById('idDupCheck');
 			let pwdCheckError = document.getElementById('pwdCheckError');
 			let nameRegError = document.getElementById('nameRegError');
 			let emailRegError = document.getElementById('emailRegError');

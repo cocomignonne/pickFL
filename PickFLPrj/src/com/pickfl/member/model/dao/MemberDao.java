@@ -40,7 +40,7 @@ public class MemberDao {
 // 회원가입쿼리
 	public int insertMember(Connection conn, MemberVo m) throws SQLException {
 		
-		String sql = "INSERT INTO MEMBER(MEMBER_NO, MEMBER_ID, MEMBER_PWD, MEMBER_NAME, MEMBER_EMAIL, MEMBER_BIRTH, MEMBER_JOIN_DATE) "
+		String sql = "INSERT INTO MEMBER(MEMBER_NO, MEMBER_ID, MEMBER_PWD, MEMBER_NAME, MEMBER_EMAIL, MEMBER_BIRTH, MEMBER_JOIN_DATE)"
 				+ "VALUES(SEQ_MEMBER.NEXTVAL, ?, ?, ?, ?, ?, SYSDATE)";
 		
 		PreparedStatement pstmt = null;
@@ -137,6 +137,7 @@ public class MemberDao {
 				String id = rs.getString("MEMBER_ID");
 				String pwd = rs.getString("MEMBER_PWD");
 				String name = rs.getString("MEMBER_NAME");
+				String email = rs.getString("MEMBER_EMAIL");
 				
 				selectedMember = new MemberVo();
 				
@@ -144,6 +145,7 @@ public class MemberDao {
 				selectedMember.setId(id);
 				selectedMember.setPwd(pwd);
 				selectedMember.setName(name);
+				selectedMember.setEmail(email);;
 				
 			}
 			

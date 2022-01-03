@@ -44,107 +44,107 @@ section {
     border: none;
     background-color: rgba(209, 219, 212, 0.103);
 }
-.basketdiv {
+.cartdiv {
     width: 100%;
     border-top: 1px solid #e0e0e0;
     float: left;
     font-size: 0.9375em;
     margin-bottom: 20px;
 }
-    .basketdiv .row.head {
+    .cartdiv .row .head {
         border-bottom: 2px solid #888;
         box-sizing: border-box;
         background-color: #f4f4f4;
-        font-weight: 500;
+        font-weight: 900;
     }
-    .basketdiv .data {
+    .cartdiv .data {
         border-bottom: 1px dashed #888;
         box-sizing: border-box;
         cursor: pointer;
         float: left;
         width: 100%;
     }
-    .basketdiv .data .empty{
+    .cartdiv .data .empty{
         text-align: center;
         padding: 12px 0;
     }
-    .basketdiv .row.head .subdiv {
+    .cartdiv .row.head .subdiv {
         background-color: #f4f4f4;
     }
-    .basketdiv .row > .subdiv {
+    .cartdiv .row > .subdiv {
         display: block;
         float: left;
     }
-    .basketdiv .row > .subdiv:nth-child(1) {
+    .cartdiv .row > .subdiv:nth-child(1) {
         width: 50%;
     }
-    .basketdiv .row > .subdiv:nth-child(2) {
+    .cartdiv .row > .subdiv:nth-child(2) {
         width: 40%;
     }
-    .basketdiv .row > .subdiv:nth-child(3) {
+    .cartdiv .row > .subdiv:nth-child(3) {
         width: 10%;
     }
-    .basketdiv2 .row > .subdiv:nth-child(1) {
+    .cartdiv2 .row > .subdiv:nth-child(1) {
         width: 60%;
     }
-    .basketdiv2 .row > .subdiv:nth-child(2) {
+    .cartdiv2 .row > .subdiv:nth-child(2) {
         width: 40%;
     }
-    .basketdiv .row > div > div {
+    .cartdiv .row > div > div {
         display: block;
         float: left;
         text-align: center;
         margin: 0;
         padding: 12px 0;
     }
-    .basketdiv .row.data > div > div {
+    .cartdiv .row.data > div > div {
         height: 60px;
         line-height: 60px;
     }
-        .basketdiv .data .num .updown {
+        .cartdiv .data .num .updown {
             color: #72947ae5;
             font-size: 1.5em;
             letter-spacing: -5px;
         }
-        .basketdiv .check {
+        .cartdiv .check {
             width: 10%;
         }
-    .basketdiv .check input[type=checkbox] {
+    .cartdiv .check input[type=checkbox] {
         transform: scale(1.5);
     }
-    .basketdiv .img{
-        width: 20%;
+    .cartdiv .detail{
+        width: 40%;
     }
-    .basketdiv .pname{
-        width: 70%;
+    .cartdiv .wColor{
+        width: 10%;
     }
-    .basketdiv2 .pname {
-        width: 80%;
+    .cartdiv .pname{
+        width: 30%;
     }
-    .basketdiv .basketprice {
+    .cartdiv .cartprice {
         width: 33%;
     }
-    .basketdiv .num {
+    .cartdiv .num {
         width: 33%;
       min-width: 105px;
     }
-    .basketdiv .sum {
+    .cartdiv .sum {
         width: 34%;
       max-width: 80px;
         color: #0000aa;
     }
-    .basketdiv .point {
+    .cartdiv .point {
         width: 50%;
     }
-    .basketdiv2 .basketprice {
+    .cartdiv2 .cartprice {
         width: 25%;
     }
 
-    .basketdiv2 .num {
+    .cartdiv2 .num {
         width: 25%;
     }
 
-    .basketdiv2 .sum {
+    .cartdiv2 .sum {
         width: 25%;
         color: #0000aa;
     }
@@ -152,17 +152,17 @@ section {
 	#chekk {
 		color: #72947ae5 !important;
 	}
-    .basketdiv2 .point {
+    .cartdiv2 .point {
         width: 25%;
     }
-    .basketdiv .basketcmd{
+    .cartdiv .cartcmd{
         width: 100%;
     }
-    .basketdiv .data .pname {
+    .cartdiv .data .pname {
         text-align: left !important;
       line-height: 1.2 !important;
     }
-    .basketdiv .data .price, .basketdiv .data .sum, .basketdiv .data .point {
+    .cartdiv .data .price, .cartdiv .data .sum, .cartdiv .data .point {
         text-align: right;
     }
     .baseform > tbody > tr > td:first-child {
@@ -214,7 +214,7 @@ section {
 .black {
   color: black;
 }
-.basketrowcmd, .sumcount, .summoney{
+.cartrowcmd, .sumcount, .summoney{
   text-align: right;
   margin-bottom: 10px;
   margin-top: 20px;
@@ -246,7 +246,7 @@ section {
     font-size: 0.8125em;
 }
 
-.orderform .p_num {
+.orderform .bq_num {
 	
     text-align: right;
     width: 40px;
