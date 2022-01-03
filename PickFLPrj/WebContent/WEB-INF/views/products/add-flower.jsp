@@ -169,7 +169,6 @@
 					} else {
 						$("#isNameDup").toggleClass("d-none", true);
 					}
-					console.log("ajax success");
 				},
 			error : function(err){
 				alert('fail');

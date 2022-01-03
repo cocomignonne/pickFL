@@ -14,6 +14,7 @@ import java.util.List;
 
 import static com.pickfl.common.JDBCTemplate.*;
 import com.pickfl.member.model.vo.MemberVo;
+import com.pickfl.member.model.vo.PaylistVo;
 
 public class MemberDao {
 	
@@ -279,6 +280,4 @@ public class MemberDao {
 			close(pstmt);
 		}
 	}
-	
-	
 }

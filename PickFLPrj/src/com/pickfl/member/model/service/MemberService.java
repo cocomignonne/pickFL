@@ -9,9 +9,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.pickfl.member.model.dao.MemberDao;
 import com.pickfl.member.model.vo.MemberVo;
+import com.pickfl.member.model.vo.PaylistVo;
 
 public class MemberService {
 	
@@ -169,8 +171,6 @@ public class MemberService {
 	private MemberVo selectdbPwdInfo(Connection conn, MemberVo selectPwdInfo) {
 		return new MemberDao().selectdbPwdInfo(conn, selectPwdInfo);
 	}
-	
-
 
 }
 

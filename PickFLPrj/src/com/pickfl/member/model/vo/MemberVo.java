@@ -15,7 +15,21 @@ public class MemberVo {
 	private String role;
 	private int point;
 	
-	
+	public MemberVo() {
+		
+	}
+
+	public MemberVo(int memberNo, String id, String pwd, String name, String email, String emailHash,
+			boolean emailChecked) {
+		super();
+		this.memberNo = memberNo;
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.email = email;
+		this.emailHash = emailHash;
+		this.emailChecked = emailChecked;
+	}
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -83,6 +97,4 @@ public class MemberVo {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	
-	
 }

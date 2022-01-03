@@ -5,9 +5,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.pickfl.cart.model.dao.CartDao;
-import com.pickfl.cart.model.vo.CartVo;
-import com.pickfl.deliveryM.model.dao.DeliveryMDao;
 
+import com.pickfl.deliveryM.model.dao.DeliveryMDao;
 import static com.pickfl.common.JDBCTemplate.*;
 
 public class CartService {

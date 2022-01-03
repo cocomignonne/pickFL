@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +66,13 @@
       z-index: 599;
       background-color: powderblue;
     }
+    
+    #orderNum{
+    	width: 5vw;
+    }
   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -193,26 +200,40 @@
 		    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
-		  	<form action="">
+		  <form action="current-flower" method="post">
 			    <table class="table">
 			    	<tr>
-			    		<td>1</td>
 			    		<td>선택한 꽃</td>
 			    		<td>수량</td>
 			    		<td>가격</td>
 			    		<td></td>
 			    	</tr>
-			    	<tr>
-			    		<td>1</td>
-			    		<td>수선화</td>
-			    		<td>2</td>
-			    		<td>2500</td>
-			    		<td> <button>삭제</button> </td>
-			    	</tr>
+			    	<c:forEach items="${list}" var="l" varStatus="s">
+				    	<tr>
+				    		<td id="pname${s.count}">${l.productName}</td>
+				    		<td><input type="number" class="form-control" id="orderNum${s.count}" name="orderNum${s.count}" value="${l.orderNum }" min="1"></td>
+				    		<td><input type="number" class="form-control" id="price${s.count}" value="${l.productPrice}" readonly></td>
+				    		<td> <button type="button" onClick=delFlower(${l.productNo})>삭제</button> </td>
+				    	</tr>
+			    	</c:forEach>
 		    	</table>
-		  	</form>
-		    
-		    <button class="btn-success"> Pick! </button>
+			    <label for="bouquet-price">전체 가격</label>
+			    <input type="number" class="form-control" id="bouquet-price" name="bouquet-price" readonly>
+			    <label for="bouquet-name">꽃다발이름</label>
+			    <input type="text" class="form-control" id="bouquet-name" name="bouquet-name">
+			    <label for="wrqp-color">포장색</label>
+	            <select class="form-select" id="wrap-color" name="wrap-color">
+	                <option selected>색상 선택</option>
+	                <option value="red">빨강색</option>
+	                <option value="yello">노랑색</option>
+	                <option value="green">초록색</option>
+	                <option value="blue">파랑색</option>
+	                <option value="purple">보라색</option>
+	                <option value="white">무채색</option>
+	            </select>
+	            <input type="hidden" name="row" value="${fn:length(list)}">
+			    <button type="submit" class="btn-success"> Pick! </button>
+		  </form>
 		    
 		  </div><!-- offcanvas-body end -->
 		</div>
@@ -236,6 +257,7 @@
   <script src="assets/js/main.js"></script>
 
 	<script type="text/javascript">
+	
 		function sendColor(color){
 			var form = document.createElement('form');
 			form.setAttribute('method', 'post');
@@ -255,6 +277,30 @@
 		function getParam(no){
     		location.href = 'own-flower-detail?no=' + no;
     	}
+		
+		function delFlower(no){
+      		location.href = 'delete-flower?no=' + no;
+		};
+		
+		
+		$("#orderNum").change(function(){
+			var num = $("#orderNum${l.productNo}").val();
+			var price = $("#price${p.product_price}").val();
+			var result = num * price;
+			$("#price${p.product_price}").val('result');
+			
+		});
+		$(function(){
+			let totalPrice = 0;
+			let row = ${fn:length(list)};
+	        for(let i = 1; i <= row; i++ ){
+	          let orderNum = parseInt($("#orderNum" + i).val());
+	          let price = parseInt($("#price" + i).val());
+	          totalPrice += orderNum * price;
+	        }
+	        $("#bouquet-price").val(totalPrice);
+		})
+		
     </script>
 </body>
 

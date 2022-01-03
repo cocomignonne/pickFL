@@ -1,7 +1,8 @@
 package com.pickfl.cart.model.vo;
 
 public class CartVo {
-    private int cartNo;
+
+  	private int cartNo;
     private int memberNo;
     private int bouquetNo;
     private String bouquetDetail;
@@ -92,5 +93,3 @@ public class CartVo {
 
 	}
     
-
-}
