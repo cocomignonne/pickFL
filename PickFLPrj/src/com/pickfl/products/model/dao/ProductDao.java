@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,8 @@ public class ProductDao {
 
 	public int addProduct(Connection conn, ProductVo p) throws SQLException {
 		
-		String sql = "INSERT INTO PRODUCT(PRODUCT_NO, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_STOCK, FLOWER_LANG, PRODUCT_SIMPLE, PRODUCT_DETAIL, PRODUCT_COLOR, PRODUCT_SIZE, PRODUCT_IMAGE)"
-				+ " VALUES(SEQ_PRODUCT.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO PRODUCT(PRODUCT_NO, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_STOCK, FLOWER_LANG, PRODUCT_SIMPLE, PRODUCT_DETAIL, PRODUCT_COLOR, PRODUCT_SIZE, PRODUCT_IMAGE, REGISTER_TIME)"
+				+ " VALUES(SEQ_PRODUCT.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSTIMESTAMP)";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -84,8 +85,9 @@ public class ProductDao {
 				String color = rs.getString("PRODUCT_COLOR");
 				String size = rs.getString("PRODUCT_SIZE");
 				String image = rs.getString("PRODUCT_IMAGE");
+				Timestamp time =rs.getTimestamp("REGISTER_TIME");
 				
-				list.add(new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image));
+				list.add(new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image, time));
 			}
 		} finally {
 			close(pstmt);
@@ -118,8 +120,9 @@ public class ProductDao {
 				String color = rs.getString("PRODUCT_COLOR");
 				String size = rs.getString("PRODUCT_SIZE");
 				String image = rs.getString("PRODUCT_IMAGE");
+				Timestamp time =rs.getTimestamp("REGISTER_TIME");
 				
-				p = new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image);
+				p = new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image, time);
 			}
 			
 		} finally {
@@ -171,8 +174,9 @@ public class ProductDao {
 				String color = rs.getString("PRODUCT_COLOR");
 				String size = rs.getString("PRODUCT_SIZE");
 				String image = rs.getString("PRODUCT_IMAGE");
+				Timestamp time =rs.getTimestamp("REGISTER_TIME");
 				
-				list.add(new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image));
+				list.add(new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image, time));
 			}
 		} finally {
 			close(pstmt);
@@ -205,8 +209,9 @@ public class ProductDao {
 				String color = rs.getString("PRODUCT_COLOR");
 				String size = rs.getString("PRODUCT_SIZE");
 				String image = rs.getString("PRODUCT_IMAGE");
+				Timestamp time =rs.getTimestamp("REGISTER_TIME");
 				
-				list.add(new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image));
+				list.add(new ProductVo(productNo, productName, productPrice, productStock, flower_lang, simple, detail, color, size, image, time));
 			}
 			
 		} finally {
@@ -262,6 +267,34 @@ public class ProductDao {
 		}
 		
 		return result;
+	}
+
+	public List<ProductVo> selectNewest(Connection conn) throws SQLException {
+		String sql = "SELECT * FROM ( SELECT * FROM PRODUCT ORDER BY REGISTER_TIME DESC ) WHERE ROWNUM <= 8";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {				
+				int productNo = rs.getInt("PRODUCT_NO");
+				String productName = rs.getString("PRODUCT_NAME");
+				String flower_lang = rs.getString("FLOWER_LANG");
+				String simple = rs.getString("PRODUCT_SIMPLE");
+				String image = rs.getString("PRODUCT_IMAGE");
+				
+				list.add(new ProductVo(productNo, productName, flower_lang, simple, image));
+			}
+			
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 
 }

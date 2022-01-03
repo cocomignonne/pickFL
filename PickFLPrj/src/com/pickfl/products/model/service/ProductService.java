@@ -107,7 +107,7 @@ public class ProductService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			rollback(conn);
-		} finally {			
+		} finally {	
 			close(conn);
 		}
 		
@@ -149,6 +149,21 @@ public class ProductService {
 		}
 		
 		return result;
+	}
+
+	public List<ProductVo> selectNewest() {
+		List<ProductVo> list = null;
+		Connection conn = getConnection();
+		
+		try {
+			list = new ProductDao().selectNewest(conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return list;
 	}
 
 }

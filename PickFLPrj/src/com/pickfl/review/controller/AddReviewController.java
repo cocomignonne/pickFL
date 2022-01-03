@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pickfl.member.model.vo.MemberVo;
 import com.pickfl.review.model.service.ReviewService;
 
 @WebServlet("/add-review")
@@ -15,7 +16,8 @@ public class AddReviewController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String memberId = (String) req.getSession().getAttribute("memberId");
+		MemberVo loginUser = (MemberVo)req.getSession().getAttribute("loginUser");
+		String memberId = loginUser.getId();
 		int orderNo = Integer.parseInt(req.getParameter("orderNo"));
 		
 		boolean valid = checkValidate(memberId, orderNo);
