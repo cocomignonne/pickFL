@@ -1,4 +1,4 @@
-package com.pickfl.admin.controller;
+package com.pickfl.member.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,22 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 import com.pickfl.admin.vo.MemberSearchMVo;
 import com.pickfl.member.model.service.MemberService;
 import com.pickfl.member.model.vo.MemberVo;
+import com.pickfl.member.model.vo.PaylistPageVo;
+import com.pickfl.member.model.vo.PaylistVo;
 
-@WebServlet("/memberInfo")
-public class MemberInfoController extends HttpServlet {
+@WebServlet("/paylist")
+public class MemberPaylist extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String page = req.getParameter("currentPage");
-		List<MemberVo> list;
+		List<PaylistVo> list = null;
 		
-		MemberSearchMVo vo = new MemberSearchMVo(page);
+		PaylistPageVo pageVo  = new PaylistPageVo(page);
 		
-		req.setAttribute("searchVo", vo);
+		req.setAttribute("searchVo", pageVo);
 		
-		list = new MemberService().allMemberList();
+		list = new MemberService().allPaylist(list);
 		
 		req.setAttribute("list", list);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/memberInfo.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/member/paymentList.jsp").forward(req, resp);
 	}
 }

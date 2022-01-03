@@ -58,7 +58,7 @@
 				<div>
 		        	<ul class="pagination">
 		        	<li class="page-item"><a class="page-link" href="inquerysearch?currentPage=${InquerySearchVo.currentPage-7}&searchType=${InquerySearchVo.type}">Previous</a></li>
-		        	<c:forEach var="p" begin="${InquerySearchVo.currentPage}" end="${InquerySearchVo.endPage}" step="1">
+		        	<c:forEach var="p" begin="${InquerySearchVo.startPage}" end="${InquerySearchVo.endPage}" step="1">
 						<c:if test="${p <= InquerySearchVo.maxPage}">
 							<li class="page-item"><a class="page-link" href="inquerysearch?currentPage=${p}&searchType=${InquerySearchVo.type}">${p}</a></li>				
 						</c:if>

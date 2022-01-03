@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.pickfl.member.model.dao.MemberDao;
 import com.pickfl.member.model.vo.MemberVo;
+import com.pickfl.member.model.vo.PaylistVo;
 
 public class MemberService {
 	
@@ -170,20 +171,6 @@ public class MemberService {
 	private MemberVo selectdbPwdInfo(Connection conn, MemberVo selectPwdInfo) {
 		return new MemberDao().selectdbPwdInfo(conn, selectPwdInfo);
 	}
-
-	public List<MemberVo> allMemberList() {
-		List<MemberVo> list;
-		Connection conn = getConnection();
-		list = selectAllMember(conn);
-		close(conn);
-		return list;
-	}
-
-	private List<MemberVo> selectAllMember(Connection conn) {
-		return new MemberDao().selectAllMember(conn);
-	}
-	
-
 
 }
 

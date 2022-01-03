@@ -14,6 +14,7 @@ import java.util.List;
 
 import static com.pickfl.common.JDBCTemplate.*;
 import com.pickfl.member.model.vo.MemberVo;
+import com.pickfl.member.model.vo.PaylistVo;
 
 public class MemberDao {
 	
@@ -276,45 +277,5 @@ public class MemberDao {
 		}finally {
 			close(pstmt);
 		}
-	}
-
-	public List<MemberVo> selectAllMember(Connection conn) {
-		List<MemberVo> list = null;
-		MemberVo vo;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM MEMBER";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				int memberNo = rs.getInt("MEMBER_NO");
-				String id = rs.getString("MEMBER_ID");
-//				String gradeNo = rs.getString("GRADE_NO");
-				String birth = rs.getString("MEMBER_BIRTH");
-				Timestamp joinDate = rs.getTimestamp("MEMBER_JOIN_DATE");
-//				String quit_Yn = rs.getString("MEMBER_QUIT_YN");
-				
-				
-				vo = new MemberVo();
-				
-				vo.setMemberNo(memberNo);
-				vo.setId(id);
-				vo.setBirth(birth);
-				vo.setJoinDate(joinDate);
-				
-				list.add(vo);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			rollback(conn);
-		} finally {
-			close(pstmt);
-			close(rs);
-		}
-		return list;
 	}
 }

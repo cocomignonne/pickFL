@@ -36,35 +36,35 @@
 			<tr class="table_tr">
 				<td class="table_td" id="td1">${l.memberNo}</td>
 				<td class="table_td">${l.id}</td>
-				<!-- <td class="table_td">${l.gradeNo}</td> -->
+				<td class="table_td">${l.gradeNo}</td>
 				<td class="table_td">${l.birth}</td>
 				<td class="table_td">${l.joinDate}</td>
 				<td class="table_td_button">
 					<form action="memberpaylist" method="post">
-						<input type="hidden" name="mNum" value="">
+						<input type="hidden" name="mNum" value="${l.memberNo}">
 						<input type="button" class="table_button" onclick="memberpaylist()" value="확인하기">
 					</form>
 				</td>
-				<!-- <td class="table_td">${l.quitYN}</td>	 -->
+				<td class="table_td">${l.quitYN}</td>
 				<td class="table_td_button">
 					<form action="adminModify" method="post">
-						<input type="hidden" name="mNum" value="">
-						<input type="button" class="table_button" onclick="modify" value="수정하기">
+						<input type="hidden" name="mNum" value="${l.memberNo}">
+						<input type="submit" class="table_button" value="수정하기">
 					</form>
 				</td>
 		</tr>
 		</c:forEach>
     </table>
 
-    <div>
+    <div id="page_btn">
 		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="inquerysearchM?currentPage=${InquerySearchVo.currentPage-7}&searchType=${InquerySearchVo.type}">Previous</a></li>
-				<c:forEach var="p" begin="${InquerySearchVo.startPage}" end="${InquerySearchVo.endPage}" step="1">
-					<c:if test="${p <= InquerySearchVo.maxPage}">
-						<li class="page-item"><a class="page-link" href="inquerysearchM?currentPage=${p}&searchType=${InquerySearchVo.type}">${p}</a></li>				
+			<li class="page-item"><a class="page-link" href="memberInfo?currentPage=${searchVo.currentPage-10}">Previous</a></li>
+				<c:forEach var="p" begin="${searchVo.startPage}" end="${searchVo.endPage}" step="1">
+					<c:if test="${p <= searchVo.maxPage}">
+						<li class="page-item"><a class="page-link" href="memberInfo?currentPage=${p}">${p}</a></li>				
 					</c:if>
 				</c:forEach>
-			<li class="page-item"><a class="page-link" href="inquerysearchM?currentPage=${InquerySearchVo.currentPage+7}&searchType=${InquerySearchVo.type}">Next</a></li>
+			<li class="page-item"><a class="page-link" href="memberInfo?currentPage=${searchVo.currentPage+10}">Next</a></li>
 		</ul>
 	</div>
 

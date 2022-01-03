@@ -1,7 +1,5 @@
 package com.pickfl.inquery.model.vo;
 
-import java.sql.Timestamp;
-
 import com.pickfl.inquery.model.service.InquerySearchService;
 
 public class InquerySearchVo {
