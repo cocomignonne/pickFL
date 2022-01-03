@@ -171,6 +171,50 @@ public class MemberService {
 	private MemberVo selectdbPwdInfo(Connection conn, MemberVo selectPwdInfo) {
 		return new MemberDao().selectdbPwdInfo(conn, selectPwdInfo);
 	}
+	
+	public List<MemberVo> allMemberList() {
+		List<MemberVo> list;
+		Connection conn = getConnection();
+		list = selectAllMember(conn);
+		close(conn);
+		return list;
+	}
+
+	private List<MemberVo> selectAllMember(Connection conn) {
+		return new MemberDao().selectAllMember(conn);
+	}
+	
+	public MemberVo modifyMember(MemberVo vo, String memberNum) {
+		Connection conn = getConnection();
+		vo = selectMember(conn, vo, memberNum);
+		close(conn);
+		return vo;
+	}
+
+	private MemberVo selectMember(Connection conn, MemberVo vo, String memberNum) {
+		return new MemberDao().selectMember(conn, vo, memberNum);
+	}
+
+	public void updateMember(MemberVo vo) {
+		Connection conn = getConnection();
+		updateMember(conn,vo);
+		close(conn);
+	}
+
+	private void updateMember(Connection conn, MemberVo vo) {
+		new MemberDao().updateMember(conn, vo);
+	}
+
+	public List<PaylistVo> allPaylist(List<PaylistVo> list) {
+		Connection conn = getConnection();
+		list = selectPaylist(conn);
+		close(conn);
+		return list;
+	}
+
+	private List<PaylistVo> selectPaylist(Connection conn) {
+		return new MemberDao().selectPaylist(conn);
+	}
 
 }
 
