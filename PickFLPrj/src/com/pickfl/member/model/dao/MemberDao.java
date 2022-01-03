@@ -280,4 +280,134 @@ public class MemberDao {
 			close(pstmt);
 		}
 	}
+	
+	public List<MemberVo> selectAllMember(Connection conn) {
+		List<MemberVo> list = new ArrayList<MemberVo>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM MEMBER";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int memberNo = rs.getInt("MEMBER_NO");
+				String id = rs.getString("MEMBER_ID");
+				int gradeNo = rs.getInt("GRADE_NO");
+				String birth = rs.getString("MEMBER_BIRTH");
+				Timestamp joinDate = rs.getTimestamp("MEMBER_JOIN_DATE");
+				String quit_Yn = rs.getString("MEMBER_QUIT_YN");
+				
+				MemberVo vo = new MemberVo();
+
+				vo.setMemberNo(memberNo);
+				vo.setId(id);
+				vo.setGradeNo(gradeNo);
+				vo.setBirth(birth);
+				vo.setJoinDate(joinDate);
+				vo.setQuitYN(quit_Yn);
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return list;
+	}
+
+	public MemberVo selectMember(Connection conn, MemberVo vo, String memberNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM MEMBER WHERE MEMBER_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberNum);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String id = rs.getString("MEMBER_ID");
+				String pwd = rs.getString("MEMBER_PWD");
+				String name = rs.getString("MEMBER_NAME");
+				String email = rs.getString("MEMBER_EMAIL");
+				String birth = rs.getString("MEMBER_BIRTH");
+				String quit_Yn = rs.getString("MEMBER_QUIT_YN");
+				
+				vo.setId(id);
+				vo.setPwd(pwd);
+				vo.setName(name);
+				vo.setEmail(email);
+				vo.setBirth(birth);
+				vo.setQuitYN(quit_Yn);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return vo;
+	}
+
+	public void updateMember(Connection conn, MemberVo vo) {
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE MEMBER SET MEMBER_ID = ?, MEMBER_PWD=?, MEMBER_NAME=?,"
+				+ "MEMBER_EMAIL=?, MEMBER_BIRTH =?, MEMBER_QUIT_YN=? WHERE MEMBER_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPwd());
+			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getEmail());
+			pstmt.setString(5, vo.getBirth());
+			pstmt.setString(6, vo.getQuitYN());
+			pstmt.setInt(7, vo.getMemberNo());
+			
+			pstmt.executeUpdate(); // 현재 업데이트 안됨;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		}finally {
+			close(pstmt);
+		}
+	
+	}
+
+	public List<PaylistVo> selectPaylist(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM MEMBER WHERE MEMBER_NO = ?";
+		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, memberNum);
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				String id = rs.getString("MEMBER_ID");
+//				String pwd = rs.getString("MEMBER_PWD");
+//				String name = rs.getString("MEMBER_NAME");
+//				String email = rs.getString("MEMBER_EMAIL");
+//				String birth = rs.getString("MEMBER_BIRTH");
+//				String quit_Yn = rs.getString("MEMBER_QUIT_YN");
+//				
+//				vo.setId(id);
+//				vo.setPwd(pwd);
+//				vo.setName(name);
+//				vo.setEmail(email);
+//				vo.setBirth(birth);
+//				vo.setQuitYN(quit_Yn);
+//			}
+		return null;
+	}
 }
