@@ -2,7 +2,6 @@ package util;
 
 import java.util.Properties;
 
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -14,6 +13,7 @@ import javax.mail.internet.MimeUtility;
 
 public class EmailConfirm{
 	public String connectEmail(String email){
+		
 		String to1 = email; // 인증위해 사용자가 입력한 이메일주소
 		String host="smtp.naver.com"; // smtp 서버
 		String subject = "PickFL 인증정보 전달 메일입니다."; //제목
@@ -37,12 +37,10 @@ public class EmailConfirm{
 			props.put("mail.smtp.auth","true");
 			props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
-
-			
 			Session mailSession 
 	           = Session.getDefaultInstance(props,new javax.mail.Authenticator(){
 				    protected PasswordAuthentication getPasswordAuthentication(){
-					    return new PasswordAuthentication("skekkjim@naver.com", "roqkfwk1#");
+					    return new PasswordAuthentication("skekkjim@naver.com", "비밀번호");
 				}
 			});
 			
@@ -53,7 +51,6 @@ public class EmailConfirm{
 			msg.setSubject(subject); // 제목설정
 			msg.setSentDate(new java.util.Date()); // 보내는 날짜
 			msg.setContent(content, "text/html; charset=UTF-8"); // 내용설정
-			
 			
 			Transport.send(msg); // 메일보내기
 		}catch(MessagingException e){
@@ -72,7 +69,5 @@ public class EmailConfirm{
 			buffer.append(num);
 		}
 		return buffer.toString();
-	}
-	
-	
+	}	
 }

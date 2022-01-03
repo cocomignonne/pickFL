@@ -1,4 +1,4 @@
-package com.pickfl.order.controller;
+package com.pickfl.admin.controller;
 
 import java.io.IOException;
 
@@ -7,16 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.pickfl.member.model.vo.MemberVo;
-
-@WebServlet("/order")
-public class OrderController extends HttpServlet {
+@WebServlet("/test2")
+public class test extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/order/order.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/products/test.jsp").forward(req, resp);
 	}
-	
-	
-	
 }
