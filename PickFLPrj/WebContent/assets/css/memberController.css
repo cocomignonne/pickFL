@@ -60,8 +60,8 @@ section {
 
 #page_btn{
     position: absolute;
-    right: 25%;
-    margin: 30px;
+    right: 7.5%;
+    margin-top:40px;
 }
 
 #index_btn{
@@ -69,9 +69,6 @@ section {
     margin: 30px;
     margin-right: 5%;
 }
-
-
-
 
 
 

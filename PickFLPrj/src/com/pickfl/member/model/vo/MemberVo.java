@@ -14,6 +14,7 @@ public class MemberVo {
 	private Timestamp joinDate;
 	private String role;
 	
+	
 	public MemberVo() {
 		
 	}
@@ -99,4 +100,5 @@ public class MemberVo {
 				+ ", emailHash=" + emailHash + ", emailChecked=" + emailChecked + ", birth=" + birth + ", joinDate="
 				+ joinDate + ", role=" + role + "]";
 	}
+
 }

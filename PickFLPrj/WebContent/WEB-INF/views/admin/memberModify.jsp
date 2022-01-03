@@ -22,51 +22,38 @@
 	<div class="container-login100">
 		<div class="wrap-Join p-t-50 p-b-90">
 			<span class="login100-form-title p-b-51">Modifycation</span> 
-			<form action="doModify.jsp" method="post" name="userInfo" >
+			<form action="adminModify" method=get name="userInfo" >
+				<input type="hidden" name="mNum" value="${vo.memberNo}">
 				<table>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name ="name" value="" class="joininput"></td>
+						<td><input type="text" name ="name" value="${vo.name}" class="joininput"></td>
+					</tr>
+					<tr>
+						<td>아이디</td>
+						<td><input type="text" name ="id" value="${vo.id}" class="joininput"></td>
 					</tr>
 					<tr>
 						<td>생년월일</td>
-						<td><input type="text" name="birth" value="" class="joininput"></td>
+						<td><input type="text" name="birth" value="${vo.birth}" class="joininput"></td>
 					</tr>
 					<tr>
 						<td>이메일</td>
-						<td><input type="text" name="mail" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>주소</td>
-						<td><input type="text" name="home" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>자기소개</td>
-						<td><input type="text" name="info" value="" class="joininput"></td>
+						<td><input type="text" name="mail" value="${vo.email}" class="joininput"></td>
 					</tr>
 					<tr>
 						<td>비번변경</td> 
-						<td><input type="password" name="password" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>비번확인</td>
-						<td><input type="password" name="passwordcheck" value="" class="joininput"></td>
+						<td><input type="text" name="password" value="${vo.pwd}" class="joininput"></td>
 					</tr>
                     <tr>
 						<td>탈퇴여부</td>
-						<td><span>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="optradio">Y
-                                    <input type="radio" class="form-check-input" name="optradio">N
-                                </label>
-                        </span></td>
+						<td><input type="text" name="quitYN" value="${vo.quitYN}" class="joininput"></td>
 					</tr>
 				</table>
 					
 				<span class="login100-form-title p-b-51">
-                    <input type="submit" value="변경" class="joinbtn"/>  
-                    <input type="button" value="메인" onclick="goIndex()" class="join2btn"/>
+					<input type="submit" value="변경하기" class="joinbtn"/>  
+                    <input type="button" value="메인으로" onclick="goIndex()" class="join2btn"/>
                 </span>
 			</form>
 		</div>
