@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pickfl.member.model.vo.MemberVo;
+import com.pickfl.products.model.service.CurrentFlowerService;
 import com.pickfl.products.model.service.ProductService;
+import com.pickfl.products.model.vo.CurrentFlowerVo;
 import com.pickfl.products.model.vo.ProductVo;
 
 @WebServlet("/own-flower")
@@ -26,6 +29,11 @@ public class OwnFlowerController extends HttpServlet{
 		String filePath = req.getServletContext().getRealPath("/upload") + File.separator;
 		req.setAttribute("filePath", filePath);
 		req.setAttribute("productList", productList);
+		MemberVo loginUser =  (MemberVo) req.getSession().getAttribute("loginUser");
+		if(loginUser != null) {
+			List<CurrentFlowerVo> list = new CurrentFlowerService().selectAll(loginUser.getMemberNo());
+			req.setAttribute("list", list);
+		}
 		
 		req.getRequestDispatcher("/WEB-INF/views/products/own-flower.jsp").forward(req, resp);
 	}

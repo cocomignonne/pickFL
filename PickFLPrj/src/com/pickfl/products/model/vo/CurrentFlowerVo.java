@@ -15,7 +15,8 @@ public class CurrentFlowerVo {
 		this.productPrice = productPrice;
 	}
 	
-	public CurrentFlowerVo(String productName, int orderNum, int productPrice) {
+	public CurrentFlowerVo(int productNo, String productName, int orderNum, int productPrice) {
+		this.productNo = productNo;
 		this.productName = productName;
 		this.orderNum = orderNum;
 		this.productPrice = productPrice;

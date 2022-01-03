@@ -41,4 +41,42 @@ public class CurrentFlowerService {
 		return list;
 	}
 
+	public int deleteByNo(int productNo) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		try {
+			result = new CurrentFlowerDao().deleteByNo(conn, productNo);
+			if(result >0) {
+				commit(conn);
+			}else rollback(conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+	public int deleteAll(int memberNo) {
+		Connection conn = getConnection();
+		int result = 0;
+
+		try {
+			result = new CurrentFlowerDao().deleteAll(conn, memberNo);
+			if(result >0) {
+				commit(conn);
+			}else rollback(conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
 }

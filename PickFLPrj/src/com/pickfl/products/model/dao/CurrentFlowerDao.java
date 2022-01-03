@@ -46,11 +46,12 @@ public class CurrentFlowerDao {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				int productNo = rs.getInt("PRODUCT_NO");
 				String productName = rs.getString("PRODUCT_NAME");
 				int orderNum = rs.getInt("ORDER_NUM");
 				int productPrice = rs.getInt("PRODUCT_PRICE");
 				
-				list.add(new CurrentFlowerVo(productName, orderNum, productPrice));
+				list.add(new CurrentFlowerVo(productNo,productName, orderNum, productPrice));
 			}
 			
 			
@@ -59,6 +60,42 @@ public class CurrentFlowerDao {
 			close(rs);
 		}
 		return list;
+	}
+
+	public int deleteByNo(Connection conn, int productNo) throws SQLException {
+
+		String sql = "DELETE FROM CURRENT_FLOWER WHERE PRODUCT_NO = ?";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productNo);
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteAll(Connection conn, int memberNo) throws SQLException {
+
+		String sql = "DELETE FROM CURRENT_FLOWER WHERE MEMBER_NO = ?";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }
