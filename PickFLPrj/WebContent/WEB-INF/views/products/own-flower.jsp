@@ -140,12 +140,12 @@
         <div class="row row-cols-1 row-cols-md-4 g-4">
         <c:forEach items="${productList}" var="p">        
           <div class="col">
-            <div class="card p-4" onClick=getParam(${p.product_no})>
-              <img src="image?fileName=${p.product_image}" class="card-img-top" alt="...">
+            <div class="card p-4" onClick=getParam(${p.productNo})>
+              <img src="image?fileName=${p.productImage}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">${p.product_name}</h5>
-                <p class="card-text">${p.product_simple}</p>
-                <div>${p.product_price}원</div>
+                <h5 class="card-title">${p.productName}</h5>
+                <p class="card-text">${p.productSimple}</p>
+                <div>${p.productPrice}원</div>
               </div>
             </div>
           </div>
@@ -172,7 +172,7 @@
 			    	</tr>
 			    	<c:forEach items="${list}" var="l" varStatus="s">
 				    	<tr>
-				    		<td id="pname${s.count}">${l.productName}</td>
+				    		<td id="pname${s.count}"><input type="hidden" name="pname${s.count}" value="${l.productName}">${l.productName}</td>
 				    		<td><input type="number" class="form-control" id="orderNum${s.count}" name="orderNum${s.count}" value="${l.orderNum }" min="1"></td>
 				    		<td><input type="number" class="form-control" id="price${s.count}" value="${l.productPrice}" readonly></td>
 				    		<td> <button type="button" onClick=delFlower(${l.productNo})>삭제</button> </td>

@@ -124,6 +124,23 @@ public class ReviewDao {
 		return map;
 	}
 
+	public int add(Connection conn, ReviewVo r) throws SQLException {
+		String sql = "INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL,?,?,?,?,?,?,SYSDATE,?,'N')";
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 
 
 }

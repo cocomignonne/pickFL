@@ -127,7 +127,7 @@
                               <div class="col-sm-2 align-self-center title">상품이미지</div>
                               <div class="col-sm-10">
                                   <div class="input-group">
-                                      <input type="file" class="form-control" name="image" id="inputImg" aria-label="Upload">
+                                      <input type="file"  onchange="readURL(this);" class="form-control" name="image" id="inputImg" aria-label="Upload">
                                      <!--  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">첨부파일</button> -->
                                   </div>
                               </div>
@@ -136,6 +136,7 @@
   
                               <div class="col-sm">
                                   <img class="thumbnail rounded m-lg-3" id="img">
+                                  
                               </div>
                           </div>
                           
@@ -155,6 +156,20 @@
  <%@include file="/WEB-INF/views/common/footer.jsp" %>
  
  <script>
+ 
+ function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('img').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('img').src = "";
+	  }
+	}
+
+ 
  $("#pname").keyup(function(){
 		$.ajax({
 			url : '/PickFL/productDupCheck',

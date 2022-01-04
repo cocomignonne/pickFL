@@ -53,7 +53,7 @@
                		<div class="col-sm-10 mb-4">
                     </div>
                		<div class="col-sm mb-4">
-	               		<c:if test="${not empty session.loginUser}">
+	               		<c:if test="${not empty sessionScope.loginUser}">
 		               		<a href="add-review">
 			                   <button class="btn btn-success">리뷰쓰기</button>          
 		               		</a>

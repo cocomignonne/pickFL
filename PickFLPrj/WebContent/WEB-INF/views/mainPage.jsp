@@ -115,11 +115,11 @@
 	        <div class="row">
 				<c:forEach items="${newList}" var="n">			
 	                <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-	                    <div class="card" onClick=getParam(${n.product_no})>
-			              <img src="image?fileName=${n.product_image}" class="card-img-top" alt="...">
+	                    <div class="card" onClick=getParam(${n.productNo})>
+			              <img src="image?fileName=${n.productImage}" class="card-img-top" alt="...">
 			              <div class="card-body">
-			                <h5 class="card-title">${n.product_name}</h5>
-			                <p class="card-text">${n.product_simple}</p>
+			                <h5 class="card-title">${n.productName}</h5>
+			                <p class="card-text">${n.productSimple}</p>
 			              </div>
 			            </div>
 	                </div>

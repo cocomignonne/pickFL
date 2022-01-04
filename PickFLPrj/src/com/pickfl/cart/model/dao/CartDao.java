@@ -13,7 +13,7 @@ import java.util.List;
 import com.pickfl.cart.model.vo.CartVo;
 
 public class CartDao {
-
+//	장바구니에 보여질 값들 + 다른곳에 넘겨줄 값들 불러오기
 	public List<CartVo> selectCartInfo(Connection conn, int currentUserMemNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -21,7 +21,7 @@ public class CartDao {
 		CartVo cartVo = null;
 		List<CartVo> selectCartInfo = new ArrayList<CartVo>();
 		
-		String sql = "SELECT C.BOUQUET_NAME, C.BOUQUET_DETAIL, B.WRAP_COLOR, C.BUY_NUM_BQ, B.BOUQUET_PRICE FROM CART C LEFT JOIN MEMBER M ON (C.MEMBER_NO = M.MEMBER_NO) LEFT JOIN BOUQUET B ON (M.MEMBER_NO = B.MEMBER_NO) WHERE B.MEMBER_NO = ? AND C.MEMBER_NO = M.MEMBER_NO AND C.BOUQUET_NO = B.BOUQUET_NO";
+		String sql = "SELECT B.BOUQUET_NO C.BOUQUET_NAME, C.BOUQUET_DETAIL, B.WRAP_COLOR, C.BUY_NUM_BQ, B.BOUQUET_PRICE FROM CART C LEFT JOIN MEMBER M ON (C.MEMBER_NO = M.MEMBER_NO) LEFT JOIN BOUQUET B ON (M.MEMBER_NO = B.MEMBER_NO) WHERE B.MEMBER_NO = ? AND C.MEMBER_NO = M.MEMBER_NO AND C.BOUQUET_NO = B.BOUQUET_NO";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -29,6 +29,7 @@ public class CartDao {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				int bouquetNo = rs.getInt("BOUQUET_NO");
 				String bouquetName = rs.getString("BOUQUET_NAME");
 				String bouquetDetail = rs.getString("BOUQUET_DETAIL");
 				String wrapColor = rs.getString("WRAP_COLOR");
@@ -38,6 +39,7 @@ public class CartDao {
 				
 				cartVo = new CartVo();
 				
+				cartVo.setBouquetNo(bouquetNo);
 				cartVo.setBouquetName(bouquetName);
 				cartVo.setBouquetDetail(bouquetDetail);
 				cartVo.setWrapColor(wrapColor);
@@ -58,16 +60,17 @@ public class CartDao {
 	}
 	
 	public int add(Connection conn, CartVo c) throws SQLException {
-        String sql = "INSERT INTO CART(CART_NO, MEMBER_NO, BOUQUET_NAME, BOUQUET_DETAIL) "
-                + "VALUES (SEQ_CART.NEXTVAL, ?,?,?)";
+        String sql = "INSERT INTO CART(CART_NO, MEMBER_NO, BOUQUET_NO, BOUQUET_NAME, BOUQUET_DETAIL) "
+                + "VALUES (SEQ_CART.NEXTVAL,?,?,?,?)";
         PreparedStatement pstmt = null;
         int result = 0;
         
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, c.getMemberNo());
-            pstmt.setString(2, c.getBouquetName());
-            pstmt.setString(3, c.getBouquetDetail());
+            pstmt.setInt(2, c.getBouquetNo());
+            pstmt.setString(3, c.getBouquetName());
+            pstmt.setString(4, c.getBouquetDetail());
             
             result = pstmt.executeUpdate();
             

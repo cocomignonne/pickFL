@@ -15,7 +15,7 @@ import static com.pickfl.common.JDBCTemplate.*;
 
 
 public class CartService {
-
+//	장바구니에 보여질 값들 불러오기
 	public List<CartVo> selectCartList(int currentUserMemNo) {
 		Connection conn = getConnection();
 		
@@ -38,7 +38,11 @@ public class CartService {
         int result = 0;
         try {
             result = new CartDao().add(conn, c);
+            if(result > 0) {
+            	commit(conn);
+            }else rollback(conn);
         } catch (SQLException e) {
+        	rollback(conn);
             e.printStackTrace();
         } finally {
             close(conn);

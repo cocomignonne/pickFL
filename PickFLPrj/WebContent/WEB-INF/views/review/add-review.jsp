@@ -66,11 +66,11 @@
                             <div><h1>REVIEW</h1></div>
                         </div>
                     </div>
-                    <form action="">
+                    <form action="add-review" method="post" enctype="multipart/form-data">
                         <div class="row mb-3">
                             <label for="bouquetName" class="col-sm-2 col-form-label title">상품명</label>
                             <div class="col-sm-4">
-                                <select class="form-select" id="bouquetName" name="bouquetName" required>
+                                <select class="form-select" id="bouquetNo" name="bouquetNo" required>
                                     <option selected>상품 선택</option>
                                     <c:forEach items="${bouquetMap}" var="b">
 	                                    <option value="${b.getKey()}">${b.getValue()}</option>
@@ -92,30 +92,27 @@
                         <div class="row mb-3">
                             <label for="rtitle" class="col-sm-2 col-form-label title">제목</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="rtitle" placeholder="제목을 입력해 주세요">
+                              <input type="text" class="form-control" id="rtitle" name="rtitle" placeholder="제목을 입력해 주세요">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rcontent" class="col-sm-2 col-form-label title">내용</label>
                             <div class="col-sm-10">
-                            <textarea class="form-control" id="rcontent" rows="15" placeholder="내용을 입력해 주세요"></textarea>
+                            <textarea class="form-control" id="rcontent" name="rcontent" rows="15" placeholder="내용을 입력해 주세요"></textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-2 align-self-center title">첨부파일</div>
                             <div class="col-sm-10">
                                 <div class="input-group">
-                                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+                                    <input type="file" onchange="readURL(this);" class="form-control" name="rimage" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
 
                             <div class="col-sm">
-                                <img class="thumbnail rounded m-lg-3" src="img/flower1.jpg" alt="">
-                                <img class="thumbnail rounded m-lg-3" src="img/flower2.jpg" alt="">
-                                <img class="thumbnail rounded m-lg-3" src="img/flower3.jpg" alt="">
+                                <img class="thumbnail rounded m-lg-3" id="img">
                             </div>
                         </div>
                         
@@ -124,10 +121,11 @@
                                 <input type="submit" class="btn btn-success " value="등록하기">
                             </div>
                             <div class="col-sm">
-                                <input type="reset" class="btn btn-outline-dark" value="취소하기">
+                            	<a href="review">
+	                                <input type="button" class="btn btn-outline-dark" value="취소하기">
+                            	</a>
                             </div>
                         </div>
-            
                     </form>
                 </div>
                 </div>
@@ -145,6 +143,19 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+  function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('img').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('img').src = "";
+	  }
+	}
+  </script>
 
 </body>
 

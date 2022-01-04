@@ -55,20 +55,20 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-4">
-                    <img src="image?fileName=${p.product_image}" alt="">
+                    <img src="image?fileName=${p.productImage}" alt="">
                 </div>
                 <div class="col-md-5">
                     <form action="current-flower">
                         <div id="contents">
-                            <div id="simple">${p.product_simple}</div>
-                            <h2><b>${p.product_name}</b></h2>
-                            <h4><b>${p.product_detail}</b></h2>
-                            <input type="hidden" name="pno" value="${p.product_no}">
-                            <input type="hidden" name="pname" value="${p.product_name}">
-                            <input type="hidden" name="price" value="${p.product_price}">
-                            <h3> <span id="price">${p.product_price}</span>원</h3>
+                            <div id="simple">${p.productSimple}</div>
+                            <h2><b>${p.productName}</b></h2>
+                            <h4><b>${p.productDetail}</b></h2>
+                            <input type="hidden" name="pno" value="${p.productNo}">
+                            <input type="hidden" name="pname" value="${p.productName}">
+                            <input type="hidden" name="price" value="${p.productPrice}">
+                            <h3> <span id="price">${p.productPrice}</span>원</h3>
                             <label><b>수량 : </b><input type="number" name="order-num" id="num" min="1" max="20" value="1"></label>
-                            <div class="mt-3"><b>가격 : </b><span name="order-price" id="result" >${p.product_price}</span>원 </div>
+                            <div class="mt-3"><b>가격 : </b><span name="order-price" id="result" >${p.productPrice}</span>원 </div>
                             <input type="submit" class="btn btn-success mt-4" value="꽃다발에 담기"></input> 
                         </div>
                     </form>
@@ -100,7 +100,7 @@
 	<script type="text/javascript">
 		$("#num").change(function(){
 			var num = $("#num").val();
-			var price = '${p.product_price}';
+			var price = '${p.productPrice}';
 			var result = num * price;
 			$("#result").text(result);
 			
