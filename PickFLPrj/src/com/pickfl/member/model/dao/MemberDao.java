@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.pickfl.common.JDBCTemplate.*;
+
+import com.pickfl.admin.vo.MemberSearchMVo;
 import com.pickfl.member.model.vo.MemberVo;
 import com.pickfl.member.model.vo.PaylistVo;
 
@@ -281,14 +283,16 @@ public class MemberDao {
 		}
 	}
 	
-	public List<MemberVo> selectAllMember(Connection conn) {
+	public List<MemberVo> selectAllMember(Connection conn, MemberSearchMVo vo2) {
 		List<MemberVo> list = new ArrayList<MemberVo>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM MEMBER";
+		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM, M.* FROM MEMBER M) WHERE RNUM BETWEEN ? AND ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo2.getStartPage());
+			pstmt.setInt(2, vo2.getEndPage());
 
 			rs = pstmt.executeQuery();
 			
@@ -383,31 +387,46 @@ public class MemberDao {
 	
 	}
 
-	public List<PaylistVo> selectPaylist(Connection conn) {
+	public List<PaylistVo> selectPaylist(Connection conn, int mNum) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM MEMBER WHERE MEMBER_NO = ?";
+		List<PaylistVo> list = new ArrayList<PaylistVo>();
+		String sql = "SELECT * FROM ORDERLIST WHERE MEMBER_NO = ?";
 		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, memberNum);
-//			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) {
-//				String id = rs.getString("MEMBER_ID");
-//				String pwd = rs.getString("MEMBER_PWD");
-//				String name = rs.getString("MEMBER_NAME");
-//				String email = rs.getString("MEMBER_EMAIL");
-//				String birth = rs.getString("MEMBER_BIRTH");
-//				String quit_Yn = rs.getString("MEMBER_QUIT_YN");
-//				
-//				vo.setId(id);
-//				vo.setPwd(pwd);
-//				vo.setName(name);
-//				vo.setEmail(email);
-//				vo.setBirth(birth);
-//				vo.setQuitYN(quit_Yn);
-//			}
-		return null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, mNum);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					int orderNo = rs.getInt("ORDER_NO");
+					int productNo = rs.getInt("PRODUCT_NO");
+					String delivery = rs.getString("DELIVERY_STATE");
+					int price = rs.getInt("ORDER_PRICE");
+					int orderNum = rs.getInt("ORDER_NUM");
+					int bouquet = rs.getInt("BOUQUET_NO");
+					Timestamp orderDate = rs.getTimestamp("ORDER_DATE");
+					
+					PaylistVo vo = new PaylistVo();
+					
+					vo.setOrderNo(orderNo);
+					vo.setProductNo(productNo);
+					vo.setDelivery(delivery);
+					vo.setPrice(price);
+					vo.setOrderNum(orderNum);
+					vo.setBouquet(bouquet);
+					vo.setOrderDate(orderDate);
+					
+					list.add(vo);
+				}
+			} catch (SQLException e) {
+				rollback(conn);
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+				close(rs);
+			}
+
+		return list;
 	}
 }

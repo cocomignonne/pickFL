@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.pickfl.admin.vo.MemberSearchMVo;
 import com.pickfl.member.model.dao.MemberDao;
 import com.pickfl.member.model.vo.MemberVo;
 import com.pickfl.member.model.vo.PaylistVo;
@@ -172,16 +173,16 @@ public class MemberService {
 		return new MemberDao().selectdbPwdInfo(conn, selectPwdInfo);
 	}
 	
-	public List<MemberVo> allMemberList() {
+	public List<MemberVo> allMemberList(MemberSearchMVo vo) {
 		List<MemberVo> list;
 		Connection conn = getConnection();
-		list = selectAllMember(conn);
+		list = selectAllMember(conn, vo);
 		close(conn);
 		return list;
 	}
 
-	private List<MemberVo> selectAllMember(Connection conn) {
-		return new MemberDao().selectAllMember(conn);
+	private List<MemberVo> selectAllMember(Connection conn, MemberSearchMVo vo) {
+		return new MemberDao().selectAllMember(conn, vo);
 	}
 	
 	public MemberVo modifyMember(MemberVo vo, String memberNum) {
@@ -205,15 +206,15 @@ public class MemberService {
 		new MemberDao().updateMember(conn, vo);
 	}
 
-	public List<PaylistVo> allPaylist(List<PaylistVo> list) {
+	public List<PaylistVo> allPaylist(List<PaylistVo> list, int mNum) {
 		Connection conn = getConnection();
-		list = selectPaylist(conn);
+		list = selectPaylist(conn, mNum);
 		close(conn);
 		return list;
 	}
 
-	private List<PaylistVo> selectPaylist(Connection conn) {
-		return new MemberDao().selectPaylist(conn);
+	private List<PaylistVo> selectPaylist(Connection conn, int mNum) {
+		return new MemberDao().selectPaylist(conn, mNum);
 	}
 
 }
