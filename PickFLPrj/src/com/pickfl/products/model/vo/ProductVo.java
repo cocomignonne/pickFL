@@ -1,5 +1,7 @@
 package com.pickfl.products.model.vo;
 
+import java.sql.Timestamp;
+
 public class ProductVo {
 	private int product_no;
 	private String product_name;
@@ -11,6 +13,7 @@ public class ProductVo {
 	private String product_color;
 	private String product_size;
 	private String product_image;
+	private Timestamp register_time;
 	
 	
 	public ProductVo() {
@@ -21,7 +24,7 @@ public class ProductVo {
 	
 	public ProductVo(int product_no, String product_name, int product_price, int product_stock, String flower_lang,
 			String product_simple, String product_detail, String product_color, String product_size,
-			String product_image) {
+			String product_image, Timestamp register_time) {
 		this.product_no = product_no;
 		this.product_name = product_name;
 		this.product_price = product_price;
@@ -32,6 +35,7 @@ public class ProductVo {
 		this.product_color = product_color;
 		this.product_size = product_size;
 		this.product_image = product_image;
+		this.register_time = register_time;
 	}
 	
 	
@@ -46,12 +50,41 @@ public class ProductVo {
 		this.product_image = product_image;
 	}
 
+	
+
+	public ProductVo(int product_no, String product_name, String flower_lang, String product_simple,
+			String product_image) {
+		super();
+		this.product_no = product_no;
+		this.product_name = product_name;
+		this.flower_lang = flower_lang;
+		this.product_simple = product_simple;
+		this.product_image = product_image;
+	}
+
 
 
 	public ProductVo(String product_name, int product_price, int product_stock, String flower_lang,
 			String product_simple, String product_detail, String product_color, String product_size,
 			String product_image) {
 		super();
+		this.product_name = product_name;
+		this.product_price = product_price;
+		this.product_stock = product_stock;
+		this.flower_lang = flower_lang;
+		this.product_simple = product_simple;
+		this.product_detail = product_detail;
+		this.product_color = product_color;
+		this.product_size = product_size;
+		this.product_image = product_image;
+	}
+
+
+
+	public ProductVo(int product_no, String product_name, int product_price, int product_stock, String flower_lang,
+			String product_simple, String product_detail, String product_color, String product_size,
+			String product_image) {
+		this.product_no = product_no;
 		this.product_name = product_name;
 		this.product_price = product_price;
 		this.product_stock = product_stock;
@@ -125,7 +158,12 @@ public class ProductVo {
 	public void setProduct_image(String product_image) {
 		this.product_image = product_image;
 	}
-
+	public Timestamp getRegister_time() {
+		return register_time;
+	}
+	public void setRegister_time(Timestamp register_time) {
+		this.register_time = register_time;
+	}
 
 
 	@Override

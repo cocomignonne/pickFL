@@ -1,8 +1,10 @@
 package com.pickfl.review.model.service;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import static com.pickfl.common.JDBCTemplate.*;
 
@@ -57,11 +59,28 @@ public class ReviewService {
 		return result;
 	}
 
-	public boolean checkCompleted(int orderNo) {
+	public Map<Integer, String> getBqMap(int memberNo) {
+		Connection conn = getConnection();
+		Map<Integer, String> map = null;
 		
+		try {
+			List<Integer> bqNo = getBqNoByMemberNo(conn, memberNo);
+			if(bqNo != null) {
+				
+				map = new ReviewDao().getBqMap(conn, bqNo);
+				
+			}else return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
-		
-		return false;
+		return null;
 	}
+
+	private List<Integer> getBqNoByMemberNo(Connection conn, int memberNo) throws SQLException {
+		return new ReviewDao().getBqNoByMemberNo(conn, memberNo);
+	}
+
+	
 
 }
