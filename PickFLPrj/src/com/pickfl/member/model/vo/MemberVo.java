@@ -27,8 +27,6 @@ public class MemberVo {
 		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
-		this.emailHash = emailHash;
-		this.emailChecked = emailChecked;
 	}
 	
 	public int getMemberNo() {

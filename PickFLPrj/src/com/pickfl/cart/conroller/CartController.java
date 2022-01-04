@@ -1,6 +1,7 @@
 package com.pickfl.cart.conroller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,11 +21,42 @@ public class CartController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberVo currentUser = (MemberVo) req.getSession().getAttribute("loginUser");
-		int currentUserMemNo = currentUser.getMemberNo();
 		
-		List<CartVo> deliveryList = new CartService().selectCartList(currentUserMemNo);
-		req.setAttribute("cart", deliveryList);
-		req.getRequestDispatcher("/WEB-INF/views/cart/cart.jsp").forward(req, resp);
+		if (currentUser != null) {
+			int currentUserMemNo = currentUser.getMemberNo();
+			
+			List<CartVo> cartList = new CartService().selectCartList(currentUserMemNo);
+			
+			int totalCartPrice = 0;
+			int totalPNum = 0;
+			
+			for (CartVo cartVo : cartList) {
+				totalCartPrice += cartVo.getBouquetTotalPrice();
+			}
+
+			for (CartVo cartVo : cartList) {
+				totalPNum += cartVo.getBuyNumBQ();
+			}
+			
+			
+			CartVo cartVo = new CartVo();
+			cartVo.setTotalCartPrice(totalCartPrice);
+			cartVo.setTotalPNum(totalPNum);
+			
+			
+			req.setAttribute("totalPNum", totalPNum);
+			req.setAttribute("totalCartPrice", totalCartPrice);
+			
+			req.setAttribute("cart", cartList);
+			
+			req.getRequestDispatcher("/WEB-INF/views/cart/cart.jsp").forward(req, resp);
+		} else {
+			req.setAttribute("msg", "로그인 먼저 해주세요.");
+			
+			req.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(req, resp);
+		}
+		
+		
 	}
 	
 	

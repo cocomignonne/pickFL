@@ -1,13 +1,14 @@
 package com.pickfl.cart.model.service;
 
+import static com.pickfl.common.JDBCTemplate.close;
+import static com.pickfl.common.JDBCTemplate.getConnection;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 import com.pickfl.cart.model.dao.CartDao;
-
-import com.pickfl.deliveryM.model.dao.DeliveryMDao;
-import static com.pickfl.common.JDBCTemplate.*;
+import com.pickfl.cart.model.vo.CartVo;
 
 public class CartService {
 
@@ -42,4 +43,58 @@ public class CartService {
         return result;
     }
 
+	
+	public int updateCartBQNum(int changedNum, int memNo, String bqName) {
+		Connection conn = getConnection();
+		
+		int result = updateCartBQNum(conn, changedNum, memNo, bqName);
+		
+		close(conn);
+
+		return result;
+		
+	}
+
+	private int updateCartBQNum(Connection conn, int changedNum, int memNo, String bqName) {
+		return new CartDao().updateCartBQNum(conn, changedNum, memNo, bqName);
+	}
+
+	public int deleteCartBQ(String bqDetail, int memNo, String bqName) {
+		Connection conn = getConnection();
+		
+		int result = deleteBQ(conn, bqDetail, memNo, bqName);
+		
+		close(conn);
+
+		return result;
+	}
+
+	private int deleteBQ(Connection conn, String bqDetail, int memNo, String bqName) {
+		return new CartDao().deleteBQ(conn, bqDetail, memNo, bqName);
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
