@@ -19,8 +19,7 @@ public class MemberVo {
 		
 	}
 
-	public MemberVo(int memberNo, String id, String pwd, String name, String email, String emailHash,
-			boolean emailChecked) {
+	public MemberVo(int memberNo, String id, String pwd, String name, String email) {
 		super();
 		this.memberNo = memberNo;
 		this.id = id;

@@ -30,3 +30,4 @@ public class OwnFlowerDetailController extends HttpServlet{
 		req.getRequestDispatcher("/WEB-INF/views/products/own-flower-detail.jsp").forward(req, resp);
 	}
 }
+  

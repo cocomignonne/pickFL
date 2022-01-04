@@ -5,30 +5,46 @@ import java.sql.Date;
 public class ReviewVo {
 	
 	private int reviewNo;
-	private int orderNo;
+	private int bouquetNo;
 	private String memberId;
+	private String bouquetName;
 	private String reviewTitle;
+	private String reviewImage;
 	private String reviewContent;
 	private Date reviewDate;
-	private int star;
+	private int stars;
 	private char reviewDeleted;
 	
-	public ReviewVo(int reviewNo, String reviewTitle, String memberId, Date reviewDate, int star) {
+	public ReviewVo(int reviewNo, String bouquetName, String memberId, String reviewTitle, String reviewImage, Date reviewDate, int stars) {
 		this.reviewNo = reviewNo;
+		this.bouquetName = bouquetName;
 		this.memberId = memberId;
 		this.reviewTitle = reviewTitle;
+		this.reviewImage = reviewImage;
 		this.reviewDate = reviewDate;
-		this.star = star;
+		this.stars = stars;
 	}
 	
-	public ReviewVo(int reviewNo, String memberId, String reviewTitle, String reviewContent, Date reviewDate,
-			int star) {
+	public ReviewVo(int reviewNo, String bouquetName, String memberId, String reviewTitle, String reviewImage, String reviewContent,
+			Date reviewDate, int stars) {
 		this.reviewNo = reviewNo;
+		this.bouquetName = bouquetName;
 		this.memberId = memberId;
 		this.reviewTitle = reviewTitle;
+		this.reviewImage = reviewImage;
 		this.reviewContent = reviewContent;
 		this.reviewDate = reviewDate;
-		this.star = star;
+		this.stars = stars;
+	}
+
+
+	
+	public String getBouquetName() {
+		return bouquetName;
+	}
+
+	public void setBouquetName(String bouquetName) {
+		this.bouquetName = bouquetName;
 	}
 
 	public int getReviewNo() {
@@ -38,16 +54,28 @@ public class ReviewVo {
 		this.reviewNo = reviewNo;
 	}
 	public int getOrderNo() {
-		return orderNo;
+		return bouquetNo;
 	}
 	public void setOrderNo(int orderNo) {
-		this.orderNo = orderNo;
+		this.bouquetNo = orderNo;
+	}
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getReviewTitle() {
 		return reviewTitle;
 	}
 	public void setReviewTitle(String reviewTitle) {
 		this.reviewTitle = reviewTitle;
+	}
+	public String getReviewImage() {
+		return reviewImage;
+	}
+	public void setReviewImage(String reviewImage) {
+		this.reviewImage = reviewImage;
 	}
 	public String getReviewContent() {
 		return reviewContent;
@@ -61,11 +89,11 @@ public class ReviewVo {
 	public void setReviewDate(Date reviewDate) {
 		this.reviewDate = reviewDate;
 	}
-	public int getStar() {
-		return star;
+	public int getStars() {
+		return stars;
 	}
-	public void setStar(int star) {
-		this.star = star;
+	public void setStars(int stars) {
+		this.stars = stars;
 	}
 	public char getReviewDeleted() {
 		return reviewDeleted;
@@ -73,7 +101,8 @@ public class ReviewVo {
 	public void setReviewDeleted(char reviewDeleted) {
 		this.reviewDeleted = reviewDeleted;
 	}
-
+	
+	
 	
 }
 	

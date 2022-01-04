@@ -2,6 +2,7 @@ package com.pickfl.cart.model.dao;
 
 import static com.pickfl.common.JDBCTemplate.*;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,7 +78,7 @@ public class CartDao {
         return result;
     }
 
-	
+
 //	장바구니 수량변경
 	public int updateCartBQNum(Connection conn, int changedNum, int memNo, String bqName) {
 		
@@ -140,3 +141,4 @@ public class CartDao {
 		}
 
 }
+

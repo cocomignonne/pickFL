@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,9 +68,26 @@
                     </div>
                     <form action="">
                         <div class="row mb-3">
-                            <div class="col-sm-2 align-self-center title">상품명</div>
-                            <div class="col-sm-8 align-self-center">나만의 꽃다발</div>
-                            <div class="col-sm-2 align-self-center" style="text-align: right;">별점 ⭐⭐⭐⭐⭐</div>
+                            <label for="bouquetName" class="col-sm-2 col-form-label title">상품명</label>
+                            <div class="col-sm-4">
+                                <select class="form-select" id="bouquetName" name="bouquetName" required>
+                                    <option selected>상품 선택</option>
+                                    <c:forEach items="${bouquetMap}" var="b">
+	                                    <option value="${b.getKey()}">${b.getValue()}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <label for="stars" class="col-sm-2 col-form-label title">별점</label>
+                            <div class="col-sm-4">
+                                <select class="form-select" id="stars" name="stars" required>
+                                    <option selected>별점 선택</option>
+                                    <option value="1">⭐✩✩✩✩</option>
+                                    <option value="2">⭐⭐✩✩✩</option>
+                                    <option value="3">⭐⭐⭐✩✩</option>
+                                    <option value="4">⭐⭐⭐⭐✩</option>
+                                    <option value="5">⭐⭐⭐⭐⭐</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rtitle" class="col-sm-2 col-form-label title">제목</label>

@@ -52,8 +52,7 @@ public class InquerySearchDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT COUNT(*) AS C FROM QUESTION";
-		String sql2 = "SELECT COUNT(*) AS C FROM QUESTION WHERE Q_DELETED = Y";
-		String sql3 = "SELECT COUNT(*) AS C FROM QUESTION WHERE Q_RESPONSE = ?";
+		String sql2 = "SELECT COUNT(*) AS C FROM QUESTION WHERE Q_RESPONSE = ?";
 		int result = 0;
 		
 		try {
@@ -64,7 +63,7 @@ public class InquerySearchDao {
 				rs.next();
 				result = Integer.parseInt(rs.getString("C"));
 			}else {
-				pstmt= conn.prepareStatement(sql3);
+				pstmt= conn.prepareStatement(sql2);
 				pstmt.setString(1,type);
 				rs = pstmt.executeQuery();
 				

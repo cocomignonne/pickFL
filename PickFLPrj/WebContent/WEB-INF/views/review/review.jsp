@@ -67,31 +67,37 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="rtitle" class="col-sm-2 col-form-label title">제목</label>
-                        <div class="col-sm-8"> ${r.reviewTitle}</div>
-                        <div class="col-sm-2 align-self-center" style="text-align: right;">
-                        별점 <span>
-                        	<c:if test="${r.star == 1}">                        	
-                        		⭐✩✩✩✩
-                        	</c:if>
-                        	<c:if test="${r.star == 2}">                        	
-                        		⭐⭐✩✩✩
-                        	</c:if>
-                        	<c:if test="${r.star == 3}">                        	
-                        		⭐⭐⭐✩✩
-                        	</c:if>
-                        	<c:if test="${r.star == 4}">                        	
-                        		⭐⭐⭐⭐✩
-                        	</c:if>
-                        	<c:if test="${r.star == 5}">                        	
-                        		⭐⭐⭐⭐⭐
-                        	</c:if>
-                        	</span> 
-                        </div>
+                        <label class="col-sm-3 col-form-label title">제목</label>
+                        <div class="col-sm-2 align-self-center"> ${r.reviewTitle}</div>
+                        <label class="col-sm-2 col-form-label title" style="text-align: center;">꽃다발이름</label>
+                        <div class="col-sm-3 align-self-center" style="text-align: left;"> ${r.bouquetName}</div>
+                        
                     </div>
                     <div class="row mb-3">
-                        <label for="rcontent" class="col-sm-2 col-form-label title" >내용</label>
-                        <div class="col-sm-10">
+                    	<label class="col-sm-3 col-form-label title">별점</label>
+                   		<div class="col-sm-2 align-self-center">
+                        	<c:if test="${r.stars == 1}">                        	
+                        		⭐✩✩✩✩
+                        	</c:if>
+                        	<c:if test="${r.stars == 2}">                        	
+                        		⭐⭐✩✩✩
+                        	</c:if>
+                        	<c:if test="${r.stars == 3}">                        	
+                        		⭐⭐⭐✩✩
+                        	</c:if>
+                        	<c:if test="${r.stars == 4}">                        	
+                        		⭐⭐⭐⭐✩
+                        	</c:if>
+                        	<c:if test="${r.stars == 5}">                        	
+                        		⭐⭐⭐⭐⭐
+                        	</c:if>
+                        </div>
+                        <label class="col-sm-2 col-form-label title" style="text-align: center;">작성자</label>
+                        <div class="col-sm-3 align-self-center" style="text-align: left;"> ${r.memberId}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="rcontent" class="col-sm-3 col-form-label title" >내용</label>
+                        <div class="col-sm-9">
                         ${r.reviewContent}
                         </div>
                     </div>
@@ -106,9 +112,6 @@
                     </div>
                     
                     <div class="row">
-                        <div class="col-sm">
-                            <input type="submit" class="btn btn-success " value="등록하기">
-                        </div>
                         <div class="col-sm">
                         	<a href="review">
 	                            <input type="button" class="btn btn-outline-dark" value="목록으로">

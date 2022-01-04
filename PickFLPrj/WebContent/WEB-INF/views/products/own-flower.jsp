@@ -47,6 +47,7 @@
     .card img {
       width: 15rem;
       height: 15rem;
+      margin: auto;
     }
 
     #selected-btn {
@@ -81,14 +82,9 @@
 
   <main id="main">
     <section id="hero">
-      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-  
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-  
         <div class="carousel-inner" role="listbox">
-  
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background-image: url(img/carnation-gdecad1867_640.jpg)">
+          <div class="carousel-item active" style="background-image: url(assets/img/slide/own-1.jpg)">
             <div class="carousel-container">
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown"> <span>나만의 꽃다발</span></h2>
@@ -96,39 +92,6 @@
               </div>
             </div>
           </div>
-  
-          <!-- Slide 2 -->
-          <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg)">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-              </div>
-            </div>
-          </div>
-  
-          <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg)">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-              </div>
-            </div>
-          </div>
-  
-        </div>
-  
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-  
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
-  
       </div>
     </section><!-- End Hero -->
     <section class="inner-page">
@@ -137,7 +100,6 @@
           <div class="col-md-3"></div>
           <div class="col-md-1">
             <div class="float-md-start"><a href="own-flower"><h5>꽃</h5></a></div>
-            <div class="float-md-end"><a href="#"><h5>장식</h5></a></div>
           </div>
         </div>
         <div class="row">
@@ -166,7 +128,7 @@
 	                <div class="me-auto">이름으로 검색</div>
 	                <div class="input-group input-group-sm m-3">
 	                  <input type="text" class="form-control" name="searchName" placeholder="이름을 입력하세요">
-	                  <button class="btn btn-outline-secondary" type="sumbit">검색</button>
+	                  <button class="btn btn-outline-secondary" type="submit">검색</button>
 	                </div>
 	              </div>
             	</form>
@@ -178,7 +140,7 @@
         <div class="row row-cols-1 row-cols-md-4 g-4">
         <c:forEach items="${productList}" var="p">        
           <div class="col">
-            <div class="card" onClick=getParam(${p.product_no})>
+            <div class="card p-4" onClick=getParam(${p.product_no})>
               <img src="image?fileName=${p.product_image}" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">${p.product_name}</h5>
@@ -192,7 +154,7 @@
       </div>
       
       
-      <button class="back-to-top d-flex align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-archive"></button>
+      <button class="back-to-top d-flex align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-archive"></i></button>
 
 		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 		  <div class="offcanvas-header">
@@ -243,8 +205,6 @@
   
   <%@include file="/WEB-INF/views/common/footer.jsp" %>
 
-  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-archive"></i></i></a> -->
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
