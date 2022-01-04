@@ -165,6 +165,7 @@ public class MemberService {
 			close(conn);
 			return dbInfo;
 		} else {
+			close(conn);
 			return null;
 		}
 	}
@@ -185,15 +186,14 @@ public class MemberService {
 		return new MemberDao().selectAllMember(conn, vo);
 	}
 	
-	public MemberVo modifyMember(MemberVo vo, String memberNum) {
+	public MemberVo modifyMember(MemberVo vo) {
 		Connection conn = getConnection();
-		vo = selectMember(conn, vo, memberNum);
-		close(conn);
+		vo = selectMember(conn, vo);
 		return vo;
 	}
 
-	private MemberVo selectMember(Connection conn, MemberVo vo, String memberNum) {
-		return new MemberDao().selectMember(conn, vo, memberNum);
+	private MemberVo selectMember(Connection conn, MemberVo vo) {
+		return new MemberDao().selectMember(conn, vo);
 	}
 
 	public void updateMember(MemberVo vo) {

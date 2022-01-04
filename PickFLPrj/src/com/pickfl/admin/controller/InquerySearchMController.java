@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pickfl.inquery.model.service.InquerySearchMService;
 import com.pickfl.inquery.model.vo.InqueryVo;
+import com.pickfl.member.model.vo.MemberVo;
 import com.pickfl.inquery.model.vo.InquerySearchVo;
 
 
@@ -18,11 +19,12 @@ import com.pickfl.inquery.model.vo.InquerySearchVo;
 public class InquerySearchMController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String user = "admin3";
+		MemberVo user = (MemberVo) req.getSession().getAttribute("loginUser");
+		
 		String type = req.getParameter("searchType");
 		String page = req.getParameter("currentPage");
 		
-		InquerySearchVo vo = new InquerySearchVo(user, type, page);
+		InquerySearchVo vo = new InquerySearchVo(user.getId(), type, page);
 		
 		req.setAttribute("InquerySearchVo", vo);
 		

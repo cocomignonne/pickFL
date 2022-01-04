@@ -22,7 +22,7 @@
 	<div class="container-login100">
 		<div class="wrap-Join p-t-50 p-b-90">
 			<span class="login100-form-title p-b-51">Modifycation</span> 
-			<form action="adminModify" method=get name="userInfo" >
+			<form action="adminMUpdate" method="post" name="userInfo">
 				<input type="hidden" name="mNum" value="${vo.memberNo}">
 				<table>
 					<tr>

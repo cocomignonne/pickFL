@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 <title>Inquery</title>
 <script>
-	function inquerySuccess(){
-		window.close();
-	}
 	function close(){
 		window.close();
 	}
@@ -21,9 +18,6 @@
 			<div class="tablehead">
 				<h2>문의 입력</h2>
 			</div>
-			<div class="tableid">
-				<h4 class="h4id">ID asdasd</h4>
-			</div>
 			<div class="tablebody">
 				<h4 class="h4body">제목</h4>
 				<input type="text" name="title" class="textform">
@@ -35,7 +29,7 @@
 			</div>
 			<br/>
 			<div class="divbutton">
-				<input type="submit" value="작성" onclick="inquerySuccess()">
+				<input type="submit" value="작성" onclick="close()">
 				<input type="button" value="취소" onclick="close()">
 			</div>
 			</form>
