@@ -21,13 +21,11 @@ public class CartDao {
 		CartVo cartVo = null;
 		List<CartVo> selectCartInfo = new ArrayList<CartVo>();
 		
-		String sql = "SELECT B.BOUQUET_NAME, C.BOUQUET_DETAIL, B.WRAP_COLOR, C.BUY_NUM_BQ, B.BOUQUET_PRICE FROM CART C RIGHT JOIN BOUQUET B ON (C.MEMBER_NO = B.MEMBER_NO) WHERE B.MEMBER_NO = ? AND B.BOUQUET_NO = C.CART_NO";
-		
+		String sql = "SELECT C.BOUQUET_NAME, C.BOUQUET_DETAIL, B.WRAP_COLOR, C.BUY_NUM_BQ, B.BOUQUET_PRICE FROM CART C LEFT JOIN MEMBER M ON (C.MEMBER_NO = M.MEMBER_NO) LEFT JOIN BOUQUET B ON (M.MEMBER_NO = B.MEMBER_NO) WHERE B.MEMBER_NO = ? AND C.MEMBER_NO = M.MEMBER_NO AND C.BOUQUET_NO = B.BOUQUET_NO";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, currentUserMemNo);
-			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -45,11 +43,10 @@ public class CartDao {
 				cartVo.setWrapColor(wrapColor);
 				cartVo.setBuyNumBQ(buyNumBQ);
 				cartVo.setBouquetPrice(bouquetPrice);
-				cartVo.setBouquetTotalPrice(bouquetTotalPrice);;
+				cartVo.setBouquetTotalPrice(bouquetTotalPrice);
 				
 				selectCartInfo.add(cartVo);
 			}
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -61,7 +58,7 @@ public class CartDao {
 	}
 	
 	public int add(Connection conn, CartVo c) throws SQLException {
-        String sql = "INSERT INTO CART(CART_NO, MEMBER_NO, BOUQUET_NO, BOUQUET_DETAIL) "
+        String sql = "INSERT INTO CART(CART_NO, MEMBER_NO, BOUQUET_NAME, BOUQUET_DETAIL) "
                 + "VALUES (SEQ_CART.NEXTVAL, ?,?,?)";
         PreparedStatement pstmt = null;
         int result = 0;
@@ -69,7 +66,7 @@ public class CartDao {
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, c.getMemberNo());
-            pstmt.setInt(2, c.getBouquetNo());
+            pstmt.setString(2, c.getBouquetName());
             pstmt.setString(3, c.getBouquetDetail());
             
             result = pstmt.executeUpdate();
@@ -81,4 +78,67 @@ public class CartDao {
         return result;
     }
 
+
+//	장바구니 수량변경
+	public int updateCartBQNum(Connection conn, int changedNum, int memNo, String bqName) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = "UPDATE CART SET BUY_NUM_BQ = ? WHERE MEMBER_NO = ? AND BOUQUET_NAME = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, changedNum);
+			pstmt.setInt(2, memNo);
+			pstmt.setString(3, bqName);
+
+			result = pstmt.executeUpdate();
+
+			if(result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteBQ(Connection conn, String bqDetail, int memNo, String bqName) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+	
+		String sql = "DELETE FROM CART WHERE MEMBER_NO = ? AND BOUQUET_DETAIL = ? AND BOUQUET_NAME = ?";
+	
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setString(2, bqDetail);
+			pstmt.setString(3, bqName);
+		
+			result = pstmt.executeUpdate();
+
+			if(result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		}
+
 }
+

@@ -10,7 +10,24 @@ public class CartVo {
     private String wrapColor;
     private int bouquetPrice;
     private int buyNumBQ;
-    private int bouquetTotalPrice;
+    private int totalPNum;
+	private int bouquetTotalPrice;
+    private int totalCartPrice;
+    
+    
+    
+    public int getTotalPNum() {
+		return totalPNum;
+	}
+	public void setTotalPNum(int totalPNum) {
+		this.totalPNum = totalPNum;
+	}
+	public int getTotalCartPrice() {
+		return totalCartPrice;
+	}
+	public void setTotalCartPrice(int totalCartPrice) {
+		this.totalCartPrice = totalCartPrice;
+	}
 
     public int getCartNo() {
         return cartNo;

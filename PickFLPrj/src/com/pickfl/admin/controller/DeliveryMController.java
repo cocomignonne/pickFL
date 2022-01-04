@@ -28,17 +28,7 @@ public class DeliveryMController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*
-		 * HttpSession session = req.getSession();
-		 * 
-		 * String deliveryStateChange = (String)
-		 * session.getAttribute("delivery-status-changeVal"); String orderNo = (String)
-		 * session.getAttribute("orderNoVal"); String memberNo = (String)
-		 * session.getAttribute("memberNoVal");
-		 * 
-		 * System.out.println(deliveryStateChange); System.out.println(orderNo);
-		 * System.out.println(memberNo);
-		 */
+		
 		String orderNo = req.getParameter("orderNoVal");
 		String memberNo = req.getParameter("memberNoVal");
 		String deliveryStatusChange = req.getParameter("deliveryStatusChangeVal");

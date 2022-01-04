@@ -37,6 +37,8 @@
 
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
+						<span style="text-align: center;"> <h3 style="color: rosybrown;">${msg}</h3> </span>
+						<br><br><br><br>
 					<span class="login100-form-title p-b-60">
 						Login
 					</span>
