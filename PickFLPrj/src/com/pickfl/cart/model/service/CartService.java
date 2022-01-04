@@ -15,7 +15,7 @@ import static com.pickfl.common.JDBCTemplate.*;
 
 
 public class CartService {
-
+//	장바구니에 보여질 값들 불러오기
 	public List<CartVo> selectCartList(int currentUserMemNo) {
 		Connection conn = getConnection();
 		
