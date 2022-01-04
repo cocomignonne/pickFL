@@ -148,7 +148,7 @@ public class MemberDao {
 				selectedMember.setId(id);
 				selectedMember.setPwd(pwd);
 				selectedMember.setName(name);
-				selectedMember.setEmail(email);;
+				selectedMember.setEmail(email);
 				
 			}
 			
@@ -287,12 +287,14 @@ public class MemberDao {
 		List<MemberVo> list = new ArrayList<MemberVo>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int end = vo2.getCurrentPage()*10;
+		int start = end - 9;
 		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM, M.* FROM MEMBER M) WHERE RNUM BETWEEN ? AND ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vo2.getStartPage());
-			pstmt.setInt(2, vo2.getEndPage());
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 
 			rs = pstmt.executeQuery();
 			
@@ -325,14 +327,14 @@ public class MemberDao {
 		return list;
 	}
 
-	public MemberVo selectMember(Connection conn, MemberVo vo, String memberNum) {
+	public MemberVo selectMember(Connection conn, MemberVo vo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM MEMBER WHERE MEMBER_NO = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberNum);
+			pstmt.setInt(1, vo.getMemberNo());
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -365,6 +367,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE MEMBER SET MEMBER_ID = ?, MEMBER_PWD=?, MEMBER_NAME=?,"
 				+ "MEMBER_EMAIL=?, MEMBER_BIRTH =?, MEMBER_QUIT_YN=? WHERE MEMBER_NO = ?";
+		int result = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -376,7 +379,13 @@ public class MemberDao {
 			pstmt.setString(6, vo.getQuitYN());
 			pstmt.setInt(7, vo.getMemberNo());
 			
-			pstmt.executeUpdate(); // 현재 업데이트 안됨;
+			result = pstmt.executeUpdate();
+
+			if(result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

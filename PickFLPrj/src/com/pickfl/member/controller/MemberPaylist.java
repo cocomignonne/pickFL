@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pickfl.member.model.service.MemberService;
-import com.pickfl.member.model.vo.PaylistPageVo;
 import com.pickfl.member.model.vo.PaylistVo;
 
 @WebServlet("/paylist")
@@ -18,15 +17,10 @@ public class MemberPaylist extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String mNum = req.getParameter("mNum");
-		String page = req.getParameter("currentPage");
 		PaylistVo vo = new PaylistVo();
 		List<PaylistVo> list = null;
 		
 		vo.setMemberNo(Integer.parseInt(mNum));
-		
-		PaylistPageVo pageVo  = new PaylistPageVo(page);
-		
-		req.setAttribute("searchVo", pageVo);
 		
 		list = new MemberService().allPaylist(list, vo.getMemberNo());
 		

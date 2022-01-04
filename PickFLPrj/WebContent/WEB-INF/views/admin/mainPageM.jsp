@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon-box iconbox-yellow">
-                        <h1><a href="">회원 관리</a></h1>
+                        <h1><a href="memberInfo">회원 관리</a></h1>
                         <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
 
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
                     <div class="icon-box iconbox-teal">
-                        <h1><a href="">문의 관리</a></h1>
+                        <h1><a href="inquery">문의 관리</a></h1>
                         <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
                     </div>
                 </div>
