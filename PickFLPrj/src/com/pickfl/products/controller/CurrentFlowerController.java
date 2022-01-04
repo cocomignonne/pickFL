@@ -65,24 +65,34 @@ public class CurrentFlowerController extends HttpServlet{
 		BouquetVo b = new BouquetVo(memberNo, bouquetName, wrapColor, bouquetPrice);
 		
 		int bouquetNo = new BouquetService().getCurrBqNo(b);
-		System.out.println("bouquetNo : " + bouquetNo);
 		
 		if (bouquetNo > 0 ) {
 			String detail = "";
 			for(int i = 1; i <= row; i++) {
 				String productName = req.getParameter("pname" + i);
 				String orderNum = req.getParameter("orderNum" + i);
-				detail += productName + " x " + orderNum + "<br>";
+				detail += productName + " x " + orderNum + " ";
 			}
 			
-			CartVo c = new CartVo(memberNo, bouquetNo, detail);
+			CartVo c = new CartVo(memberNo, bouquetNo, detail, bouquetName);
 			
 			int result = new CartService().add(c);
 			
 			if(result > 0) {
 				int clear = new CurrentFlowerService().deleteAll(memberNo);
-				// success
-				req.getRequestDispatcher("/WEB-INF/views/cart/cart.jsp").forward(req, resp);
+				if(clear > 0 ) {
+					resp.setContentType("text/html; charset=UTF-8"); 
+					String url = "cart";
+					PrintWriter writer = resp.getWriter(); 
+					writer.println("<script>location.href='"+url+"';</script>");
+				}else {
+					resp.setContentType("text/html; charset=UTF-8"); 
+					String url = "own-flower";
+					PrintWriter writer = resp.getWriter(); 
+					writer.println("<script>alert('장바구니 추가중에 문제가 발생했습니다. 다시 시도해주세요.'); location.href='"+url+"';</script>");
+					writer.close();
+				}
+				
 				
 			}else {
 				// cart add error 

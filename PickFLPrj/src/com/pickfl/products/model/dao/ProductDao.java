@@ -22,15 +22,15 @@ public class ProductDao {
 		
 		try {
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, p.getProduct_name());
-		pstmt.setInt(2, p.getProduct_price());
-		pstmt.setInt(3, p.getProduct_stock());
-		pstmt.setString(4, p.getFlower_lang());
-		pstmt.setString(5, p.getProduct_simple());
-		pstmt.setString(6, p.getProduct_detail());
-		pstmt.setString(7, p.getProduct_color());
-		pstmt.setString(8, p.getProduct_size());
-		pstmt.setString(9, p.getProduct_image());
+		pstmt.setString(1, p.getProductName());
+		pstmt.setInt(2, p.getProductPrice());
+		pstmt.setInt(3, p.getProductStock());
+		pstmt.setString(4, p.getFlowerLang());
+		pstmt.setString(5, p.getProductSimple());
+		pstmt.setString(6, p.getProductDetail());
+		pstmt.setString(7, p.getProductColor());
+		pstmt.setString(8, p.getProductSize());
+		pstmt.setString(9, p.getProductImage());
 		
 		result = pstmt.executeUpdate();
 		} finally {			
@@ -227,19 +227,19 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		if(p.getProduct_image().equals("")) {
+		if(p.getProductImage().equals("")) {
 			sql = "UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_PRICE = ?, PRODUCT_STOCK = ?, FLOWER_LANG = ?, PRODUCT_SIMPLE = ?, PRODUCT_DETAIL = ?, PRODUCT_COLOR = ?, PRODUCT_SIZE = ? WHERE PRODUCT_NO = ?";
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, p.getProduct_name());
-				pstmt.setInt(2, p.getProduct_price());
-				pstmt.setInt(3, p.getProduct_stock());
-				pstmt.setString(4, p.getFlower_lang());
-				pstmt.setString(5, p.getProduct_simple());
-				pstmt.setString(6, p.getProduct_detail());
-				pstmt.setString(7, p.getProduct_color());
-				pstmt.setString(8, p.getProduct_size());
-				pstmt.setInt(9, p.getProduct_no());
+				pstmt.setString(1, p.getProductName());
+				pstmt.setInt(2, p.getProductPrice());
+				pstmt.setInt(3, p.getProductStock());
+				pstmt.setString(4, p.getFlowerLang());
+				pstmt.setString(5, p.getProductSimple());
+				pstmt.setString(6, p.getProductDetail());
+				pstmt.setString(7, p.getProductColor());
+				pstmt.setString(8, p.getProductSize());
+				pstmt.setInt(9, p.getProductNo());
 				
 				result = pstmt.executeUpdate();
 			} finally {			
@@ -249,16 +249,16 @@ public class ProductDao {
 			sql = "UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_PRICE = ?, PRODUCT_STOCK = ?, FLOWER_LANG = ?, PRODUCT_SIMPLE = ?, PRODUCT_DETAIL = ?, PRODUCT_COLOR = ?, PRODUCT_SIZE = ?, PRODUCT_IMAGE = ? WHERE PRODUCT_NO = ?";
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, p.getProduct_name());
-				pstmt.setInt(2, p.getProduct_price());
-				pstmt.setInt(3, p.getProduct_stock());
-				pstmt.setString(4, p.getFlower_lang());
-				pstmt.setString(5, p.getProduct_simple());
-				pstmt.setString(6, p.getProduct_detail());
-				pstmt.setString(7, p.getProduct_color());
-				pstmt.setString(8, p.getProduct_size());
-				pstmt.setString(9, p.getProduct_image());
-				pstmt.setInt(10, p.getProduct_no());
+				pstmt.setString(1, p.getProductName());
+				pstmt.setInt(2, p.getProductPrice());
+				pstmt.setInt(3, p.getProductStock());
+				pstmt.setString(4, p.getFlowerLang());
+				pstmt.setString(5, p.getProductSimple());
+				pstmt.setString(6, p.getProductDetail());
+				pstmt.setString(7, p.getProductColor());
+				pstmt.setString(8, p.getProductSize());
+				pstmt.setString(9, p.getProductImage());
+				pstmt.setInt(10, p.getProductNo());
 				
 				result = pstmt.executeUpdate();
 			} finally {			

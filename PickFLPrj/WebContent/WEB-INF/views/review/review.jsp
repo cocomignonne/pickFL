@@ -97,17 +97,16 @@
                     </div>
                     <div class="row mb-3">
                         <label for="rcontent" class="col-sm-3 col-form-label title" >내용</label>
-                        <div class="col-sm-9">
+                        <div class="col-sm-6 align-self-center" style="text-align: center;">
                         ${r.reviewContent}
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                     
                     <div class="row mb-3">
 
                         <div class="col-sm">
-                            <img class="thumbnail rounded m-lg-3" src="img/flower1.jpg" alt="">
-                            <img class="thumbnail rounded m-lg-3" src="img/flower2.jpg" alt="">
-                            <img class="thumbnail rounded m-lg-3" src="img/flower3.jpg" alt="">
+                            <img class="thumbnail rounded m-lg-3" src="image?fileName=${r.reviewImage}" alt="">
                         </div>
                     </div>
                     

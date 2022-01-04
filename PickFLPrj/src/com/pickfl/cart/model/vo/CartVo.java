@@ -15,8 +15,13 @@ public class CartVo {
     private int totalCartPrice;
     
     
-    
-    public int getTotalPNum() {
+	public CartVo(int memberNo, int bouquetNo, String bouquetDetail, String bouquetName) {
+		this.memberNo = memberNo;
+		this.bouquetNo = bouquetNo;
+		this.bouquetDetail = bouquetDetail;
+		this.bouquetName = bouquetName;
+	}
+	public int getTotalPNum() {
 		return totalPNum;
 	}
 	public void setTotalPNum(int totalPNum) {
@@ -101,11 +106,6 @@ public class CartVo {
         this.bouquetTotalPrice = bouquetTotalPrice;
     }
 
-    public CartVo(int memberNo, int bouquetNo, String bouquetDetail) {
-        this.memberNo = memberNo;
-        this.bouquetNo = bouquetNo;
-        this.bouquetDetail = bouquetDetail;
-    }
 	public CartVo() {
 
 	}

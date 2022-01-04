@@ -37,8 +37,17 @@ public class ReviewVo {
 		this.stars = stars;
 	}
 
+	public ReviewVo(int bouquetNo, String memberId, String bouquetName, String reviewTitle, String reviewImage,
+			String reviewContent, int stars) {
+		this.bouquetNo = bouquetNo;
+		this.memberId = memberId;
+		this.bouquetName = bouquetName;
+		this.reviewTitle = reviewTitle;
+		this.reviewImage = reviewImage;
+		this.reviewContent = reviewContent;
+		this.stars = stars;
+	}
 
-	
 	public String getBouquetName() {
 		return bouquetName;
 	}

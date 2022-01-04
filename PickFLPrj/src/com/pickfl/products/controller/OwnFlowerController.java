@@ -41,9 +41,9 @@ public class OwnFlowerController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String product_color = req.getParameter("product_color");
+		String productColor = req.getParameter("product_color");
 		
-		List<ProductVo> productList = new ProductService().searchByColor(product_color);
+		List<ProductVo> productList = new ProductService().searchByColor(productColor);
 		
 		String filePath = req.getServletContext().getRealPath("/upload") + File.separator;
 		req.setAttribute("filePath", filePath);

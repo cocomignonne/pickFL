@@ -81,6 +81,25 @@ public class ReviewService {
 		return new ReviewDao().getBqNoByMemberNo(conn, memberNo);
 	}
 
+	public int add(ReviewVo r) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		try {
+			result = new ReviewDao().add(conn, r);
+			if(result > 0) {
+				commit(conn);
+			}else rollback(conn);
+		} catch (SQLException e) {
+			rollback(conn);
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
 	
 
 }

@@ -41,16 +41,16 @@ public class UpdateProductController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int product_no = Integer.parseInt(req.getParameter("no"));
-		String product_name = req.getParameter("pname");
-		int product_price = Integer.parseInt(req.getParameter("price"));
-		int product_stock = Integer.parseInt(req.getParameter("stock"));
-		String flower_lang = req.getParameter("flang");
-		String product_simple = req.getParameter("simple");
-		String product_detail = req.getParameter("detail");
-		String product_color = req.getParameter("color");
-		String product_size = req.getParameter("size");
-		String product_image="";
+		int productNo = Integer.parseInt(req.getParameter("no"));
+		String productName = req.getParameter("pname");
+		int productPrice = Integer.parseInt(req.getParameter("price"));
+		int productStock = Integer.parseInt(req.getParameter("stock"));
+		String flowerLang = req.getParameter("flang");
+		String productSimple = req.getParameter("simple");
+		String productDetail = req.getParameter("detail");
+		String productColor = req.getParameter("color");
+		String productSize = req.getParameter("size");
+		String productImage="";
 		
 		
 		Part part = req.getPart("image");
@@ -62,8 +62,8 @@ public class UpdateProductController extends HttpServlet{
 				String changedName = "" + UUID.randomUUID();
 				String ext = originName.substring(originName.lastIndexOf("."), originName.length());
 				String realPath = req.getServletContext().getRealPath("/upload");
-				product_image = changedName + ext;
-				String filePath = realPath + File.separator + product_image;
+				productImage = changedName + ext;
+				String filePath = realPath + File.separator + productImage;
 				
 				FileOutputStream fos = new FileOutputStream(filePath);
 				
@@ -78,10 +78,10 @@ public class UpdateProductController extends HttpServlet{
 			}
 		}
 		
-		ProductVo p = new ProductVo(product_no, product_name, product_price, product_stock, flower_lang, product_simple, product_detail, product_color, product_size, product_image);
+		ProductVo p = new ProductVo(productNo, productName, productPrice, productStock, flowerLang, productSimple, productDetail, productColor, productSize, productImage);
 		int result = new ProductService().updateProduct(p);
 		if(result > 0) {
-			resp.sendRedirect(resp.encodeRedirectURL("http://localhost:8989/PickFL/manage-product-detail?no="+product_no));
+			resp.sendRedirect(resp.encodeRedirectURL("http://localhost:8989/PickFL/manage-product-detail?no="+productNo));
 			
 		} else {
 			resp.sendRedirect(req.getRequestURI());

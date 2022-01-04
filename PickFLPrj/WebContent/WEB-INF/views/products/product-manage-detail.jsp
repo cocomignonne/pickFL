@@ -62,49 +62,49 @@
                           <div class="row mb-3">
                               <label for="pname" class="col-sm-2 col-form-label title">상품명</label>
                               <div class="col-sm-10">
-                                ${p.product_name}
+                                ${p.productName}
                               </div>
                           </div>
                           <div class="row mb-3">
                               <label for="price" class="col-sm-2 col-form-label title">상품가격</label>
                               <div class="col-sm-4">
-                                ${p.product_price} 원
+                                ${p.productPrice} 원
                               </div>
                               <label for="stock" class="col-sm-2 col-form-label title">상품재고</label>
                               <div class="col-sm-4">
-                                ${p.product_stock} 개
+                                ${p.productStock} 개
                               </div>
                           </div>
                           <div class="row mb-3">
                             <label for="flang" class="col-sm-2 col-form-label title">꽃말</label>
                             <div class="col-sm-4">
-                              ${p.flower_lang}
+                              ${p.flowerLang}
                             </div>
                             <label for="simple" class="col-sm-2 col-form-label title">간단정보</label>
                             <div class="col-sm-4">
-                              ${p.product_simple}
+                              ${p.productSimple}
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rcontent" class="col-sm-2 col-form-label title">상세정보</label>
                             <div class="col-sm-10">
-                                ${p.product_detail}
+                                ${p.productDetail}
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rcontent" class="col-sm-2 col-form-label title">색상</label>
                             <div class="col-sm-4">
-                                ${p.product_color}
+                                ${p.productColor}
                             </div>
                             <label for="rcontent" class="col-sm-2 col-form-label title">크기</label>
                             <div class="col-sm-4">
-                                ${p.product_size}
+                                ${p.productSize}
                             </div>
                         </div>
                           <div class="row mb-3">
                               <div class="col-sm-2 align-self-center title">상품이미지</div>
                               <div class="col-sm-10">
-                                  <img class="thumbnail rounded m-lg-3" src="image?fileName=${p.product_image}" alt="">
+                                  <img class="thumbnail rounded m-lg-3" src="image?fileName=${p.productImage}" alt="">
                               </div>
                           </div>
                           
