@@ -378,6 +378,10 @@ public class MemberDao {
 			
 			pstmt.executeUpdate(); // 현재 업데이트 안됨;
 			
+			
+			System.out.println(vo.getName());
+			commit(conn);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			rollback(conn);
