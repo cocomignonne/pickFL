@@ -23,6 +23,7 @@ public class CartController extends HttpServlet{
 		MemberVo currentUser = (MemberVo) req.getSession().getAttribute("loginUser");
 		
 		if (currentUser != null) {
+//			장바구니에 보여질 값들 불러오기
 			int currentUserMemNo = currentUser.getMemberNo();
 			
 			List<CartVo> cartList = new CartService().selectCartList(currentUserMemNo);

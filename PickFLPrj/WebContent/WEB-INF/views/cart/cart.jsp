@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@page import="com.pickfl.cart.model.vo.CartVo"%>
+<%@page import="com.pickfl.member.model.vo.MemberVo"%>
 <%
 int totalCartPrice = (int) request.getAttribute("totalCartPrice");
 int totalPNum = (int) request.getAttribute("totalPNum");
@@ -116,6 +117,8 @@ int totalPNum = (int) request.getAttribute("totalPNum");
                     <a href="order">상품 주문</a>
                 </div>
             </div>
+            
+          
         </form>
 	</section>
 

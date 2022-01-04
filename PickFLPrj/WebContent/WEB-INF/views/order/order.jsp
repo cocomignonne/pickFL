@@ -167,10 +167,11 @@
                     <div class="col-sm-3 a">
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                    	<span style="font-size: 20px; text-align: right; margin-left: 66%;"><input type="checkbox" value="usePoint""><b>적립금 사용 : </b></span>
+                    	<span style="font-size: 20px; text-align: right; margin-left: 66%;"><input type="checkbox" value="usePoint"><b>적립금 사용 : </b></span>
                     </div>
                     <div class="col-sm-3 a">
-                    	<input type="text" style="border: 1px solid lightgrey;" placeholder="  5000원 이상 사용 가능">
+                    	<input type="text" style="border: 1px solid lightgrey;" placeholder="0">
+                    	<input type="text" style="border: 1px solid lightgrey;" placeholder="사용">
                     </div>
                     
                     <div class="col-sm-3 a">
