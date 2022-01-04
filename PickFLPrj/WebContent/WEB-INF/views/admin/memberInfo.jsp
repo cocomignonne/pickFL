@@ -40,9 +40,9 @@
 				<td class="table_td">${l.birth}</td>
 				<td class="table_td">${l.joinDate}</td>
 				<td class="table_td_button">
-					<form action="memberpaylist" method="post">
+					<form action="paylist" method="get">
 						<input type="hidden" name="mNum" value="${l.memberNo}">
-						<input type="button" class="table_button" onclick="memberpaylist()" value="확인하기">
+						<input type="submit" class="table_button" value="확인하기">
 					</form>
 				</td>
 				<td class="table_td">${l.quitYN}</td>

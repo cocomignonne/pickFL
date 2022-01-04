@@ -18,13 +18,13 @@ public class MemberInfoController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String page = req.getParameter("currentPage");
-		List<MemberVo> list;
+		List<MemberVo> list = null;
 		
 		MemberSearchMVo vo = new MemberSearchMVo(page);
 		
 		req.setAttribute("searchVo", vo);
 		
-		list = new MemberService().allMemberList();
+		list = new MemberService().allMemberList(vo);
 		
 		req.setAttribute("list", list);
 		

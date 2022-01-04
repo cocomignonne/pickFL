@@ -25,21 +25,23 @@
                 </div>
                 <table class = "table-striped" id="content2_2">
                     <tr class="content2_2_tr">
+                        <th class="content2_2_td">주문번호</th>
                         <th class="content2_2_td">상품번호</th>
-                        <th class="content2_2_td">상품이름</th>
                         <th class="content2_2_td">구매개수</th>
                         <th class="content2_2_td">배송상태</th>
                         <th class="content2_2_td">구매금액</th>
                         <th class="content2_2_td">결제날짜</th>
                     </tr>
-                    <tr class="content2_2_tr">
-                        <td class="content2_2_td">1</td>
-                        <td class="content2_2_td">1</td>
-                        <td class="content2_2_td">1</td>
-                        <td class="content2_2_td">1</td>
-                        <td class="content2_2_td">1</td>
-                        <td class="content2_2_td">1</td>
-                    </tr>
+                    <c:forEach items="${list}" var="l">
+						<tr class="content2_2_tr">
+							<td class="content2_2_td" id="td1">${l.orderNo}</td>
+							<td class="content2_2_td">${l.productNo}</td>
+							<td class="content2_2_td">${l.orderNum}</td>
+							<td class="content2_2_td">${l.delivery}</td>	
+							<td class="content2_2_td">${l.price}</td>	
+							<td class="content2_2_td">${l.payDate}</td>	
+						</tr>
+					</c:forEach>
                 </table>
     </div>
     
