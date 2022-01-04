@@ -47,43 +47,56 @@
        <div>
            <div class="container">
                <div class="row">
-                   <p class="text-center fs-1 mb-5">REVIEW</p>           
+                   <p class="text-center fs-1">REVIEW</p>           
+               </div>
+               <div class="row">
+               		<div class="col-sm-10 mb-4">
+                    </div>
+               		<div class="col-sm mb-4">
+	               		<c:if test="${not empty session.loginUser}">
+		               		<a href="add-review">
+			                   <button class="btn btn-success">리뷰쓰기</button>          
+		               		</a>
+	               		</c:if>
+                    </div>
                </div>
                    <!-- table --> 
 		           <table class="table table-hover">
 		               <thead>
 		                   <tr>
-		                       <th scope="col">리뷰번호</td>
-		                       <!-- <th scope="col">리뷰사진</td> -->
+		                       <th scope="col">꽃다발이름</td>
+		                       <th scope="col">리뷰사진</td>
 		                       <th scope="col">리뷰제목</td>
 		                       <th scope="col">별점</td>
+		                       <th scope="col">작성자</td>
 		                       <th scope="col">작성일</td>
 		                   </tr>
 		               </thead>
 		               <c:forEach items="${reviewList}" var="r">
 			               <tr onClick="getParam(${r.reviewNo})">
-			                   <td>${r.reviewNo}</td>
-			                   <%-- <td><img src="image?fileName=${p.product_image}"></td> --%>
+			                   <td>${r.bouquetName}</td>
+			                   <td><img src="image?fileName=${r.reviewImage}"></td>
 			                   <td>${r.reviewTitle}</td>
 			                   <td>
-				                   <span>
-	                        	<c:if test="${r.star == 1}">                        	
-	                        		⭐✩✩✩✩
-	                        	</c:if>
-	                        	<c:if test="${r.star == 2}">                        	
-	                        		⭐⭐✩✩✩
-	                        	</c:if>
-	                        	<c:if test="${r.star == 3}">                        	
-	                        		⭐⭐⭐✩✩
-	                        	</c:if>
-	                        	<c:if test="${r.star == 4}">                        	
-	                        		⭐⭐⭐⭐✩
-	                        	</c:if>
-	                        	<c:if test="${r.star == 5}">                        	
-	                        		⭐⭐⭐⭐⭐
-	                        	</c:if>
+				                <span>
+		                        	<c:if test="${r.stars == 1}">                        	
+		                        		⭐✩✩✩✩
+		                        	</c:if>
+		                        	<c:if test="${r.stars == 2}">                        	
+		                        		⭐⭐✩✩✩
+		                        	</c:if>
+		                        	<c:if test="${r.stars == 3}">                        	
+		                        		⭐⭐⭐✩✩
+		                        	</c:if>
+		                        	<c:if test="${r.stars == 4}">                        	
+		                        		⭐⭐⭐⭐✩
+		                        	</c:if>
+		                        	<c:if test="${r.stars == 5}">                        	
+		                        		⭐⭐⭐⭐⭐
+		                        	</c:if>
 	                        	</span> 
 			                   </td>
+			                   <td>${r.memberId}</td>
 			                   <td>${r.reviewDate}</td>
 			               </tr>
 		               </c:forEach>
