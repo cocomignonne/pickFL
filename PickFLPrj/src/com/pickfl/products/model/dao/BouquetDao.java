@@ -40,7 +40,7 @@ public class BouquetDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {				
-				bouquetNo = rs.getInt("LAST_NUMBER");
+				bouquetNo = rs.getInt("LAST_NUMBER") - 1;
 			}
 			
 		} finally {
@@ -49,6 +49,28 @@ public class BouquetDao {
 		}
 		
 		return bouquetNo;
+	}
+
+	public String getName(Connection conn, int bouquetNo) throws SQLException {
+		String sql = "SELECT BOUQUET_NAME FROM BOUQUET WHERE BOUQUET_NO = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String bouquetName = "";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bouquetNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {				
+				bouquetName = rs.getString("BOUQUET_NAME");
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return bouquetName;
 	}
 
 }

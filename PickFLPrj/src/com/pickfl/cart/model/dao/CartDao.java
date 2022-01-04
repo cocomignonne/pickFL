@@ -58,16 +58,17 @@ public class CartDao {
 	}
 	
 	public int add(Connection conn, CartVo c) throws SQLException {
-        String sql = "INSERT INTO CART(CART_NO, MEMBER_NO, BOUQUET_NAME, BOUQUET_DETAIL) "
-                + "VALUES (SEQ_CART.NEXTVAL, ?,?,?)";
+        String sql = "INSERT INTO CART(CART_NO, MEMBER_NO, BOUQUET_NO, BOUQUET_NAME, BOUQUET_DETAIL) "
+                + "VALUES (SEQ_CART.NEXTVAL,?,?,?,?)";
         PreparedStatement pstmt = null;
         int result = 0;
         
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, c.getMemberNo());
-            pstmt.setString(2, c.getBouquetName());
-            pstmt.setString(3, c.getBouquetDetail());
+            pstmt.setInt(2, c.getBouquetNo());
+            pstmt.setString(3, c.getBouquetName());
+            pstmt.setString(4, c.getBouquetDetail());
             
             result = pstmt.executeUpdate();
             

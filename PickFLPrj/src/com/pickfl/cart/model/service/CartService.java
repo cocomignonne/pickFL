@@ -38,7 +38,11 @@ public class CartService {
         int result = 0;
         try {
             result = new CartDao().add(conn, c);
+            if(result > 0) {
+            	commit(conn);
+            }else rollback(conn);
         } catch (SQLException e) {
+        	rollback(conn);
             e.printStackTrace();
         } finally {
             close(conn);

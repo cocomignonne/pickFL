@@ -82,12 +82,12 @@
 		                   </tr>
 		               </thead>
 		               <c:forEach items="${productList}" var="p">
-			               <tr onClick="getParam(${p.product_no})">
-			                   <td>${p.product_no}</td>
-			                   <td><img src="image?fileName=${p.product_image}"></td>
-			                   <td>${p.product_name}</td>
-			                   <td>${p.product_price}</td>
-			                   <td>${p.product_stock}</td>
+			               <tr onClick="getParam(${p.productNo})">
+			                   <td>${p.productNo}</td>
+			                   <td><img src="image?fileName=${p.productImage}"></td>
+			                   <td>${p.productName}</td>
+			                   <td>${p.productPrice}</td>
+			                   <td>${p.productStock}</td>
 			               </tr>
 		               </c:forEach>
 		           </table>

@@ -16,9 +16,9 @@ public class ProductDupCheckController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String product_name = req.getParameter("product_name");
+		String productName = req.getParameter("product_name");
 		
-		int result = new ProductService().dupCheck(product_name);
+		int result = new ProductService().dupCheck(productName);
 		
 		resp.setContentType("text/html;charset=UTF-8");
 		resp.getWriter().write("{\"result\": " + result + "}");

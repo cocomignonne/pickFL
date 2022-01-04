@@ -43,4 +43,19 @@ public class BouquetService {
 		return bouquetNo;
 	}
 
+	public String getName(int bouquetNo) {
+		Connection conn = getConnection();
+		String name = "";
+		
+		try {
+			name = new BouquetDao().getName(conn, bouquetNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return name;
+	}
+
 }
