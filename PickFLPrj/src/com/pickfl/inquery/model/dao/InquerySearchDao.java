@@ -16,8 +16,8 @@ public class InquerySearchDao {
 	public int allMemberPage(Connection conn, String user, String type) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT COUNT(*) AS C FROM QUESTION WHERE M_ID = ? AND Q_DELETED = 'N'";
-		String sql2 = "SELECT COUNT(*) AS C FROM QUESTION WHERE M_ID = ? AND Q_RESPONSE = ? AND Q_DELETED = 'N'";
+		String sql = "SELECT COUNT(*) AS C FROM QUESTION WHERE M_NO = ? AND Q_DELETED = 'N'";
+		String sql2 = "SELECT COUNT(*) AS C FROM QUESTION WHERE M_NO = ? AND Q_RESPONSE = ? AND Q_DELETED = 'N'";
 		int result = 0;
 		
 		try {
@@ -87,10 +87,10 @@ public class InquerySearchDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM"
-				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE M_ID = ? AND Q_DELETED = 'N')"
+				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE M_NO = ? AND Q_DELETED = 'N')"
 				+ "WHERE RNUM BETWEEN ? AND ?";
 		String sql2 = "SELECT * FROM"
-				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE M_ID = ? AND Q_RESPONSE = ? AND Q_DELETED = 'N')"
+				+ "(SELECT ROWNUM AS RNUM, Q.* FROM QUESTION Q WHERE M_NO = ? AND Q_RESPONSE = ? AND Q_DELETED = 'N')"
 				+ "WHERE RNUM BETWEEN ? AND ?";
 		
 		List<InqueryVo> list = new ArrayList<InqueryVo>();

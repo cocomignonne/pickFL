@@ -47,7 +47,7 @@
 				</td>
 				<td class="table_td">${l.quitYN}</td>
 				<td class="table_td_button">
-					<form action="adminModify" method="post">
+					<form action="adminModify" method="get">
 						<input type="hidden" name="mNum" value="${l.memberNo}">
 						<input type="submit" class="table_button" value="수정하기">
 					</form>

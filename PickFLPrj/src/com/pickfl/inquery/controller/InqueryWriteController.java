@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pickfl.inquery.model.service.InqueryService;
 import com.pickfl.inquery.model.vo.InqueryVo;
+import com.pickfl.member.model.vo.MemberVo;
 
 @WebServlet("/inqueryWrite")
 public class InqueryWriteController extends HttpServlet{
@@ -20,12 +21,13 @@ public class InqueryWriteController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = "asdasd";
+		MemberVo member = (MemberVo) req.getSession().getAttribute("loginUser");
+		String user = member.getId();
 		String qTitle = req.getParameter("title");
 		String qContent = req.getParameter("text");
 		
 		InqueryVo vo = new InqueryVo();
-		vo.setUser(id);
+		vo.setUser(user);
 		vo.setqTitle(qTitle);
 		vo.setqContent(qContent);
 		

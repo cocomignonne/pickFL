@@ -39,23 +39,11 @@
 							<td class="content2_2_td">${l.orderNum}</td>
 							<td class="content2_2_td">${l.delivery}</td>	
 							<td class="content2_2_td">${l.price}</td>	
-							<td class="content2_2_td">${l.payDate}</td>	
+							<td class="content2_2_td">${l.orderDate}</td>	
 						</tr>
 					</c:forEach>
                 </table>
     </div>
-    
-    <div id="page_btn">
-		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="paylist?currentPage=${searchVo.currentPage-10}">Previous</a></li>
-				<c:forEach var="p" begin="${searchVo.startPage}" end="${searchVo.endPage}" step="1">
-					<c:if test="${p <= searchVo.maxPage}">
-						<li class="page-item"><a class="page-link" href="paylist?currentPage=${p}">${p}</a></li>				
-					</c:if>
-				</c:forEach>
-			<li class="page-item"><a class="page-link" href="paylist?currentPage=${searchVo.currentPage+10}">Next</a></li>
-		</ul>
-	</div>
     
     
 </body>
