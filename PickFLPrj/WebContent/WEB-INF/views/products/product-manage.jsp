@@ -64,9 +64,6 @@
 	                       <a href="add-flower">
 	                           <input type="button" class="btn btn-success" value="꽃 등록">
 	                        </a>
-	                       <a href="#">
-	                           <input type="button" class="btn btn-success" value="소품 등록">
-	                       </a>
 	                   </div>
 	               </div>
                </form>
