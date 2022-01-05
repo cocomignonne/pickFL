@@ -10,60 +10,120 @@
         function goIndex() {
             location.href="main";
         }
-        function pwCheck(){
-            if(document.userInfo.password.value != document.userInfo.passwordcheck.value ){
-            alert("비밀번호를 동일하게 입력하세요.");
-            return false;
-        }}
     </script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="assets/css/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/mainPage.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/join.css">
+    	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+    <!-- jQuerty-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-login100">
 		<div class="wrap-Join p-t-50 p-b-90">
 			<span class="login100-form-title p-b-51">Modifycation</span> 
-			<form action="doModify.jsp" method="post" name="userInfo" onsubmit="return pwCheck()" >
-				<table>
-					<tr>
-						<td>이름</td>
-						<td><input type="text" name ="name" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>생년월일</td>
-						<td><input type="text" name="birth" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>이메일</td>
-						<td><input type="text" name="mail" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>주소</td>
-						<td><input type="text" name="home" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>자기소개</td>
-						<td><input type="text" name="info" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>비번변경</td> 
-						<td><input type="password" name="password" value="" class="joininput"></td>
-					</tr>
-					<tr>
-						<td>비번확인</td>
-						<td><input type="password" name="passwordcheck" value="" class="joininput"></td>
-					</tr>
-				</table>
+			
+			<form class="row g-3" action="modify" method="post" name="insertform">
+                    <div class="col-sm-3 a">
+                        <span class="form-control">아이디</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <input type="text" name="id" class="form-control" id="userId" required maxlength="12" placeholder="아이디를 입력하세요." value="${member.id}" onfocusout="validate()">
+                        <div id="idHelpBlock" class="form-text">
+                            영문, 숫자만을 모두 포함해서  6~12자리
+                        </div>
+                    </div>
+                    <div class="col-sm-3 a">
+                        <button type="button" class="btn btn-success" id="idDupCheck">중복확인</button>
+                    </div>
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control">비밀번호</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+
+                        <input type="password" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요." value="${member.pwd}"  onfocusout="validate()">
+
+                        <div id="passwordHelpBlock" class="form-text">
+                            영문, 숫자, 특수문자(#, $, % 중 선택) 모두를 포함해서 8~16자리
+                        </div>
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control">비밀번호 확인</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <input type="password" name="userPwd2" class="form-control" id="userPwd2" required maxlength="16" placeholder="비밀번호를 입력하세요." value="${member.pwd}" onfocusout="validate()">
+                        <div id="pwdCheckError" class="form-text">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+
+                    <div class="col-sm-3 a">
+                        <span class="form-control">이름</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+
+                        <input type="text" name="name" class="form-control" id="userName" required placeholder="이름을 입력하세요." value="${member.name}" onfocusout="validate()">
+
+                        <div id="nameRegError" class="form-text">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+    
+                    <div class="col-sm-3 a">
+                        <span class="form-control">이메일</span>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 a">
+
+                        <input type="email" name="email" class="form-control" id="email" required placeholder="이메일을 입력하세요." value="${member.email}" onfocusout="validate()">
+
+                        <div id="emailRegError" class="form-text">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 a">
+
+                        <button type="button" class="btn btn-success" id="emailDupCheck">중복확인</button>
+                        <input type="button" class="btn btn-success" id="sendEmailBtn" onclick="emailcheck(insertform.email.value)" value="인증번호 받기"></input>
+
+                    </div>
+    
+                    <div class="col-sm-3 a">
+                        <span class="form-control">생년월일</span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+
+                    	<input type="text" name="birth" class="form-control" id="birth" maxlength="6" required placeholder="생년월일을 적어주세요. ex)950101" value="${member.birth}" onfocusout="validate()">
+                        <div id="birthRegError" class="form-text">
+
+                        </div>
+                    </div>
 					
 				<span class="login100-form-title p-b-51">
-                    <input type="submit" value="Join" class="joinbtn"/>  
+                    <input type="submit" value="Update" class="joinbtn"/>  
                     <input type="button" value="Cansle" onclick="goIndex()" class="join2btn"/>
                 </span>
 			</form>
 		</div>
 	</div>
+	
+	<script type="text/javascript" src="assets/js/modify.js?ver=12"></script>
 </body>
 </html>

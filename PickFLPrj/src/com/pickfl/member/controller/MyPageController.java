@@ -26,6 +26,7 @@ public class MyPageController extends HttpServlet{
 		List<PaylistVo> list = null;
 		vo.setMemberNo(member.getMemberNo());
 		list = new MemberService().allPaylist(list, vo.getMemberNo());
+		req.setAttribute("member", member);
 		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher("/WEB-INF/views/member/myPage.jsp").forward(req, resp);

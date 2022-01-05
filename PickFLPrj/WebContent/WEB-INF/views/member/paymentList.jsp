@@ -13,6 +13,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    function paylistDetail(a){
+    	
+    }
+
+    function goIndex(){
+    	location.href="memberInfo";
+    }
+    </script>
 </head>
 <body>    
     <div id="wrap">
@@ -26,23 +35,27 @@
                 <table class = "table-striped" id="content2_2">
                     <tr class="content2_2_tr">
                         <th class="content2_2_td">주문번호</th>
-                        <th class="content2_2_td">상품번호</th>
-                        <th class="content2_2_td">구매개수</th>
+                        <th class="content2_2_td">받는사람</th>
+                        <th class="content2_2_td">받는사람번호</th>
                         <th class="content2_2_td">배송상태</th>
-                        <th class="content2_2_td">구매금액</th>
                         <th class="content2_2_td">결제날짜</th>
+                        <th class="content2_2_td">상세정보</th>
                     </tr>
                     <c:forEach items="${list}" var="l">
 						<tr class="content2_2_tr">
 							<td class="content2_2_td" id="td1">${l.orderNo}</td>
-							<td class="content2_2_td">${l.productNo}</td>
-							<td class="content2_2_td">${l.orderNum}</td>
+							<td class="content2_2_td">${l.getName}</td>
+							<td class="content2_2_td">${l.getPhone}</td>
 							<td class="content2_2_td">${l.delivery}</td>	
-							<td class="content2_2_td">${l.price}</td>	
 							<td class="content2_2_td">${l.orderDate}</td>	
+							<td class="content2_2_td">
+								버튼
+							</td>	
 						</tr>
 					</c:forEach>
                 </table>
+                
+                <input type="button" value="뒤로" onclick="goIndex()" class="btn btn-outline-success padding_btn">
     </div>
     
     

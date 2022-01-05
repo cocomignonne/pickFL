@@ -401,6 +401,7 @@ public class MemberDao {
 		ResultSet rs = null;
 		List<PaylistVo> list = new ArrayList<PaylistVo>();
 		String sql = "SELECT * FROM ORDERLIST WHERE MEMBER_NO = ?";
+		PaylistVo vo = null;
 		
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -409,22 +410,20 @@ public class MemberDao {
 				
 				while(rs.next()) {
 					int orderNo = rs.getInt("ORDER_NO");
-					int productNo = rs.getInt("PRODUCT_NO");
 					String delivery = rs.getString("DELIVERY_STATE");
-					int price = rs.getInt("ORDER_PRICE");
-					int orderNum = rs.getInt("ORDER_NUM");
-					int bouquet = rs.getInt("BOUQUET_NO");
 					Timestamp orderDate = rs.getTimestamp("ORDER_DATE");
+					String address = rs.getString("ADDRESS1");
+					String getName = rs.getString("GET_NAME");
+					String getPhone = rs.getString("GET_PHONE");
 					
-					PaylistVo vo = new PaylistVo();
+					vo = new PaylistVo();
 					
 					vo.setOrderNo(orderNo);
-					vo.setProductNo(productNo);
 					vo.setDelivery(delivery);
-					vo.setPrice(price);
-					vo.setOrderNum(orderNum);
-					vo.setBouquet(bouquet);
 					vo.setOrderDate(orderDate);
+					vo.setAddress(address);
+					vo.setGetName(getName);
+					vo.setGetPhone(getPhone);
 					
 					list.add(vo);
 				}
@@ -454,7 +453,6 @@ public class MemberDao {
 				int grade = rs.getInt("GRADE_NO");
 				int point = rs.getInt("MEMBER_POINT");
 
-				
 				member.setId(id);
 				member.setGradeNo(grade);
 				member.setPoint(point);
@@ -468,5 +466,29 @@ public class MemberDao {
 		}
 		
 		return member;
+	}
+
+	public void updateMemberInfo(Connection conn, MemberVo member, MemberVo changeMember) {
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE MEMBER SET MEMBER_ID = ?, MEMBER_PWD=?, MEMBER_NAME=?,"
+				+ "MEMBER_EMAIL=?, MEMBER_BIRTH =? WHERE MEMBER_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, changeMember.getId());
+			pstmt.setString(2, changeMember.getPwd());
+			pstmt.setString(3, changeMember.getName());
+			pstmt.setString(4, changeMember.getEmail());
+			pstmt.setString(5, changeMember.getBirth());
+			pstmt.setInt(6, member.getMemberNo());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		}finally {
+			close(pstmt);
+		}
 	}
 }

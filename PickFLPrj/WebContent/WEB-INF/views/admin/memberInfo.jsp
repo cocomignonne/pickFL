@@ -14,7 +14,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
 	function goIndex() {
-		location.href="main";
+		location.href="mainM";
 	}
 </script>
 </head>
