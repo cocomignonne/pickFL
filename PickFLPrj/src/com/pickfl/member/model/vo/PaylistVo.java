@@ -4,24 +4,21 @@ import java.sql.Timestamp;
 
 public class PaylistVo {
 	int orderNo;
-	int productNo;
 	String delivery;
 	int price;
 	int memberNo;
-	int orderNum;
-	int bouquet;
+	int bouquetNo;
+	int BqNum;
 	Timestamp orderDate;
+	int orderDetailNo;
+	String address;
+	String getPhone;
+	String getName;
 	public int getOrderNo() {
 		return orderNo;
 	}
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
-	}
-	public int getProductNo() {
-		return productNo;
-	}
-	public void setProductNo(int productNo) {
-		this.productNo = productNo;
 	}
 	public String getDelivery() {
 		return delivery;
@@ -41,17 +38,17 @@ public class PaylistVo {
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
-	public int getOrderNum() {
-		return orderNum;
+	public int getBouquetNo() {
+		return bouquetNo;
 	}
-	public void setOrderNum(int orderNum) {
-		this.orderNum = orderNum;
+	public void setBouquetNo(int bouquetNo) {
+		this.bouquetNo = bouquetNo;
 	}
-	public int getBouquet() {
-		return bouquet;
+	public int getBqNum() {
+		return BqNum;
 	}
-	public void setBouquet(int bouquet) {
-		this.bouquet = bouquet;
+	public void setBqNum(int bqNum) {
+		BqNum = bqNum;
 	}
 	public Timestamp getOrderDate() {
 		return orderDate;
@@ -59,4 +56,29 @@ public class PaylistVo {
 	public void setOrderDate(Timestamp orderDate) {
 		this.orderDate = orderDate;
 	}
+	public int getOrderDetailNo() {
+		return orderDetailNo;
+	}
+	public void setOrderDetailNo(int orderDetailNo) {
+		this.orderDetailNo = orderDetailNo;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getGetPhone() {
+		return getPhone;
+	}
+	public void setGetPhone(String getPhone) {
+		this.getPhone = getPhone;
+	}
+	public String getGetName() {
+		return getName;
+	}
+	public void setGetName(String getName) {
+		this.getName = getName;
+	}
+	
 }

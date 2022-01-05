@@ -34,6 +34,6 @@ public class MemberUpdateMController extends HttpServlet {
 		
 		new MemberService().updateMember(vo);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/mainPageM.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/memberInfo.jsp").forward(req, resp);
 	}
 }

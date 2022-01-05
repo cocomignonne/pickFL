@@ -9,6 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/myPage.css">
     <title>PickFL</title>
+    <script>
+    	function orderDetail(){
+    		window.open("detailPaylist", "detailPaylist", "width=600, height=200");
+    		document.detail.submit();
+    	}
+    </script>
 </head>
 <body>    
     <form id="wrap">
@@ -20,7 +26,7 @@
             <article id="content1">
                 
                 <div id="content1_1">
-                    <h2>MYPAGE</h2>
+                    <h2>${member.id}</h2>
                 </div>
 
                 <div id="container1_2">
@@ -34,7 +40,7 @@
                 <div id="container1_3">
                     <h4>나의 계정설정</h4>
                     <ul class="hover">
-                        <li><a href="#">회원정보수정</a></li>
+                        <li><a href="modifyCheck">회원정보수정</a></li>
                     </ul>
                 </div>
             
@@ -51,14 +57,14 @@
                     <li id="content2_1">
                         <a href="#" id="content_1a">
                             <div id="content_1a_1">회원등급 ></div>
-                            <div id="content_1a_2">GREEN</div>
+                            <div id="content_1a_2">${member.gradeNo}</div>
                         </a>
                     </li>
 
                     <li id="content2_3">
                         <div id="content2_3_1"></div>
                         <div id="content2_3_2">마일리지 ></div>
-                        <div id="content2_3_3">0</div>
+                        <div id="content2_3_3">${member.point}</div>
                     </li>
                 </ul>
                 
@@ -68,20 +74,25 @@
                 <table class = "table-striped table-hover" id="content2_2">
                     <tr class="content2_2_tr">
                         <th class="content2_2_td">주문번호</th>
-                        <th class="content2_2_td">상품번호</th>
-                        <th class="content2_2_td">구매개수</th>
+                        <th class="content2_2_td">받는사람</th>
+                        <th class="content2_2_td">받는사람번호</th>
                         <th class="content2_2_td">배송상태</th>
-                        <th class="content2_2_td">구매금액</th>
                         <th class="content2_2_td">결제날짜</th>
+                        <th class="content2_2_td">상세정보</th>
                     </tr>
                     <c:forEach items="${list}" var="l">
 						<tr class="content2_2_tr">
 							<td class="content2_2_td" id="td1">${l.orderNo}</td>
-							<td class="content2_2_td">${l.productNo}</td>
-							<td class="content2_2_td">${l.orderNum}</td>
+							<td class="content2_2_td">${l.getName}</td>
+							<td class="content2_2_td">${l.getPhone}</td>
 							<td class="content2_2_td">${l.delivery}</td>	
-							<td class="content2_2_td">${l.price}</td>	
 							<td class="content2_2_td">${l.orderDate}</td>	
+							<td class="content2_2_td">
+								<form name="detail" action="detailPaylist" method="post" target="detailPaylist">
+									<input type="hidden" name="orderNo" value="${l.orderNo}">
+									<input type="button" onclick="orderDetail()" value="상세내역">
+								</form>
+							</td>	
 						</tr>
 					</c:forEach>
                 </table>

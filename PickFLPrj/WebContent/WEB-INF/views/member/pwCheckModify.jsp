@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 <script>
 function goIndex() {
-    location.href="../mainPage.jsp";
+    location.href="mypage";
 }
 </script>
 </head>
@@ -20,7 +20,7 @@ function goIndex() {
 <div class="container-login100">
 	<div class="wrap-login100 p-t-50 p-b-90">
 		<span class="login100-form-title p-b-51">Pw Check</span>
-		<form action="modify" target="_self" method ="post">
+		<form action="modifyCheck" method ="post">
 			<table>
         		<tr>
         			<td id="title">Input Password</td>

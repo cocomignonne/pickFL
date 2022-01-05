@@ -229,6 +229,16 @@ public class MemberService {
 		return new MemberDao().selectMemberGrade(conn, member);
 	}
 
+	public void ChangeMemberInfo(MemberVo member, MemberVo changeMember) {
+		Connection conn = getConnection();
+		updateMemberInfo(conn, member, changeMember);
+		close(conn);
+	}
+
+	private void updateMemberInfo(Connection conn, MemberVo member, MemberVo changeMember) {
+		new MemberDao().updateMemberInfo(conn, member, changeMember);
+	}
+
 }
 
 
