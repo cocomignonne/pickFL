@@ -142,7 +142,7 @@ public class CartDao {
 		
 		return result;
 		}
-
+//	장바구니 전체삭제
 	public int deleteAllCart(Connection conn) {
 		
 		PreparedStatement pstmt = null;

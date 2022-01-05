@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.pickfl.cart.model.dao.CartDao;
+import com.pickfl.cart.model.service.CartService;
 import com.pickfl.cart.model.vo.CartVo;
 import com.pickfl.order.model.dao.OrderDao;
 import com.pickfl.order.model.vo.OrderVo;
@@ -59,6 +61,20 @@ public class OrderService {
 
 	private int insertOrderDetailDB(Connection conn, CartVo cartVo, int memNo, int orderNo) {
 		return new OrderDao().insertOrderDetailDB(conn, cartVo, memNo, orderNo);
+	}
+
+	public int deleteCartAll() {
+		Connection conn = getConnection();
+		
+		int result = deleteAllCart(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	private int deleteAllCart(Connection conn) {
+		return new OrderDao().deleteAllCart(conn);
 	}
 
 
