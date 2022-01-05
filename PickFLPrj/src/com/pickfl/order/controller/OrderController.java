@@ -43,6 +43,7 @@ public class OrderController extends HttpServlet {
 		
 		int result1 = 0;
 		int result2 = 0;
+		int result3 = 0;
 		
 		List<CartVo> cartList = new CartService().selectCartList(memNo);
 		
@@ -80,9 +81,9 @@ public class OrderController extends HttpServlet {
 		for (CartVo cartVo : cartList) {
 			
 			result2 = new OrderService().insertOrderDetail(cartVo, memNo);
-			
 		}
 		
+		result3 = new OrderService().deleteCartAll();
 		
 		if(result1 > 0 && result2 > 0) {
 			req.setAttribute("msg", "주문완료");
