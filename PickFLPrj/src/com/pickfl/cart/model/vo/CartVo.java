@@ -13,8 +13,15 @@ public class CartVo {
     private int totalPNum;
 	private int bouquetTotalPrice;
     private int totalCartPrice;
+    private int orderNo;
     
     
+	public synchronized int getOrderNo() {
+		return orderNo;
+	}
+	public synchronized void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
+	}
 	public CartVo(int memberNo, int bouquetNo, String bouquetDetail, String bouquetName) {
 		this.memberNo = memberNo;
 		this.bouquetNo = bouquetNo;

@@ -21,7 +21,7 @@ public class CartDao {
 		CartVo cartVo = null;
 		List<CartVo> selectCartInfo = new ArrayList<CartVo>();
 		
-		String sql = "SELECT B.BOUQUET_NO C.BOUQUET_NAME, C.BOUQUET_DETAIL, B.WRAP_COLOR, C.BUY_NUM_BQ, B.BOUQUET_PRICE FROM CART C LEFT JOIN MEMBER M ON (C.MEMBER_NO = M.MEMBER_NO) LEFT JOIN BOUQUET B ON (M.MEMBER_NO = B.MEMBER_NO) WHERE B.MEMBER_NO = ? AND C.MEMBER_NO = M.MEMBER_NO AND C.BOUQUET_NO = B.BOUQUET_NO";
+		String sql = "SELECT B.BOUQUET_NO, C.BOUQUET_NAME, C.BOUQUET_DETAIL, B.WRAP_COLOR, C.BUY_NUM_BQ, B.BOUQUET_PRICE FROM CART C LEFT JOIN MEMBER M ON (C.MEMBER_NO = M.MEMBER_NO) LEFT JOIN BOUQUET B ON (M.MEMBER_NO = B.MEMBER_NO) WHERE B.MEMBER_NO = ? AND C.MEMBER_NO = M.MEMBER_NO AND C.BOUQUET_NO = B.BOUQUET_NO";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -142,6 +142,35 @@ public class CartDao {
 		
 		return result;
 		}
+
+	public int deleteAllCart(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+	
+		String sql = "DELETE FROM CART";
+	
+		try {
+			pstmt = conn.prepareStatement(sql);
+		
+			result = pstmt.executeUpdate();
+
+			if(result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
 
 }
 
