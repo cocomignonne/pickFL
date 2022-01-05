@@ -10,15 +10,17 @@ public class InquerySearchVo {
 	private int maxPage;
 	private int startPage;
 	private int endPage;
+	private int memberNo;
 	
-	public InquerySearchVo(String user, String type, String page) {
+	public InquerySearchVo(String user, String type, String page, int memberNo) {
 		this.user = user;
 		this.type = type;
+		this.memberNo = memberNo;
 		this.maxCount = maxCount(user, type);
 		this.maxPage = maxPage(maxCount);
 		this.currentPage = currentPage(page,maxPage);
 		this.startPage = currentPage/7 +1;
-		this.endPage = startPage+6;
+		this.endPage = startPage +6;
 	}
 
 	public InquerySearchVo() {
@@ -35,7 +37,7 @@ public class InquerySearchVo {
 		if(user.equals("admin3"))
 			maxcount = new InquerySearchService().maxCountPage(type);
 		else 
-			maxcount = new InquerySearchService().memberCountPage(user, type);
+			maxcount = new InquerySearchService().memberCountPage(memberNo, type);
 		
 		System.out.println("inquery maxcount : " + maxcount);
 		return maxcount;
@@ -95,4 +97,13 @@ public class InquerySearchVo {
 	public int getStartPage() {
 		return startPage;
 	}
+
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+	
 }

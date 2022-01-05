@@ -438,4 +438,35 @@ public class MemberDao {
 
 		return list;
 	}
+
+	public MemberVo selectMemberGrade(Connection conn, MemberVo member) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM MEMBER WHERE MEMBER_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member.getMemberNo());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String id = rs.getString("MEMBER_ID");
+				int grade = rs.getInt("GRADE_NO");
+				int point = rs.getInt("MEMBER_POINT");
+
+				
+				member.setId(id);
+				member.setGradeNo(grade);
+				member.setPoint(point);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return member;
+	}
 }

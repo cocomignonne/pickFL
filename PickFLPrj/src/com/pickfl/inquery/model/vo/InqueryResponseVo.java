@@ -5,26 +5,24 @@ import java.sql.Timestamp;
 public class InqueryResponseVo {
 	int rNum;
 	int qNum;
-	String userId;
+	int mNum;
 	String adminId;
 	String rContent;
 	Timestamp rCreate;
 	String rDelete;
 	
-	public InqueryResponseVo(int qNum, String rContent, String adminId, String user) {
+	public InqueryResponseVo(int qNum, String rContent, String adminId, int memberNo) {
 		this.qNum = qNum;
 		this.rNum = qNum;
 		this.rContent = rContent;
 		this.adminId = adminId;
-		this.userId = user;
+		this.mNum = memberNo;
 	}
 
-	public String getUserId() {
-		return userId;
-	}
+	
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public int getmNum() {
+		return mNum;
 	}
 
 	public String getAdmin_id() {

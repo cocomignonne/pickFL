@@ -27,6 +27,13 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/mainPage.css" rel="stylesheet">
+    
+    <script>
+	    function myPage(){
+	        window.name="mypage";
+	        window.open("mypage", "Mypage", "height = 610, width = 1200");
+	    }
+    </script>
 
 </head>
 <body>
@@ -58,7 +65,7 @@
                     <li><a class="nav-link scrollto " href="own-flower">나만의 꽃다발</a></li>
                     <li><a class="nav-link scrollto" href="inquery">문의하기</a></li>
                     <li><a class="nav-link scrollto" href="review">리뷰</a></li>
-                    <li><a class="nav-link scrollto" href="inquery">마이페이지</a></li>
+                    <li><a class="nav-link scrollto" onclick="myPage()">마이페이지</a></li>
                     
                     <li>
                     	<%if(request.getSession().getAttribute("loginUser") == null){%>

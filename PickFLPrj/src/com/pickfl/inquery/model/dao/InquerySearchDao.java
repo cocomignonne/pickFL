@@ -13,7 +13,7 @@ import com.pickfl.inquery.model.vo.InquerySearchVo;
 import com.pickfl.inquery.model.vo.InqueryVo;
 
 public class InquerySearchDao {
-	public int allMemberPage(Connection conn, String user, String type) {
+	public int allMemberPage(Connection conn, int memberNo, String type) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT COUNT(*) AS C FROM QUESTION WHERE M_NO = ? AND Q_DELETED = 'N'";
@@ -23,14 +23,14 @@ public class InquerySearchDao {
 		try {
 			if(type.equals("all")) {
 				pstmt= conn.prepareStatement(sql);
-				pstmt.setString(1,user);
+				pstmt.setInt(1,memberNo);
 				rs = pstmt.executeQuery();
 				
 				rs.next();
 				result = Integer.parseInt(rs.getString("C"));
 			}else {
 				pstmt= conn.prepareStatement(sql2);
-				pstmt.setString(1,user);
+				pstmt.setInt(1,memberNo);
 				pstmt.setString(2,type);
 				rs = pstmt.executeQuery();
 				
@@ -99,7 +99,7 @@ public class InquerySearchDao {
 		try {
 			if(vo.getType().equals("all")) {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1,vo.getUser());
+				pstmt.setInt(1,vo.getMemberNo());
 				pstmt.setInt(2, startNo);
 				pstmt.setInt(3, endNo);
 				rs = pstmt.executeQuery();
@@ -118,7 +118,7 @@ public class InquerySearchDao {
 			}
 			else {
 				pstmt = conn.prepareStatement(sql2);
-				pstmt.setString(1,vo.getUser());
+				pstmt.setInt(1,vo.getMemberNo());
 				pstmt.setString(2,vo.getType());
 				pstmt.setInt(3, startNo);
 				pstmt.setInt(4, endNo);

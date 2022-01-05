@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="assets/css/inquery.css">
 <script>
-    function inquiryWrite(){
-    	window.name="inquiryWrite";
-        window.open("inqueryWrite", "InqueryWrite", "height = 700, width = 650");
-    }
 </script>
 </head>
 <body>
@@ -23,7 +19,7 @@
                 </ul>
             <ul class="my_menu"> 
                 <li>
-                    <a href="" onclick="inqueryWrite()">문의하기</a>
+                    <a href="mainM">ADMIN</a>
                 </li>
                 <li>
                     <a href="main">HOME</a>

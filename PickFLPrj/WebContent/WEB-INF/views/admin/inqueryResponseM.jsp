@@ -51,7 +51,7 @@
                 
                 <form action="inqueryresponseM" method="post">
                 	<input type="hidden" name="qNum" value="${vo.qNum}">
-                	<input type="hidden" name="user" value="${vo.user}">
+                	<input type="hidden" name="mNum" value="${vo.mNum}">
 					
 					<div class="form-group">
 					  <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>

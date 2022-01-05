@@ -23,10 +23,12 @@ public class InqueryWriteController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberVo member = (MemberVo) req.getSession().getAttribute("loginUser");
 		String user = member.getId();
+		int memberNo = member.getMemberNo();
 		String qTitle = req.getParameter("title");
 		String qContent = req.getParameter("text");
 		
 		InqueryVo vo = new InqueryVo();
+		vo.setmNum(memberNo);
 		vo.setUser(user);
 		vo.setqTitle(qTitle);
 		vo.setqContent(qContent);

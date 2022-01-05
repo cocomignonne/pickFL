@@ -19,11 +19,11 @@ public class InquerySearchController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberVo member = (MemberVo) req.getSession().getAttribute("loginUser");
 		String user = member.getId();
+		int memberNo = member.getMemberNo();
 		String type = req.getParameter("searchType");
 		String page = req.getParameter("currentPage");
 		
-		InquerySearchVo vo = new InquerySearchVo(user, type, page);
-		
+		InquerySearchVo vo = new InquerySearchVo(user, type, page, memberNo);
 		req.setAttribute("InquerySearchVo", vo);
 		
 		List<InqueryVo> inqueryList = new InquerySearchService().search(vo);
