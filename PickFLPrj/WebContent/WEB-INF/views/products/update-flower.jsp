@@ -99,7 +99,7 @@
                         <div class="row mb-3">
                             <label for="detail" class="col-sm-2 col-form-label title">상세정보</label>
                             <div class="col-sm-10">
-                            <textarea class="form-control" id="detail" name="detail" rows="5" value="${p.productDetail}" placeholder="내용을 입력해 주세요"></textarea>
+                            <textarea class="form-control" id="detail" name="detail" rows="5" placeholder="내용을 입력해 주세요">${p.productDetail}</textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -107,7 +107,7 @@
                             <div class="col-sm-4">
                                 <select class="form-select" id="color" name="color">
                                     <option >색상 선택</option>
-                                    <option value="red" ${"red" eq p.productColor ? "selected" : ""}>빨강색</option>
+                                    <option value="red" ${"red" eq p.productColor ? "selected" : ""}>빨간색</option>
                                     <option value="yello" ${"yello" eq p.productColor ? "selected" : ""}>노랑색</option>
                                     <option value="green" ${"green" eq p.productColor ? "selected" : ""}>초록색</option>
                                     <option value="blue" ${"blue" eq p.productColor ? "selected" : ""}>파랑색</option>

@@ -1,6 +1,7 @@
 package com.pickfl.products.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,11 @@ public class DeleteProductController extends HttpServlet{
 		if( result > 0) {
 			resp.sendRedirect("manage-product");
 		}else {
-			resp.sendRedirect("manage-product-detail?no=" + product_no);
+			resp.setContentType("text/html; charset=UTF-8"); 
+			String url = "manage-product-detail?no=" + product_no;
+			PrintWriter writer = resp.getWriter(); 
+			writer.println("<script>alert('상품 삭제 중 문제가 발생했습니다. 다시 시도해주세요.'); location.href='"+url+"';</script>");
+			writer.close();
 		}
 	}
 

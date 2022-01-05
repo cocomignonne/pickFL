@@ -111,11 +111,23 @@
                     </div>
                     
                     <div class="row">
+                    	<c:if test="${r.memberId eq sessionScope.loginUser.id}">
+	                        <div class="col-sm">
+	                        	<a href="update-review?no=${no}">
+		                            <input type="button" class="btn btn-success" value="수정하기">
+	                        	</a>
+	                        </div>
+                        </c:if>
                         <div class="col-sm">
                         	<a href="review">
 	                            <input type="button" class="btn btn-outline-dark" value="목록으로">
                         	</a>
                         </div>
+                        <c:if test="${r.memberId eq sessionScope.loginUser.id}">
+	                        <div class="col-sm">
+		                        <input type="button" class="btn btn-danger" onClick="delReview(${no})" value="삭제하기">
+	                        </div>
+                        </c:if>
                     </div>
                 </div>
                 </div>
@@ -133,6 +145,14 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+	  function delReview(no){
+			if(confirm("정말 삭제하시겠습니까?")) { 
+				location.href = "delete-review?no=" + no; 
+				} 
+			return false;
+		}
+  </script>
 
 </body>
 

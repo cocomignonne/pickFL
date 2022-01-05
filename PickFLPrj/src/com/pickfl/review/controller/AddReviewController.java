@@ -32,21 +32,20 @@ public class AddReviewController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberVo loginUser = (MemberVo)req.getSession().getAttribute("loginUser");
 		int memberNo = loginUser.getMemberNo();
+		String memberId = loginUser.getId();
 		
-		Map<Integer, String> bouquetMap = new ReviewService().getBqMap(memberNo);
-		req.setAttribute("bouquetMap", bouquetMap);
-		req.getRequestDispatcher("/WEB-INF/views/review/add-review.jsp").forward(req, resp);
+		Map<Integer, String> bouquetMap = new ReviewService().getBqMap(memberNo, memberId);
 		
-//		if(bouquetMap != null) {
-//			req.setAttribute("bouquetMap", bouquetMap);
-//			req.getRequestDispatcher("/WEB-INF/views/review/add-review.jsp").forward(req, resp);
-//		}else {
-//			resp.setContentType("text/html; charset=UTF-8"); 
-//			PrintWriter writer = resp.getWriter(); 
-//			String url = "review";
-//			writer.println("<script>alert('작성할 수 있는 상품이 없습니다.'); location.href='"+url+"';</script>");
-//			writer.close();
-//		}
+		if(bouquetMap != null) {
+			req.setAttribute("bouquetMap", bouquetMap);
+			req.getRequestDispatcher("/WEB-INF/views/review/add-review.jsp").forward(req, resp);
+		}else {
+			resp.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter writer = resp.getWriter(); 
+			String url = "review";
+			writer.println("<script>alert('작성할 수 있는 상품이 없습니다.'); location.href='"+url+"';</script>");
+			writer.close();
+		}
 	}
 	
 	@Override

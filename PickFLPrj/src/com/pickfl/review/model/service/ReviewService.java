@@ -59,12 +59,13 @@ public class ReviewService {
 		return result;
 	}
 
-	public Map<Integer, String> getBqMap(int memberNo) {
+	public Map<Integer, String> getBqMap(int memberNo, String memberId) {
 		Connection conn = getConnection();
 		Map<Integer, String> map = null;
 		
 		try {
-			List<Integer> bqNo = getBqNoByMemberNo(conn, memberNo);
+			List<Integer> bqNo = getBqNoByMemberNo(conn, memberNo, memberId);
+				
 			if(bqNo != null) {
 				
 				map = new ReviewDao().getBqMap(conn, bqNo);
@@ -74,11 +75,11 @@ public class ReviewService {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return map;
 	}
 
-	private List<Integer> getBqNoByMemberNo(Connection conn, int memberNo) throws SQLException {
-		return new ReviewDao().getBqNoByMemberNo(conn, memberNo);
+	private List<Integer> getBqNoByMemberNo(Connection conn, int memberNo, String memberId) throws SQLException {
+		return new ReviewDao().getBqNoByMemberNo(conn, memberNo, memberId);
 	}
 
 	public int add(ReviewVo r) {
@@ -90,6 +91,43 @@ public class ReviewService {
 			if(result > 0) {
 				commit(conn);
 			}else rollback(conn);
+		} catch (SQLException e) {
+			rollback(conn);
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+	public int delete(int reviewNo) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		try {
+			result = new ReviewDao().delete(conn, reviewNo);
+			if(result > 0) {
+				commit(conn);
+			}else rollback(conn);
+		} catch (SQLException e) {
+			rollback(conn);
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+	public int update(ReviewVo r) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		try {
+			result = new ReviewDao().update(conn,r);
+			if(result > 0 ) commit(conn);
+			else rollback(conn);
 		} catch (SQLException e) {
 			rollback(conn);
 			e.printStackTrace();

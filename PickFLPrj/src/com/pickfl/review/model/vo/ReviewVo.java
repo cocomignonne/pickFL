@@ -48,6 +48,15 @@ public class ReviewVo {
 		this.stars = stars;
 	}
 
+	
+	public ReviewVo(int reviewNo, String reviewTitle, String reviewImage, String reviewContent, int stars) {
+		this.reviewNo = reviewNo;
+		this.reviewTitle = reviewTitle;
+		this.reviewImage = reviewImage;
+		this.reviewContent = reviewContent;
+		this.stars = stars;
+	}
+
 	public String getBouquetName() {
 		return bouquetName;
 	}
@@ -68,6 +77,15 @@ public class ReviewVo {
 	public void setOrderNo(int orderNo) {
 		this.bouquetNo = orderNo;
 	}
+	
+	public int getBouquetNo() {
+		return bouquetNo;
+	}
+
+	public void setBouquetNo(int bouquetNo) {
+		this.bouquetNo = bouquetNo;
+	}
+
 	public String getMemberId() {
 		return memberId;
 	}

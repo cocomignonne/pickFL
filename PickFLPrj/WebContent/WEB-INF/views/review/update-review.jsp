@@ -66,39 +66,35 @@
                             <div><h1>REVIEW</h1></div>
                         </div>
                     </div>
-                    <form action="add-review" method="post" enctype="multipart/form-data">
+                    <form action="update-review" method="post" enctype="multipart/form-data">
                         <div class="row mb-3">
+                        	<input type="hidden" name="no" value="${r.reviewNo}">
                             <label for="bouquetName" class="col-sm-2 col-form-label title">상품명</label>
                             <div class="col-sm-4">
-                                <select class="form-select" id="bouquetNo" name="bouquetNo" required>
-                                    <option selected>상품 선택</option>
-                                    <c:forEach items="${bouquetMap}" var="b">
-	                                    <option value="${b.key}">${b.value}</option>
-                                    </c:forEach>
-                                </select>
+                                <input type="text" class="form-control" name="bouquetName" value="${r.bouquetName}" readonly>
                             </div>
                             <label for="stars" class="col-sm-2 col-form-label title">별점</label>
                             <div class="col-sm-4">
                                 <select class="form-select" id="stars" name="stars" required>
-                                    <option selected>별점 선택</option>
-                                    <option value="1">⭐✩✩✩✩</option>
-                                    <option value="2">⭐⭐✩✩✩</option>
-                                    <option value="3">⭐⭐⭐✩✩</option>
-                                    <option value="4">⭐⭐⭐⭐✩</option>
-                                    <option value="5">⭐⭐⭐⭐⭐</option>
+                                    <option >별점 선택</option>
+                                    <option value="1" ${"1" eq r.stars ? "selected" : ""}>⭐✩✩✩✩</option>
+                                    <option value="2" ${"2" eq r.stars ? "selected" : ""}>⭐⭐✩✩✩</option>
+                                    <option value="3" ${"3" eq r.stars ? "selected" : ""}>⭐⭐⭐✩✩</option>
+                                    <option value="4" ${"4" eq r.stars ? "selected" : ""}>⭐⭐⭐⭐✩</option>
+                                    <option value="5" ${"5" eq r.stars ? "selected" : ""}>⭐⭐⭐⭐⭐</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rtitle" class="col-sm-2 col-form-label title">제목</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="rtitle" name="rtitle" placeholder="제목을 입력해 주세요">
+                              <input type="text" class="form-control" id="rtitle" name="rtitle" value="${r.reviewTitle}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rcontent" class="col-sm-2 col-form-label title">내용</label>
                             <div class="col-sm-10">
-                            <textarea class="form-control" id="rcontent" name="rcontent" rows="15" placeholder="내용을 입력해 주세요"></textarea>
+                            <textarea class="form-control" id="rcontent" name="rcontent" rows="15" placeholder="내용을 입력해 주세요">${r.reviewContent}</textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -112,16 +108,16 @@
                         <div class="row mb-3">
 
                             <div class="col-sm">
-                                <img class="thumbnail rounded m-lg-3" id="img">
+                                <img class="thumbnail rounded m-lg-3" src="image?fileName=${r.reviewImage}" id="img">
                             </div>
                         </div>
                         
                         <div class="row">
                             <div class="col-sm">
-                                <input type="submit" class="btn btn-success " value="등록하기">
+                                <input type="submit" class="btn btn-success " value="수정하기">
                             </div>
                             <div class="col-sm">
-                            	<a href="review">
+                            	<a href="review?reviewNo=${r.reviewNo}">
 	                                <input type="button" class="btn btn-outline-dark" value="취소하기">
                             	</a>
                             </div>
