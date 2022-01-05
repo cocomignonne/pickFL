@@ -173,7 +173,7 @@
 			    	<c:forEach items="${list}" var="l" varStatus="s">
 				    	<tr>
 				    		<td id="pname${s.count}"><input type="hidden" name="pname${s.count}" value="${l.productName}">${l.productName}</td>
-				    		<td><input type="number" class="form-control" id="orderNum${s.count}" name="orderNum${s.count}" value="${l.orderNum }" min="1"></td>
+				    		<td><input type="number" class="form-control" id="orderNum${s.count}" name="orderNum${s.count}" value="${l.orderNum }" min="1" readonly></td>
 				    		<td><input type="number" class="form-control" id="price${s.count}" value="${l.productPrice}" readonly></td>
 				    		<td> <button type="button" onClick=delFlower(${l.productNo})>삭제</button> </td>
 				    	</tr>

@@ -78,10 +78,10 @@ public class ReviewDao {
 		return r;
 	}
 
-	public List<Integer> getBqNoByMemberNo(Connection conn, int memberNo) throws SQLException {
-		String sql = "SELECT BOUQUET_NO FROM CART WHERE CART_NO = "
-				+ "( SELECT CART_NO FROM ORDER WHERE MEMBER_NO = ? AND DELIVERY_STATE = '배송완료' ) "
-				+ "MINUS SELECT BOUQUET_NO FROM REVIEW WHERE MEMBER_NO = ?";
+	public List<Integer> getBqNoByMemberNo(Connection conn, int memberNo, String memberId) throws SQLException {
+		String sql = "SELECT BOUQUET_NO FROM ORDERDETAIL WHERE ORDER_NO IN "
+				+ "( SELECT ORDER_NO FROM ORDERLIST WHERE MEMBER_NO = ? AND DELIVERY_STATE = '배송완료' )"
+				+ " MINUS SELECT BOUQUET_NO FROM REVIEW WHERE MEMBER_ID = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Integer> list = new ArrayList<Integer>();;
@@ -89,7 +89,7 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memberNo);
-			pstmt.setInt(2, memberNo);
+			pstmt.setString(2, memberId);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -111,8 +111,8 @@ public class ReviewDao {
 			try {				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, no);
+				rs = pstmt.executeQuery();
 				while(rs.next()) {
-					rs = pstmt.executeQuery();
 					String bouquetName = rs.getString("BOUQUET_NAME");
 					map.put(no, bouquetName);
 				}
@@ -132,12 +132,75 @@ public class ReviewDao {
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getBouquetNo());
+			pstmt.setString(2, r.getMemberId());
+			pstmt.setString(3, r.getBouquetName());
+			pstmt.setString(4, r.getReviewTitle());
+			pstmt.setString(5, r.getReviewImage());
+			pstmt.setString(6, r.getReviewContent());
+			pstmt.setInt(7, r.getStars());
+			
 			result = pstmt.executeUpdate();
 			
 		}finally {
 			close(pstmt);
 		}
 		
+		return result;
+	}
+
+	public int delete(Connection conn, int reviewNo) throws SQLException {
+		String sql = "DELETE FROM REVIEW WHERE REVIEW_NO = ?";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reviewNo);
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int update(Connection conn, ReviewVo r) throws SQLException {
+		String sql = "";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		if("".equals(r.getReviewImage())) {
+			sql = "UPDATE REVIEW SET REVIEW_TITLE = ?, REVIEW_CONTENT = ?, STARS = ? WHERE REVIEW_NO = ?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, r.getReviewTitle());
+				pstmt.setString(2, r.getReviewContent());
+				pstmt.setInt(3, r.getStars());
+				pstmt.setInt(4, r.getReviewNo());
+				
+				result = pstmt.executeUpdate();
+				
+			} finally {
+				close(pstmt);
+			}
+		}
+		else {
+			sql = "UPDATE REVIEW SET REVIEW_TITLE = ?, REVIEW_IMAGE = ?, REVIEW_CONTENT = ?, STARS = ? WHERE REVIEW_NO = ?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, r.getReviewTitle());
+				pstmt.setString(2, r.getReviewImage());
+				pstmt.setString(3, r.getReviewContent());
+				pstmt.setInt(4, r.getStars());
+				pstmt.setInt(5, r.getReviewNo());
+				
+				result = pstmt.executeUpdate();
+				
+			} finally {
+				close(pstmt);
+			}
+			
+		}
 		return result;
 	}
 

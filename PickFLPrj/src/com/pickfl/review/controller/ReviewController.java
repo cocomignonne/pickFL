@@ -27,7 +27,6 @@ public class ReviewController extends HttpServlet{
 				req.getRequestDispatcher("/WEB-INF/views/review/review-list.jsp").forward(req, resp);
 			}else {
 				int no = Integer.parseInt(reviewNo);
-				System.out.println(no);
 				req.setAttribute("no", no);
 				
 				ReviewVo review = new ReviewService().selectByNo(no);

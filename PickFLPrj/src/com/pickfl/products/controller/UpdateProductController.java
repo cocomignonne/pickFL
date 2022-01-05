@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -84,7 +85,11 @@ public class UpdateProductController extends HttpServlet{
 			resp.sendRedirect(resp.encodeRedirectURL("http://localhost:8989/PickFL/manage-product-detail?no="+productNo));
 			
 		} else {
-			resp.sendRedirect(req.getRequestURI());
+			resp.setContentType("text/html; charset=UTF-8"); 
+			String url = "update-product?no=" + productNo;
+			PrintWriter writer = resp.getWriter(); 
+			writer.println("<script>alert('상품 수정 중 문제가 발생했습니다. 다시 시도해주세요.'); location.href='"+url+"';</script>");
+			writer.close();
 		}
 	}
 
