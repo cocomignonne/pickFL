@@ -35,7 +35,7 @@
                     <tr class="table_tr">
                         <th class="table_td">문의번호</th>
                         <th class="table_td">문의제목</th>
-                        <th class="table_td">아이디</th>
+                        <th class="table_td">멤버번호</th>
                         <th class="table_td">작성일</th>
                         <th class="table_td">답변여부</th>
                         <th class="table_td">확인하기</th>
@@ -44,7 +44,7 @@
 							<tr class="table_tr">
 								<td class="table_td" id="td1">${i.qNum}</td>
 								<td class="table_td">${i.qTitle}</td>
-								<td class="table_td">${i.user}</td>
+								<td class="table_td">${i.mNum}</td>
 								<td class="table_td">${i.createDate}</td>
 								<td class="table_td">${i.qResponse}</td>	
 								<td class="td_btn">
@@ -61,7 +61,7 @@
 				<div>
 		        	<ul class="pagination">
 		        	<li class="page-item"><a class="page-link" href="inquerysearchM?currentPage=${InquerySearchVo.currentPage-7}&searchType=${InquerySearchVo.type}">Previous</a></li>
-		        	<c:forEach var="p" begin="${InquerySearchVo.currentPage}" end="${InquerySearchVo.endPage}" step="1">
+		        	<c:forEach var="p" begin="${InquerySearchVo.startPage}" end="${InquerySearchVo.endPage}" step="1">
 						<c:if test="${p <= InquerySearchVo.maxPage}">
 							<li class="page-item"><a class="page-link" href="inquerysearchM?currentPage=${p}&searchType=${InquerySearchVo.type}">${p}</a></li>				
 						</c:if>

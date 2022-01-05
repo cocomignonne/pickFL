@@ -114,7 +114,7 @@ public class InquerySearchMDao {
 					vo2.setqContent(rs.getString("Q_CONTENT"));
 					vo2.setCreateDate(rs.getTimestamp("Q_CREATE"));
 					vo2.setqResponse(rs.getString("Q_RESPONSE"));
-					vo2.setUser(rs.getString("M_ID"));
+					vo2.setmNum(rs.getInt("M_NO"));
 					
 					list.add(vo2);
 				}
@@ -132,7 +132,7 @@ public class InquerySearchMDao {
 					vo2.setqContent(rs.getString("Q_CONTENT"));
 					vo2.setCreateDate(rs.getTimestamp("Q_CREATE"));
 					vo2.setqResponse(rs.getString("Q_RESPONSE"));
-					vo2.setUser(rs.getString("M_ID"));
+					vo2.setmNum(rs.getInt("M_NO"));
 					
 					list.add(vo2);
 				}
@@ -151,7 +151,7 @@ public class InquerySearchMDao {
 					vo2.setqContent(rs.getString("Q_CONTENT"));
 					vo2.setCreateDate(rs.getTimestamp("Q_CREATE"));
 					vo2.setqResponse(rs.getString("Q_RESPONSE"));
-					vo2.setUser(rs.getString("M_ID"));
+					vo2.setmNum(rs.getInt("M_NO"));
 					
 					list.add(vo2);
 				}

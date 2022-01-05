@@ -22,14 +22,20 @@ public class InqueryResponseMDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getqNum());
 			pstmt.setInt(2, vo.getrNum());
-			pstmt.setString(3, vo.getUserId());
+			pstmt.setInt(3, vo.getmNum());
 			pstmt.setString(4, vo.getAdmin_id());
 			pstmt.setString(5, vo.getrContent());
 			
 			pstmt.executeQuery();
 			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		try {
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, vo.getqNum());
+			pstmt.executeQuery();
 			
 			pstmt.executeUpdate();
 			
@@ -39,6 +45,7 @@ public class InqueryResponseMDao {
 			close(pstmt);
 			close(rs);
 		}
+		
 		
 	}
 

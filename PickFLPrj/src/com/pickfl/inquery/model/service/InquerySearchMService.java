@@ -28,16 +28,16 @@ public class InquerySearchMService {
 		return new InquerySearchMDao().selectInqueryMList(conn,vo);
 	}
 
-	public int memberCountPage(String user, String type) {
+	public int memberCountPage(String user, String type, int memberNo) {
 		Connection conn = getConnection();
-		int result= allMemberPage(conn, user, type);
+		int result= allMemberPage(conn, memberNo, type);
 		close(conn);
 		
 		return result;
 	}
 
-	private int allMemberPage(Connection conn, String user, String type) {
-		return new InquerySearchDao().allMemberPage(conn, user, type);
+	private int allMemberPage(Connection conn, int memberNo, String type) {
+		return new InquerySearchDao().allMemberPage(conn, memberNo, type);
 	}
 
 	public int maxCountPage(String type) {

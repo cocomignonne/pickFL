@@ -24,7 +24,7 @@ public class InquerySearchMController extends HttpServlet{
 		String type = req.getParameter("searchType");
 		String page = req.getParameter("currentPage");
 		
-		InquerySearchVo vo = new InquerySearchVo(user.getId(), type, page);
+		InquerySearchVo vo = new InquerySearchVo(user.getId(), type, page, user.getMemberNo());
 		
 		req.setAttribute("InquerySearchVo", vo);
 		

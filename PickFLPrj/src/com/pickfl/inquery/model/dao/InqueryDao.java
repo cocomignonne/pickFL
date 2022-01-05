@@ -19,7 +19,7 @@ public class InqueryDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getUser());
+			pstmt.setInt(1, vo.getmNum());
 			pstmt.setString(2, vo.getqTitle());
 			pstmt.setString(3, vo.getqContent());
 			
@@ -47,7 +47,7 @@ public class InqueryDao {
 				vo.setqContent(rs.getString("Q_CONTENT"));
 				vo.setCreateDate(rs.getTimestamp("Q_CREATE"));
 				vo.setqResponse(rs.getString("Q_RESPONSE"));
-				vo.setUser(rs.getString("M_ID"));
+				vo.setmNum(rs.getInt("M_NO"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

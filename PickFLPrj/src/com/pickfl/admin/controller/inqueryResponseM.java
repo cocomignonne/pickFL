@@ -12,6 +12,7 @@ import com.pickfl.inquery.model.service.InqueryResponseMService;
 import com.pickfl.inquery.model.service.InqueryService;
 import com.pickfl.inquery.model.vo.InqueryResponseVo;
 import com.pickfl.inquery.model.vo.InqueryVo;
+import com.pickfl.member.model.vo.MemberVo;
 
 @WebServlet("/inqueryresponseM")
 public class inqueryResponseM extends HttpServlet{
@@ -34,14 +35,16 @@ public class inqueryResponseM extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String adminId = "admin3";
+		MemberVo member = (MemberVo) req.getSession().getAttribute("loginUser");
+		String adminId = member.getId();
 		String qNum = req.getParameter("qNum");
 		String comment = req.getParameter("comment");
-		String user = req.getParameter("user");
+		String mNum = req.getParameter("mNum");
 		
 		int num = Integer.parseInt(qNum);
+		int memberNo = Integer.parseInt(mNum);
 		
-		InqueryResponseVo vo = new InqueryResponseVo(num, comment, adminId, user);
+		InqueryResponseVo vo = new InqueryResponseVo(num, comment, adminId, memberNo);
 		
 		InqueryResponseMService.inqueryResponse(vo);
 		

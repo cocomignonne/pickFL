@@ -9,7 +9,7 @@
 <title>회원정보변경</title>
 <script>
 	function goIndex() {
-		location.href="main";
+		location.href="mainM";
 	}
 </script>
 <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -54,7 +54,7 @@
 					
 				<span class="login100-form-title p-b-51">
 					<input type="submit" value="변경하기" class="joinbtn"/>  
-                    <input type="button" value="메인으로" onclick="goIndex()" class="join2btn"/>
+                    <input type="button" value="뒤로" onclick="goIndex()" class="join2btn"/>
                 </span>
 			</form>
 		</div>

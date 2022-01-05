@@ -217,6 +217,18 @@ public class MemberService {
 		return new MemberDao().selectPaylist(conn, mNum);
 	}
 
+	public MemberVo memberGrade(MemberVo member) {
+		Connection conn = getConnection();
+		member = selectMemberGrade(conn, member);
+		close(conn);
+		
+		return member;
+	}
+
+	private MemberVo selectMemberGrade(Connection conn, MemberVo member) {
+		return new MemberDao().selectMemberGrade(conn, member);
+	}
+
 }
 
 
