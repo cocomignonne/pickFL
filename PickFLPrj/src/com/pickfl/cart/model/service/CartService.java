@@ -80,6 +80,20 @@ public class CartService {
 	private int deleteBQ(Connection conn, String bqDetail, int memNo, String bqName) {
 		return new CartDao().deleteBQ(conn, bqDetail, memNo, bqName);
 	}
+//  장바구니 전체삭제
+	public int deleteAllCart() {
+		Connection conn = getConnection();
+		
+		int result = deleteAllCart(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	private int deleteAllCart(Connection conn) {
+		return new CartDao().deleteAllCart(conn);
+	}
 
 
 	

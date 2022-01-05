@@ -1,6 +1,12 @@
 <%@page import="com.pickfl.member.model.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.pickfl.cart.model.vo.CartVo"%>
+<%@page import="com.pickfl.member.model.vo.MemberVo"%>
+<%
+    int point = (int) request.getAttribute("point");
+int totalPrice = (int) request.getAttribute("totalPrice");
+ %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -111,7 +117,7 @@
                         <span class="form-control" style="font-size: large;">수령인 이름</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                        <input type="text" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요."  onfocusout="validate()">
+                        <input type="text"class="form-control" id="getName" name="getName" required maxlength="16" placeholder="수령인 이름 입력하세요.">
                     </div>
                     <div class="col-sm-3 a">
                     </div>
@@ -121,7 +127,7 @@
                         <span class="form-control" style="font-size: large;">수령인 핸드폰 번호</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                        <input type="text" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요."  onfocusout="validate()">
+                        <input type="text" class="form-control" id="phoneNum" name="phoneNum" required maxlength="16" placeholder="번호를 입력하세요 01012347890" ">
                     </div>
                     <div class="col-sm-3 a">
                     </div>
@@ -158,29 +164,29 @@
                     <div class="col-sm-3 a">
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b>합계 금액 : </b></u></span>
+                    	<span style="font-size: 20px; text-align: right; margin-left: 65%;"><b>적립금 사용 : </b></span><input type="button" class="dhd" value="O">
                     </div>
                     <div class="col-sm-3 a">
-                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b> 46800원</b></u></span>
+                    	<input type="text" name="usedPoint" style="border: 1px solid lightgrey; margin-left: 7%">
+                    	<span style="font-size: 20px; text-align: right; margin-left: 6%;"><b>사용가능한 적립금 : <%=point%></b></span>
                     </div>
                     
                     <div class="col-sm-3 a">
                     </div>
-                    <div class="col-md-6 col-sm-6 a">
-                    	<span style="font-size: 20px; text-align: right; margin-left: 66%;"><input type="checkbox" value="usePoint"><b>적립금 사용 : </b></span>
-                    </div>
-                    <div class="col-sm-3 a">
-                    	<input type="text" style="border: 1px solid lightgrey;" placeholder="0">
-                    	<input type="text" style="border: 1px solid lightgrey;" placeholder="사용">
-                    </div>
-                    
-                    <div class="col-sm-3 a">
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
+                    <div class="col-md-6 col-sm-6 a" >
                         <span class="form-control" style="font-size: 20px; text-align: right;"><b>적립금 : </b></span>
                     </div>
                     <div class="col-sm-3 a">
                         <span class="form-control" style="font-size: 20px; text-align: right;"><b> 468원</b></span>
+                    </div>
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b>합계 금액 : </b></u></span>
+                    </div>
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b> <%=totalPrice %></b></u></span>
                     </div>
                     
                     <div class="col-sm-3 a">

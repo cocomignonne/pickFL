@@ -22,12 +22,6 @@ int totalPNum = (int) request.getAttribute("totalPNum");
 
 </head>
 <body>
-    <!--  
-        1) 장바구니
-            1. 상품 목록, 수량, 상품 금액, 합계 금액, 배송비
-            2. 선택 상품 주문, 전체 상품 주문
-            3. 장바구니 > 주문서작성/결제 > 주문완료
-    -->
     <%@ include file="../common/header.jsp" %>
         <section>
         <div id="cartPage">
@@ -35,7 +29,8 @@ int totalPNum = (int) request.getAttribute("totalPNum");
                 <span>장바구니</span>
             </div>
         </div>
-	    <form name="orderform" id="orderform" method="post" class="orderform" action="order" >
+            <h1>${msg}</h1>
+	    <form name="orderform" id="orderform" method="post" class="orderform" action="cart" >
             <input type="hidden" name="cmd" value="order">
             <div class="cartdiv" id="cart">
                 <div class="row head"  style="font-size: 20px; font-weight: bolder;">
@@ -67,9 +62,9 @@ int totalPNum = (int) request.getAttribute("totalPNum");
                             <input type="text" id="pname" name="bqName" value="${c.bouquetName}">
                         </div>
                         
-                        <div class="detail"><input type="text" id="detail" value="${c.bouquetDetail}"></div>
+                        <div class="detail"><input type="text" name="detail" id="detail" value="${c.bouquetDetail}"></div>
                         
-                        <div class="wColor"><input type="text" id="wColor" value="${c.wrapColor}"></div>
+                        <div class="wColor"><input type="text" name="wColor" id="wColor" value="${c.wrapColor}"></div>
                         
                     </div>
                     
@@ -105,11 +100,11 @@ int totalPNum = (int) request.getAttribute("totalPNum");
             </div>
     
             <div class="bigtext right-align sumcount" id="sum_bq_num" >
-                <a href="javascript:void(0)" style="font-size: medium;" class="abutton aaa" onclick="javascript:cart.delAllItem();">전체 상품 삭제</a>
+                <a href="javascript:void(0)" style="font-size: medium;" class="abutton aaa" onclick="deleteAllCart();">전체 상품 삭제</a>
            </div>
     
-            <div class="bigtext right-align sumcount" id="sum_bq_num" style="font-size: 25px;">상품 개수<pre style="border: none; text-align: right;">: <%=totalPNum%>개</pre></div>
-            <div class="bigtext right-align box black summoney" id="sum_bq_price" style="font-size: 25px;">합계 금액<pre style="border: none; text-align: right;">: <%=totalCartPrice%>원</pre></div>
+            <div class="bigtext right-align sumcount" id="sum_bq_num" name="sum_bq_num" style="font-size: 25px;">상품 개수<pre style="border: none; text-align: right;">: <%=totalPNum%>개</pre></div>
+            <div class="bigtext right-align box black summoney" name="sum_bq_price" id="sum_bq_price" style="font-size: 25px;">합계 금액<pre style="border: none; text-align: right;">: <%=totalCartPrice%>원</pre></div>
     
             <div id="goorder" class="">
                 <div class="clear"></div>
@@ -169,6 +164,9 @@ int totalPNum = (int) request.getAttribute("totalPNum");
 			location.href = url;
 		}
      
+  		function deleteAllCart() {
+  			location.href = "deleteAllCart";
+		}
      </script>   
         
 	</body>
