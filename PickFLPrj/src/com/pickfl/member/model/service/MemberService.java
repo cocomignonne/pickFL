@@ -260,6 +260,61 @@ public class MemberService {
 	private PaylistVo selectPaylistDetail(Connection conn, PaylistVo vo) {
 		return new MemberDao().selectPaylistDetail(conn, vo);
 	}
+//	포인트적립
+	public int updatePoint(int totalPoint, int totalOderSumPrice, int memNo) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		try {
+			result = updatePoint(conn, totalPoint, totalOderSumPrice, memNo);
+			
+			if (result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+			
+		} catch (Exception e) {
+			rollback(conn);
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+			
+		return result;
+	}
+	
+	private int updatePoint(Connection conn, int totalPoint, int totalOderSumPrice, int memNo) {
+		return new MemberDao().updatePoint(conn, totalPoint, totalOderSumPrice, memNo);
+	}
+
+//	등급변경
+	public int updateGradeNo(int memNo) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		try {
+			result = updateGrade(conn, memNo);
+			
+			if (result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+			
+		} catch (Exception e) {
+			rollback(conn);
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+			
+		return result;
+	}
+
+	private int updateGrade(Connection conn, int memNo) {
+		return new MemberDao().updateGrade(conn, memNo);
+	}
 
 }
 

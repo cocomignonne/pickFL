@@ -1,5 +1,8 @@
 package com.pickfl.order.controller;
 
+import static com.pickfl.common.JDBCTemplate.commit;
+import static com.pickfl.common.JDBCTemplate.rollback;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,16 +87,53 @@ public class OrderController extends HttpServlet {
 			result2 = new OrderService().insertOrderDetail(cartVo, memNo);
 		}
 		
-		
-		
-		
-		
-//		카트비우기
-		result3 =  new CartService().deleteAllCart();
-		
 		if(result1 > 0 && result2 > 0) {
+			
+//			현재 포인트
+			int currPoint = currentUser.getPoint();
+//			이번 주문의 포인트
+//			int addPoint = (int) (totalCartPrice * 0.01);
+//			적립된 포인트
+//			int totalPoint = currPoint + addPoint;
+//			현재 누적금액
+			int orderSumPrice = currentUser.getOrderPriceSum();
+//			이번 주문금액
+//			int totalCartPrice;
+//			주문 후 누적구매금액
+//			int totalOderSumPrice = orderSumPrice + totalCartPrice;
+			
+			
+			
+			if(currentUser.getGradeNo() == 100) {
+				int addPoint = (int) (totalCartPrice * 0.01);
+				int totalPoint = currPoint + addPoint;
+				int totalOderSumPrice = orderSumPrice + totalCartPrice;
+				int result = 0;
+				result = new MemberService().updatePoint(totalPoint, totalOderSumPrice, memNo);
+				if(result > 0) {
+					System.out.println("적립성공");
+
+					if(currentUser.getOrderPriceSum() >= 200000) {
+						int resultgrade = 0;
+						
+						resultgrade = new MemberService().updateGradeNo(memNo);
+						
+						
+					}
+						
+					
+				} else {
+					System.out.println("적립실패");
+				}
+			}
+			
+			
+			
+			
 			req.setAttribute("msg", "주문완료");
 			req.getRequestDispatcher("WEB-INF/views/common/successPage.jsp").forward(req, resp);
+//		카트비우기
+			result3 =  new CartService().deleteAllCart();
 		} else {
 			req.setAttribute("msg", "주문실패");
 			req.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(req, resp);

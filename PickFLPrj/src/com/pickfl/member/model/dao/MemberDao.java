@@ -137,6 +137,9 @@ public class MemberDao {
 			
 			if (rs.next()) {
 				int memberNo = rs.getInt("MEMBER_NO");
+				int gradeNo = rs.getInt("GRADE_NO");
+				int point = rs.getInt("MEMBER_POINT");
+				int orderSum = rs.getInt("MEMBER_ORDER_SUM");
 				String id = rs.getString("MEMBER_ID");
 				String pwd = rs.getString("MEMBER_PWD");
 				String name = rs.getString("MEMBER_NAME");
@@ -145,10 +148,13 @@ public class MemberDao {
 				selectedMember = new MemberVo();
 				
 				selectedMember.setMemberNo(memberNo);
+				selectedMember.setGradeNo(gradeNo);;
 				selectedMember.setId(id);
 				selectedMember.setPwd(pwd);
 				selectedMember.setName(name);
 				selectedMember.setEmail(email);
+				selectedMember.setPoint(point);;
+				selectedMember.setOrderPriceSum(orderSum);;
 				
 			}
 			
@@ -573,6 +579,54 @@ public class MemberDao {
 			close(rs);
 		}
 		return vo;
+	}
+//  포인트, 구매금액적립
+	public int updatePoint(Connection conn, int totalPoint, int totalOderSumPrice, int memNo) {
+
+		String sql = "UPDATE MEMBER SET MEMBER_POINT = ?, MEMBER_ORDER_SUM = ? WHERE MEMBER_NO = ?";
+		PreparedStatement pstmt = null;
+
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, totalPoint);
+			pstmt.setInt(2, totalOderSumPrice);
+			pstmt.setInt(3, memNo);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		}finally {
+			close(pstmt);
+		}		
+		return result;
+	}
+//	등급변경
+	public int updateGrade(Connection conn, int memNo) {
+		String sql = "UPDATE MEMBER SET GRADE_NO = ? WHERE MEMBER_NO = ?";
+		PreparedStatement pstmt = null;
+
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, 200);
+			pstmt.setInt(2, memNo);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		}finally {
+			close(pstmt);
+		}		
+		return result;
 	}
 
 }

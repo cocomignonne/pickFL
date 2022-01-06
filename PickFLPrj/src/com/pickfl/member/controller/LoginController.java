@@ -38,7 +38,7 @@ public class LoginController extends HttpServlet{
 			if(loginUser.getId().equals("admin1") || loginUser.getId().equals("admin2") || loginUser.getId().equals("admin3")) {
 				req.getRequestDispatcher("/WEB-INF/views/admin/mainPageM.jsp").forward(req, resp);
 			} else {
-				req.getRequestDispatcher("/WEB-INF/views/mainPage.jsp").forward(req, resp);
+				resp.sendRedirect("main");
 			}
 			
 		} else {
