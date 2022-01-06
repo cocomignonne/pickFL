@@ -20,7 +20,7 @@ public class DeliveryMDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM ORDERLIST ";
+		String sql = "SELECT * FROM ORDERLIST ORDER BY DECODE(DELIVERY_STATE, '결제완료', 1, '배송준비', 2, '배송중', 3, '배송완료', 4)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

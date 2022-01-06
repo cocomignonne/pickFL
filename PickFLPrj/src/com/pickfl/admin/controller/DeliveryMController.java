@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import com.pickfl.deliveryM.model.service.DeliveryMService;
 import com.pickfl.deliveryM.model.vo.DeliveryMVo;
+import com.pickfl.member.model.service.MemberService;
+import com.pickfl.member.model.vo.MemberVo;
 
 @WebServlet("/deliveryM")
 public class DeliveryMController extends HttpServlet {
@@ -47,6 +49,7 @@ public class DeliveryMController extends HttpServlet {
 		int result = new DeliveryMService().updateDS(ds);
 		
 		if(result > 0) {
+			
 			resp.setContentType("text/html; charset=UTF-8");
 			 
 			PrintWriter out = resp.getWriter();

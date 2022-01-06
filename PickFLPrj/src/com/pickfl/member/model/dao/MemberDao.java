@@ -491,4 +491,5 @@ public class MemberDao {
 			close(pstmt);
 		}
 	}
+
 }

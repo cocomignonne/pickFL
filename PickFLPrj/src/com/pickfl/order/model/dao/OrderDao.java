@@ -119,31 +119,5 @@ public class OrderDao {
 		return orderNo;
 	}
 
-	public int deleteAllCart(Connection conn) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-	
-		String sql = "DELETE FROM CART";
-	
-		try {
-			pstmt = conn.prepareStatement(sql);
-		
-			result = pstmt.executeUpdate();
-
-			if(result > 0) {
-				commit(conn);
-			} else {
-				rollback(conn);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			rollback(conn);
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
-
 
 }

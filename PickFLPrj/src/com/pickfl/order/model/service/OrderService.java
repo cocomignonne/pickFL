@@ -63,19 +63,6 @@ public class OrderService {
 		return new OrderDao().insertOrderDetailDB(conn, cartVo, memNo, orderNo);
 	}
 
-	public int deleteCartAll() {
-		Connection conn = getConnection();
-		
-		int result = deleteAllCart(conn);
-		
-		close(conn);
-		
-		return result;
-	}
-
-	private int deleteAllCart(Connection conn) {
-		return new OrderDao().deleteAllCart(conn);
-	}
 
 
 }

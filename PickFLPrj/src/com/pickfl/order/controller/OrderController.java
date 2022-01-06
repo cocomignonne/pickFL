@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pickfl.cart.model.service.CartService;
 import com.pickfl.cart.model.vo.CartVo;
+import com.pickfl.deliveryM.model.vo.DeliveryMVo;
+import com.pickfl.member.model.service.MemberService;
 import com.pickfl.member.model.vo.MemberVo;
 import com.pickfl.order.model.service.OrderService;
 import com.pickfl.order.model.vo.OrderVo;
@@ -79,11 +81,15 @@ public class OrderController extends HttpServlet {
 		
 //		ORDERDetail
 		for (CartVo cartVo : cartList) {
-			
 			result2 = new OrderService().insertOrderDetail(cartVo, memNo);
 		}
 		
-		result3 = new OrderService().deleteCartAll();
+		
+		
+		
+		
+//		카트비우기
+		result3 =  new CartService().deleteAllCart();
 		
 		if(result1 > 0 && result2 > 0) {
 			req.setAttribute("msg", "주문완료");
@@ -92,14 +98,6 @@ public class OrderController extends HttpServlet {
 			req.setAttribute("msg", "주문실패");
 			req.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(req, resp);
 		}
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 	}
