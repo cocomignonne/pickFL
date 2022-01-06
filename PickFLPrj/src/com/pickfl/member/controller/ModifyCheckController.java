@@ -26,10 +26,12 @@ public class ModifyCheckController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pwd = req.getParameter("pw");
+		String pwd2 = new MemberService().encrypt(pwd);
+		
 		MemberVo member = new MemberVo();
 		member = (MemberVo) req.getSession().getAttribute("loginUser");	
 		
-		if(member.getPwd().equals(pwd)) {
+		if(member.getPwd().equals(pwd2)) {
 			member = new MemberService().modifyMember(member);
 			req.setAttribute("member", member);
 			req.getRequestDispatcher("/WEB-INF/views/member/Modify.jsp").forward(req, resp);

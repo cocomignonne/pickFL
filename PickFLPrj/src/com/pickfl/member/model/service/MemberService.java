@@ -18,7 +18,7 @@ import com.pickfl.member.model.vo.PaylistVo;
 
 public class MemberService {
 	
-	private String encrypt(String pwd) {
+	public String encrypt(String pwd) {
 		// 패스워드 암호화
 			
 //			암호화된 패스워드 = pwd.암호화;
