@@ -59,9 +59,9 @@
 		</tr>
 		</c:forEach>
     </table>
-	
+
 	<div id="searchbar"></div>
-	
+
 	<form action="membersearchId" method="get">
 		<div id="search_div">
 	    	<div class="input-group mb-3">
@@ -73,19 +73,21 @@
 		  	</div>
 			</div>
     	</div>
-	</form>
-	
-	<div id="page_btn">
+	</form>    
+
+    <div id="page_btn">
 		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="memberInfo?currentPage=${searchVo.currentPage-10}">Previous</a></li>
+			<li class="page-item"><a class="page-link" href="membersearchId?currentPage=${searchVo.currentPage-10}&searchId=${id}">Previous</a></li>
 				<c:forEach var="p" begin="${searchVo.startPage}" end="${searchVo.endPage}" step="1">
 					<c:if test="${p <= searchVo.maxPage}">
-						<li class="page-item"><a class="page-link" href="memberInfo?currentPage=${p}">${p}</a></li>				
+						<li class="page-item"><a class="page-link" href="membersearchId?currentPage=${p}&searchId=${id}">${p}</a></li>				
 					</c:if>
 				</c:forEach>
-			<li class="page-item"><a class="page-link" href="memberInfo?currentPage=${searchVo.currentPage+10}">Next</a></li>
+			<li class="page-item"><a class="page-link" href="membersearchId?currentPage=${searchVo.currentPage+10}&searchId=${id}">Next</a></li>
 		</ul>
 	</div>
+	
+	
 
     <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>

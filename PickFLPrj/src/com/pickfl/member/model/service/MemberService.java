@@ -186,6 +186,18 @@ public class MemberService {
 		return new MemberDao().selectAllMember(conn, vo);
 	}
 	
+	public List<MemberVo> allMemberList(MemberSearchMVo vo, String id) {
+		List<MemberVo> list;
+		Connection conn = getConnection();
+		list = selectAllMember(conn, vo, id);
+		close(conn);
+		return list;
+	}
+	
+	private List<MemberVo> selectAllMember(Connection conn, MemberSearchMVo vo, String id) {
+		return new MemberDao().selectAllMember(conn, vo, id);
+	}
+
 	public MemberVo modifyMember(MemberVo vo) {
 		Connection conn = getConnection();
 		vo = selectMember(conn, vo);
@@ -237,6 +249,16 @@ public class MemberService {
 
 	private void updateMemberInfo(Connection conn, MemberVo member, MemberVo changeMember) {
 		new MemberDao().updateMemberInfo(conn, member, changeMember);
+	}
+
+	public PaylistVo paylistDetail(PaylistVo vo) {
+		Connection conn = getConnection();
+		vo = selectPaylistDetail(conn,vo);
+		return vo;
+	}
+
+	private PaylistVo selectPaylistDetail(Connection conn, PaylistVo vo) {
+		return new MemberDao().selectPaylistDetail(conn, vo);
 	}
 
 }

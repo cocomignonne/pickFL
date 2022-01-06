@@ -8,12 +8,14 @@ public class PaylistVo {
 	int price;
 	int memberNo;
 	int bouquetNo;
-	int BqNum;
+	int bqNum;
+	int totalPrice;
 	Timestamp orderDate;
 	int orderDetailNo;
 	String address;
 	String getPhone;
 	String getName;
+	
 	public int getOrderNo() {
 		return orderNo;
 	}
@@ -45,10 +47,10 @@ public class PaylistVo {
 		this.bouquetNo = bouquetNo;
 	}
 	public int getBqNum() {
-		return BqNum;
+		return bqNum;
 	}
 	public void setBqNum(int bqNum) {
-		BqNum = bqNum;
+		this.bqNum = bqNum;
 	}
 	public Timestamp getOrderDate() {
 		return orderDate;
@@ -80,5 +82,12 @@ public class PaylistVo {
 	public void setGetName(String getName) {
 		this.getName = getName;
 	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	
 	
 }

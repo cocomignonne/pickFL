@@ -314,6 +314,53 @@ public class MemberDao {
 				vo.setBirth(birth);
 				vo.setJoinDate(joinDate);
 				vo.setQuitYN(quit_Yn);
+				vo.changeGradeNo();
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return list;
+	}
+	
+	public List<MemberVo> selectAllMember(Connection conn, MemberSearchMVo vo2, String id) {
+		List<MemberVo> list = new ArrayList<MemberVo>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int end = vo2.getCurrentPage()*10;
+		int start = end - 9;
+		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM, M.* FROM MEMBER M WHERE MEMBER_ID like ?) WHERE RNUM BETWEEN ? AND ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + id  + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int memberNo = rs.getInt("MEMBER_NO");
+				id = rs.getString("MEMBER_ID");
+				int gradeNo = rs.getInt("GRADE_NO");
+				String birth = rs.getString("MEMBER_BIRTH");
+				Timestamp joinDate = rs.getTimestamp("MEMBER_JOIN_DATE");
+				String quit_Yn = rs.getString("MEMBER_QUIT_YN");
+				
+				MemberVo vo = new MemberVo();
+
+				vo.setMemberNo(memberNo);
+				vo.setId(id);
+				vo.setGradeNo(gradeNo);
+				vo.setBirth(birth);
+				vo.setJoinDate(joinDate);
+				vo.setQuitYN(quit_Yn);
+				vo.changeGradeNo();
 				
 				list.add(vo);
 			}
@@ -362,6 +409,7 @@ public class MemberDao {
 		}
 		return vo;
 	}
+	
 
 	public void updateMember(Connection conn, MemberVo vo) {
 		PreparedStatement pstmt = null;
@@ -456,6 +504,7 @@ public class MemberDao {
 				member.setId(id);
 				member.setGradeNo(grade);
 				member.setPoint(point);
+				member.changeGradeNo();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -491,4 +540,37 @@ public class MemberDao {
 			close(pstmt);
 		}
 	}
+
+	public PaylistVo selectPaylistDetail(Connection conn, PaylistVo vo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM ORDERDETAIL WHERE ORDER_NO = ?";
+	
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getOrderNo());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int orderDetailNo = rs.getInt("ORDER_DETAIL_NO");
+				int BqNo = rs.getInt("BOUQUET_NO");
+				int BqNum = rs.getInt("BQ_NUM");
+				int BqPrice = rs.getInt("BQ_PRICE");
+
+				vo.setOrderDetailNo(orderDetailNo);
+				vo.setBouquetNo(BqNo);
+				vo.setBqNum(BqNum);
+				vo.setPrice(BqPrice);
+				vo.setTotalPrice(BqNum * BqPrice);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			rollback(conn);
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		return vo;
+	}
+
 }

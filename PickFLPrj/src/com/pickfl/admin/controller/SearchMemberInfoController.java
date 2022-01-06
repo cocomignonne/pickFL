@@ -13,28 +13,27 @@ import com.pickfl.admin.vo.MemberSearchMVo;
 import com.pickfl.member.model.service.MemberService;
 import com.pickfl.member.model.vo.MemberVo;
 
-@WebServlet("/memberInfo")
-public class MemberInfoController extends HttpServlet {
+@WebServlet("/membersearchId")
+public class SearchMemberInfoController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("searchId");
 		String page = req.getParameter("currentPage");
-		MemberVo user = (MemberVo) req.getSession().getAttribute("loginUser");
+		MemberVo user = new MemberVo();
+		user.setId(id);
 		
-		if(user.getId().equals("admin1")) {
 		List<MemberVo> list = null;
 		
-		MemberSearchMVo vo = new MemberSearchMVo(page);
+		MemberSearchMVo vo = new MemberSearchMVo(page, id);
 		
 		req.setAttribute("searchVo", vo);
 		
-		list = new MemberService().allMemberList(vo);
+		list = new MemberService().allMemberList(vo, id);
 		
 		req.setAttribute("list", list);
+		req.setAttribute("id", id);
 		
-		req.getRequestDispatcher("/WEB-INF/views/admin/memberInfo.jsp").forward(req, resp);
-		} else {
-			req.setAttribute("msg", "회원 조회 권한이 없습니다");
-			req.getRequestDispatcher("/WEB-INF/views/common/errorPageM.jsp").forward(req, resp);
-		}
+		req.getRequestDispatcher("/WEB-INF/views/admin/searchMemberInfo.jsp").forward(req, resp);
+
 	}
 }

@@ -29,7 +29,7 @@
 			</select>
 			<input type="submit" value="검색" class="btn btn-outline-secondary" id="button">
 		</form>
-
+	
 			<article id="content">
                 <table class = "table-striped table-hover" id="table">
                     <tr class="table_tr">
@@ -57,8 +57,9 @@
 					</c:forEach>
                 </table>
             </article>
+			
           
-				<div>
+				<div class="line-block">
 		        	<ul class="pagination">
 		        	<li class="page-item"><a class="page-link" href="inquerysearchM?currentPage=${InquerySearchVo.currentPage-7}&searchType=${InquerySearchVo.type}">Previous</a></li>
 		        	<c:forEach var="p" begin="${InquerySearchVo.startPage}" end="${InquerySearchVo.endPage}" step="1">

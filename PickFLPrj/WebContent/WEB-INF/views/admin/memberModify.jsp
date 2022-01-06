@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/util.css">
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/memberModifyM.css">
 </head>
 </head>
 <body>
@@ -27,27 +28,27 @@
 				<input type="hidden" name="mNum" value="${vo.memberNo}">
 				<table>
 					<tr>
-						<td>이름</td>
+						<td class="table_td">이름</td>
 						<td><input type="text" name ="name" value="${vo.name}" class="joininput"></td>
 					</tr>
 					<tr>
-						<td>아이디</td>
+						<td class="table_td">아이디</td>
 						<td><input type="text" name ="id" value="${vo.id}" class="joininput"></td>
 					</tr>
 					<tr>
-						<td>생년월일</td>
+						<td class="table_td">생년월일</td>
 						<td><input type="text" name="birth" value="${vo.birth}" class="joininput"></td>
 					</tr>
 					<tr>
-						<td>이메일</td>
+						<td class="table_td">이메일</td>
 						<td><input type="text" name="mail" value="${vo.email}" class="joininput"></td>
 					</tr>
 					<tr>
-						<td>비번변경</td> 
+						<td class="table_td">비번변경</td> 
 						<td><input type="text" name="password" value="${vo.pwd}" class="joininput"></td>
 					</tr>
                     <tr>
-						<td>탈퇴여부</td>
+						<td  class="table_td">탈퇴여부</td>
 						<td><input type="text" name="quitYN" value="${vo.quitYN}" class="joininput"></td>
 					</tr>
 				</table>

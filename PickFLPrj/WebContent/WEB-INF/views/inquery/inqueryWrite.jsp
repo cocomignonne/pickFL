@@ -7,7 +7,8 @@
 <title>Inquery</title>
 <script>
 	function close(){
-		window.close();
+		window.open('', '_self', '');
+    	window.close();
 	}
 </script>
 <link rel="stylesheet" href="assets/css/inqueryWrite.css">

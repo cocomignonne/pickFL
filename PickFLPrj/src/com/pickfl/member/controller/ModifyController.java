@@ -31,7 +31,5 @@ public class ModifyController extends HttpServlet{
 		changeMember.setBirth(birth);
 		
 		new MemberService().ChangeMemberInfo(member,changeMember);
-		
-		
 	}
 }
