@@ -12,6 +12,7 @@ import java.util.Map;
 
 import static com.pickfl.common.JDBCTemplate.*;
 
+import com.pickfl.member.model.vo.MemberVo;
 import com.pickfl.review.model.vo.ReviewVo;
 
 public class ReviewDao {
@@ -202,6 +203,68 @@ public class ReviewDao {
 			
 		}
 		return result;
+	}
+
+	public List<ReviewVo> selectAll(Connection conn, MemberVo user) throws SQLException  {
+		String sql = "SELECT * FROM REVIEW WHERE MEMBER_ID = ? AND REVIEW_DELETED = 'N'";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ReviewVo> list = new ArrayList<ReviewVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getId());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int reviewNo = rs.getInt("REVIEW_NO");
+				String memberId = rs.getString("MEMBER_ID");
+				String bouquetName = rs.getString("BOUQUET_NAME");
+				String reviewTitle = rs.getString("REVIEW_TITLE");
+				String reviewImage = rs.getString("REVIEW_IMAGE");
+				Date reviewDate = rs.getDate("REVIEW_DATE");
+				int stars = rs.getInt("STARS");
+				
+				list.add(new ReviewVo(reviewNo, bouquetName, memberId, reviewTitle, reviewImage, reviewDate, stars));
+			}
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return list;
+	}
+
+	public ReviewVo selectByNo(Connection conn, int no, MemberVo user) throws SQLException {
+		String sql = "SELECT * FROM REVIEW WHERE MEMBER_ID = ? AND REVIEW_NO = ? AND REVIEW_DELETED = 'N'";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ReviewVo r = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getId());
+			pstmt.setInt(2, no);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				int reviewNo = rs.getInt("REVIEW_NO");
+				String memberId = rs.getString("MEMBER_ID");
+				String bouquetName = rs.getString("BOUQUET_NAME");
+				String reviewTitle = rs.getString("REVIEW_TITLE");
+				String reviewImage = rs.getString("REVIEW_IMAGE");
+				String reviewContent = rs.getString("REVIEW_CONTENT");
+				Date reviewDate = rs.getDate("REVIEW_DATE");
+				int stars = rs.getInt("STARS");
+				
+				r = new ReviewVo(reviewNo, bouquetName, memberId, reviewTitle, reviewImage, reviewContent, reviewDate, stars);
+			}
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return r;
 	}
 
 
