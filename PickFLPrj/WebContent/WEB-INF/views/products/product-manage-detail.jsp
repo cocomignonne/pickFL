@@ -50,7 +50,7 @@
   </head>
   
   <body>
-  <%@include file="/WEB-INF/views/common/header.jsp" %>
+  <%@include file="/WEB-INF/views/common/headerM.jsp" %>
           <section id="review-container">
           	<div class="center">
                   <div class="container">

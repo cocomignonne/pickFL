@@ -5,6 +5,7 @@ public class DeliveryMVo {
 	private int memberNo;
 	private String deliveryState;
 	
+	
 	public int getOrderNo() {
 		return orderNo;
 	}

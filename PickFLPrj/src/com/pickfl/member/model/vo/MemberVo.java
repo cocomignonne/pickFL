@@ -13,6 +13,14 @@ public class MemberVo {
 	private Timestamp joinDate;
 	private String quitYN;
 	private String role;
+	private int orderPriceSum;
+	public int getOrderPriceSum() {
+		return orderPriceSum;
+	}
+
+	public void setOrderPriceSum(int orderPriceSum) {
+		this.orderPriceSum = orderPriceSum;
+	}
 	private int point;
 	private String gradeString = "잘못된 회원 등급";
 	
