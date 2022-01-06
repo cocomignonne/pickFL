@@ -1,4 +1,4 @@
-
+let emailConfirmValue = 0;
 function emailcheck(email) {
 	var length = email.length;
 	if(length!=0){
@@ -7,25 +7,28 @@ function emailcheck(email) {
 	}
 }
 
+
 function confirmemail(emailconfirm_value, authNum){
+	let a = 0;
 	//값이없거나 인증코드불일치
 	if(!emailconfirm_value || emailconfirm_value != authNum){
 		alert("인증번호가 맞지않습니다.");
 		self.close();
 	} else if(emailconfirm_value == authNum) { // 일치하는 경우
 		alert("인증번호가 일치합니다.");
-		emailconfirm_value = "";
 		self.close();
+		a = 1;
 	}
-	
+		return a;
 }	
 
 
 function emailNumCheck() {
-			if (emailconfirm_value.value !== 1) {
-				alert('이메일 인증을 해주세요.');
-				console.log(emailconfirm_value.value);
-				return false;
-			}	
+		emailConfirmValue = a;
+		if (emailConfirmValue === 0) {
+			alert('이메일 인증을 해주세요.');
+			console.log(emailconfirm_value.value);
+			return false;
+		}	
 }
 

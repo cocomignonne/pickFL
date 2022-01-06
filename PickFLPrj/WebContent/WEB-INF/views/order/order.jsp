@@ -153,41 +153,7 @@ int totalPrice = (int) request.getAttribute("totalPrice");
                     </div>
                     
                     <hr>
-                    
-                    <div class="col-sm-3 a">
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
-                    </div>
-                    <div class="col-sm-3 a">
-                    </div>
-                    
-                    <div class="col-sm-3 a">
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
-                    	<span style="font-size: 20px; text-align: right; margin-left: 65%;"><b>적립금 사용 : </b></span><input type="button" class="dhd" value="O">
-                    </div>
-                    <div class="col-sm-3 a">
-                    	<input type="text" name="usedPoint" style="border: 1px solid lightgrey; margin-left: 7%">
-                    	<span style="font-size: 20px; text-align: right; margin-left: 6%;"><b>사용가능한 적립금 : <%=point%></b></span>
-                    </div>
-                    
-                    <div class="col-sm-3 a">
-                    </div>
-                    <div class="col-md-6 col-sm-6 a" >
-                        <span class="form-control" style="font-size: 20px; text-align: right;"><b>적립금 : </b></span>
-                    </div>
-                    <div class="col-sm-3 a">
-                        <span class="form-control" style="font-size: 20px; text-align: right;"><b> 468원</b></span>
-                    </div>
-                    
-                    <div class="col-sm-3 a">
-                    </div>
-                    <div class="col-md-6 col-sm-6 a">
-                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b>합계 금액 : </b></u></span>
-                    </div>
-                    <div class="col-sm-3 a">
-                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b> <%=totalPrice %></b></u></span>
-                    </div>
+                   
                     
                     <div class="col-sm-3 a">
                     </div>
