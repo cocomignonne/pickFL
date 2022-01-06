@@ -416,11 +416,12 @@ public class MemberDao {
 		String sql = "UPDATE MEMBER SET MEMBER_ID = ?, MEMBER_PWD=?, MEMBER_NAME=?,"
 				+ "MEMBER_EMAIL=?, MEMBER_BIRTH =?, MEMBER_QUIT_YN=? WHERE MEMBER_NO = ?";
 		int result = 0;
+		String pwd2 = encrypt(vo.getPwd());
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getPwd());
+			pstmt.setString(2, pwd2);
 			pstmt.setString(3, vo.getName());
 			pstmt.setString(4, vo.getEmail());
 			pstmt.setString(5, vo.getBirth());
@@ -521,11 +522,12 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE MEMBER SET MEMBER_ID = ?, MEMBER_PWD=?, MEMBER_NAME=?,"
 				+ "MEMBER_EMAIL=?, MEMBER_BIRTH =? WHERE MEMBER_NO = ?";
+		String pwd2 = encrypt(changeMember.getPwd());
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, changeMember.getId());
-			pstmt.setString(2, changeMember.getPwd());
+			pstmt.setString(2, pwd2);
 			pstmt.setString(3, changeMember.getName());
 			pstmt.setString(4, changeMember.getEmail());
 			pstmt.setString(5, changeMember.getBirth());
