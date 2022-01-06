@@ -135,6 +135,7 @@
 
                 <div class="section-title">
                     <h2>TIP VIDEO</h2>
+                    <p>나만의 꽃다발을 더 오래 즐겨보세요</p>
                 </div>
 
                 <div class="row">
