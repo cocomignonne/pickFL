@@ -8,6 +8,7 @@ import java.util.Map;
 
 import static com.pickfl.common.JDBCTemplate.*;
 
+import com.pickfl.member.model.vo.MemberVo;
 import com.pickfl.order.model.dao.OrderDao;
 import com.pickfl.review.model.dao.ReviewDao;
 import com.pickfl.review.model.vo.ReviewVo;
@@ -136,6 +137,36 @@ public class ReviewService {
 		}
 		
 		return result;
+	}
+
+	public List<ReviewVo> selectAll(MemberVo user) {
+		List<ReviewVo> list = null;
+		
+		Connection conn = getConnection();
+		try {
+			list = new ReviewDao().selectAll(conn, user);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {			
+			close(conn);
+		}
+		
+		return list;
+	}
+
+	public ReviewVo selectByNo(int no, MemberVo user) {
+		ReviewVo r = null;
+		Connection conn = getConnection();
+		
+		try {
+			r = new ReviewDao().selectByNo(conn, no, user);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return r;
 	}
 
 	

@@ -47,7 +47,7 @@
                 <div id="container1_2">
                     <h4>나의 꽃밭</h4>
                     <ul class="hover">
-                        <li><a href="review">상품리뷰</a></li>
+                        <li><a href="myreview">상품리뷰</a></li>
                         <li><a href="inquery">문의하기</a></li>
                     </ul>
                 </div>
