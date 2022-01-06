@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-md-6 col-sm-6 a">
 
-                        <input type="password" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요." value="${member.pwd}"  onfocusout="validate()">
+                        <input type="password" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요." value=""  onfocusout="validate()">
 
                         <div id="passwordHelpBlock" class="form-text">
                             영문, 숫자, 특수문자(#, $, % 중 선택) 모두를 포함해서 8~16자리
@@ -67,7 +67,7 @@
                         <span class="form-control">비밀번호 확인</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                        <input type="password" name="userPwd2" class="form-control" id="userPwd2" required maxlength="16" placeholder="비밀번호를 입력하세요." value="${member.pwd}" onfocusout="validate()">
+                        <input type="password" name="userPwd2" class="form-control" id="userPwd2" required maxlength="16" placeholder="비밀번호를 입력하세요." value="" onfocusout="validate()">
                         <div id="pwdCheckError" class="form-text">
                         </div>
                     </div>

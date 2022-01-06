@@ -45,7 +45,7 @@
 					</tr>
 					<tr>
 						<td class="table_td">비번변경</td> 
-						<td><input type="text" name="password" value="${vo.pwd}" class="joininput"></td>
+						<td><input type="text" name="password" value="" class="joininput"></td>
 					</tr>
                     <tr>
 						<td  class="table_td">탈퇴여부</td>
