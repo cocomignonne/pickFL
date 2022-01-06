@@ -6,6 +6,8 @@ border: 0px solid rgb(128, 255, 128); margin: 0 auto; padding-top: 20px; padding
 height: 90px; background-color: #8080c0; color: #ffffff; text-align:right; font-size: 25pt; font-family: 'Roboto Condensed', sans-serif;
 }
 
+.margin-top{height: 20px;width : 100%;}
+
 .head_a{ padding-top:60px; margin-right: 40px;}
 
 .left_bx{float: left; width:201px;height:900px;background:right top #f9fafa; z-index:2; margin-top:40px;}
@@ -18,13 +20,13 @@ height: 90px; background-color: #8080c0; color: #ffffff; text-align:right; font-
 
 .left_bx .my_menu li a{display:block; text-decoration:none; padding-left:35px;color:#4e545d;font-size:14px;line-height:44px}
 
-.bodymargin{margin:15px; margin-left:225px; margin-bottom:40px;}
+.bodymargin{margin:15px; margin-left:225px; margin-bottom:40px; height:700px;}
 
 .question{margin-left:15px; background-color:#8080c0; height: 30px; font-size:14pt;}
 
 .inquiryline{padding-top:5px; background-color: #444444; margin-top:15px;margin-bottom:30px;}
 
-.inquirytable{width: 97%; column-span: 1; margin:10px;}
+.inquirytable{width: 97%; column-span: 1; margin:10px; height:200px;}
 
 .inquiry_head{display:table; height:25px; border:0 none; padding:10px; padding-left: 30px; text-align: right;}
 .inquiry_head2{display:table; border:0 none; padding:10px; padding-left: 80%;}
@@ -32,10 +34,15 @@ height: 90px; background-color: #8080c0; color: #ffffff; text-align:right; font-
 .inquiry_line{border-top: 1px solid #444444; display:table-cell;  resize: none; padding-top:18px; padding-bottom:60px; font-family: "Nanum Gothic", sans-serif; font-size:10pt;}
 .inquiry_body{display:table-cell;  resize: none; padding-top:18px; padding-bottom:60px; font-family: "Nanum Gothic", sans-serif; font-size:10pt;}
 
+.inquiry_content{height : 200px;}
 
 .img_icon{width: 15px; height: 15px;}
 
 .h2class{margin:40px;text-align:right}
+
+#content{
+	height: 200px;
+}
 
 #inquiry{
     display:block;
@@ -43,5 +50,7 @@ height: 90px; background-color: #8080c0; color: #ffffff; text-align:right; font-
 
 .divbutton{
 	float:right;
-	margin-right:10%;
+	margin-right:50px;
 }
+
+#form-width {margin-left:50px;}

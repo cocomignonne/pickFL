@@ -25,6 +25,10 @@ public class InqueryController extends HttpServlet{
 				req.getRequestDispatcher("/WEB-INF/views/inquery/inquery.jsp").forward(req, resp);
 			}
 		}
+		if(member == null) {
+			req.setAttribute("msg", "로그인 정보가 존재하지않습니다");
+			req.getRequestDispatcher("/WEB-INF/views/common/errorPage.jsp").forward(req, resp);
+		}
 		
 	}
 }

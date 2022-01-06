@@ -14,6 +14,11 @@ section {
     height: 75%;
 }
 
+#search_div{
+	margin-left:5%;
+	margin-top: 40px;
+	width:45%;
+}
 
 #content_span{
     float: right;
@@ -58,10 +63,15 @@ section {
     background-color: #8ae0a1;
 }
 
+#searchbar{
+	display:inline-block;
+}
+
 #page_btn{
-    position: absolute;
-    right: 7.5%;
-    margin-top:40px;
+    display:inline-block;
+    margin-left : 60%;
+
+    
 }
 
 #index_btn{
@@ -69,6 +79,10 @@ section {
     margin-left: 10%;
 }
 
+.margin_right{
+	margin-left: 40px;
+	display : inline-block;
+}
 
 
 

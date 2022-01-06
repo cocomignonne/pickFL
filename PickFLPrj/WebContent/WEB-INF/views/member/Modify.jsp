@@ -24,7 +24,7 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/mainPage.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/join.css">
-    	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
     <!-- jQuerty-->

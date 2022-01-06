@@ -20,6 +20,11 @@ public class MyPageController extends HttpServlet{
 		MemberVo member = new MemberVo();
 		member = (MemberVo) req.getSession().getAttribute("loginUser");
 		
+		if(member == null) {
+			req.setAttribute("msg", "로그인 정보가 존재하지않습니다");
+			req.getRequestDispatcher("/WEB-INF/views/common/errorPage.jsp").forward(req, resp);
+		}
+		
 		member = new MemberService().memberGrade(member);
 		
 		PaylistVo vo = new PaylistVo();

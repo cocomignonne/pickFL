@@ -20,10 +20,23 @@ public class MemberSearchMVo {
 	}
 
 
+	public MemberSearchMVo(String page, String id) {
+		this.maxCount = maxCount(id);
+		this.maxPage = maxPage(maxCount);
+		this.currentPage = currentPage(page,maxPage);
+		this.startPage = currentPage/10 +1;
+		this.endPage = startPage+9;
+	}
+	
+	private int maxCount(String id) {
+		int maxcount=0;
+		maxcount = new MemberSearchMService().maxCountPage(id);
+		return maxcount;
+	}
+	
 	private int maxCount() {
-		int maxcount=1;
+		int maxcount=0;
 		maxcount = new MemberSearchMService().maxCountPage();
-		System.out.println("inquery maxcount : " + maxcount);
 		return maxcount;
 	}
 	

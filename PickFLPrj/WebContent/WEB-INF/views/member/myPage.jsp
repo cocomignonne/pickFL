@@ -8,15 +8,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/myPage.css">
+    
     <title>PickFL</title>
     <script>
-    	function orderDetail(){
-    		window.open("detailPaylist", "detailPaylist", "width=600, height=200");
-    		document.detail.submit();
+    	function orderDetail(data){
+    		var orderForm = document.createElement("form");
+    		orderForm.target = "_self";
+    		orderForm.method = "POST";
+    	    orderForm.action = "detailPaylist";
+    	    
+    	    var Input = document.createElement("input");
+            Input.type = "hidden";
+            Input.name = "orderNo";
+            Input.value = data;
+            
+            orderForm.appendChild(Input);
+            document.body.appendChild(orderForm);
+			orderForm.submit();
+			document.body.removeChild(orderForm);
     	}
     </script>
 </head>
 <body>    
+	<div id="header_h1"><h1>MyPage</h1></div>
+	
     <form id="wrap">
         <header id="headers">
             <nav id="menu"></nav>
@@ -57,7 +72,7 @@
                     <li id="content2_1">
                         <a href="#" id="content_1a">
                             <div id="content_1a_1">회원등급 ></div>
-                            <div id="content_1a_2">${member.gradeNo}</div>
+                            <div id="content_1a_2">${member.gradeString}</div>
                         </a>
                     </li>
 
@@ -71,7 +86,7 @@
 				<div id="content2_backgroundColor">
                     <p id="content2_p">결제내역</p>
                 </div>
-                <table class = "table-striped table-hover" id="content2_2">
+                <table class ="table-striped table-hover" id="content2_2">
                     <tr class="content2_2_tr">
                         <th class="content2_2_td">주문번호</th>
                         <th class="content2_2_td">받는사람</th>
@@ -88,10 +103,7 @@
 							<td class="content2_2_td">${l.delivery}</td>	
 							<td class="content2_2_td">${l.orderDate}</td>	
 							<td class="content2_2_td">
-								<form name="detail" action="detailPaylist" method="post" target="detailPaylist">
-									<input type="hidden" name="orderNo" value="${l.orderNo}">
-									<input type="button" onclick="orderDetail()" value="상세내역">
-								</form>
+								<input type="button" onclick="orderDetail(${l.orderNo})" value="상세내역">
 							</td>	
 						</tr>
 					</c:forEach>
@@ -99,5 +111,6 @@
             </article>
         </section>
     </form>
+    
 </body>
 </html>

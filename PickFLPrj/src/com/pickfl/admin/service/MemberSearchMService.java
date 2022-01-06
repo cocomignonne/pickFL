@@ -21,4 +21,16 @@ public class MemberSearchMService {
 		return new MemberSearchMDao().allMemberCount(conn);
 	}
 
+	public int maxCountPage(String id) {
+		Connection conn = getConnection();
+		int result= allMemberCount(conn, id);
+		close(conn);
+		
+		return result;
+	}
+
+	private int allMemberCount(Connection conn, String id) {
+		return new MemberSearchMDao().allMemberCount(conn, id);
+	}
+
 }

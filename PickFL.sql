@@ -192,7 +192,6 @@ SELECT * FROM ORDERLIST;
 -----------------------------------------------------------------------------
 -------------------------------삭제
 
-
 DROP TABLE PRODUCT CASCADE CONSTRAINTS;
 DROP SEQUENCE SEQ_PRODUCT;
 DROP TABLE QUESTION CASCADE CONSTRAINTS;

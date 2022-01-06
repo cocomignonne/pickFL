@@ -14,9 +14,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-    function paylistDetail(a){
-    	
-    }
+	function orderDetail(data){
+		var orderForm = document.createElement("form");
+		orderForm.method = "POST";
+	    orderForm.action = "detailPaylist";
+	    
+	    var Input = document.createElement("input");
+        Input.type = "hidden";
+        Input.name = "orderNo";
+        Input.value = data;
+        
+        orderForm.appendChild(Input);
+        document.body.appendChild(orderForm);
+		orderForm.submit();
+		document.body.removeChild(orderForm);
+	}
 
     function goIndex(){
     	location.href="memberInfo";
@@ -49,13 +61,13 @@
 							<td class="content2_2_td">${l.delivery}</td>	
 							<td class="content2_2_td">${l.orderDate}</td>	
 							<td class="content2_2_td">
-								버튼
+								<input type="button" onclick="orderDetail(${l.orderNo})" value="상세내역">
 							</td>	
 						</tr>
 					</c:forEach>
                 </table>
                 
-                <input type="button" value="뒤로" onclick="goIndex()" class="btn btn-outline-success padding_btn">
+                <input type="button" value="회원관리" onclick="goIndex()" class="btn btn-outline-success padding_btn">
     </div>
     
     

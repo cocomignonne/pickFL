@@ -22,6 +22,7 @@ public class MemberVo {
 		this.orderPriceSum = orderPriceSum;
 	}
 	private int point;
+	private String gradeString = "잘못된 회원 등급";
 	
 	public MemberVo() {
 		
@@ -36,6 +37,22 @@ public class MemberVo {
 		this.email = email;
 	}
 	
+	public void changeGradeNo() {
+		if(this.gradeNo == 999) {
+			this.gradeString = "관리자";
+		}
+		if(this.gradeNo == 200) {
+			this.gradeString = "VIP";
+		}
+		if(this.gradeNo == 100) {
+			this.gradeString = "일반회원";
+		}
+	}
+	
+	public String getGradeString() {
+		return gradeString;
+	}
+
 	public int getMemberNo() {
 		return memberNo;
 	}

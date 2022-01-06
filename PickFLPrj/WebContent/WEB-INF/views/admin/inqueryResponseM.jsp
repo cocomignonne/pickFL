@@ -12,49 +12,40 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
 	function selfclose(){
-		self.close();
+		window.open('','_self').close(); 
 	}
 </script>
 </head>
 <body>
+	<div class="margin-top">&nbsp;</div>
 	<div class ="inquiryBox">
-        <hr/>
-            <table class="inquirytable">
-                <tr class="inquiry_head">
-                    <th> 
-                        ${vo.qTitle}
-                    </th>
-                </tr>
-            </table>
+            <div class="container p-3 my-2 border">
+              &nbsp;  ${vo.qTitle}
+            </div>
+            
+            <hr width="90%">
 
             <div id="inquiry">
-                <table class="inquirytable">
-                        <tr class="inquiry_line">
-                        <td>
+                <div class="container-sm p-5 my-2 border" id="content">
                             <img src="assets/img/arrow.svg" class="img_icon"> &nbsp; ${vo.qContent}
-                        </td>
-                    </tr>
-                </table>
+                </div>
                 
-                <table class="inquirytable">
-                	<tr class="inquiry_head2">
-                		<th><!-- 답변제목과 답변자의 id출력 --></th>
-                	</tr>
-                </table>
-                
-                <hr>
-                <table class="inquirytable">
-                	<tr class="inquiry_body">
-                		<td><img src="assets/img/arrow2.png" class="img_icon"/> &nbsp; ${vo.responseContent}</td>
-                	</tr>
-                </table>
+             <hr width="90%">
+             
+                <div class="container p-5 my-2 border">
+                		<img src="assets/img/arrow2.png" class="img_icon"/> &nbsp; ${vo.responseContent}
+                </div>
+            </div>
+        </div>
+        
+        <hr width="90%">
                 
                 <form action="inqueryresponseM" method="post">
                 	<input type="hidden" name="qNum" value="${vo.qNum}">
                 	<input type="hidden" name="mNum" value="${vo.mNum}">
 					
 					<div class="form-group">
-					  <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+					  <textarea cols="94.5" rows="7" id="form-width" name="comment"></textarea>
 					</div>
 	
                 	<div class="divbutton">
@@ -62,7 +53,6 @@
 						<input type="button" value="닫기" onclick="selfclose()">
 					</div>
                 </form>
-            </div>
-        </div>
+
 </body>
 </html>
