@@ -65,7 +65,7 @@
                           <div class="row mb-3">
                               <label for="pname" class="col-sm-2 col-form-label title">상품명</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="pname" name="pname" placeholder="상품명을 입력해 주세요">
+                                <input type="text" class="form-control" id="pname" name="pname" placeholder="상품명을 입력해 주세요" required>
                               </div>
                               <div class="col-sm-3 align-self-center">
                               	<span id="isNameDup" class="d-none" style="color: red;">이미 존재하는 상품명입니다.</span>
@@ -74,31 +74,31 @@
                           <div class="row mb-3">
                               <label for="price" class="col-sm-2 col-form-label title">상품가격</label>
                               <div class="col-sm-4">
-                                <input type="number" class="form-control" id="price" name="price" placeholder="상품가격 입력">
+                                <input type="number" class="form-control" id="price" name="price" placeholder="상품가격 입력" required>
                               </div>
                               <label for="stock" class="col-sm-2 col-form-label title">상품재고</label>
                               <div class="col-sm-4">
-                                <input type="number" class="form-control" id="stock"  name="stock" placeholder="상품재고 입력">
+                                <input type="number" class="form-control" id="stock"  name="stock" placeholder="상품재고 입력" required>
                               </div>
                           </div>
                           <div class="row mb-3">
                             <label for="flang" class="col-sm-2 col-form-label title">꽃말</label>
                             <div class="col-sm-4">
-                              <input type="text" class="form-control" id="flang" name="flang" placeholder="꽃말을 입력해 주세요">
+                              <input type="text" class="form-control" id="flang" name="flang" placeholder="꽃말을 입력해 주세요" required>
                             </div>
                             <label for="simple" class="col-sm-2 col-form-label title">간단정보</label>
                             <div class="col-sm-4">
-                              <input type="text" class="form-control" id="simple" name="simple" placeholder="간단정보를 입력해 주세요">
+                              <input type="text" class="form-control" id="simple" name="simple" placeholder="간단정보를 입력해 주세요" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="detail" class="col-sm-2 col-form-label title">상세정보</label>
                             <div class="col-sm-10">
-                            <textarea class="form-control" id="detail" name="detail" rows="5" placeholder="내용을 입력해 주세요"></textarea>
+                            <textarea class="form-control" id="detail" name="detail" rows="5" placeholder="내용을 입력해 주세요"></textarea required>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="color" class="col-sm-2 col-form-label title">색상</label>
+                            <label for="color" class="col-sm-2 col-form-label title">색상</label required>
                             <div class="col-sm-4">
                                 <select class="form-select" id="color" name="color">
                                     <option selected>색상 선택</option>
@@ -110,7 +110,7 @@
                                     <option value="white">무채색</option>
                                 </select>
                             </div>
-                            <label for="size" class="col-sm-2 col-form-label title">크기</label>
+                            <label for="size" class="col-sm-2 col-form-label title">크기</label required>
                             <div class="col-sm-4">
                                 <select class="form-select" id="size" name="size">
                                     <option selected>크기 선택</option>
@@ -127,7 +127,7 @@
                               <div class="col-sm-2 align-self-center title">상품이미지</div>
                               <div class="col-sm-10">
                                   <div class="input-group">
-                                      <input type="file"  onchange="readURL(this);" class="form-control" name="image" id="inputImg" aria-label="Upload">
+                                      <input type="file"  onchange="readURL(this);" class="form-control" name="image" id="inputImg" aria-label="Upload" required>
                                      <!--  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">첨부파일</button> -->
                                   </div>
                               </div>

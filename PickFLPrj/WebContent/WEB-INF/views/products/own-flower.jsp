@@ -165,10 +165,10 @@
 		  <form action="current-flower" method="post">
 			    <table class="table">
 			    	<tr>
-			    		<td>선택한 꽃</td>
-			    		<td>수량</td>
-			    		<td>가격</td>
-			    		<td></td>
+			    		<td style="width: 35%">선택한 꽃</td>
+			    		<td style="width: 20%">수량</td>
+			    		<td style="width: 25%">가격</td>
+			    		<td style="width: 20%"></td>
 			    	</tr>
 			    	<c:forEach items="${list}" var="l" varStatus="s">
 				    	<tr>

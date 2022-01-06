@@ -92,13 +92,13 @@
                         <div class="row mb-3">
                             <label for="rtitle" class="col-sm-2 col-form-label title">제목</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="rtitle" name="rtitle" placeholder="제목을 입력해 주세요">
+                              <input type="text" class="form-control" id="rtitle" name="rtitle" placeholder="제목을 입력해 주세요" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="rcontent" class="col-sm-2 col-form-label title">내용</label>
                             <div class="col-sm-10">
-                            <textarea class="form-control" id="rcontent" name="rcontent" rows="15" placeholder="내용을 입력해 주세요"></textarea>
+                            <textarea class="form-control" id="rcontent" name="rcontent" rows="15" placeholder="내용을 입력해 주세요" required></textarea>
                             </div>
                         </div>
                         <div class="row mb-3">

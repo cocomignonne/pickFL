@@ -61,8 +61,8 @@
                     <form action="current-flower">
                         <div id="contents">
                             <div id="simple">${p.productSimple}</div>
-                            <h2><b>${p.productName}</b></h2>
-                            <h4><b>${p.productDetail}</b></h2>
+                            <h2 class="mb-4"><b>${p.productName}</b></h2>
+                            <h5 class="mb-4">${p.productDetail}</h5>
                             <input type="hidden" name="pno" value="${p.productNo}">
                             <input type="hidden" name="pname" value="${p.productName}">
                             <input type="hidden" name="price" value="${p.productPrice}">
