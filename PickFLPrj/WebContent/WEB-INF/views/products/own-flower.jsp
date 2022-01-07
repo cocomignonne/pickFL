@@ -108,13 +108,12 @@
             <div>
               <div class="d-flex align-items-center">
                 <div class="me-auto">색상별 검색</div>
-                <div class="mx-3 circle" style="background-color: red;" onClick=sendColor('red')></div>
-                <div class="mx-3 circle" style="background-color: orange;" onClick=sendColor('orange')></div>
-                <div class="mx-3 circle" style="background-color: gold;" onClick=sendColor('yello')></div>
-                <div class="mx-3 circle" style="background-color: seagreen;" onClick=sendColor('green')></div>
-                <div class="mx-3 circle" style="background-color: cornflowerblue;" onClick=sendColor('blue')></div>
-                <div class="mx-3 circle" style="background-color: rebeccapurple;" onClick=sendColor('purple')></div>
-                <div class="mx-3 circle" style="background-color: grey;" onClick=sendColor('white')></div>
+                <div class="mx-3 circle" style="background-color: red;" onClick=sendColor('빨강색')></div>
+                <div class="mx-3 circle" style="background-color: gold;" onClick=sendColor('노랑색')></div>
+                <div class="mx-3 circle" style="background-color: seagreen;" onClick=sendColor('초록색')></div>
+                <div class="mx-3 circle" style="background-color: cornflowerblue;" onClick=sendColor('파랑색')></div>
+                <div class="mx-3 circle" style="background-color: rebeccapurple;" onClick=sendColor('보라색')></div>
+                <div class="mx-3 circle" style="background-color: grey;" onClick=sendColor('무채색')></div>
               </div>
             </div>
           </div>
@@ -186,12 +185,12 @@
 			    <label for="wrqp-color">포장색</label>
 	            <select class="form-select" id="wrap-color" name="wrap-color">
 	                <option selected>색상 선택</option>
-	                <option value="red">빨강색</option>
-	                <option value="yello">노랑색</option>
-	                <option value="green">초록색</option>
-	                <option value="blue">파랑색</option>
-	                <option value="purple">보라색</option>
-	                <option value="white">무채색</option>
+	                <option value="빨강색">빨강색</option>
+	                <option value="노랑색">노랑색</option>
+	                <option value="초록색">초록색</option>
+	                <option value="파랑색">파랑색</option>
+	                <option value="보라색">보라색</option>
+	                <option value="무채색">무채색</option>
 	            </select>
 	            <input type="hidden" name="row" value="${fn:length(list)}">
 			    <button type="submit" class="btn-success"> Pick! </button>
