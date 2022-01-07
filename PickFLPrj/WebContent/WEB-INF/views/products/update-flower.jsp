@@ -107,12 +107,12 @@
                             <div class="col-sm-4">
                                 <select class="form-select" id="color" name="color">
                                     <option >색상 선택</option>
-                                    <option value="red" ${"red" eq p.productColor ? "selected" : ""}>빨간색</option>
-                                    <option value="yello" ${"yello" eq p.productColor ? "selected" : ""}>노랑색</option>
-                                    <option value="green" ${"green" eq p.productColor ? "selected" : ""}>초록색</option>
-                                    <option value="blue" ${"blue" eq p.productColor ? "selected" : ""}>파랑색</option>
-                                    <option value="purple" ${"purple" eq p.productColor ? "selected" : ""}>보라색</option>
-                                    <option value="white" ${"white" eq p.productColor ? "selected" : ""}>무채색</option>
+                                    <option value="빨간색" ${"빨간색" eq p.productColor ? "selected" : ""}>빨간색</option>
+                                    <option value="노랑색" ${"노랑색" eq p.productColor ? "selected" : ""}>노랑색</option>
+                                    <option value="초록색" ${"초록색" eq p.productColor ? "selected" : ""}>초록색</option>
+                                    <option value="파랑색" ${"파랑색" eq p.productColor ? "selected" : ""}>파랑색</option>
+                                    <option value="보라색" ${"보라색" eq p.productColor ? "selected" : ""}>보라색</option>
+                                    <option value="무채색" ${"무채색" eq p.productColor ? "selected" : ""}>무채색</option>
                                 </select>
                             </div>
                             <label for="size" class="col-sm-2 col-form-label title">크기</label>

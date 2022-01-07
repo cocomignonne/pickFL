@@ -13,7 +13,7 @@ import com.pickfl.member.model.vo.MemberVo;
 import com.pickfl.review.model.service.ReviewService;
 import com.pickfl.review.model.vo.ReviewVo;
 
-@WebServlet("myreview")
+@WebServlet("/myreview")
 public class MyReviewController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

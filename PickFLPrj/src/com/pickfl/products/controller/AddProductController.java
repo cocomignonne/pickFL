@@ -36,7 +36,6 @@ public class AddProductController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		
 		String productName = req.getParameter("pname");
-		String price = req.getParameter("price");
 		int productPrice = Integer.parseInt(req.getParameter("price"));
 		int productStock = Integer.parseInt(req.getParameter("stock"));
 		String flowerLang= req.getParameter("flang");

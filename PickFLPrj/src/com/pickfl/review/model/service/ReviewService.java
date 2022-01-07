@@ -66,8 +66,9 @@ public class ReviewService {
 		
 		try {
 			List<Integer> bqNo = getBqNoByMemberNo(conn, memberNo, memberId);
+			System.out.println("bqNo = " + bqNo.size());
 				
-			if(bqNo != null) {
+			if(bqNo.size() != 0) {
 				
 				map = new ReviewDao().getBqMap(conn, bqNo);
 				

@@ -102,12 +102,12 @@
                             <div class="col-sm-4">
                                 <select class="form-select" id="color" name="color">
                                     <option selected>색상 선택</option>
-                                    <option value="red">빨강색</option>
-                                    <option value="yello">노랑색</option>
-                                    <option value="green">초록색</option>
-                                    <option value="blue">파랑색</option>
-                                    <option value="purple">보라색</option>
-                                    <option value="white">무채색</option>
+                                    <option value="빨강색">빨강색</option>
+                                    <option value="노랑색">노랑색</option>
+                                    <option value="초록색">초록색</option>
+                                    <option value="파랑색">파랑색</option>
+                                    <option value="보라색">보라색</option>
+                                    <option value="무채색">무채색</option>
                                 </select>
                             </div>
                             <label for="size" class="col-sm-2 col-form-label title">크기</label required>

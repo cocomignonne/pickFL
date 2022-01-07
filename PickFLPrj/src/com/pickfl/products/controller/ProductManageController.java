@@ -29,7 +29,4 @@ public class ProductManageController extends HttpServlet{
 		
 		req.getRequestDispatcher("/WEB-INF/views/products/product-manage.jsp").forward(req, resp);
 	}
-	
-	
-
 }
