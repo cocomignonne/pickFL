@@ -55,7 +55,7 @@
                         <div class="container">
                                 <h2 class="animate__animated animate__fadeInDown">1월의 꽃 : 스노우 드롭(SnowDrop)</h2>
                                 <p class="animate__animated animate__fadeInUp">"오늘 하루는 선물입니다"<br><span>꽃말 : 희망</span></p>
-                                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Buy This</a>
+                                <a href="own-flower-detail?no=2" class="btn-get-started animate__animated animate__fadeInUp scrollto">Buy This</a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                             <p class="animate__animated animate__fadeInUp">당신은 눈이 내려도 찬바람이 불어도 결코 굴하지 않는 <br> 스노우 드롭처럼 인내심이 강한 성격을 갖고 있다. <br>
                                 당신의 희망은 언젠가 반드시 성취되고 <br> 합리성과 성실성을 소중히 간직해 자신의 모습을 지키며 산다.
                             </p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Buy This</a>
+                            <a href="own-flower-detail?no=2" class="btn-get-started animate__animated animate__fadeInUp scrollto">Buy This</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                                 수선화과의 알뿌리식물로 흰 꽃이 핀다. <br> 영하 40도까지 버틸 수 있으며 12월 ~ 2월경에 개화한다. <br>
                                 내한성이 강하며 배수가 잘 되는 곳에 약간의 차광만 해 주면 쉽게 기를 수 있는 식물이다. <br>
                             </p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Buy This</a>
+                            <a href="own-flower-detail?no=2" class="btn-get-started animate__animated animate__fadeInUp scrollto">Buy This</a>
                         </div>
                     </div>
                 </div>

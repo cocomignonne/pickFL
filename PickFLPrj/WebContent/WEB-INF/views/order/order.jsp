@@ -4,8 +4,8 @@
 <%@page import="com.pickfl.cart.model.vo.CartVo"%>
 <%@page import="com.pickfl.member.model.vo.MemberVo"%>
 <%
-    int point = (int) request.getAttribute("point");
-int totalPrice = (int) request.getAttribute("totalPrice");
+    int addPoint = (int) request.getSession().getAttribute("addPoint");
+int totalPrice = (int) request.getSession().getAttribute("totalPrice");
  %>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,6 +153,34 @@ int totalPrice = (int) request.getAttribute("totalPrice");
                     </div>
                     
                     <hr>
+                   
+                    
+                    <div class="col-sm-3 a">
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: 25px; text-align: right; float: left;"><u><b>합계 금액 : </b></u></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <span class="form-control" style="font-size: 25px; text-align: right;"><u><b><%=totalPrice%>원</b></u></span>
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
+                    
+                    
+                    <div class="col-sm-3 a">
+                        <span class="form-control" style="font-size: 20px; text-align: right; float: left;"><u><b>적립금 : </b></u></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 a">
+                        <span class="form-control" style="font-size: 20px; text-align: right;"><u><b><%=addPoint%>원</b></u></span>
+                    </div>
+                    <div class="col-sm-3 a">
+                    </div>
                    
                     
                     <div class="col-sm-3 a">

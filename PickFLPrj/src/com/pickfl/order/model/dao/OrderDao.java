@@ -35,8 +35,6 @@ public class OrderDao {
 	}
 	
 //	 ORDERLIST에 추가
-	
-
 	public int insertOrderDB(Connection conn, OrderVo orderVo, int memNo) {
 		PreparedStatement pstmt = null;
 
@@ -44,17 +42,14 @@ public class OrderDao {
 				+ "VALUES(SEQ_ORDERLIST.NEXTVAL, ?, SYSDATE, ?, ?, ?, ?, ?, DEFAULT)";
 		
 		int result = 0;
-		
 		try {	
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setInt(1, memNo);
 			pstmt.setString(2, orderVo.getAddress1());
 			pstmt.setString(3, orderVo.getAddress2());
 			pstmt.setString(4, orderVo.getAddress3());
 			pstmt.setString(5, orderVo.getGotName());
 			pstmt.setString(6, orderVo.getGotPhone());
-			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,28 +58,20 @@ public class OrderDao {
 		}
 		return result;
 	}
-	
-	
 //	 ORDERDETAIL에 추가
-	
 	public int insertOrderDetailDB(Connection conn, CartVo cartVo, int memNo, int orderNo) {
 		PreparedStatement pstmt = null;
-
 		String sql = "INSERT INTO ORDERDETAIL VALUES( "
 				+ "SEQ_ORDERDETAIL.NEXTVAL, ?, ?, ?, ?, ?)";
 				
 		int result = 0;
-		
 		try {	
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setInt(1, orderNo);
 			pstmt.setInt(2, cartVo.getBouquetNo());
 			pstmt.setInt(3, memNo);
 			pstmt.setInt(4, cartVo.getBuyNumBQ());
 			pstmt.setInt(5, cartVo.getBouquetPrice());
-			
-			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,7 +86,8 @@ public class OrderDao {
 	public int selectOrderNo(Connection conn, CartVo cartVo, int memNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql ="SELECT O.ORDER_NO FROM CART C LEFT JOIN ORDERLIST O ON (O.MEMBER_NO = C.MEMBER_NO) LEFT JOIN BOUQUET B ON (B.BOUQUET_NO = C.BOUQUET_NO) WHERE O.MEMBER_NO = ?"; 
+		String sql ="SELECT O.ORDER_NO FROM CART C LEFT JOIN ORDERLIST O ON (O.MEMBER_NO = C.MEMBER_NO) "
+				+ "LEFT JOIN BOUQUET B ON (B.BOUQUET_NO = C.BOUQUET_NO) WHERE O.MEMBER_NO = ?"; 
 		int orderNo = 0;
 		
 		try {

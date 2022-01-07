@@ -51,7 +51,6 @@ public class DeliveryMDao {
 	}
 	
 //	배송상태 변경
-
 	public int updateDSQuery(Connection conn, DeliveryMVo ds, List<DeliveryMVo> selectInfoList) {
 			PreparedStatement pstmt = null;
 

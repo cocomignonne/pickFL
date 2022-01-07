@@ -29,14 +29,20 @@ public class OrderController extends HttpServlet {
 
 		MemberVo currentUser = (MemberVo) req.getSession().getAttribute("loginUser");
 		CartVo cartVo = new CartVo();
-		int totalPrice = cartVo.getTotalCartPrice();
+		int totalPrice = (int) req.getSession().getAttribute("totalCartPrice");
 		
 		int point = currentUser.getPoint();
+		int addPoint = 0;
 		
-		System.out.println(point);
-		System.out.println(totalPrice);
-		req.setAttribute("totalPrice", totalPrice);
-		req.setAttribute("point", point);
+		if(currentUser.getGradeNo() == 100) {
+			addPoint = (int) (totalPrice * 0.01);
+		} else if(currentUser.getGradeNo() == 200) {
+			addPoint = (int) (totalPrice * 0.05);
+		}
+		req.getSession().setAttribute("totalPrice", totalPrice);
+		req.getSession().setAttribute("addPoint", addPoint);
+		System.out.println("order"+totalPrice);
+		System.out.println("order"+addPoint);
 		req.getRequestDispatcher("/WEB-INF/views/order/order.jsp").forward(req, resp);
 	}	
 	
@@ -92,7 +98,7 @@ public class OrderController extends HttpServlet {
 //			현재 포인트
 			int currPoint = currentUser.getPoint();
 //			이번 주문의 포인트
-//			int addPoint = (int) (totalCartPrice * 0.01);
+			int addPoint = 0;
 //			적립된 포인트
 //			int totalPoint = currPoint + addPoint;
 //			현재 누적금액
@@ -105,7 +111,7 @@ public class OrderController extends HttpServlet {
 			
 			
 			if(currentUser.getGradeNo() == 100) {
-				int addPoint = (int) (totalCartPrice * 0.01);
+				addPoint = (int) (totalCartPrice * 0.01);
 				int totalPoint = currPoint + addPoint;
 				int totalOderSumPrice = orderSumPrice + totalCartPrice;
 				int result = 0;
@@ -115,21 +121,29 @@ public class OrderController extends HttpServlet {
 
 					if(currentUser.getOrderPriceSum() >= 200000) {
 						int resultgrade = 0;
-						
 						resultgrade = new MemberService().updateGradeNo(memNo);
-						
-						
 					}
-						
-					
 				} else {
 					System.out.println("적립실패");
 				}
+			} else if(currentUser.getGradeNo() == 200) {
+				addPoint = (int) (totalCartPrice * 0.05);
+				int totalPoint = currPoint + addPoint;
+				int totalOderSumPrice = orderSumPrice + totalCartPrice;
+				int result = 0;
+				result = new MemberService().updatePoint(totalPoint, totalOderSumPrice, memNo);
+				if(result > 0) {
+					System.out.println("적립성공");					
+				} else {
+					System.out.println("적립실패");
+				}
+				
 			}
 			
 			
 			
-			
+			req.setAttribute("addPoint", addPoint);
+			req.setAttribute("totalCartPrice", totalCartPrice);
 			req.setAttribute("msg", "주문완료");
 			req.getRequestDispatcher("WEB-INF/views/common/successPage.jsp").forward(req, resp);
 //		카트비우기

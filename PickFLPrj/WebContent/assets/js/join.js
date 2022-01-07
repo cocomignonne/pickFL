@@ -169,7 +169,7 @@ function validate() {
 			}
 	
 			if (emaildupCheck === 0) {
-				alert('이메일 중복확인을 해주세요.');
+				alert('이메일 인증을 해주세요.');
 				return false;
 			}
 	
