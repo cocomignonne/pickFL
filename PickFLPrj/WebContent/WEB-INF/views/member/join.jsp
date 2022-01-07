@@ -53,9 +53,9 @@
                     <div class="col-md-6 col-sm-6 a">
 
 
-                        <input type="text" name="id" class="form-control" id="userId" required maxlength="12" placeholder="아이디를 입력하세요." onfocusout="validate()">
+                        <input type="text" name="id" class="form-control" id="userId" required maxlength="12" placeholder="영문이나 숫자만을 포함해서  6~12자리" onfocusout="validate()">
                         <div id="idHelpBlock" class="form-text">
-                            영문, 숫자만을 모두 포함해서  6~12자리
+                              
                         </div>
                     </div>
                     <div class="col-sm-3 a">
@@ -69,10 +69,10 @@
                     </div>
                     <div class="col-md-6 col-sm-6 a">
 
-                        <input type="password" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="비밀번호를 입력하세요."  onfocusout="validate()">
+                        <input type="text" name="pwd" class="form-control" id="userPwd1" required maxlength="16" placeholder="영문, 숫자, 특수문자(#, $, % 중 선택) 모두를 포함해서 8~16자리"  onfocusout="validate()">
 
                         <div id="passwordHelpBlock" class="form-text">
-                            영문, 숫자, 특수문자(#, $, % 중 선택) 모두를 포함해서 8~16자리
+                               
                         </div>
                     </div>
                     <div class="col-sm-3 a">
@@ -82,7 +82,7 @@
                         <span class="form-control">비밀번호 확인</span>
                     </div>
                     <div class="col-md-6 col-sm-6 a">
-                        <input type="password" name="userPwd2" class="form-control" id="userPwd2" required maxlength="16" placeholder="비밀번호를 입력하세요." onfocusout="validate()">
+                        <input type="text" name="userPwd2" class="form-control" id="userPwd2" required maxlength="16" placeholder="비밀번호를 입력하세요." onfocusout="validate()">
                         <div id="pwdCheckError" class="form-text">
                         </div>
                     </div>

@@ -4,7 +4,7 @@
 <%@page import="com.pickfl.cart.model.vo.CartVo"%>
 <%@page import="com.pickfl.member.model.vo.MemberVo"%>
 <%
-int totalCartPrice = (int) request.getAttribute("totalCartPrice");
+int totalCartPrice = (int) request.getSession().getAttribute("totalCartPrice");
 int totalPNum = (int) request.getAttribute("totalPNum");
 %>   
 <!DOCTYPE html>
@@ -79,7 +79,6 @@ int totalPNum = (int) request.getAttribute("totalPNum");
                             
                                 <input type="hidden" name="bq_numVal" value="">
                                 <input type="text" name="bq_num1" id="p_num1" size="2" maxlength="4" class="bq_num" value="${c.buyNumBQ}">
-                        		<a href="javascript:void(0)" class="abutton" onclick="modNumChange(this);">수정</a>
                         		<a href="javascript:void(0)" class="abutton" onclick="changedNumUpdate(this);">등록</a>
                                 
                             </div>
@@ -121,9 +120,11 @@ int totalPNum = (int) request.getAttribute("totalPNum");
         <%@ include file="../common/footer.jsp" %>
         
      <script type="text/javascript">
-  		function modNumChange(m) {
-			let upBQNum = m.previousElementSibling;
-			let upBQNumHid = m.previousElementSibling.previousElementSibling;
+  		
+  		function changedNumUpdate(c) {
+
+			let upBQNum = c.previousElementSibling;
+			let upBQNumHid = c.previousElementSibling.previousElementSibling;
 			
 			console.log(upBQNum);
 			console.log(upBQNumHid);
@@ -134,11 +135,7 @@ int totalPNum = (int) request.getAttribute("totalPNum");
 			
 			console.log(upBQNumHid.value);
 			console.log(upBQNum.value);
-		}
-			
-  		
-  		function changedNumUpdate(c) {
-  			let chNum = c.previousElementSibling.previousElementSibling.previousElementSibling;
+  			let chNum = c.previousElementSibling.previousElementSibling;
 			let bqName = c.parentNode.parentNode.parentNode.previousElementSibling.childNodes[1].childNodes[1];
   			
 			console.log(chNum);

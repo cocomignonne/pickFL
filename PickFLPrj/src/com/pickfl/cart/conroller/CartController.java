@@ -61,7 +61,7 @@ public class CartController extends HttpServlet{
 			cartVo.setTotalPNum(totalPNum);
 			
 			req.setAttribute("totalPNum", totalPNum);
-			req.setAttribute("totalCartPrice", totalCartPrice);
+			req.getSession().setAttribute("totalCartPrice", totalCartPrice);
 
 			req.setAttribute("cart", cartList);
 			req.getRequestDispatcher("/WEB-INF/views/cart/cart.jsp").forward(req, resp);

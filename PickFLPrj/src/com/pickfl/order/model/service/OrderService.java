@@ -20,7 +20,6 @@ public class OrderService {
 	public int insertOrder(OrderVo orderVo, int memNo) {
 		Connection conn = getConnection();
 		int result1 = 0;
-		
 		result1 = insertOrderDB(conn, orderVo, memNo);
 		
 		if (result1 > 0) {
@@ -28,9 +27,6 @@ public class OrderService {
 		} else {	
 			rollback(conn);
 		}
-		
-		close(conn);
-		
 		return result1;
 	}
 	
@@ -43,18 +39,13 @@ public class OrderService {
 		int result2 = 0;
 //		내가 지금 주문한 주문번호 받아오기
 		int orderNo = new OrderDao().selectOrderNo(conn,cartVo, memNo);
-		
-		
 		result2 = insertOrderDetailDB(conn, cartVo, memNo, orderNo);
-		
 		if (result2 > 0) {
 			commit(conn);
 		} else {	
 			rollback(conn);
 		}
-			
 			close(conn);
-			
 		return result2;
 		
 	}

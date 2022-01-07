@@ -88,8 +88,7 @@
                     		</td>
                     		
 				        	<td>
-				        		<input type="button" id="submit" value="등록" onclick="getSiblingVal(this);">
-				        		<input type="submit" id="submit" value="저장">
+				        		<input type="submit" id="submit" value="저장"  onclick="getSiblingVal(this);">
 				        	</td>
 						</form>
 					</tr>
@@ -117,36 +116,18 @@
 				        
 	<script type="text/javascript">
 		function getSiblingVal(t) {
-			
 	        let orderNo = t.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.childNodes[1];
 	        let memberNo = t.parentNode.previousElementSibling.previousElementSibling.childNodes[1];
 	        let deliveryStatusChange = t.parentNode.previousElementSibling.childNodes[5];
-			
-			console.log(orderNo);	        
-			console.log(memberNo);	        
-			console.log(deliveryStatusChange);	        
 	        
 	        let orderNoVal = t.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.childNodes[3];
 	        let memberNoVal = t.parentNode.previousElementSibling.previousElementSibling.childNodes[3];
 	        let deliveryStatusChangeVal = t.parentNode.previousElementSibling.childNodes[3];
 			
-			console.log(orderNoVal);	        
-			console.log(memberNoVal);	        
-			console.log(deliveryStatusChangeVal);	 
-			
 	        orderNoVal.value = orderNo.value;
 	        memberNoVal.value = memberNo.value;
 	        deliveryStatusChangeVal.value = deliveryStatusChange.value;
-	        
-			console.log(orderNoVal.value);	        
-			console.log(memberNoVal.value);	        
-			console.log(deliveryStatusChangeVal.value);	 
 		}
-		
-		
-		
-		
-		
 	</script>
 </body>
 
